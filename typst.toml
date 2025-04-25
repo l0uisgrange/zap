@@ -8,4 +8,4 @@ license = "MIT"
 description = "A package to draw amazing electronic circuits using CeTZ"
 repository = "https://github.com/l0uisgrange/circetz"
 categories = ["visualization", "components"]
-keywords = ["electronic", "circuit", "cetz", "voltage", "draw", "schema"]
+keywords = ["electronic", "circuit", "cetz", "voltage", "draw", "schema", "engineering"]
