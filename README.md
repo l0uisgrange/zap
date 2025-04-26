@@ -24,7 +24,7 @@ Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your 
 
 ## Supported Components
 
-Circuitor supports a wide range of electronic components 🤓, with symbols for both European (IEEE) and American (ANSI) standards.
+Circuitor supports a wide range of electronic components 🤓, with symbols in different variants.
 
 | Name            | Declaration           | Symbol                                |
 |:----------------|:----------------------|:--------------------------------------|
@@ -43,9 +43,15 @@ Feel free to suggest 💡 any new component by [opening a new issue](https://git
 
 ### Standard Variants
 
-Each component can be displayed using either the American 🇺🇸 (ANSI) or European 🇪🇺 (IEEE) symbol style. For example, here are the resistor variants:
+Each component can be displayed using either the American 🇺🇸 (IEEE), or European 🇪🇺 (IEC) symbol style. For example, here are the resistor variants:
 
 ![Resistor variants](assets/resistor.png)
+
+> [!NOTE]
+> The representation for each symbol adheres closely to the relevant standard. The current implementations are based on
+> - IEC 60617
+> - 
+
 
 ### Styling Parameters
 
@@ -55,8 +61,8 @@ Each component supports flexible styling through the following parameters:
 |:---------|:---------|:-------------------------|:---------------------------------------|
 | uid      | Yes      | `string`                 | Unique identifier                      |
 | position | Yes      | `(float, float)`         | Coordinates for the component’s center |
-| color    | No       | `color`                  | Color of the component's drawing       |
-| variant  | No       | `american` or `european` | Symbol standard (ANSI or IEEE)         |
+| color    | No (default: `black`)       | `color`                  | Color of the component's drawing       |
+| variant  | No (default: `iec`)       | `iec` or `ieee`          | Symbol standard (IEEE or IEC)         |
 
 ## Contributing
 
