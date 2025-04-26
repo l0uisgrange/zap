@@ -1,16 +1,16 @@
-# CirCeTZ
+# circuitor
 
-![Latest release](https://img.shields.io/github/v/release/l0uisgrange/circetz?include_prereleases&style=flat-square&logo=typst&color=%23239dad)
-![License](https://img.shields.io/github/license/l0uisgrange/circetz?style=flat-square)
-![Code size](https://img.shields.io/github/languages/code-size/l0uisgrange/circetz?style=flat-square)
+![Latest release](https://img.shields.io/github/v/release/l0uisgrange/circuitor?include_prereleases&style=flat-square&logo=typst&color=%23239dad)
+![License](https://img.shields.io/github/license/l0uisgrange/circuitor?style=flat-square)
+![Code size](https://img.shields.io/github/languages/code-size/l0uisgrange/circuitor?style=flat-square)
 
 > [!IMPORTANT]
-> This package is not available on Typst Universe for the time being. Check out the [related discussion](https://github.com/l0uisgrange/circetz/discussions/2) for the first release 🌟!
+> This package is not available on Typst Universe for the time being. Check out the [related discussion](https://github.com/l0uisgrange/circuitor/discussions/2) for the first release 🌟!
 
-CirCeTZ is a lightweight ⚡️ typst package to draw electronic circuits. The main goal of CirCeTZ is to be intuitive.
+Circuitor is a lightweight ⚡️ typst package to draw electronic circuits. The main goal of `circuitor` is to be intuitive.
 
 ```typst
-#import "@preview/circetz:0.1.0"
+#import "@preview/circuitor:0.1.0"
 
 #canvas({
     isource((0,1))
@@ -21,11 +21,11 @@ CirCeTZ is a lightweight ⚡️ typst package to draw electronic circuits. The m
 })
 ```
 
-CirCeTZ uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas.
+Circuitor uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas.
 
 ## Supported Components
 
-The `circetz` package supports many electrical components 🤓, both in european (IEE) and american (ANSI) variants.
+The `circuitor` package supports many electrical components 🤓, both in european (IEE) and american (ANSI) variants.
 
 | Component       | Usage Example      | Symbol                                |
 |:----------------|:-------------------|:--------------------------------------|
@@ -45,7 +45,7 @@ The `circetz` package supports many electrical components 🤓, both in european
 Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (IEEE). For example, the resistor looks like
 
 ```typst
-#import "@preview/circetz:0.1.0"
+#import "@preview/circuitor:0.1.0"
 
 #canvas({
     resistor((0,0), variant: "american")
@@ -55,7 +55,7 @@ Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (I
 ![Resistor](assets/resistor.png)
 
 ```typst
-#import "@preview/circetz:0.1.0"
+#import "@preview/circuitor:0.1.0"
 
 #canvas({
     resistor((0,0), variant: "european")
