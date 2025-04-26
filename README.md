@@ -39,6 +39,8 @@ Circuitor supports a wide range of electronic components 🤓, with symbols for 
 | NMOS Transistor | `nmos(..params)`      | ![NMOS](assets/nmos.png)              |
 | PMOS Transistor | `pmos(..params)`      | ![PMOS](assets/pmos.png)              |
 
+Feel free to suggest 💡 any new component by [opening a new issue](https://github.com/l0uisgrange/circuitor/issues/new?template=new_component.yml)!
+
 ### Standard Variants
 
 Each component can be displayed using either the American 🇺🇸 (ANSI) or European 🇪🇺 (IEEE) symbol style. For example, here are the resistor variants:
