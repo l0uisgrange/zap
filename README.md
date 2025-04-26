@@ -1,13 +1,13 @@
-# circuitor
+# Circuitor for Typst
 
 ![Latest release](https://img.shields.io/github/v/release/l0uisgrange/circuitor?include_prereleases&style=flat-square&logo=typst&color=%23239dad)
 ![License](https://img.shields.io/github/license/l0uisgrange/circuitor?style=flat-square)
 ![Code size](https://img.shields.io/github/languages/code-size/l0uisgrange/circuitor?style=flat-square)
 
 > [!IMPORTANT]
-> This package is not available on Typst Universe for the time being. Check out the [related discussion](https://github.com/l0uisgrange/circuitor/discussions/2) for the first release 🌟!
+> Circuitor is not yet available on Typst Universe. Follow [this discussion](https://github.com/l0uisgrange/circuitor/discussions/2) to stay updated on the first release 🌟!
 
-Circuitor is a lightweight ⚡️ typst package to draw electronic circuits. The main goal of `circuitor` is to be intuitive.
+**Circuitor** is a lightweight ⚡️ Typst package that makes drawing electronic circuits simple and intuitive.
 
 ```typst
 #import "@preview/circuitor:0.1.0"
@@ -20,11 +20,11 @@ Circuitor is a lightweight ⚡️ typst package to draw electronic circuits. The
 })
 ```
 
-Circuitor uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas.
+Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your circuit elements on the same canvas seamlessly.
 
 ## Supported Components
 
-The `circuitor` package supports many electrical components 🤓, both in european (IEE) and american (ANSI) variants.
+Circuitor supports a wide range of electronic components 🤓, with symbols for both European (IEEE) and American (ANSI) standards.
 
 | Name            | Declaration           | Symbol                                |
 |:----------------|:----------------------|:--------------------------------------|
@@ -41,19 +41,21 @@ The `circuitor` package supports many electrical components 🤓, both in europe
 
 ### Standard Variants
 
-Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (IEEE). For example, the resistor can look like
+Each component can be displayed using either the American 🇺🇸 (ANSI) or European 🇪🇺 (IEEE) symbol style. For example, here are the resistor variants:
 
 ![Resistor variants](assets/resistor.png)
 
 ### Styling Parameters
 
-| Name     | Required | Type                     | Description                                   |
-|:---------|:---------|:-------------------------|:----------------------------------------------|
-| uid      | Yes      | `string`                 | Unique identifier                             |
-| position | Yes      | `(float, float)`         | Position of the center of the component       |
-| color    | No       | `color`                  | Color of the component's drawing              |
-| variant  | No       | `american` or `european` | Component drawing standard ("IEEE" or "ANSI") |
+Each component supports flexible styling through the following parameters:
+
+| Name     | Required | Type                     | Description                            |
+|:---------|:---------|:-------------------------|:---------------------------------------|
+| uid      | Yes      | `string`                 | Unique identifier                      |
+| position | Yes      | `(float, float)`         | Coordinates for the component’s center |
+| color    | No       | `color`                  | Color of the component's drawing       |
+| variant  | No       | `american` or `european` | Symbol standard (ANSI or IEEE)         |
 
 ## Contributing
 
-I highly welcome contributions 🌱! Developing a package like this involves significant effort. Please check out the dedicated [contribution guidelines] to get started 🤩!
+I highly welcome contributions 🌱! Creating and maintaining `circuitor` takes time and love. If you'd like to help, check out the [contribution guidelines](CONTRIBUTING.md) and join the journey 🤩!
