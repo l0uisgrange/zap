@@ -4,7 +4,7 @@
 
 #let resistor(uid, position, ..params) = {
     // Style constants
-    let width = 100pt
+    let width = 80pt
     let height = width / 3.75
     let zigs = 4
 

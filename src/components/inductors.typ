@@ -4,7 +4,7 @@
 
 #let inductor(uid, position, ..params) = {
     // IEC style constants
-    let width = 100pt
+    let width = 80pt
     let height = width / 3.75
 
     // IEEE/ANSI style constants

@@ -6,3 +6,4 @@
 #import "components/wires.typ": wire
 #import "components/resistors.typ": resistor
 #import "components/inductors.typ": inductor
+#import "components/sources.typ": isource, vsource
