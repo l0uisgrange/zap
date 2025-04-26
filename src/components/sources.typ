@@ -11,8 +11,8 @@
     // Drawing function
     let draw(variant, scale, rotate, ..styling) = {
         // Defining anchors
-        anchor("in", (-radius, 0))
-        anchor("out", (rel: (2*radius, 0)))
+        anchor("minus", (-radius, 0))
+        anchor("plus", (rel: (2*radius, 0)))
 
         circle((0, 0), radius: (radius, radius), ..styling)
         if (variant == "iec") {
@@ -37,8 +37,8 @@
     // Drawing function
     let draw(variant, scale, rotate, ..styling) = {
         // Defining anchors
-        anchor("in", (-radius, 0))
-        anchor("out", (rel: (2*radius, 0)))
+        anchor("minus", (-radius, 0))
+        anchor("plus", (rel: (2*radius, 0)))
 
         circle((0, 0), radius: (radius, radius), ..styling)
         if (variant == "iec") {
