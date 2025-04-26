@@ -4,11 +4,15 @@
 #let resistor(uid, position, ..params) = {
     // Style constants
     let width = 100pt
-    let height = width / 3
+    let height = width / 3.75
     let zigs = 4
 
     // Drawing function
     let draw(variant, scale, rotate, ..styling) = {
+        // Defining anchors
+        cetz.draw.anchor("in", (rel: (-width/2, 0)))
+        cetz.draw.anchor("out", (rel: (width, 0)))
+
         if (variant == "iec") {
             cetz.draw.rect((-width / 2, -height / 2), (width / 2, height / 2), ..styling)
         } else {
