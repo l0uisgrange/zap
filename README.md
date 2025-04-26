@@ -13,11 +13,10 @@ Circuitor is a lightweight ⚡️ typst package to draw electronic circuits. The
 #import "@preview/circuitor:0.1.0"
 
 #canvas({
-    isource((0,1))
-    isource((0,2))
-    nmos((0,3))
-    resistor((0,2))
-    resistor((0,6))
+    isource("isource", (0,0))
+    wire("isource.plus", "resistor.in")
+    resistor("resistor", (3,0))
+    wire("resistor.out", "isource.minus")
 })
 ```
 
@@ -27,43 +26,34 @@ Circuitor uses CeTZ to draw the circuit components. This means that you can draw
 
 The `circuitor` package supports many electrical components 🤓, both in european (IEE) and american (ANSI) variants.
 
-| Component       | Usage Example      | Symbol                                |
-|:----------------|:-------------------|:--------------------------------------|
-| Current Source  | `isource((0,0))`   | ![Current Source](assets/isource.png) |
-| Voltage Source  | `vsource((0,0))`   | ![Voltage Source](assets/vsource.png) |
-| Resistor        | `resistor((0,0))`  | ![Resistor](assets/resistor.png)      |
-| Capacitor       | `capacitor((0,0))` | ![Capacitor](assets/resistor.png)     |
-| Inductor        | `inductor((0,0))`  | ![Inductor](assets/inductor.png)      |
-| Motor           | `motor((0,0))`     | ![Motor](assets/inductor.png)         |
-| NPN Transistor  | `npn((0,0))`       | ![NPN](assets/nmos.png)               |
-| PNP Transistor  | `pnp((0,0))`       | ![PNP](assets/pmos.png)               |
-| NMOS Transistor | `nmos((0,0))`      | ![NMOS](assets/nmos.png)              |
-| PMOS Transistor | `pmos((0,0))`      | ![PMOS](assets/pmos.png)              |
+| Name            | Declaration           | Symbol                                |
+|:----------------|:----------------------|:--------------------------------------|
+| Current Source  | `isource(..params)`   | ![Current Source](assets/isource.png) |
+| Voltage Source  | `vsource(..params)`   | ![Voltage Source](assets/vsource.png) |
+| Resistor        | `resistor(..params)`  | ![Resistor](assets/resistor.png)      |
+| Capacitor       | `capacitor(..params)` | ![Capacitor](assets/resistor.png)     |
+| Inductor        | `inductor(..params)`  | ![Inductor](assets/inductor.png)      |
+| Motor           | `motor(..params)`     | ![Motor](assets/inductor.png)         |
+| NPN Transistor  | `npn(..params)`       | ![NPN](assets/nmos.png)               |
+| PNP Transistor  | `pnp(..params)`       | ![PNP](assets/pmos.png)               |
+| NMOS Transistor | `nmos(..params)`      | ![NMOS](assets/nmos.png)              |
+| PMOS Transistor | `pmos(..params)`      | ![PMOS](assets/pmos.png)              |
 
 ### Standard Variants
 
-Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (IEEE). For example, the resistor looks like
+Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (IEEE). For example, the resistor can look like
 
-```typst
-#import "@preview/circuitor:0.1.0"
+![Resistor variants](assets/resistor.png)
 
-#canvas({
-    resistor((0,0), variant: "american")
-})
-```
+### Styling Parameters
 
-![Resistor](assets/resistor.png)
-
-```typst
-#import "@preview/circuitor:0.1.0"
-
-#canvas({
-    resistor((0,0), variant: "european")
-})
-```
-
-![Resistor](assets/resistor.png)
+| Name     | Required | Type                     | Description                                   |
+|:---------|:---------|:-------------------------|:----------------------------------------------|
+| uid      | Yes      | `string`                 | Unique identifier                             |
+| position | Yes      | `(float, float)`         | Position of the center of the component       |
+| color    | No       | `color`                  | Color of the component's drawing              |
+| variant  | No       | `american` or `european` | Component drawing standard ("IEEE" or "ANSI") |
 
 ## Contributing
 
-We highly welcome contributions 🌱! Developing a package like this involves significant effort. Please check out the dedicated [contribution guidelines] to get started 🤩!
+I highly welcome contributions 🌱! Developing a package like this involves significant effort. Please check out the dedicated [contribution guidelines] to get started 🤩!
