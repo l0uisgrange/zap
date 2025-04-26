@@ -23,9 +23,9 @@ CirCeTZ is a lightweight ⚡️ typst package to draw electronic circuits. The m
 
 CirCeTZ uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas, like this:
 
-## Supported components
+## Supported Components
 
-The `circetz` package supports 10+ electrical components 🤓, both in european (IEE) and american (ANSI) variants.
+The `circetz` package supports many electrical components 🤓, both in european (IEE) and american (ANSI) variants.
 
 | Component       | Usage Example      | Symbol                                |
 |:----------------|:-------------------|:--------------------------------------|
@@ -40,18 +40,26 @@ The `circetz` package supports 10+ electrical components 🤓, both in european 
 | NMOS Transistor | `nmos((0,0))`      | ![NMOS](assets/nmos.png)              |
 | PMOS Transistor | `pmos((0,0))`      | ![PMOS](assets/pmos.png)              |
 
-### Variants
+### Standard Variants
 
 Every component is available as american 🇺🇸 (ANSI) or european 🇪🇺 (IEEE). For example, the resistor looks like
 
 ```typst
-resistor((0,0), variant: "american")
+#import "@preview/circetz:0.1.0"
+
+#canvas({
+    resistor((0,0), variant: "american")
+})
 ```
 
 ![Resistor](assets/resistor.png)
 
 ```typst
-resistor((0,0), variant: "european")
+#import "@preview/circetz:0.1.0"
+
+#canvas({
+    resistor((0,0), variant: "european")
+})
 ```
 
 ![Resistor](assets/resistor.png)
