@@ -4,3 +4,4 @@
 
 // Export components
 #import "components/resistors.typ": resistor
+#import "components/inductors.typ": inductor
