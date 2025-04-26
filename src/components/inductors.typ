@@ -14,7 +14,7 @@
 
     // Drawing function
     let draw(variant, scale, rotate, ..styling) = {
-        if (variant == "european") {
+        if (variant == "iec") {
             cetz.draw.rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
         } else {
             let start = (-width / 2, 0pt)

@@ -9,7 +9,7 @@
 
     // Drawing function
     let draw(variant, scale, rotate, ..styling) = {
-        if (variant == "european") {
+        if (variant == "iec") {
             cetz.draw.rect((-width / 2, -height / 2), (width / 2, height / 2), ..styling)
         } else {
             let step = width / (zigs * 2)
