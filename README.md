@@ -26,7 +26,7 @@ Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your 
 
 Circuitor supports a wide range of electronic components 🤓, with symbols in different variants.
 
-| Name            | Declaration           | Symbol                                |
+| Name            | Declaration           | IEC Symbol                                |
 |:----------------|:----------------------|:--------------------------------------|
 | Current Source  | `isource(..params)`   | ![Current Source](assets/isource.png) |
 | Voltage Source  | `vsource(..params)`   | ![Voltage Source](assets/vsource.png) |
@@ -43,14 +43,14 @@ Feel free to suggest 💡 any new component by [opening a new issue](https://git
 
 ### Standard Variants
 
-Each component can be displayed using either the American 🇺🇸 (IEEE), or European 🇪🇺 (IEC) symbol style. For example, here are the resistor variants:
-
-![Resistor variants](assets/resistor.png)
-
 > [!NOTE]
 > The representation for each symbol adheres closely to the relevant standard. The current implementations are based on
-> - IEC 60617
-> - 
+> - [IEC 60617](https://webstore.iec.ch/en/publication/2723) (January 1st, 2025) **recommended standard worldwide** 🌎
+> - [IEEE/ANSI 315-1975](https://standards.ieee.org/ieee/315/515/) (deprecated as of November 7th, 2019)
+
+Each component can be displayed using either the IEEE/ANSI, or IEC symbol style. For example, here are the resistor variants:
+
+![Resistor variants](assets/resistor.png)
 
 
 ### Styling Parameters
