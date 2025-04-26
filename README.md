@@ -21,7 +21,7 @@ CirCeTZ is a lightweight ⚡️ typst package to draw electronic circuits. The m
 })
 ```
 
-CirCeTZ uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas, like this:
+CirCeTZ uses CeTZ to draw the circuit components. This means that you can draw CeTZ shapes directly in the same canvas.
 
 ## Supported Components
 

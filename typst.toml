@@ -2,7 +2,7 @@
 name = "circetz"
 version = "0.1.0"
 compiler = "0.13.0"
-entrypoint = "src/lib.typ"
+entrypoint = "src/exports.typ"
 authors = ["Louis Grange"]
 license = "MIT"
 description = "A package to draw amazing electronic circuits using CeTZ"
