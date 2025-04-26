@@ -1,5 +1,5 @@
-name: Bug Report
-description: Report a problem with the circuit drawing package.
+name: 🐞 Bug Report
+description: Report a problem or error when using CirCeTZ.
 title: "[Bug]: "
 labels: ["bug"]
 assignees:
