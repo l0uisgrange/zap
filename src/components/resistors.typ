@@ -16,7 +16,7 @@
             let height = height
             let sign = -1
             let x = width / 2
-            cetz.draw.line((-x, 0), rel: (step/2, height/2),
+            cetz.draw.line((-x, 0), (rel: (step/2, height/2)),
                 ..for _ in range(zigs * 2 - 1) {
                 ((rel: (step, height * sign)),)
                 sign *= -1 },
