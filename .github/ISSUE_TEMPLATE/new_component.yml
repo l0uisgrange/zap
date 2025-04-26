@@ -14,18 +14,10 @@ body:
     validations:
       required: true
   - type: textarea
-    id: description
-    attributes:
-      label: Description
-      description: Describe the component and why it should be added.
-      placeholder: Explain its purpose, typical use, and key characteristics.
-    validations:
-      required: true
-  - type: textarea
     id: references
     attributes:
       label: References or Images
-      description: Provide references, datasheets, or example diagrams if available.
+      description: What does the component look like?
       placeholder: Links, datasheets, sketches, etc.
     validations:
-      required: false
+      required: true
