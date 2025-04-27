@@ -41,7 +41,7 @@
         if (emitting) {
             radiation-arrows(origin)
         } else if (recieving) {
-            radiation-arrows(origin, reverse: true)
+            radiation-arrows(origin, reversed: true)
         }
     }
 
