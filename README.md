@@ -24,18 +24,19 @@ Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your 
 
 ## Supported Components
 
-Circuitor supports a wide range of electronic components 🤓, with symbols in different variants.
+Circuitor supports a wide range of electronic components 🤓, with symbols in different variants. Here is a quick list of the popular ones:
 
-| Name            | Declaration           | IEC Symbol                                |
-|:----------------|:----------------------|:--------------------------------------|
+| Name            | Declaration           | IEC Symbol                                  |
+|:----------------|:----------------------|:--------------------------------------------|
 | Current Source  | `isource(..params)`   | ![Current Source](doc/examples/isource.svg) |
 | Voltage Source  | `vsource(..params)`   | ![Voltage Source](doc/examples/vsource.svg) |
 | Resistor        | `resistor(..params)`  | ![Resistor](doc/examples/resistor.svg)      |
-| Capacitor       | `capacitor(..params)` | ![Capacitor](doc/examples/capacitor.svg)     |
+| Capacitor       | `capacitor(..params)` | ![Capacitor](doc/examples/capacitor.svg)    |
 | Inductor        | `inductor(..params)`  | ![Inductor](doc/examples/inductor.svg)      |
-| Motor           | `motor(..params)`     | ![Motor](doc/examples/motor.svg)         |
-| NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)               |
-| PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)               |
+| Diode           | `diode(..params)`     | ![Inductor](doc/examples/diode.svg)         |
+| Motor           | `motor(..params)`     | ![Motor](doc/examples/motor.svg)            |
+| NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)                |
+| PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)                |
 | NMOS Transistor | `nmos(..params)`      | ![NMOS](doc/examples/nmos.svg)              |
 | PMOS Transistor | `pmos(..params)`      | ![PMOS](doc/examples/pmos.svg)              |
 
@@ -52,17 +53,16 @@ Each component can be displayed using either the IEEE/ANSI, or IEC symbol style.
 
 ![Resistor variants](doc/examples/resistor-standards.svg)
 
-
 ### Styling Parameters
 
 Each component supports flexible styling through the following parameters:
 
-| Name     | Required | Type                     | Description                            |
-|:---------|:---------|:-------------------------|:---------------------------------------|
-| uid      | Yes      | `string`                 | Unique identifier                      |
-| position | Yes      | `(float, float)`         | Coordinates for the component’s center |
-| color    | No (default: `black`)       | `color`                  | Color of the component's drawing       |
-| variant  | No (default: `iec`)       | `iec` or `ieee`          | Symbol standard (IEEE or IEC)         |
+| Name     | Required              | Type             | Description                            |
+|:---------|:----------------------|:-----------------|:---------------------------------------|
+| uid      | Yes                   | `string`         | Unique identifier                      |
+| position | Yes                   | `(float, float)` | Coordinates for the component’s center |
+| color    | No (default: `black`) | `color`          | Color of the component's drawing       |
+| variant  | No (default: `iec`)   | `iec` or `ieee`  | Symbol standard (IEEE or IEC)          |
 
 ## Contributing
 
