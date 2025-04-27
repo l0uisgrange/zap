@@ -57,7 +57,7 @@
               "M"
             )
             cetzrotate(90deg + rotate)
-            set-origin((0,-4pt))
+            set-origin((0,-5pt))
             dc-sign((0,0))
         }
     }
