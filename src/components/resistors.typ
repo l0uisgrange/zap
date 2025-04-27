@@ -3,16 +3,28 @@
 #import cetz.draw: anchor, rect, line
 
 #let resistor(uid, position, ..params) = {
+    // TODO: move to defaults
+    let wires-length = 7pt
+    let component-stroke = 1pt
+    let wires-stroke = 0.6pt
+    let sign-stroke = 0.6pt
     // Style constants
-    let width = 80pt
-    let height = width / 3.75
-    let zigs = 4
+    let width = 40pt
+    let height = width / 3
+    let zigs = 3
 
     // Drawing function
-    let draw(variant, scale, rotate, ..styling) = {
-        // Defining anchors
-        anchor("in", (rel: (-width/2, 0)))
-        anchor("out", (rel: (width, 0)))
+    let draw(variant, scale, rotate, wires, ..styling) = {
+        if (wires) {
+            anchor("in", (-width/2 - wires-length, 0))
+            anchor("out", (rel: (width + 2*wires-length, 0)))
+
+            line("in", (rel: (wires-length, 0)), stroke: wires-stroke)
+            line("out", (rel: (- wires-length, 0)), stroke: wires-stroke)
+        } else {
+            anchor("in", (rel: (-width/2, 0)))
+            anchor("out", (rel: (width, 0)))
+        }
 
         if (variant == "iec") {
             rect((-width / 2, -height / 2), (width / 2, height / 2), ..styling)

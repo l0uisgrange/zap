@@ -1,21 +1,34 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, arc
+#import cetz.draw: anchor, rect, arc, line
 
 #let inductor(uid, position, ..params) = {
+    // TODO: move to defaults
+    let wires-length = 7pt
+    let component-stroke = 1pt
+    let wires-stroke = 0.6pt
+    let sign-stroke = 0.6pt
     // IEC style constants
-    let width = 80pt
-    let height = width / 3.75
+    let width = 40pt
+    let height = width / 3
 
     // IEEE/ANSI style constants
-    let bumps = 4
+    let bumps = 3
     let bump-radius = width / bumps / 2
 
     // CeTZ Canvas
-    let draw(variant, scale, rotate, ..styling) = {
+    let draw(variant, scale, rotate, wires, ..styling) = {
         // Defining anchors
-        anchor("in", (rel: (-width/2, 0pt)))
-        anchor("out", (rel: (width, 0pt)))
+        if (wires) {
+            anchor("in", (-width/2 - wires-length, 0))
+            anchor("out", (rel: (width + 2*wires-length, 0)))
+
+            line("in", (rel: (wires-length, 0)), stroke: wires-stroke)
+            line("out", (rel: (- wires-length, 0)), stroke: wires-stroke)
+        } else {
+            anchor("in", (-width/2, 0))
+            anchor("out", (rel: (width, 0)))
+        }
 
         // Drawing function
         if (variant == "iec") {

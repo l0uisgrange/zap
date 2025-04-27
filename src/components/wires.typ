@@ -2,5 +2,6 @@
 #import cetz.draw: line
 
 #let wire(..params) = {
-    line(..params)
+    let wires-stroke = 0.6pt
+    line(stroke: wires-stroke, ..params)
 }
