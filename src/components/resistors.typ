@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, line, set-origin, rotate as cetzrotate
+#import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate
 
 #let resistor(uid, position, ..params) = {
     // TODO: move to defaults
@@ -90,7 +90,7 @@
         }
         set-origin(arrow-origin)
         cetzrotate(arrow-angle)
-        line((3pt,0), (arrow-length,0), mark: (end: ">"), fill: black)
+        line((0,0), (arrow-length,0), mark: (end: ">"), fill: black)
     }
 
     // Componant call
