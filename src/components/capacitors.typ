@@ -10,8 +10,8 @@
     let wires-stroke = 0.6pt
 
     // Style constants
-    let width = 20pt
-    let distance = 4pt
+    let width = 22pt
+    let distance = 6pt
 
     // CeTZ Canvas
     let draw(variant, scale, rotate, wires, ..styling) = {
