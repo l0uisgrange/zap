@@ -37,8 +37,6 @@ Circuitor supports a wide range of electronic components 🤓, with symbols in d
 | DC Motor        | `dcmotor(..params)`   | ![Motor](doc/examples/motor.svg)            |
 | NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)                |
 | PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)                |
-| NMOS Transistor | `nmos(..params)`      | ![NMOS](doc/examples/nmos.svg)              |
-| PMOS Transistor | `pmos(..params)`      | ![PMOS](doc/examples/pmos.svg)              |
 
 Feel free to suggest 💡 any new component by [opening a new issue](https://github.com/l0uisgrange/circuitor/issues/new?template=new_component.yml)!
 

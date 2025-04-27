@@ -50,5 +50,4 @@
 }
 
 #let led(uid, position, ..params) = diode(uid, position, emitting: true, ..params)
-
 #let photodiode(uid, position, ..params) = diode(uid, position, recieving: true, ..params)
