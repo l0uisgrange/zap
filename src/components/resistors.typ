@@ -1,6 +1,7 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
 #import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate
+#import "../mini.typ": adjustable-arrow
 
 #let resistor(uid, position, adjustable: false, movable: false, ..params) = {
     // TODO: move to defaults
@@ -42,14 +43,7 @@
         }
 
         if (adjustable) {
-            let arrow-length = 40pt
-            let arrow-angle = 55deg
-            let arrow-origin = (-0.5*calc.cos(arrow-angle)*arrow-length, -0.5*calc.sin(arrow-angle)*arrow-length)
-            anchor("adjust", arrow-origin)
-
-            set-origin(arrow-origin)
-            cetzrotate(arrow-angle)
-            line((0,0), (arrow-length,0), mark: (end: ">"), fill: black)
+            adjustable-arrow()
         } else if (movable) {
             let arrow-length = 40pt
             let arrow-distance = 20pt
