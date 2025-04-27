@@ -34,7 +34,7 @@ Circuitor supports a wide range of electronic components 🤓, with symbols in d
 | Capacitor       | `capacitor(..params)` | ![Capacitor](doc/examples/capacitor.svg)    |
 | Inductor        | `inductor(..params)`  | ![Inductor](doc/examples/inductor.svg)      |
 | Diode           | `diode(..params)`     | ![Inductor](doc/examples/diode.svg)         |
-| Motor           | `motor(..params)`     | ![Motor](doc/examples/motor.svg)            |
+| DC Motor        | `dcmotor(..params)`   | ![Motor](doc/examples/motor.svg)            |
 | NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)                |
 | PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)                |
 | NMOS Transistor | `nmos(..params)`      | ![NMOS](doc/examples/nmos.svg)              |
