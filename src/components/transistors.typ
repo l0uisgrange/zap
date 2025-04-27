@@ -11,6 +11,7 @@
 
     // Style constants
     let half-length = 6pt
+    let base-delta = 5pt
     let p-width = 13pt
     let n-width = 20pt
     let n-distance = 4pt
@@ -19,7 +20,7 @@
     let draw(variant, scale, rotate, wires, ..styling) = {
         // Defining anchors
         if (wires) {
-            anchor("base", (- half-length - wires-length, 0))
+            anchor("base", (- half-length - wires-length - base-delta, 0))
             anchor("emitter", (half-length, n-width / 2 + wires-length))
             anchor("collector", (half-length, -n-width / 2 - wires-length))
 
