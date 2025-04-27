@@ -28,16 +28,16 @@ Circuitor supports a wide range of electronic components 🤓, with symbols in d
 
 | Name            | Declaration           | IEC Symbol                                |
 |:----------------|:----------------------|:--------------------------------------|
-| Current Source  | `isource(..params)`   | ![Current Source](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/isource.svg) |
-| Voltage Source  | `vsource(..params)`   | ![Voltage Source](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/vsource.svg) |
-| Resistor        | `resistor(..params)`  | ![Resistor](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/resistor.svg)      |
-| Capacitor       | `capacitor(..params)` | ![Capacitor](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/capacitor.svg)     |
-| Inductor        | `inductor(..params)`  | ![Inductor](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/inductor.svg)      |
-| Motor           | `motor(..params)`     | ![Motor](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/motor.svg)         |
-| NPN Transistor  | `npn(..params)`       | ![NPN](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/npn.svg)               |
-| PNP Transistor  | `pnp(..params)`       | ![PNP](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/pnp.svg)               |
-| NMOS Transistor | `nmos(..params)`      | ![NMOS](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/nmos.svg)              |
-| PMOS Transistor | `pmos(..params)`      | ![PMOS](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/pmos.svg)              |
+| Current Source  | `isource(..params)`   | ![Current Source](doc/examples/isource.svg) |
+| Voltage Source  | `vsource(..params)`   | ![Voltage Source](doc/examples/vsource.svg) |
+| Resistor        | `resistor(..params)`  | ![Resistor](doc/examples/resistor.svg)      |
+| Capacitor       | `capacitor(..params)` | ![Capacitor](doc/examples/capacitor.svg)     |
+| Inductor        | `inductor(..params)`  | ![Inductor](doc/examples/inductor.svg)      |
+| Motor           | `motor(..params)`     | ![Motor](doc/examples/motor.svg)         |
+| NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)               |
+| PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)               |
+| NMOS Transistor | `nmos(..params)`      | ![NMOS](doc/examples/nmos.svg)              |
+| PMOS Transistor | `pmos(..params)`      | ![PMOS](doc/examples/pmos.svg)              |
 
 Feel free to suggest 💡 any new component by [opening a new issue](https://github.com/l0uisgrange/circuitor/issues/new?template=new_component.yml)!
 
@@ -50,7 +50,7 @@ Feel free to suggest 💡 any new component by [opening a new issue](https://git
 
 Each component can be displayed using either the IEEE/ANSI, or IEC symbol style. For example, here are the resistor variants:
 
-![Resistor variants](https://github.com/l0uisgrange/circuitor/blob/0f28684ce14c56d43e750dfee755da3dd636f109/doc/examples/resistor-standards.svg)
+![Resistor variants](doc/examples/resistor-standards.svg)
 
 
 ### Styling Parameters
