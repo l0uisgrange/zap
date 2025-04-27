@@ -5,13 +5,13 @@
     assert(type(uid) == str, message: "component ID must be a string")
     assert(type(scale) == float, message: "scale must be float")
     assert(type(rotate) == angle, message: "scale must be float")
-    assert(variant == "ieee" or variant == "iec", message: "variant must be 'iec' or 'ieee'")
+    assert(variant == "ieee" or variant == "iec" or variant == "pretty", message: "variant must be 'iec' or 'ieee'")
     assert(type(wires) == bool, message: "wires must be a bool")
 
     group(name: uid, {
         set-origin(position)
         cetzscale(scale)
-        cetzrotate(90deg + rotate)
+        cetzrotate(-90deg - rotate) // dependent with motors dc symbol
         draw(variant, scale, rotate, wires, ..params)
     })
 }
