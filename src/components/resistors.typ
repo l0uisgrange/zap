@@ -53,8 +53,9 @@
     let wires-stroke = 0.6pt
     let sign-stroke = 0.6pt
     // Style constants
-    let arrow-length = 45pt
-    let arrow-angle = 45deg
+    let arrow-length = 40pt
+    let arrow-angle = 55deg
+    let arrow-origin = (-0.5*calc.cos(arrow-angle)*arrow-length, -0.5*calc.sin(arrow-angle)*arrow-length)
     let width = 40pt
     let height = width / 3
     let zigs = 3
@@ -64,6 +65,7 @@
         if (wires) {
             anchor("in", (-width/2 - wires-length, 0))
             anchor("out", (rel: (width + 2*wires-length, 0)))
+            anchor("arrow", arrow-origin)
 
             line("in", (rel: (wires-length, 0)), stroke: wires-stroke)
             line("out", (rel: (- wires-length, 0)), stroke: wires-stroke)
@@ -86,7 +88,7 @@
                 (x, 0), fill: none
             )
         }
-        set-origin((-0.5*calc.cos(arrow-angle)*arrow-length, -0.5*calc.sin(arrow-angle)*arrow-length))
+        set-origin(arrow-origin)
         cetzrotate(arrow-angle)
         line((3pt,0), (arrow-length,0), mark: (end: ">"), fill: black)
     }
