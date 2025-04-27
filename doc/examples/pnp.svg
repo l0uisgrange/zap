@@ -1,0 +1,35 @@
+<svg class="typst-doc" viewBox="0 0 35.6619037896906 40" width="35.6619037896906pt" height="40pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="none" fill-rule="nonzero" d="M 0 0 L 0 40 L 35.661903 40 L 35.661903 0 Z "/>
+    <g>
+        <g transform="translate(3 3)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 17)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 12 0 "/>
+                    </g>
+                    <g transform="translate(24 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 0 7 "/>
+                    </g>
+                    <g transform="translate(24 27.000000000000004)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 7 L 0 0 "/>
+                    </g>
+                    <g transform="translate(11.999999999999988 10.500000000000002)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 13 L 0 0 "/>
+                    </g>
+                    <g transform="translate(11.999999999999988 7.000000000000001)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 8 L 12 0 "/>
+                    </g>
+                    <g transform="translate(16.584859275590546 8.99521724897638)">
+                        <path class="typst-shape" fill="currentColor" fill-rule="nonzero" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 2.9482098 L 2.122711 0 L 3.5378516 2.122711 L 0 2.9482098 Z "/>
+                    </g>
+                    <g transform="translate(11.999999999999988 19.000000000000004)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 12 8 "/>
+                    </g>
+                    <g transform="translate(6.338096210309387 5.338096210309399)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 11.661903 0 C 5.2270517 0 0 5.2270517 0 11.661903 C 0 18.096756 5.2270517 23.323807 11.661903 23.323807 C 18.096756 23.323807 23.323807 18.096756 23.323807 11.661903 C 23.323807 5.2270517 18.096756 0 11.661903 0 Z "/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
