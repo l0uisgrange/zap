@@ -38,7 +38,6 @@
             line((-earth-l3/2, y3), (earth-l3/2, y3))
         } else if type == "frame" or type == "chassis" {
              let y = -wires-length
-             // Diagonal lines (simplified example with 3 lines)
              let x1 = -frame-width/2
              let x2 = 0pt
              let x3 = frame-width/2

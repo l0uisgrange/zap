@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, line, circle, mark
+#import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate
 
 #let isource(uid, position, ..params) = {
     // TODO: move to defaults
@@ -14,6 +14,7 @@
 
     // Drawing function
     let draw(variant, scale, rotate, wires, ..styling) = {
+        cetzrotate(180deg)
         // Defining anchors
         if (wires) {
             anchor("minus", (-radius - wires-length, 0))
@@ -48,10 +49,11 @@
     let radius = 15pt
     let padding = 7pt
     let sign-size = 4pt
-    let sign-delta = 3pt
+    let sign-delta = 2pt
 
     // Drawing function
     let draw(variant, scale, rotate, wires, ..styling) = {
+        cetzrotate(180deg)
         // Defining anchors
         if (wires) {
             anchor("minus", (-radius - wires-length, 0))

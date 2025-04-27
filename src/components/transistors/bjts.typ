@@ -1,7 +1,7 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
-#import cetz.draw: anchor, line, mark, circle
-#import "../mini.typ": adjustable-arrow
+#import "../../component.typ": component
+#import "../../dependencies.typ": cetz
+#import cetz.draw: anchor, line, mark, circle, scale as cetzscale
+#import "../../mini.typ": adjustable-arrow
 
 #let transistor(uid, position, polarisation: "pnp", envelope: false, ..params) = {
     // TODO: move to defaults
@@ -26,6 +26,7 @@
 
     // CeTZ Canvas
     let draw(variant, scale, rotate, wires, ..styling) = {
+        cetzscale(1.1)
         // Defining anchors
         if (envelope and not wires) {
             anchor("base", (-radius, 0))

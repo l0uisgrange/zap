@@ -18,6 +18,7 @@
     let arrows-scale = 0.8
 
     set-origin(origin)
+    set-style(stroke: 0.6pt)
     rotate(-27deg)
     if (reversed) {
         line((arrows-length,-arrows-distance), (0,-arrows-distance), mark: (start: ">", scale: arrows-scale, fill: black))

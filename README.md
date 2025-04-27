@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/github/license/l0uisgrange/circuitor?style=flat-square)
 ![Code size](https://img.shields.io/github/languages/code-size/l0uisgrange/circuitor?style=flat-square)
 
+![Resistor variants](doc/examples/full.svg)
+
 > [!IMPORTANT]
 > Circuitor is not yet available on Typst Universe. Follow [this discussion](https://github.com/l0uisgrange/circuitor/discussions/2) to stay updated on the first release 🌟!
 
