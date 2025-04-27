@@ -1,0 +1,23 @@
+<svg class="typst-doc" viewBox="0 0 23.999999999999993 26" width="23.999999999999993pt" height="26pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="none" fill-rule="nonzero" d="M 0 0 L 0 26 L 24 26 L 24 0 Z "/>
+    <g>
+        <g transform="translate(3 3)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 10)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 7 0 "/>
+                    </g>
+                    <g transform="translate(10.999999999999995 10)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 7 0 L 0 0 "/>
+                    </g>
+                    <g transform="translate(6.999999999999999 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 20 L 0 0 "/>
+                    </g>
+                    <g transform="translate(10.999999999999995 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 20 L 0 0 "/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
