@@ -1,0 +1,26 @@
+<svg class="typst-doc" viewBox="0 0 37.939696961966995 22.97056274847714" width="37.939696961966995pt" height="22.97056274847714pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="none" fill-rule="nonzero" d="M 0 0 L 0 22.970562 L 37.939697 22.970562 L 37.939697 0 Z "/>
+    <g>
+        <g transform="translate(3 3)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 8.48528137423857)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 31.939697 0 "/>
+                    </g>
+                    <g transform="translate(6.999999999999999 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 16.970562 L 0 0 "/>
+                    </g>
+                    <g transform="translate(6.999999999999999 8.48528137423857)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 8.485281 L 17.939697 0 "/>
+                    </g>
+                    <g transform="translate(6.999999999999999 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 L 17.939697 8.485281 "/>
+                    </g>
+                    <g transform="translate(24.939696961966998 0)">
+                        <path class="typst-shape" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 16.970562 L 0 0 "/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
