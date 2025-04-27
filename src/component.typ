@@ -11,7 +11,7 @@
     group(name: uid, {
         set-origin(position)
         cetzscale(scale)
-        cetzrotate(90deg + rotate)
+        cetzrotate(rotate)
         draw(variant, scale, rotate, wires, ..params)
     })
 }

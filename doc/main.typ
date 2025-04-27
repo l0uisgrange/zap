@@ -1,4 +1,5 @@
 #set text(font: "Inter", size: 10.5pt, lang: "en")
+#import "../src/exports.typ": *
 #set page(margin: (
     y: 2.5cm,
     x: 1.5cm
@@ -60,6 +61,11 @@ You will now be able to create outstanding circuits.
 
 == Resistor
 
+#canvas({
+    resistor("r1", (0,0))
+})
+
+
 ```typst
 #import "@preview/circuitor:0.1.0"
 
@@ -69,8 +75,6 @@ You will now be able to create outstanding circuits.
 ```
 
 == Capacitor
-
-
 
 == Inductor
 

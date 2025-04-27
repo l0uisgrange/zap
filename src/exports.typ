@@ -4,7 +4,7 @@
 
 // Export components
 #import "components/wires.typ": wire
-#import "components/diodes.typ": diode
+#import "components/diodes.typ": diode, led, photodiode
 #import "components/inductors.typ": inductor
-#import "components/resistors.typ": resistor
+#import "components/resistors.typ": resistor, potentiometer
 #import "components/sources.typ": isource, vsource
