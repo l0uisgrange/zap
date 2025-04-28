@@ -13,5 +13,5 @@
 #import "components/motors.typ": dcmotor
 
 // Export transistors
-#import "components/transistors/bjts.typ": pnp, npn, bjt
+#import "components/transistors/bjts.typ": pnp, npn
 #import "components/transistors/mosfets.typ": pmos, nmos
