@@ -9,7 +9,7 @@
 > [!IMPORTANT]
 > Circuitor is not yet available on Typst Universe. Follow [this discussion](https://github.com/l0uisgrange/circuitor/discussions/2) to stay updated on the first release 🌟!
 
-**Circuitor** is a lightweight ⚡️ Typst package that makes drawing electronic circuits simple and intuitive.
+**Circuitor** is a lightweight ⚡️ Typst package that makes drawing electronic circuits simple and intuitive. It is also the first library designed to align with widely recognized standards 📜 like IEC and IEEE/ANSI.
 
 ```typst
 #import "@preview/circuitor:0.1.0"
