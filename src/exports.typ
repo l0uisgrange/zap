@@ -6,6 +6,7 @@
 #import "components/wires.typ": wire
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode
+#import "components/fuses.typ": fuse, afuse
 #import "components/grounds.typ": ground, earth, frame
 #import "components/inductors.typ": inductor
 #import "components/resistors.typ": resistor, potentiometer
