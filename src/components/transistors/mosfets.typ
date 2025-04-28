@@ -4,6 +4,7 @@
 #import "../../mini.typ": adjustable-arrow
 
 #let mosfet(uid, position, channel: "n", envelope: false, gates: 1, mode: "enhancement", substrate: "internal", ..params) = {
+    assert(type(envelope) == bool, message: "envelope must be of type bool")
     assert(mode in ("enhancement", "depletion"), message: "mode must be `enhancement` or `depletion`")
     assert(gates in (1,2), message: "gates number must be 1 or 2")
     assert(channel in ("p", "n"), message: "channel must be `p` or `n`")
