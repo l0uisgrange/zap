@@ -4,6 +4,8 @@
 #import "../mini.typ": radiation-arrows
 
 #let ground(uid, position, type: "signal", ..params) = {
+    assert(type in ("signal", "earth", "frame"), message: "type must `signal`, `earth` or `frame`")
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt

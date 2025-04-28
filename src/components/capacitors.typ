@@ -4,6 +4,8 @@
 #import "../mini.typ": adjustable-arrow
 
 #let capacitor(uid, position, adjustable: false, ..params) = {
+    assert(type(adjustable) == bool, message: "adjustable must be of type bool")
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt

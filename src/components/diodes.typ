@@ -4,6 +4,9 @@
 #import "../mini.typ": radiation-arrows
 
 #let diode(uid, position, emitting: false, recieving: false, ..params) = {
+    assert(type(emitting) == bool, message: "emitting must be of type bool")
+    assert(type(recieving) == bool, message: "recieving must be of type bool")
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt

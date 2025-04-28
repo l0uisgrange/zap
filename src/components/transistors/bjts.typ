@@ -4,6 +4,9 @@
 #import "../../mini.typ": adjustable-arrow
 
 #let bjt(uid, position, polarisation: "npn", envelope: false, ..params) = {
+    assert(polarisation in ("npn", "pnp"), message: "polarisation must `npn` or `pnp`")
+    assert(type(envelope) == bool, message: "envelope must be of type bool")
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt

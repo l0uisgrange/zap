@@ -4,6 +4,9 @@
 #import "../mini.typ": adjustable-arrow
 
 #let resistor(uid, position, adjustable: false, movable: false, ..params) = {
+    assert(type(adjustable) == bool, message: "adjustable must be of type bool")
+    assert(type(movable) == bool, message: "movable must be of type bool")
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
