@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, line, mark, circle, scale as cetzscale
 #import "../../mini.typ": adjustable-arrow
 
-#let transistor(uid, position, polarisation: "pnp", envelope: false, ..params) = {
+#let bjt(uid, position, polarisation: "npn", envelope: false, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -72,5 +72,5 @@
     component(uid, position, draw, ..params)
 }
 
-#let pnp(uid, position, ..params) = transistor(uid, position, polarisation: "pnp", ..params)
-#let npn(uid, position, ..params) = transistor(uid, position, polarisation: "npn", ..params)
+#let pnp(uid, position, ..params) = bjt(uid, position, polarisation: "pnp", ..params)
+#let npn(uid, position, ..params) = bjt(uid, position, polarisation: "npn", ..params)
