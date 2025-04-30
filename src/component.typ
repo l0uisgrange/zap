@@ -1,7 +1,7 @@
 #import "dependencies.typ": cetz
 #import cetz.draw: group, rotate as cetzrotate, scale as cetzscale, set-style, set-origin, for-each-anchor, content
 
-#let component(uid, position, draw, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, ..params) = {
+#let component(uid, position, draw, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, label-anchor: none, ..params) = {
     assert(type(uid) == str, message: "component ID must be a string")
     assert(type(scale) == float, message: "scale must be float")
     assert(type(rotate) == angle, message: "scale must be float")
@@ -23,6 +23,11 @@
             anchor = "north"
             text-anchor = "south"
         }
-        content(uid+"."+anchor, label, anchor: text-anchor, padding: 6pt)
+        if (not label-anchor == none) {
+            anchor = label-anchor
+        } else {
+            anchor = uid+"."+anchor
+        }
+        content(anchor, label, anchor: text-anchor, padding: 6pt)
     }
 }
