@@ -17,10 +17,12 @@
     })
 
     if (not label == none) {
-        content(uid+".east", label, anchor: "west", padding: 6pt)
+        let anchor = "east"
+        let text-anchor = "west"
+        if ((rotate < 135deg and rotate > 45deg) or (rotate > -135deg and rotate < -45deg)) {
+            anchor = "north"
+            text-anchor = "south"
+        }
+        content(uid+"."+anchor, label, anchor: text-anchor, padding: 6pt)
     }
-    // TODO: remove before release
-    for-each-anchor(uid, exclude: ("start", "mid", "end"), (name) => {
-       content((), box(inset: .4pt, fill: white, text(4.5pt, [#name], fill: purple)), angle: 40deg)
-    })
 }
