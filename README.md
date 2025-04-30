@@ -22,7 +22,11 @@
 })
 ```
 
-Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your circuit elements on the same canvas seamlessly.
+### Magic Anchors
+
+Circuitor is built on top of CeTZ, allowing you to combine CeTZ shapes and your circuit elements on the same canvas seamlessly. CeTZ allows the use of [anchors](https://cetz-package.github.io/docs/basics/coordinate-systems/#anchor) too, for a very easy placement of labels and components.
+
+![Anchors](doc/examples/anchors.svg)
 
 ## Supported Components
 

@@ -21,6 +21,6 @@
     }
     // TODO: remove before release
     for-each-anchor(uid, exclude: ("start", "mid", "end"), (name) => {
-       content((), box(inset: 1pt, fill: white, text(2.5pt, [#name], fill: red)), angle: 0deg)
+       content((), box(inset: .4pt, fill: white, text(4.5pt, [#name], fill: purple)), angle: 40deg)
     })
 }
