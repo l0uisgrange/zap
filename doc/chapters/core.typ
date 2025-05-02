@@ -4,15 +4,30 @@
 
 == CeTZ coordinate system
 
-#cetz.canvas({
-    import cetz: *
+#grid(columns: (auto, 1fr), gutter: 10pt,
+    cetz.canvas({
+        import cetz: *
 
-    draw.grid((0,0), (4,4), stroke: .6pt + luma(60%), step: .5)
-    draw.set-origin((2,2))
-    draw.line((0,0), (2,0), mark: (end: ">", fill: black))
-    draw.line((0,0), (0,2), mark: (end: ">", fill: black))
-    isource("id", (0,0), rotate: -45deg, fill: white)
-})
+        draw.grid((0,0), (4,4), stroke: .6pt + luma(60%), step: .5)
+        draw.set-origin((2,2))
+        draw.line((0,0), (2,0), mark: (end: ">", fill: black))
+        draw.line((0,0), (0,2), mark: (end: ">", fill: black))
+        isource("id", (0,0), fill: white)
+    }),
+    [
+        The #link("https://cetz-package.github.io/docs/", `CeTZ`) library uses a coordinate system with magic anchors.
+
+        Every component is by default drawn from it's center `(0,0)` in the vertical direction.
+
+        You can use any anchor from every component, such as `center`, `south`, `north`, etc. using the following syntax. The first parameter `uid` is mandatory and used for automatically creating anchors around the component.
+
+        ```typst
+        #canvas({
+            resistor("r1", "myOtherComponent.south")
+        })
+        ```
+    ]
+)
 
 == Components
 

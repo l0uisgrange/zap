@@ -7,7 +7,7 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
 == Resistors
 
 #grid(
-    columns: (auto, 1fr),
+    columns: (auto, auto, 1fr),
     gutter: 10pt,
     ```typst
     #let resistor(
@@ -32,8 +32,25 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
                 resistor("r1", (0,0), rotate: 90deg, variant: "ieee")
             })
         ]
-    )
+    ),
+    table(
+         columns: 2,
+         stroke: .6pt + luma(60%),
+         `adjustable`, `movable`,
+         [
+             #canvas({
+                 resistor("r1", (0,0), rotate: 90deg, adjustable: true)
+             })
+         ],
+         [
+             #canvas({
+                 resistor("r1", (0,0), rotate: 90deg, movable: true)
+             })
+         ]
+     )
 )
+
+Available shortcuts: `potentiometer` for `adjustable: true`
 
 == Capacitors
 
@@ -190,7 +207,7 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
 == Fuses
 
 #grid(
-    columns: (auto, 1fr),
+    columns: (auto, auto, 1fr),
     gutter: 10pt,
     ```typst
     #let fuse(
@@ -215,13 +232,25 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
                 fuse("r1", (0,0), rotate: 90deg, variant: "ieee")
             })
         ]
-    )
+    ),
+    table(
+         columns: 1,
+         stroke: .6pt + luma(60%),
+         `asymmetric`,
+         [
+             #canvas({
+                 fuse("r1", (0,0), rotate: 90deg, asymmetric: true)
+             })
+         ]
+     )
 )
+
+Available shortcuts: `afuse` for `asymmetric: true`
 
 == Bipolar junction transistors (BJTs)
 
 #grid(
-    columns: (auto, 1fr),
+    columns: (auto, auto, 1fr),
     gutter: 10pt,
     ```typst
     #let bjt(
@@ -247,13 +276,25 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
                 bjt("r1", (0,0), rotate: -90deg, variant: "ieee")
             })
         ]
-    )
+    ),
+    table(
+         columns: 1,
+         stroke: .6pt + luma(60%),
+         `envelope`,
+         [
+             #canvas({
+                 bjt("r1", (0,0), rotate: -90deg, envelope: true)
+             })
+         ]
+     )
 )
+
+Available shortcuts: `npn` for `polarisation: npn`, `pnp` for `polarisation: pnp`
 
 == MOSFETs
 
 #grid(
-    columns: (auto, 1fr),
+    columns: (auto, auto, 1fr),
     gutter: 10pt,
     ```typst
     #let mosfet(
@@ -282,8 +323,21 @@ Circuitor provides a wide set of predefined components based on IEC and IEEE sta
                 mosfet("r1", (0,0), rotate: -90deg, variant: "ieee")
             })
         ]
-    )
+    ),
+    table(
+         columns: 2,
+         stroke: .6pt + luma(60%),
+         `mode`, `channel`,
+         canvas({
+             mosfet("m1", (0,0), rotate: -90deg, mode: "depletion", variant: "ieee")
+         }),
+         canvas({
+             mosfet("m1", (0,0), rotate: -90deg, channel: "p", variant: "ieee")
+         }),
+     )
 )
+
+Available shortcuts: `pmos` for `channel: p`, `nmos` for `channel: n`
 
 == Custom components
 
