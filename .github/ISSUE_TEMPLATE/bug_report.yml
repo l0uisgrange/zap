@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-description: Report a problem or error when using CirCeTZ.
+description: Report a problem or error when using Circuitor.
 title: "[Bug]: "
 labels: ["bug"]
 assignees:
@@ -16,8 +16,19 @@ body:
   - type: dropdown
     id: package_version
     attributes:
-      label: CirCeTZ Version
-      description: The version of CirCeTZ you are using.
+      label: Circuitor Version
+      description: The version of Circuitor you are using.
+      options:
+        - 0.1.0 (default)
+        - Other
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    id: typst_compiler_version
+    attributes:
+      label: Typst Version
+      description: Select the Typst version you are using.
       options:
         - Development
         - 0.13.1 (default)
@@ -28,16 +39,6 @@ body:
         - 0.10.0
         - Other
       default: 1
-    validations:
-      required: true
-  - type: dropdown
-    id: typst_compiler_version
-    attributes:
-      label: Typst Version
-      description: Select the Typst version you are using.
-      options:
-        - 0.1.0 (default)
-        - Other
     validations:
       required: true
   - type: textarea

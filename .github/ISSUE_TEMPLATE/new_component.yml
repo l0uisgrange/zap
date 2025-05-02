@@ -5,12 +5,15 @@ labels: ["enhancement", "component"]
 assignees:
   - l0uisgrange
 body:
-  - type: input
+  - type: textarea
     id: name
     attributes:
-      label: Component Name
-      description: What is the name of the component you suggest?
-      placeholder: e.g., Op-Amp, MOSFET, Transformer
+      label: Declaration Example
+      description: How would your component be declared? Needs additional options?
+      value:
+        ```typst 
+        mycomponent("id", (x, y), ...your-params)
+        ```
     validations:
       required: true
   - type: textarea

@@ -14,14 +14,6 @@ body:
     validations:
       required: true
   - type: textarea
-    id: usecase
-    attributes:
-      label: Use Case
-      description: How would you or others use this feature?
-      placeholder: Describe typical usage scenarios.
-    validations:
-      required: true
-  - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
