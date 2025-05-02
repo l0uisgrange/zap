@@ -1,0 +1,47 @@
+name: 📚 Documentation Feedback
+description: Report an issue or suggest an improvement related to documentation
+title: "[Docs]: "
+labels: ["documentation"]
+assignees:
+  - l0uisgrange
+body:
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: Type of Feedback
+      description: What type of documentation feedback are you providing?
+      options:
+        - Error or incorrect information
+        - Missing content
+        - Improvement suggestion
+        - Other
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue or suggestion in detail.
+      placeholder: Explain what's wrong, unclear, or what could be improved…
+    validations:
+      required: true
+
+  - type: input
+    id: doc_page
+    attributes:
+      label: Documentation Page (if applicable)
+      description: Provide the URL or section name of the documentation page where the issue occurs.
+      placeholder: e.g. https://circuitor.github.io/
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Add any relevant context, screenshots, or references.
+      placeholder: Paste screenshots, Markdown snippets, related links, etc.
+    validations:
+      required: false
