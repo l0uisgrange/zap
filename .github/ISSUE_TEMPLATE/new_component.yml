@@ -12,7 +12,7 @@ body:
       description: |
         How would your component be declared in Typst? 
         Does it need additional parameters or customization options?
-      placeholder: |
+      value: |
         ```typst
         mycomponent("id", (x, y), ...your-params)
         ```
