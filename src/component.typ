@@ -11,7 +11,7 @@
     group(name: uid, {
         set-origin(position)
         cetzscale(scale)
-        cetzrotate(-90deg - rotate) // dependent with motors dc symbol
+        cetzrotate(- 90deg - rotate) // dependent with motors dc symbol
         draw(variant, scale, rotate, wires, ..params)
     })
 

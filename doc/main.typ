@@ -1,4 +1,4 @@
-#set text(size: 11pt, lang: "en")
+#set text(font: "Inter", size: 10pt, lang: "en")
 #import "../src/exports.typ": *
 
 #show raw.where(block: true): block.with(
@@ -7,7 +7,7 @@ inset: 10pt
 )
 
 #show link: set text(blue)
-#show heading: set text(weight: "semibold", tracking: .3pt)
+#show heading: set text(weight: "semibold")
 #set heading(numbering: "1.1")
 #set page(margin: (
     y: 2.5cm,
@@ -78,56 +78,16 @@ May 15, 2025
 
 I'm Louis Grange, an engineering student at EPFL (École Polytechnique Fédérale de Lausanne), and I created Circuitor in April 2025 to address a missing piece in the Typst ecosystem: a library for drawing electrical circuits that adhere to IEC and IEEE standards.
 
-At the time, no such solution existed — so I decided to build one. Circuitor started as a personal project but quickly grew into a structured, reusable library for creating clear, standards-compliant circuit diagrams directly in Typst.
+At the time, no such solution existed, so I decided to build one #emoji.construction. Circuitor started as a personal project but quickly grew into a structured, reusable library for creating clear, standards-compliant circuit diagrams directly in Typst.
 
-My goal with Circuitor is to make it easier for students, educators, and professionals to integrate high-quality circuit drawings into their documents without leaving the Typst environment. Whether you're preparing lecture notes, technical reports, or academic publications, Circuitor aims to deliver both precision and simplicity.
+My goal with Circuitor is to make it easier for students, educators, and professionals to integrate high-quality circuit drawings into their documents without leaving the Typst environment. Whether you're preparing lecture notes, technical reports, or academic publications, Circuitor aims to deliver both precision and simplicity #emoji.fencing.
 
-= Getting started
+#include("chapters/getting_started.typ")
 
-== Installation
-
-Circuitor is easy to set up and works out of the box with Typst Universe. There are two main ways to start using the library, depending on your workflow.
-
-=== Typst Universe package
-
-If you're working in the #link("https://typst.app", [online Typst app]), you can import Circuitor directly with a single line:
-
-```typst
-#import "@preview/circuitor:0.1.0"
-```
-
-=== Local package
-
-If you prefer to work offline or want to explore the source code, you can also use Circuitor by downloading it locally from the GitHub repository.
-
-1. Clone or download #link("https://github.com/l0uigrange/circuitor", [the repository]) to your computer.
-
-2. In your Typst project, import the `exports.typ` file located in the `src` folder:
-
-```typst
-#import "PATH_TO_CIRCUITOR/src/exports.typ"
-```
-
-Make sure the path reflects the actual location of the downloaded folder relative to your `.typ` file.
-
-== Mimium requirements
-
-This table shows the minimum required versions of Typst and CETZ for each release of the Circuitor library.
-
-#table(
-  columns: 3,
-  stroke: .6pt,
-  [Circuitor], [Typst], [CeTZ],
-  [`0.1.0`], [`0.13.1`], [`0.3.4`],
-)
-
-== Report bugs or suggest features and components
-
-I actively maintain Circuitor and greatly value community feedback.
-
-If you encounter a bug, spot an incorrect symbol, or have an idea for a new feature or electrical component, feel free to open an issue or a discussion on the #link("https://github.com/l0uisgrange/circuitor/issues", [GitHub repository]).
 #pagebreak()
 
-#include("chapters/basics.typ")
+#include("chapters/core.typ")
+
+#pagebreak()
 
 #include("chapters/components.typ")
