@@ -9,9 +9,11 @@ body:
     id: name
     attributes:
       label: Declaration Example
-      description: How would your component be declared? Needs additional options?
-      value:
-        ```typst 
+      description: |
+        How would your component be declared in Typst? 
+        Does it need additional parameters or customization options?
+      placeholder: |
+        ```typst
         mycomponent("id", (x, y), ...your-params)
         ```
     validations:
