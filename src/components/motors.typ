@@ -19,9 +19,9 @@
     let io-y = 0.49 * io-spacing
 
     // CeTZ Canvas
-    let draw(variant, scale, rotate, wires, ..styling) = {
+    let draw(variant, scale, rotate, straight: true, wires, ..styling) = {
         // Drawing function
-        if (variant == "pretty") {
+        if (variant == "pretty" or straight) {
             // Defining anchors
             if (wires) {
                 anchor("in", (-width/2 - wires-length, 0))
@@ -33,9 +33,6 @@
                 anchor("in", (-width/2, 0))
                 anchor("out", (rel: (width, 0)))
             }
-
-            rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
-            circle((0,0), radius: circle-radius, fill: white)
         } else if (variant == "iec") {
             // Defining anchors
             if (wires) {
@@ -48,13 +45,19 @@
                 anchor("in", (io-spacing/2, -io-y))
                 anchor("out", (-io-spacing/2, -io-y))
             }
+        }
+
+        if (variant == "pretty") {
+            rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
+            circle((0,0), radius: circle-radius, fill: white)
+        } else {
             circle((0,0), radius: width / 2, fill: white)
             content(
               (0,0),
               padding: .1,
               rotate: -rotate,
               anchor: "south",
-              "M"
+              $ "M" $
             )
             cetzrotate(90deg + rotate)
             set-origin((0,-5pt))
