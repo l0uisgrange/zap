@@ -7,7 +7,6 @@
     assert(type(rotate) == angle, message: "scale must be float")
     assert(variant == "ieee" or variant == "iec" or variant == "pretty", message: "variant must be 'iec' or 'ieee'")
     assert(type(wires) == bool, message: "wires must be a bool")
-    assert(type(label) in (content, str) or label == none, message: "label must be content, none, str")
 
     group(name: uid, {
         set-origin(position)
@@ -28,6 +27,10 @@
         } else {
             anchor = uid+"."+anchor
         }
-        content(anchor, label, anchor: text-anchor, padding: 6pt)
+        if (type(label) == str) {
+            content(anchor, $label$, anchor: text-anchor, padding: 6pt)
+        } else {
+            content(anchor, label, anchor: text-anchor, padding: 6pt)
+        }
     }
 }
