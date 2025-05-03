@@ -7,10 +7,7 @@
     assert(variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(type(wires) == bool, message: "wires must be a bool")
 
-    let node2 = none
-    if (params.pos().len() > 2) {
-        node2 = params.pos().at(0)
-    }
+    let node2 = params.pos().at(0, default: none)
 
     // Draw component
     cetz.draw.group(name: uid, {

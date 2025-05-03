@@ -37,7 +37,7 @@
     }
 
     // Componant call
-    component(uid, node, draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
 
 #let afuse(uid, node, ..params) = fuse(uid, node, asymmetric: true, ..params)

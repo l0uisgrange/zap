@@ -57,7 +57,7 @@
     }
 
     // Componant call
-    component(uid, node, draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
 
 #let pmos(uid, node, ..params) = mosfet(uid, node, polarisation: "pmos", ..params)

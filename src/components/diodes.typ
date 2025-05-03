@@ -49,7 +49,7 @@
     }
 
     // Componant call
-    component(uid, node, draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
 
 #let led(uid, node, ..params) = diode(uid, node, emitting: true, ..params)

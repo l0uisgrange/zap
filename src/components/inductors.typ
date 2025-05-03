@@ -44,5 +44,5 @@
     }
 
     // Componant call
-    component(uid, node, draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
