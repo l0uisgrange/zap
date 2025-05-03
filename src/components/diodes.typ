@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin
 #import "../mini.typ": radiation-arrows
 
-#let diode(uid, node, node2, emitting: false, recieving: false, ..params) = {
+#let diode(uid, node, emitting: false, recieving: false, ..params) = {
     assert(type(emitting) == bool, message: "emitting must be of type bool")
     assert(type(recieving) == bool, message: "recieving must be of type bool")
 
@@ -49,8 +49,8 @@
     }
 
     // Componant call
-    component(uid, node, node2, draw, ..params)
+    component(uid, node, draw, ..params)
 }
 
-#let led(uid, node, node2, ..params) = diode(uid, node, node2, emitting: true, ..params)
-#let photodiode(uid, node, node2, ..params) = diode(uid, node, node2, recieving: true, ..params)
+#let led(uid, node, ..params) = diode(uid, node, emitting: true, ..params)
+#let photodiode(uid, node, ..params) = diode(uid, node, recieving: true, ..params)

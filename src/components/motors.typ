@@ -66,5 +66,5 @@
     }
 
     // Componant call
-    component(uid, node, none, draw, ..params)
+    component(uid, node, draw, ..params)
 }

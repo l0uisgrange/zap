@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate
 #import "../mini.typ": adjustable-arrow
 
-#let fuse(uid, node, node2, asymmetric: false, ..params) = {
+#let fuse(uid, node, asymmetric: false, ..params) = {
     assert(type(asymmetric) == bool, message: "asymmetric must be of type bool")
 
     // TODO: move to defaults
@@ -37,7 +37,7 @@
     }
 
     // Componant call
-    component(uid, node, node2, draw, ..params)
+    component(uid, node, draw, ..params)
 }
 
-#let afuse(uid, node, node2, ..params) = fuse(uid, node, node2, asymmetric: true, ..params)
+#let afuse(uid, node, ..params) = fuse(uid, node, asymmetric: true, ..params)

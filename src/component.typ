@@ -1,11 +1,16 @@
 #import "dependencies.typ": cetz
 
-#let component(uid, node, node2, draw: none, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, label-anchor: none, ..params) = {
+#let component(uid, node, draw: none, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, label-anchor: none, ..params) = {
     assert(type(uid) == str, message: "component ID must be a string")
     assert(type(scale) == float, message: "scale must be float")
     assert(type(rotate) == angle, message: "scale must be float")
     assert(variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(type(wires) == bool, message: "wires must be a bool")
+
+    let node2 = none
+    if (params.pos().len() > 2) {
+        node2 = params.pos().at(0)
+    }
 
     // Draw component
     cetz.draw.group(name: uid, {
@@ -20,7 +25,7 @@
         }
         cetz.draw.scale(scale)
         cetz.draw.rotate(rotate)
-        draw(variant, scale, rotate, wires, ..params)
+        draw(variant, scale, rotate, wires, ..params.named())
     })
 
     // Draw wires
