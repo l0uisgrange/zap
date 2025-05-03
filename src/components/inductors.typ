@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, arc, line
+#import cetz.draw: anchor, rect, arc, line, floating
 
 #let inductor(uid, node, ..params) = {
     // TODO: move to defaults
@@ -23,8 +23,8 @@
             anchor("in", (-width/2 - wires-length, 0))
             anchor("out", (rel: (width + 2*wires-length, 0)))
 
-            line("in", (rel: (wires-length, 0)), stroke: wires-stroke)
-            line("out", (rel: (- wires-length, 0)), stroke: wires-stroke)
+            floating(line("in", (rel: (wires-length, 0)), stroke: wires-stroke))
+            floating(line("out", (rel: (- wires-length, 0)), stroke: wires-stroke))
         } else {
             anchor("in", (-width/2, 0))
             anchor("out", (rel: (width, 0)))

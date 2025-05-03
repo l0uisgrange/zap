@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, line
+#import cetz.draw: anchor, line, floating
 #import "../mini.typ": adjustable-arrow
 
 #let capacitor(uid, node, adjustable: false, ..params) = {
@@ -22,8 +22,8 @@
             anchor("in", (- distance / 2 - wires-length, 0))
             anchor("out", (distance / 2 + wires-length, 0))
 
-            line("in", (- distance/2, 0), stroke: wires-stroke)
-            line("out", (distance/2, 0), stroke: wires-stroke)
+            floating(line("in", (- distance/2, 0), stroke: wires-stroke))
+            floating(line("out", (distance/2, 0), stroke: wires-stroke))
         } else {
             anchor("in", (- distance/2, 0))
             anchor("out", (rel: (distance, 0)))

@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin
+#import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin, floating
 #import "../mini.typ": radiation-arrows
 
 #let diode(uid, node, emitting: false, recieving: false, ..params) = {
@@ -25,7 +25,7 @@
             anchor("in", (- tangent - wires-length, 0))
             anchor("out", (polygon-radius + wires-length, 0))
 
-            line("in", "out", stroke: wires-stroke)
+            floating(line("in", "out", stroke: wires-stroke))
         } else {
             anchor("in", (- polygon-radius/2, 0))
             anchor("out", (rel: (polygon-radius, 0)))

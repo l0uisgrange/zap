@@ -1,6 +1,6 @@
 #import "../../component.typ": component
 #import "../../dependencies.typ": cetz
-#import cetz.draw: anchor, line, mark, circle, scale as cetzscale
+#import cetz.draw: anchor, line, mark, circle, scale as cetzscale, floating
 #import "../../mini.typ": adjustable-arrow
 
 #let bjt(uid, node, polarisation: "npn", envelope: false, ..params) = {
@@ -53,9 +53,9 @@
         }
 
         if (wires) {
-            line("base", (rel: (wires-length,0)), stroke: wires-stroke)
-            line("emitter", (rel: (0, -wires-length * wires-direction)), stroke: wires-stroke)
-            line("collector", (rel: (0, wires-length * wires-direction)), stroke: wires-stroke)
+            floating(line("base", (rel: (wires-length,0)), stroke: wires-stroke))
+            floating(line("emitter", (rel: (0, -wires-length * wires-direction)), stroke: wires-stroke))
+            floating(line("collector", (rel: (0, wires-length * wires-direction)), stroke: wires-stroke))
         }
 
         // Drawing function

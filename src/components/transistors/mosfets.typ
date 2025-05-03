@@ -1,6 +1,6 @@
 #import "../../component.typ": component
 #import "../../dependencies.typ": cetz
-#import cetz.draw: anchor, line, mark, circle, set-origin
+#import cetz.draw: anchor, line, mark, circle, set-origin, floating
 #import "../../mini.typ": adjustable-arrow
 
 #let mosfet(uid, node, channel: "n", envelope: false, gates: 1, mode: "enhancement", substrate: "internal", ..params) = {
@@ -30,9 +30,9 @@
             anchor("drain", (height/2 + base-delta, width / 2 + wires-length))
             anchor("source", (height/2 + base-delta, - width / 2 - wires-length))
 
-            line("gate", (rel: (wires-length, 0)), stroke: wires-stroke)
-            line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
-            line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
+            floating(line("gate", (rel: (wires-length, 0)), stroke: wires-stroke))
+            floating(line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
+            floating(line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
         } else {
             anchor("gate", (-height/2 + base-delta - wires-length, 0))
             anchor("drain", (-height/2 + base-delta - wires-length, 0))

@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate
+#import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate, floating
 
 #let isource(uid, node, ..params) = {
     // TODO: move to defaults
@@ -20,8 +20,8 @@
             anchor("minus", (-radius - wires-length, 0))
             anchor("plus", (rel: (2*radius + 2*wires-length, 0)))
 
-            line("minus", (-radius, 0), stroke: wires-stroke)
-            line("plus", (radius, 0), stroke: wires-stroke)
+            floating(line("minus", (-radius, 0), stroke: wires-stroke))
+            floating(line("plus", (radius, 0), stroke: wires-stroke))
         } else {
             anchor("minus", (-radius, 0))
             anchor("plus", (rel: (2*radius, 0)))
