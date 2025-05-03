@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate
 #import "../mini.typ": adjustable-arrow
 
-#let resistor(uid, position, adjustable: false, movable: false, ..params) = {
+#let resistor(uid, node, node2, adjustable: false, movable: false, ..params) = {
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
     assert(type(movable) == bool, message: "movable must be of type bool")
 
@@ -57,7 +57,7 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, node2, draw: draw, ..params)
 }
 
-#let potentiometer(uid, position, ..params) = resistor(uid, position, adjustable: true, ..params)
+#let potentiometer(uid, node, node2, ..params) = resistor(uid, node, node2, adjustable: true, ..params)

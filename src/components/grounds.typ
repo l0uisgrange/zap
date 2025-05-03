@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin, merge-path
 #import "../mini.typ": radiation-arrows
 
-#let ground(uid, position, type: "signal", ..params) = {
+#let ground(uid, node, type: "signal", ..params) = {
     assert(type in ("signal", "earth", "frame"), message: "type must `signal`, `earth` or `frame`")
 
     // TODO: move to defaults
@@ -54,8 +54,8 @@
     }
 
     // Componant call
-    component(uid, position, draw, rotate: -90deg, ..params)
+    component(uid, node, none, draw, rotate: -90deg, ..params)
 }
 
-#let earth(uid, position, ..params) = ground(uid, position, type: "earth", ..params)
-#let frame(uid, position, ..params) = ground(uid, position, type: "frame", ..params)
+#let earth(uid, node, ..params) = ground(uid, node, type: "earth", ..params)
+#let frame(uid, node, ..params) = ground(uid, node, type: "frame", ..params)

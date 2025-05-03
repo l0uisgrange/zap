@@ -2,7 +2,7 @@
 #import "../dependencies.typ": cetz
 #import cetz.draw: anchor, rect, arc, line
 
-#let inductor(uid, position, ..params) = {
+#let inductor(uid, node, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -44,5 +44,5 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, none, draw, ..params)
 }

@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, line
 #import "../mini.typ": adjustable-arrow
 
-#let capacitor(uid, position, adjustable: false, ..params) = {
+#let capacitor(uid, node, node2, adjustable: false, ..params) = {
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
 
     // TODO: move to defaults
@@ -39,5 +39,5 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, node2, draw, ..params)
 }

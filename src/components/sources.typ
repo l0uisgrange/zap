@@ -2,7 +2,7 @@
 #import "../dependencies.typ": cetz
 #import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate
 
-#let isource(uid, position, ..params) = {
+#let isource(uid, node, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -36,10 +36,10 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, draw, ..params)
 }
 
-#let vsource(uid, position, ..params) = {
+#let vsource(uid, node, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -77,5 +77,5 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, none, draw: draw, ..params)
 }

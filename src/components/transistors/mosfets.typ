@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, line, mark, circle, set-origin
 #import "../../mini.typ": adjustable-arrow
 
-#let mosfet(uid, position, channel: "n", envelope: false, gates: 1, mode: "enhancement", substrate: "internal", ..params) = {
+#let mosfet(uid, node, channel: "n", envelope: false, gates: 1, mode: "enhancement", substrate: "internal", ..params) = {
     assert(type(envelope) == bool, message: "envelope must be of type bool")
     assert(mode in ("enhancement", "depletion"), message: "mode must be `enhancement` or `depletion`")
     assert(gates in (1,2), message: "gates number must be 1 or 2")
@@ -57,10 +57,10 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, none, draw, ..params)
 }
 
-#let pmos(uid, position, ..params) = mosfet(uid, position, polarisation: "pmos", ..params)
-#let nmos(uid, position, ..params) = mosfet(uid, position, polarisation: "nmos", ..params)
-#let pmosd(uid, position, ..params) = mosfet(uid, position, polarisation: "pmos", mode: "depletion", ..params)
-#let nmosd(uid, position, ..params) = mosfet(uid, position, polarisation: "nmos", mode: "depletion", ..params)
+#let pmos(uid, node, ..params) = mosfet(uid, node, polarisation: "pmos", ..params)
+#let nmos(uid, node, ..params) = mosfet(uid, node, polarisation: "nmos", ..params)
+#let pmosd(uid, node, ..params) = mosfet(uid, node, polarisation: "pmos", mode: "depletion", ..params)
+#let nmosd(uid, node, ..params) = mosfet(uid, node, polarisation: "nmos", mode: "depletion", ..params)

@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, line, mark, circle, scale as cetzscale
 #import "../../mini.typ": adjustable-arrow
 
-#let bjt(uid, position, polarisation: "npn", envelope: false, ..params) = {
+#let bjt(uid, node, polarisation: "npn", envelope: false, ..params) = {
     assert(polarisation in ("npn", "pnp"), message: "polarisation must `npn` or `pnp`")
     assert(type(envelope) == bool, message: "envelope must be of type bool")
 
@@ -72,8 +72,8 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, none, draw, ..params)
 }
 
-#let pnp(uid, position, ..params) = bjt(uid, position, polarisation: "pnp", ..params)
-#let npn(uid, position, ..params) = bjt(uid, position, polarisation: "npn", ..params)
+#let pnp(uid, node, ..params) = bjt(uid, node, polarisation: "pnp", ..params)
+#let npn(uid, node, ..params) = bjt(uid, node, polarisation: "npn", ..params)

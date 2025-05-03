@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, rect, arc, line, circle, content, set-origin, group, rotate as cetzrotate
 #import "../mini.typ": dc-sign
 
-#let dcmotor(uid, position, ..params) = {
+#let dcmotor(uid, node, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -66,5 +66,5 @@
     }
 
     // Componant call
-    component(uid, position, draw, ..params)
+    component(uid, node, none, draw, ..params)
 }
