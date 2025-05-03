@@ -1,13 +1,14 @@
 #import "dependencies.typ": cetz
 
 #let component(uid, node, draw: none, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, label-anchor: none, ..params) = {
+    let node2 = params.pos().at(0, default: none)
+    assert(params.pos().len() < 2, message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
+    assert(node2 == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
     assert(type(uid) == str, message: "component ID must be a string")
     assert(type(scale) == float, message: "scale must be float")
     assert(type(rotate) == angle, message: "scale must be float")
     assert(variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(type(wires) == bool, message: "wires must be a bool")
-
-    let node2 = params.pos().at(0, default: none)
 
     // Draw component
     cetz.draw.group(name: uid, {
