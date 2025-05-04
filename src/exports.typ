@@ -3,6 +3,9 @@
 #import cetz: canvas
 
 // Export components
+#import "component.typ": component
+
+// Export components
 #import "components/wires.typ": wire
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode
