@@ -13,8 +13,7 @@
     let arrow-scale = 1.4
 
     // Drawing function
-    let draw(variant, scale, rotate, wires, ..styling) = {
-        cetzrotate(180deg)
+    let draw(node2, variant, scale, rotate, wires, ..styling) = {
         // Defining anchors
         if (wires) {
             anchor("minus", (-radius - wires-length, 0))
@@ -52,15 +51,20 @@
     let sign-delta = 2pt
 
     // Drawing function
-    let draw(variant, scale, rotate, wires, ..styling) = {
-        cetzrotate(180deg)
+    let draw(node2, variant, scale, rotate, wires, ..styling) = {
         // Defining anchors
+        floating(circle(node2, radius: 6pt, fill: red))
         if (wires) {
-            anchor("minus", (-radius - wires-length, 0))
-            anchor("plus", (rel: (2*radius + 2*wires-length, 0)))
+            if (node2 != none) {
+                anchor("minus", node)
+                anchor("plus", node2)
+            } else {
+                anchor("minus", (-radius - wires-length, 0))
+                anchor("plus", (rel: (2*radius + 2*wires-length, 0)))
+            }
 
-            line("minus", (-radius, 0), stroke: wires-stroke)
-            line("plus", (radius, 0), stroke: wires-stroke)
+            floating(line("minus", (-radius, 0), stroke: wires-stroke))
+            floating(line("plus", (radius, 0), stroke: wires-stroke))
         } else {
             anchor("minus", (-radius, 0))
             anchor("plus", (rel: (2*radius, 0)))
