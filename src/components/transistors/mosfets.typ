@@ -23,38 +23,39 @@
     let height = 15pt
     let base-delta = 5pt
 
-    // CeTZ Canvas
-    let draw(variant, scale, rotate, wires, ..styling) = {
-        if (wires) {
-            anchor("gate", (-height/2 + base-delta - wires-length, 0))
-            anchor("drain", (height/2 + base-delta, width / 2 + wires-length))
-            anchor("source", (height/2 + base-delta, - width / 2 - wires-length))
-
+    // Drawing functions
+    let draw = (
+        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
+            if (wires) {
+                anchor("gate", (-height/2 + base-delta - wires-length, 0))
+                anchor("drain", (height/2 + base-delta, width / 2 + wires-length))
+                anchor("source", (height/2 + base-delta, - width / 2 - wires-length))
+            } else {
+                anchor("gate", (-height/2 + base-delta - wires-length, 0))
+                anchor("drain", (-height/2 + base-delta - wires-length, 0))
+                anchor("source", (-height/2 + base-delta - wires-length, 0))
+            }
+        },
+        component: (node2, variant, scale, rotate, wires, ..styling) => {
+            if (mode == "enhancement") {
+                let bar-length = (base-width - 2*base-spacing)/3
+                for i in range(3) {
+                    line(((-height/2 + base-delta, -base-width/2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)))
+                }
+            } else {
+                line((-height/2 + base-delta, -base-width/2), (rel: (0, base-width)))
+            }
+            if (not substrate == none) {
+                line((-height/2 + base-delta, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
+                mark("line.centroid", "gate", symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
+            }
+        },
+        wires: (node2, variant, scale, rotate, wires, ..styling) => {
             floating(line("gate", (rel: (wires-length, 0)), stroke: wires-stroke))
             floating(line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
             floating(line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
-        } else {
-            anchor("gate", (-height/2 + base-delta - wires-length, 0))
-            anchor("drain", (-height/2 + base-delta - wires-length, 0))
-            anchor("source", (-height/2 + base-delta - wires-length, 0))
-
-            line((-height/2 + base-delta, width/2), (rel: (height, 0)), stroke: wires-stroke)
-            line((-height/2 + base-delta, -width/2), (rel: (height, 0)), stroke: wires-stroke)
         }
-
-        if (mode == "enhancement") {
-            let bar-length = (base-width - 2*base-spacing)/3
-            for i in range(3) {
-                line(((-height/2 + base-delta, -base-width/2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)))
-            }
-        } else {
-            line((-height/2 + base-delta, -base-width/2), (rel: (0, base-width)))
-        }
-        if (not substrate == none) {
-            line((-height/2 + base-delta, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
-            mark("line.centroid", "gate", symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
-        }
-    }
+    )
 
     // Componant call
     component(uid, node, none, draw: draw, ..params)
