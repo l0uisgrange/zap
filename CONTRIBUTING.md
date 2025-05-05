@@ -10,7 +10,7 @@ Here are some important resources:
 
 ## How to contribute
 
-Contributing on this project is very easy:
+Contributing to this project is straightforward:
 1. [Open an issue](https://github.com/l0uisgrange/circuitor/issues/new) explaining the modification you want to do on the package
 2. Fork the repository on your own profile and start coding
 3. Push your commits to your own repository
