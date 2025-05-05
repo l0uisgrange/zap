@@ -3,6 +3,7 @@
 #import "../utils.typ": get-origin
 #import cetz.draw: anchor, rect, line, circle, set-origin, scale as cetzscale, rotate as cetzrotate, floating, set-style, translate, scope
 #import "../mini.typ": adjustable-arrow
+#import "../utils.typ": quick-wires
 
 #let resistor(uid, node, adjustable: false, movable: false, ..params) = {
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
@@ -57,14 +58,7 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                if (node2 != none) {
-                    floating(line(node, node2, stroke: wires-stroke))
-                } else {
-                    floating(line("in", (rel: (angle: rotate, radius: 1)), stroke: wires-stroke))
-                    floating(line("out", (rel: (angle: 180deg+rotate, radius: 1)), stroke: wires-stroke))
-                }
-            }
+            quick-wires(node, node2, "in", "out", rotate)
         }
     )
 

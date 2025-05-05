@@ -1,8 +1,9 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
 #import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate, floating
+#import "../utils.typ": quick-wires
 
-#let isource(uid, node, ..params) = {
+#let isource(uid, node, current: "dc", ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -32,14 +33,7 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                if (node2 != none) {
-                    floating(line(node, node2, stroke: wires-stroke))
-                } else {
-                    floating(line("plus", (rel: (angle: rotate, radius: 1)), stroke: wires-stroke))
-                    floating(line("minus", (rel: (angle: 180deg+rotate, radius: 1)), stroke: wires-stroke))
-                }
-            }
+            quick-wires(node, node2, "minus", "plus", rotate)
         }
     )
 
@@ -47,7 +41,9 @@
     component(uid, node, draw: draw, ..params)
 }
 
-#let vsource(uid, node, ..params) = {
+#let acisource(uid, node, ..params) = isource(uid, node, current: "ac", ..params)
+
+#let vsource(uid, node, current: "dc", ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -84,17 +80,12 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                if (node2 != none) {
-                    floating(line(node, node2, stroke: wires-stroke))
-                } else {
-                    floating(line("minus", (rel: (angle: rotate, radius: 1)), stroke: wires-stroke))
-                    floating(line("plus", (rel: (angle: 180deg+rotate, radius: 1)), stroke: wires-stroke))
-                }
-            }
-       }
-   )
+            quick-wires(node, node2, "minus", "plus", rotate)
+        }
+    )
 
     // Componant call
     component(uid, node, draw: draw, ..params)
 }
+
+#let acvsource(uid, node, ..params) = vsource(uid, node, current: "ac", ..params)

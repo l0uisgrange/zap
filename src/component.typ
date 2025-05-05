@@ -26,9 +26,11 @@
                 (draw.component)(node2, variant, scale, angle, wires, ..params.named())
             })
         })
-        cetz.draw.on-layer(0, {
-            (draw.wires)(node2, variant, scale, angle, wires, ..params.named())
-        })
+        if (wires) {
+            cetz.draw.on-layer(0, {
+                (draw.wires)(node2, variant, scale, angle, wires, ..params.named())
+            })
+        }
     })
 
     if (debug) {
