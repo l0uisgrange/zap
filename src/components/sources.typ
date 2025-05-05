@@ -28,7 +28,7 @@
             if (variant == "iec") {
                 line((0, -radius), (rel: (0, 2*radius)), stroke: component-stroke)
             } else {
-                line((radius - padding, 0), (rel: (-2*radius + 1.85*padding, 0)), mark: (end: ">"), fill: black, stroke: component-stroke)
+                line((-radius + padding, 0), (rel: (2*radius - 1.85*padding, 0)), mark: (end: ">"), fill: black, stroke: component-stroke)
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
@@ -78,8 +78,8 @@
             if (variant == "iec") {
                 line((-radius, 0), (rel: (2*radius, 0)))
             } else {
-                line((rel: (radius - padding, -sign-size)), (rel:  (0, 2*sign-size)), stroke: sign-stroke)
-                line((-radius + padding + sign-delta, -sign-size),(rel: (0, 2*sign-size)), stroke: sign-stroke)
+                line((rel: (- radius + padding, -sign-size)), (rel:  (0, 2*sign-size)), stroke: sign-stroke)
+                line((radius - padding - sign-delta, -sign-size),(rel: (0, 2*sign-size)), stroke: sign-stroke)
                 line((rel: (sign-size, -sign-size)),(rel: (-2*sign-size, 0)), stroke: sign-stroke)
             }
         },
@@ -88,8 +88,8 @@
                 if (node2 != none) {
                     floating(line(node, node2, stroke: wires-stroke))
                 } else {
-                    floating(line("plus", (rel: (angle: rotate, radius: 1)), stroke: wires-stroke))
-                    floating(line("minus", (rel: (angle: 180deg+rotate, radius: 1)), stroke: wires-stroke))
+                    floating(line("minus", (rel: (angle: rotate, radius: 1)), stroke: wires-stroke))
+                    floating(line("plus", (rel: (angle: 180deg+rotate, radius: 1)), stroke: wires-stroke))
                 }
             }
        }
