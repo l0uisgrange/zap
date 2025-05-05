@@ -30,7 +30,7 @@
                 anchor("out", (-io-spacing/2, -io-y))
             }
         },
-        component: (node2, variant, scale, rotate, straight: true, wires, ..styling) => {
+        component: (node2, variant, scale, rotate, wires, ..styling) => {
             if (variant == "pretty") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
                 circle((0,0), radius: circle-radius, fill: white)
