@@ -3,7 +3,9 @@
 #import cetz.draw: anchor, rect, arc, line, floating
 #import "../utils.typ": quick-wires
 
-#let inductor(uid, node, ..params) = {
+#let inductor(uid, node, variant: "iec", ..params) = {
+    assert(variant in ("iec", "ieee"))
+
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -20,7 +22,10 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
+            if (wires and node2 != none) {
+                anchor("in", node)
+                anchor("out", node2)
+            } else if (wires) {
                 anchor("in", (-width/2 - wires-length, 0))
                 anchor("out", (rel: (width + 2*wires-length, 0)))
             } else {

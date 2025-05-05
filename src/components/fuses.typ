@@ -2,6 +2,7 @@
 #import "../dependencies.typ": cetz
 #import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate, floating
 #import "../mini.typ": adjustable-arrow
+#import "../utils.typ": quick-wires
 
 #let fuse(uid, node, asymmetric: false, ..params) = {
     assert(type(asymmetric) == bool, message: "asymmetric must be of type bool")
@@ -18,23 +19,27 @@
     let a-width = width * 0.25
 
     // Drawing function
-    let draw(variant, scale, rotate, wires, ..styling) = {
-        if (wires) {
-            anchor("in", (-width/2 - wires-length, 0))
-            anchor("out", (rel: (width + 2*wires-length, 0)))
-
-            floating(line("in", "out", stroke: wires-stroke))
-        } else {
-            anchor("in", (rel: (-width/2, 0)))
-            anchor("out", (rel: (width, 0)))
+    let draw = (
+        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
+            if (wires) {
+                anchor("in", (-width/2 - wires-length, 0))
+                anchor("out", (rel: (width + 2*wires-length, 0)))
+            } else {
+                anchor("in", (rel: (-width/2, 0)))
+                anchor("out", (rel: (width, 0)))
+            }
+        },
+        component: (node2, variant, scale, rotate, wires, ..styling) => {
+            rect((-width / 2, -height / 2), (width / 2, height / 2), fill: white, ..styling)
+            line((-width/2, 0), (width/2, 0), stroke: wires-stroke)
+            if (asymmetric) {
+                rect((-width / 2, -height / 2), (-width / 2 + a-width, height / 2), fill: black, ..styling)
+            }
+        },
+        wires: (node2, variant, scale, rotate, wires, ..styling) => {
+            quick-wires(node, node2, "in", "out", rotate)
         }
-
-        rect((-width / 2, -height / 2), (width / 2, height / 2), ..styling)
-
-        if (asymmetric) {
-            rect((width / 2, -height / 2), (width / 2 - a-width, height / 2), fill: black, ..styling)
-        }
-    }
+    )
 
     // Componant call
     component(uid, node, draw: draw, ..params)
