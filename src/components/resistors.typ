@@ -21,7 +21,7 @@
 
     // Drawing functions
     let draw = (
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
             if (wires) {
                 anchor("in", (-width/2 - wires-length, 0))
                 anchor("out", (rel: (width + 2*wires-length, 0)))
@@ -29,6 +29,8 @@
                 anchor("in", (rel: (-width/2, 0)))
                 anchor("out", (rel: (width, 0)))
             }
+        },
+        component: (node2, variant, scale, rotate, wires, ..styling) => {
             if (variant == "iec") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: white, ..styling)
             } else {

@@ -22,6 +22,7 @@
                 cetz.draw.scale(scale)
                 cetz.draw.set-origin(origin)
                 cetz.draw.rotate(angle)
+                (draw.anchors)(node2, variant, scale, angle, wires, ..params.named())
                 (draw.component)(node2, variant, scale, angle, wires, ..params.named())
             })
         })
