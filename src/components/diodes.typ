@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin, floating, merge-path
+#import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin, floating, translate, merge-path
 #import "../mini.typ": radiation-arrows
 #import "../utils.typ": quick-wires
 
@@ -14,7 +14,7 @@
     let wires-stroke = 0.6pt
     let sign-stroke = 0.6pt
     // IEC/ANSI/IEEE style constants
-    let polygon-radius = 10pt
+    let polygon-radius = 8pt
     let height = polygon-radius * calc.sin(calc.pi/4)
     let tangent = polygon-radius * calc.cos(calc.pi/4) * 0.7
 
@@ -33,7 +33,8 @@
             }
         },
         component: (node2, variant, scale, rotate, wires, ..styling) => {
-            polygon((0,0), 3, radius: .35, fill: white)
+            translate((-0.08,0))
+            polygon((0,0), 3, radius: .30, fill: white)
             line((0deg, .35), (180deg, .175), stroke: wires-stroke)
             line((polygon-radius, -height), (polygon-radius, height), stroke: component-stroke)
             let origin = (-tangent / 2, 20pt)

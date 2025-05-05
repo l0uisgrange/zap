@@ -31,7 +31,6 @@
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
             anchor("in", (0, 0))
-            line((0, 0), (0, -symbol-distance), stroke: wires-stroke)
         },
         component: (node2, variant, scale, rotate, wires, ..styling) => {
             if type == "earth" {
@@ -54,7 +53,10 @@
                 line((0, -signal-height - symbol-distance), (-signal-width / 2, -symbol-distance), (signal-width / 2, -symbol-distance), close: true)
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {}
+        wires: (node2, variant, scale, rotate, wires, ..styling) => {
+            set-origin(node)
+            line((0,0), (rel: (0, -symbol-distance)), stroke: wires-stroke)
+        }
     )
 
     // Componant call

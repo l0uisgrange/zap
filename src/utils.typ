@@ -1,11 +1,15 @@
 #import "dependencies.typ": cetz
-#import cetz.draw: line, floating
+#import cetz.draw: line, floating, get-ctx
 
 #let get-origin(node, node2) = {
     if (node2 == none) {
         return node
     } else {
-        return ((node.at(0) + node2.at(0))/2, (node.at(1) + node2.at(1))/2)
+        if (type(node) == array and type(node2) == array) {
+            return ((node.at(0) + node2.at(0))/2, (node.at(1) + node2.at(1))/2)
+        } else {
+            return "center"
+        }
     }
 }
 

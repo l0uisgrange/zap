@@ -16,7 +16,7 @@
     let wires-stroke = 0.6pt
 
     // Style constants
-    let width = 20pt
+    let width = 25pt
     let base-spacing = 3pt
     let base-width = width + 8pt
     let bar-length = (base-width - 2*base-spacing)/3

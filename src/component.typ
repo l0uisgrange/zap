@@ -15,14 +15,13 @@
     // Draw component
     group(name: uid, {
         let angle = get-angle(rotate, node, node2)
-        if (node2 != none) { (draw.anchors)(node2, variant, scale, angle, wires, ..params.named()) }
         cetz.draw.on-layer(1, {
+            (draw.anchors)(node2, variant, scale, angle, wires, ..params.named())
             cetz.draw.scope({
                 let origin = get-origin(node, node2)
                 cetz.draw.scale(scale)
                 cetz.draw.set-origin(origin)
                 cetz.draw.rotate(angle)
-                if (node2 == none) { (draw.anchors)(node2, variant, scale, angle, wires, ..params.named()) }
                 (draw.component)(node2, variant, scale, angle, wires, ..params.named())
             })
         })
