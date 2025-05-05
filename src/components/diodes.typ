@@ -21,7 +21,10 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
+            if (wires and node2 != none) {
+                anchor("in", node)
+                anchor("out", node2)
+            } else if (wires) {
                 anchor("in", (- tangent - wires-length, 0))
                 anchor("out", (polygon-radius + wires-length, 0))
             } else {

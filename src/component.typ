@@ -19,7 +19,6 @@
         cetz.draw.on-layer(1, {
             cetz.draw.scope({
                 let origin = get-origin(node, node2)
-                cetz.draw.floating(cetz.draw.circle(origin, stroke: red, radius: 1pt))
                 cetz.draw.scale(scale)
                 cetz.draw.set-origin(origin)
                 cetz.draw.rotate(angle)

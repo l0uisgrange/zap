@@ -16,7 +16,10 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
+            if (wires and node2 != none) {
+                anchor("in", node)
+                anchor("out", node2)
+            } else if (wires) {
                 anchor("plus", (-radius - wires-length, 0))
                 anchor("minus", (rel: (2*radius + 2*wires-length, 0)))
             } else {

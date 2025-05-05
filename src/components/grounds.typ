@@ -54,9 +54,7 @@
                 line((0, -signal-height - symbol-distance), (-signal-width / 2, -symbol-distance), (signal-width / 2, -symbol-distance), close: true)
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-
-        }
+        wires: (node2, variant, scale, rotate, wires, ..styling) => {}
     )
 
     // Componant call
