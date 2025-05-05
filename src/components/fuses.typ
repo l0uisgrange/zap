@@ -18,7 +18,7 @@
     let zigs = 3
     let a-width = width * 0.25
 
-    // Drawing function
+    // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
             if (wires) {

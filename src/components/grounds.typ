@@ -27,7 +27,7 @@
     let frame-spacing = frame-width / 4
     let symbol-distance = wires-length + 5pt
 
-    // CeTZ Canvas
+    // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
             anchor("in", (0, 0))
