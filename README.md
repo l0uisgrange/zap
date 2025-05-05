@@ -2,7 +2,7 @@
 
 ![Latest release](https://img.shields.io/github/v/release/l0uisgrange/circuitor?include_prereleases&style=flat-square&logo=typst&color=%23239dad)
 ![License](https://img.shields.io/github/license/l0uisgrange/circuitor?style=flat-square)
-![Code size](https://img.shields.io/github/languages/code-size/l0uisgrange/circuitor?style=flat-square)
+![Milestone](https://img.shields.io/github/milestones/progress-percent/l0uisgrange/circuitor/1?style=flat-square&cacheSeconds=60&link=https%3A%2F%2Fgithub.com%2Fl0uisgrange%2Fcircuitor%2Fmilestones)
 
 ![Resistor variants](doc/examples/full.svg#gh-light-mode-only)
 ![Resistor variants](doc/examples/full-dark.svg#gh-dark-mode-only)
