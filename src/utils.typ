@@ -1,9 +1,17 @@
-let get-origin(node, node2) = {
+#import "dependencies.typ": cetz
+
+#let get-origin(node, node2) = {
     if (node2 == none) {
         return node
     } else {
-        cetz.draw.hide(cetz.draw.line(node, node2, name: "line"))
-        cetz.draw.set-origin("line.centroid")
-        cetz.draw.floating(cetz.draw.circle((0,0), radius: 6pt, stroke: red))
+        return ((node.at(0) + node2.at(0))/2, (node.at(1) + node2.at(1))/2)
+    }
+}
+
+#let get-angle(rotate, node, node2) = {
+    if (node2 != none) {
+        return calc.atan2(node.at(0) - node2.at(0), node.at(1) - node2.at(1))
+    } else {
+        return rotate
     }
 }
