@@ -1,6 +1,5 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import "../utils.typ": get-origin
 #import cetz.draw: anchor, rect, line, circle, set-origin, scale as cetzscale, rotate as cetzrotate, floating, set-style, translate, scope
 #import "../mini.typ": adjustable-arrow
 #import "../utils.typ": quick-wires

@@ -28,7 +28,7 @@
             }
         },
         component: (node2, variant, scale, rotate, wires, ..styling) => {
-            circle((0, 0), radius: (radius, radius), fill: white, ..styling)
+            circle((0, 0), radius: radius, fill: white, ..styling)
             if (variant == "iec") {
                 line((0, -radius), (rel: (0, 2*radius)), stroke: component-stroke)
             } else {
