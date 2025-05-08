@@ -70,7 +70,7 @@
     )
 
     // Componant call
-    component(uid, node, none, draw: draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
 
 #let pnp(uid, node, ..params) = bjt(uid, node, polarisation: "pnp", ..params)

@@ -42,7 +42,7 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(node, node2, "in", "out", rotate)
+            quick-wires(rotate, node, node2)
         }
     )
 
