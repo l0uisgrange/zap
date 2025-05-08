@@ -36,7 +36,7 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(node, node2, "minus", "plus", rotate)
+            quick-wires(rotate, node, node2)
         }
     )
 
@@ -83,7 +83,7 @@
             }
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(node, node2, "minus", "plus", rotate)
+            quick-wires(rotate, node, node2)
         }
     )
 

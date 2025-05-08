@@ -59,8 +59,8 @@
     })
 
     if (debug) {
-        cetz.draw.for-each-anchor(name, (name) => {
-           cetz.draw.content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)), angle: -30deg)
+        for-each-anchor(name, (name) => {
+           content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)), angle: -30deg)
         })
     }
 }
