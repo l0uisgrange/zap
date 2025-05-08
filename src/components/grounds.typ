@@ -60,7 +60,7 @@
     )
 
     // Componant call
-    component(uid, node, none, draw: draw, ..params)
+    component(uid, node, draw: draw, ..params)
 }
 
 #let earth(uid, node, ..params) = ground(uid, node, type: "earth", ..params)

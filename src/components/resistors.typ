@@ -22,12 +22,9 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires and node2 != none) {
+            if (node2 != none) {
                 anchor("in", node)
                 anchor("out", node2)
-            } else if (wires) {
-                anchor("in", (-width/2 - wires-length, 0))
-                anchor("out", (rel: (width + 2*wires-length, 0)))
             } else {
                 anchor("in", (rel: (-width/2, 0)))
                 anchor("out", (rel: (width, 0)))
@@ -59,8 +56,8 @@
                 line(arrow-origin, (0, arrow-distance), (0,height/2), mark: (end: ">", fill: black))
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(node, node2, "in", "out", rotate)
+        wires: (node2, variant, scale, rotate, ..styling) => {
+            quick-wires(rotate, node, node2)
         }
     )
 

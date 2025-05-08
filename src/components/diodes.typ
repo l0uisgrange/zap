@@ -24,9 +24,6 @@
             if (wires and node2 != none) {
                 anchor("in", node)
                 anchor("out", node2)
-            } else if (wires) {
-                anchor("in", (- tangent - wires-length, 0))
-                anchor("out", (polygon-radius + wires-length, 0))
             } else {
                 anchor("in", (- polygon-radius/2, 0))
                 anchor("out", (rel: (polygon-radius, 0)))

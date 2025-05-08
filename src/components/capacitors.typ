@@ -22,9 +22,6 @@
             if (wires and node2 != none) {
                 anchor("in", node)
                 anchor("out", node2)
-            } else if (wires) {
-                anchor("in", (- distance / 2 - wires-length, 0))
-                anchor("out", (distance / 2 + wires-length, 0))
             } else {
                 anchor("in", (- distance/2, 0))
                 anchor("out", (rel: (distance, 0)))

@@ -22,9 +22,9 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                anchor("in", (- io-spacing / 2, - circle-radius - wires-length))
-                anchor("out", (io-spacing / 2, - circle-radius - wires-length))
+            if (node2 != none) {
+                anchor("in", node)
+                anchor("out", node2)
             } else {
                 anchor("in", (io-spacing/2, -io-y))
                 anchor("out", (-io-spacing/2, -io-y))

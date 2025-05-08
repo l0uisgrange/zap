@@ -1,14 +1,14 @@
 #import "dependencies.typ": cetz
 #import "utils.typ": *
 
-#let component(draw: none, label: none, variant: "iec", wires: true, scale: 1.0, rotate: 0deg, label-anchor: none, debug: false, ..params) = {
+#let component(draw: none, label: none, variant: "iec", scale: 1.0, wires: true, rotate: 0deg, label-anchor: none, debug: false, ..params) = {
     let (name, ..position) = params.pos()
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
     assert(type(name) == str, message: "component ID must be a string")
     assert(type(scale) == float, message: "scale must be a float")
     assert(type(rotate) == angle, message: "rotate must an angle")
-    assert(type(label) in (content, str), message: "rotate must an angle")
+    assert(label == none or type(label) in (content, str), message: "label must content or string")
     assert(variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(type(wires) == bool, message: "wires must be a bool")
 
