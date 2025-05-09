@@ -27,18 +27,18 @@
         }
         // Component
         on-layer(1, {
-            (p-draw.anchors)(position.at(1, default: none), variant, p-scale, p-rotate, wires, ..params.named())
+            (p-draw.anchors)(position, variant, p-scale, p-rotate, wires, ..params.named())
             group(name: name+"-component", {
                 set-origin(p-origin)
                 rotate(p-rotate)
                 scale(p-scale)
-                (p-draw.component)(position.at(1, default: none), variant, p-scale, p-rotate, wires, ..params.named())
+                (p-draw.component)(position, variant, p-scale, p-rotate, wires, ..params.named())
             })
         })
         // Wires
         on-layer(0, {
             if (wires) {
-                (p-draw.wires)(position.at(1, default: none), variant, p-scale, p-rotate, wires, ..params.named())
+                (p-draw.wires)(position, variant, p-scale, p-rotate, wires, ..params.named())
             }
         })
         // Label

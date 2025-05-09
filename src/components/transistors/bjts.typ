@@ -29,7 +29,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
+        anchors: (position, variant, scale, rotate, wires, ..styling) => {
             translate((-emitter.at(0), 0))
             if (envelope) {
                 anchor("base", (-radius - wires-length, 0))
@@ -45,7 +45,7 @@
                 anchor("collector", collector)
             }
         },
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        component: (position, variant, scale, rotate, wires, ..styling) => {
             if (envelope) {
                 line(base, (x: -radius), stroke: wires-stroke)
             }
@@ -57,7 +57,7 @@
             }
             line((base.at(0), -width/2), (base.at(0), width/2), stroke: component-stroke)
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
+        wires: (position, variant, scale, rotate, wires, ..styling) => {
             floating(line("base", (rel: (wires-length,0)), stroke: wires-stroke))
             floating(line("emitter", (rel: (0, -wires-length * wires-direction)), stroke: wires-stroke))
             floating(line("collector", (rel: (0, wires-length * wires-direction)), stroke: wires-stroke))

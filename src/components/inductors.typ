@@ -21,16 +21,16 @@
 
     // Drawing functions
     let draw = (
-        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (node2 != none) {
-                anchor("in", node)
-                anchor("out", node2)
+        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+            if (position.len() == 2) {
+                anchor("in", position.first())
+                anchor("out", position.last())
             } else {
                 anchor("in", (-width/2, 0))
                 anchor("out", (rel: (width, 0)))
             }
         },
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        component: (position, variant, scale, rotate, wires, ..styling) => {
             if (variant == "iec") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
             } else {
@@ -42,8 +42,8 @@
                 }
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, node, node2)
+        wires: (position, variant, scale, rotate, wires, ..styling) => {
+            quick-wires(rotate, ..position)
         }
     )
 

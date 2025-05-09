@@ -25,13 +25,13 @@
 
     // Drawing functions
     let draw = (
-        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
+        anchors: (position, variant, scale, rotate, wires, ..styling) => {
             anchor("gate", (-height, 0))
             anchor("drain", (0, width / 2))
             anchor("source", (0, -width / 2))
             anchor("substrate", (0, 0))
         },
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        component: (position, variant, scale, rotate, wires, ..styling) => {
             if (mode == "enhancement") {
                 let bar-length = (base-width - 2*base-spacing)/3
                 for i in range(3) {
@@ -47,7 +47,7 @@
             line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
             line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {}
+        wires: (position, variant, scale, rotate, wires, ..styling) => {}
     )
 
     // Componant call

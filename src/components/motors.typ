@@ -21,16 +21,16 @@
 
     // Drawing functions
     let draw = (
-        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (node2 != none) {
-                anchor("in", node)
-                anchor("out", node2)
+        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+            if (position.len() == 2) {
+                anchor("in", position.first())
+                anchor("out", position.last())
             } else {
                 anchor("in", (io-spacing/2, -io-y))
                 anchor("out", (-io-spacing/2, -io-y))
             }
         },
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        component: (position, variant, scale, rotate, wires, ..styling) => {
             if (variant == "pretty") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
                 circle((0,0), radius: circle-radius, fill: white)
@@ -48,8 +48,8 @@
                 dc-sign()
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, node, node2)
+        wires: (position, variant, scale, rotate, wires, ..styling) => {
+            quick-wires(rotate, node, ..position)
         }
     )
 
