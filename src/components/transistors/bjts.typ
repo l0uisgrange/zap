@@ -1,6 +1,6 @@
 #import "../../component.typ": component
 #import "../../dependencies.typ": cetz
-#import cetz.draw: anchor, line, mark, circle, scale as cetzscale, floating
+#import cetz.draw: anchor, line, mark, circle, translate, scale as cetzscale, floating
 #import "../../mini.typ": adjustable-arrow
 
 #let bjt(uid, node, polarisation: "npn", envelope: false, ..params) = {
@@ -13,10 +13,10 @@
     let wires-stroke = 0.6pt
 
     // Style constants
-    let radius = 15pt
+    let radius = 20pt
     let angle = 50deg
-    let width = 17pt
-    let distance = 9pt
+    let width = 24pt
+    let distance = 13pt
     let base = (-6pt, 0)
     let emitter = (calc.cos(angle) * radius, calc.sin(angle) * radius)
     let collector = (calc.cos(angle) * radius, -calc.sin(angle) * radius)
@@ -30,15 +30,12 @@
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (envelope and not wires) {
-                anchor("base", (-radius, 0))
-                anchor("emitter", emitter)
-                anchor("collector", collector)
-            } else if (envelope and wires) {
+            translate((-emitter.at(0), 0))
+            if (envelope) {
                 anchor("base", (-radius - wires-length, 0))
                 anchor("emitter", (emitter.at(0), emitter.at(1) + wires-direction * wires-length))
                 anchor("collector", (collector.at(0), collector.at(1) - wires-direction * wires-length))
-            } else if (not envelope and wires) {
+            } else if (not envelope) {
                 anchor("base", (base.at(0) - wires-length, 0))
                 anchor("emitter", (emitter.at(0), emitter.at(1) + wires-direction * wires-length))
                 anchor("collector", (collector.at(0), collector.at(1) - wires-direction * wires-length))
@@ -61,11 +58,10 @@
             line((base.at(0), -width/2), (base.at(0), width/2), stroke: component-stroke)
         },
         wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                floating(line("base", (rel: (wires-length,0)), stroke: wires-stroke))
-                floating(line("emitter", (rel: (0, -wires-length * wires-direction)), stroke: wires-stroke))
-                floating(line("collector", (rel: (0, wires-length * wires-direction)), stroke: wires-stroke))
-            }
+            floating(line("base", (rel: (wires-length,0)), stroke: wires-stroke))
+            floating(line("emitter", (rel: (0, -wires-length * wires-direction)), stroke: wires-stroke))
+            floating(line("collector", (rel: (0, wires-length * wires-direction)), stroke: wires-stroke))
+            translate((-emitter.at(0), 0))
         }
     )
 

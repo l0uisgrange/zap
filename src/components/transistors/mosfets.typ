@@ -1,6 +1,6 @@
 #import "../../component.typ": component
 #import "../../dependencies.typ": cetz
-#import cetz.draw: anchor, line, mark, circle, set-origin, floating
+#import cetz.draw: anchor, line, mark, translate, circle, set-origin, floating
 #import "../../mini.typ": adjustable-arrow
 
 #let mosfet(uid, node, channel: "n", envelope: false, gates: 1, mode: "enhancement", substrate: "internal", ..params) = {
@@ -16,45 +16,38 @@
     let wires-stroke = 0.6pt
 
     // Style constants
-    let width = 25pt
+    let width = 40pt
     let base-spacing = 3pt
-    let base-width = width + 8pt
+    let base-width = width + 0pt
     let bar-length = (base-width - 2*base-spacing)/3
-    let height = 15pt
-    let base-delta = 5pt
+    let height = 18pt
+    let base-delta = 0pt
 
     // Drawing functions
     let draw = (
         anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (wires) {
-                anchor("gate", (-height/2 + base-delta - wires-length, 0))
-                anchor("drain", (height/2 + base-delta, width / 2 + wires-length))
-                anchor("source", (height/2 + base-delta, - width / 2 - wires-length))
-            } else {
-                anchor("gate", (-height/2 + base-delta - wires-length, 0))
-                anchor("drain", (-height/2 + base-delta - wires-length, 0))
-                anchor("source", (-height/2 + base-delta - wires-length, 0))
-            }
+            anchor("gate", (-height, 0))
+            anchor("drain", (0, width / 2))
+            anchor("source", (0, -width / 2))
+            anchor("substrate", (0, 0))
         },
         component: (node2, variant, scale, rotate, wires, ..styling) => {
             if (mode == "enhancement") {
                 let bar-length = (base-width - 2*base-spacing)/3
                 for i in range(3) {
-                    line(((-height/2 + base-delta, -base-width/2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)))
+                    line(((-height, -base-width/2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)))
                 }
             } else {
-                line((-height/2 + base-delta, -base-width/2), (rel: (0, base-width)))
+                line((-height, -base-width/2), (rel: (0, base-width)))
             }
-            if (not substrate == none) {
-                line((-height/2 + base-delta, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
+            if (substrate != none) {
+                line((-height, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
                 mark("line.centroid", "gate", symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
             }
+            line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
+            line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            floating(line("gate", (rel: (wires-length, 0)), stroke: wires-stroke))
-            floating(line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
-            floating(line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke))
-        }
+        wires: (node2, variant, scale, rotate, wires, ..styling) => {}
     )
 
     // Componant call

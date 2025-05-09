@@ -18,4 +18,4 @@
 
 // Export transistors
 #import "components/transistors/bjts.typ": bjt, pnp, npn
-#import "components/transistors/mosfets.typ": mosfet, pmos, nmos
+#import "components/transistors/mosfets.typ": mosfet, pmos, nmos, pmosd, nmosd
