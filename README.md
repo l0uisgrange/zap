@@ -23,6 +23,10 @@
 })
 ```
 
+## Documentation
+
+Comprehensive documentation 📚, including easy-to-navigate sections, examples, a component list, and API references, is available [online here](https://l0uisgrange.github.io/circuitor/).
+
 ## Supported Components
 
 Circuitor supports a wide range of electronic components 🤓, with symbols in different variants. Here is a quick list of the popular ones:
@@ -38,6 +42,8 @@ Circuitor supports a wide range of electronic components 🤓, with symbols in d
 | DC Motor        | `dcmotor(..params)`   | ![Motor](doc/examples/motor.svg)            |
 | NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)                |
 | PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)                |
+
+The complete list of available components is available on the [online documentation](https://l0uisgrange.github.io/circuitor/docs/components).
 
 Feel free to suggest 💡 any new component by [opening a new issue](https://github.com/l0uisgrange/circuitor/issues/new?template=new_component.yml)!
 
