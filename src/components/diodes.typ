@@ -14,7 +14,7 @@
     let wires-stroke = 0.6pt
     let sign-stroke = 0.6pt
     // IEC/ANSI/IEEE style constants
-    let polygon-radius = 8pt
+    let polygon-radius = 11pt
     let height = polygon-radius * calc.sin(calc.pi/4)
     let tangent = polygon-radius * calc.cos(calc.pi/4) * 0.7
 
@@ -31,9 +31,9 @@
         },
         component: (position, variant, scale, rotate, wires, ..styling) => {
             translate((-0.08,0))
-            polygon((0,0), 3, radius: .30, fill: white)
+            polygon((0,0), 3, radius: .35, fill: white)
             line((0deg, .35), (180deg, .175), stroke: wires-stroke)
-            line((polygon-radius, -height), (polygon-radius, height), stroke: component-stroke)
+            line((polygon-radius - 1pt, -height), (polygon-radius - 1pt, height), stroke: component-stroke)
             let origin = (-tangent / 2, 20pt)
             if (emitting) {
                 radiation-arrows(origin)
