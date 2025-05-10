@@ -1,6 +1,7 @@
 // Export dependencies
 #import "dependencies.typ": cetz
 #import cetz: canvas
+#import cetz.draw: *
 
 // Export components
 #import "component.typ": component

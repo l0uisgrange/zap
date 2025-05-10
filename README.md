@@ -4,8 +4,8 @@
 ![License](https://img.shields.io/github/license/l0uisgrange/circuitor?style=flat-square)
 ![Milestone](https://img.shields.io/github/milestones/progress-percent/l0uisgrange/circuitor/1?style=flat-square&cacheSeconds=60&link=https%3A%2F%2Fgithub.com%2Fl0uisgrange%2Fcircuitor%2Fmilestones)
 
-![Resistor variants](doc/examples/full.svg#gh-light-mode-only)
-![Resistor variants](doc/examples/full-dark.svg#gh-dark-mode-only)
+![Resistor variants](assets/full.svg#gh-light-mode-only)
+![Resistor variants](assets/full-dark.svg#gh-dark-mode-only)
 
 > [!IMPORTANT]
 > Circuitor is not yet available on Typst Universe. Follow [this discussion](https://github.com/l0uisgrange/circuitor/discussions/2) to stay updated on the first release 🌟!
@@ -15,11 +15,12 @@
 ```typst
 #import "@preview/circuitor:0.1.0"
 
-#canvas({
-    isource("isource", (0,0))
-    wire("isource.plus", "resistor.in")
-    resistor("resistor", (3,0))
-    wire("resistor.out", "isource.minus")
+#circuitor.canvas({
+    import circuitor: *
+
+    isource("i1", (0,0), (5,0))
+    resistor("r1", (5,5), (0,5))
+    wire("r1.out", "i1.minus")
 })
 ```
 
@@ -29,21 +30,9 @@ Comprehensive documentation 📚, including easy-to-navigate sections, examples,
 
 ## Supported Components
 
-Circuitor supports a wide range of electronic components 🤓, with symbols in different variants. Here is a quick list of the popular ones:
+Circuitor supports a wide range of electronic components 🤓, with symbols in different variants. 
 
-| Name            | Declaration           | IEC Symbol                                  |
-|:----------------|:----------------------|:--------------------------------------------|
-| Current Source  | `isource(..params)`   | ![Current Source](doc/examples/isource.svg) |
-| Voltage Source  | `vsource(..params)`   | ![Voltage Source](doc/examples/vsource.svg) |
-| Resistor        | `resistor(..params)`  | ![Resistor](doc/examples/resistor.svg)      |
-| Capacitor       | `capacitor(..params)` | ![Capacitor](doc/examples/capacitor.svg)    |
-| Inductor        | `inductor(..params)`  | ![Inductor](doc/examples/inductor.svg)      |
-| Diode           | `diode(..params)`     | ![Inductor](doc/examples/diode.svg)         |
-| DC Motor        | `dcmotor(..params)`   | ![Motor](doc/examples/motor.svg)            |
-| NPN Transistor  | `npn(..params)`       | ![NPN](doc/examples/npn.svg)                |
-| PNP Transistor  | `pnp(..params)`       | ![PNP](doc/examples/pnp.svg)                |
-
-The complete list of available components is available on the [online documentation](https://l0uisgrange.github.io/circuitor/docs/components).
+It includes `resistor`, `led`, `diode`, `capacitor`, `vsource`, etc. The complete list of available components with examples and documentation can be found on the [online documentation](https://l0uisgrange.github.io/circuitor/docs/components).
 
 Feel free to suggest 💡 any new component by [opening a new issue](https://github.com/l0uisgrange/circuitor/issues/new?template=new_component.yml)!
 
@@ -52,22 +41,11 @@ Feel free to suggest 💡 any new component by [opening a new issue](https://git
 > [!NOTE]
 > The representation for each symbol adheres closely to the relevant standard. The current implementations are based on
 > - [IEC 60617](https://webstore.iec.ch/en/publication/2723) (January 1st, 2025) **recommended standard worldwide** 🌎
-> - [IEEE/ANSI 315-1975](https://standards.ieee.org/ieee/315/515/) (deprecated as of November 7th, 2019)
+> - [IEEE/ANSI 315–1975](https://standards.ieee.org/ieee/315/515/) (deprecated as of November 7th, 2019)
 
 Each component can be displayed using either the IEEE/ANSI, or IEC symbol style. For example, here are the resistor variants:
 
-![Resistor variants](doc/examples/resistor-standards.svg)
-
-### Styling Parameters
-
-Each component supports flexible styling through the following parameters:
-
-| Name     | Required              | Type             | Description                            |
-|:---------|:----------------------|:-----------------|:---------------------------------------|
-| uid      | Yes                   | `string`         | Unique identifier                      |
-| position | Yes                   | `(float, float)` | Coordinates for the component’s center |
-| color    | No (default: `black`) | `color`          | Color of the component's drawing       |
-| variant  | No (default: `iec`)   | `iec` or `ieee`  | Symbol standard (IEEE or IEC)          |
+![Resistor variants](assets/resistor-standards.svg)
 
 ### Magic Anchors
 
