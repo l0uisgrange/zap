@@ -57,16 +57,16 @@
 
     // Drawing functions
     let draw = (
-        anchors: (node2, variant, scale, rotate, wires, ..styling) => {
-            if (node2 != none) {
-                anchor("minus", node)
-                anchor("plus", node2)
+        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+            if (position.len() == 2) {
+                anchor("minus", position.first())
+                anchor("plus", position.last())
             } else {
                 anchor("minus", (-radius, 0))
                 anchor("plus", (rel: (2*radius, 0)))
             }
         },
-        component: (node2, variant, scale, rotate, wires, ..styling) => {
+        component: (position, variant, scale, rotate, wires, ..styling) => {
             circle((0, 0), radius: (radius, radius), fill: white, ..styling)
             if (variant == "iec") {
                 line((-radius, 0), (rel: (2*radius, 0)))
@@ -76,8 +76,8 @@
                 line((rel: (sign-size, -sign-size)),(rel: (-2*sign-size, 0)), stroke: sign-stroke)
             }
         },
-        wires: (node2, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, node, node2)
+        wires: (position, variant, scale, rotate, wires, ..styling) => {
+            quick-wires(rotate, ..position)
         }
     )
 
