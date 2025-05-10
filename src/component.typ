@@ -59,8 +59,10 @@
     })
 
     if (debug) {
-        for-each-anchor(name, (name) => {
-           content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)), angle: -30deg)
+        on-layer(1, {
+            for-each-anchor(name, exclude: ("north", "south", "south-east", "north-east", "east", "west", "north-west", "south-west", "center", "start", "end", "mid", name+"-component"), (name) => {
+               content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)))
+            })
         })
     }
 }
