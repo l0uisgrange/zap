@@ -23,8 +23,8 @@ You can find the full list of examples [here](https://l0uisgrange.github.io/zap/
   </td>
 </tr>
 <tr>
-  <td>Tree Layout</td>
-  <td>Periodic Table of Elements</td>
+  <td>Simple example</td>
+  <td>More complex example</td>
 </tr>
 </table>
 
