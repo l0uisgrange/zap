@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-description: Report a problem or error when using Circuitor.
+description: Report a problem or error when using Zap.
 title: "[Bug]: "
 labels: ["bug"]
 assignees:
@@ -16,12 +16,13 @@ body:
   - type: dropdown
     id: package_version
     attributes:
-      label: Circuitor Version
-      description: The version of Circuitor you are using.
+      label: Zap Version
+      description: The version of Zap you are using.
       options:
+        - Development
         - 0.1.0 (default)
         - Other
-      default: 0
+      default: 1
     validations:
       required: true
   - type: dropdown

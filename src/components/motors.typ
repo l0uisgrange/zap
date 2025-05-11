@@ -16,21 +16,18 @@
     let width = 35pt
     let height = width / 4
 
-    let io-spacing = 25pt
-    let io-y = 0.49 * io-spacing
-
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("in", position.first())
                 anchor("out", position.last())
             } else {
-                anchor("in", (io-spacing/2, -io-y))
-                anchor("out", (-io-spacing/2, -io-y))
+                anchor("in", (-circle-radius, 0))
+                anchor("out", (circle-radius, 0))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (variant == "pretty") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
                 circle((0,0), radius: circle-radius, fill: white)
@@ -48,11 +45,11 @@
                 dc-sign()
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, node, ..position)
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
+            quick-wires(rotate, ..position)
         }
     )
 
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component(uid, node, draw: draw, label-distance: 30pt, ..params)
 }

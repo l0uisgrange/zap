@@ -24,7 +24,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             anchor("gate", (-height, 0))
             anchor("drain", (0, width / 2 + wires-length))
             anchor("source", (0, -width / 2 - wires-length))
@@ -32,7 +32,7 @@
                 anchor("bulk", (0, 0))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if mode == "enhancement" {
                 let bar-length = (base-width - 2*base-spacing)/3
                 for i in range(3) {
@@ -53,7 +53,7 @@
                 mark((-height/2,  if (channel == "n") { -width/2 } else { width/2 }), (rel: (height, 0)), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {}
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {}
     )
 
     // Componant call

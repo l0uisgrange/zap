@@ -1,5 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
+#import cetz.vector: dist
 #import cetz.draw: anchor, rect, line, circle, set-origin, scale as cetzscale, rotate as cetzrotate, floating, set-style, translate, scope
 #import "../mini.typ": adjustable-arrow
 #import "../utils.typ": quick-wires
@@ -21,7 +22,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("in", position.first())
                 anchor("out", position.last())
@@ -30,7 +31,7 @@
                 anchor("out", (rel: (width, 0)))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (variant == "iec") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: white, ..styling)
             } else {
@@ -56,8 +57,14 @@
                 line(arrow-origin, (0, arrow-distance), (0,height/2), mark: (end: ">", fill: black))
             }
         },
-        wires: (position, variant, scale, rotate, ..styling) => {
-            quick-wires(rotate, ..position)
+        wires: (ctx, position, variant, scale, rotate, ..styling) => {
+            if (position.len() == 2 and position.at(1, default: none) != none) {
+                let distance = dist(position.first(), position.last()) - cetz.util.resolve-number(ctx, width * scale)
+                line(position.first(), (rel: (angle: rotate, radius: distance / 2)), stroke: wires-stroke)
+                line(position.last(), (rel: (angle: rotate + 180deg, radius: distance / 2)), stroke: wires-stroke)
+            } else {
+                line((to: position.first(), rel: (-wires-length, 0)), (to: position.first(), rel: (wires-length, 0)), stroke: wires-stroke)
+            }
         }
     )
 

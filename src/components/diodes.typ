@@ -20,7 +20,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("in", position.first())
                 anchor("out", position.last())
@@ -29,7 +29,7 @@
                 anchor("out", (rel: (polygon-radius, 0)))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             translate((-0.08,0))
             polygon((0,0), 3, radius: .35, fill: white)
             line((0deg, .35), (180deg, .175), stroke: wires-stroke)
@@ -41,7 +41,7 @@
                 radiation-arrows(origin, reversed: true)
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             quick-wires(rotate, ..position)
         }
     )

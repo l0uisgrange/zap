@@ -1,7 +1,7 @@
 #import "dependencies.typ": cetz
 #import "utils.typ": *
 
-#let component(draw: none, label: none, variant: "iec", scale: 1.0, wires: true, rotate: 0deg, label-anchor: none, debug: false, ..params) = {
+#let component(draw: none, label: none, variant: "iec", scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "center", label-distance: 20pt, debug: false, ..params) = {
     let (name, ..position) = params.pos()
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
@@ -27,33 +27,24 @@
         }
         // Component
         on-layer(1, {
-            (p-draw.anchors)(position, variant, p-scale, p-rotate, wires, ..params.named())
+            (p-draw.anchors)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
             group(name: name+"-component", {
                 set-origin(p-origin)
                 rotate(p-rotate)
                 scale(p-scale)
-                (p-draw.component)(position, variant, p-scale, p-rotate, wires, ..params.named())
+                (p-draw.component)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
             })
         })
-        // Wires
+        // Wires and label
         on-layer(0, {
             if (wires) {
-                (p-draw.wires)(position, variant, p-scale, p-rotate, wires, ..params.named())
+                (p-draw.wires)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
             }
-        })
-        // Label
-        on-layer(0, {
             if (label != none) {
-                let label-anchor = if (
-                    (p-rotate > -45deg and p-rotate < 45deg) or
-                    (p-rotate > 135deg or p-rotate < -135deg)
-                ) {
-                    ("north", "south")
-                } else {
-                    ("east", "west")
-                }
-                let display = if (type(label) == str) { $label$ } else { label }
-                content(name+"-component."+label-anchor.at(0), display, anchor: label-anchor.at(1), padding: 6pt)
+                let display = if type(label) == str { $label$ } else { label }
+                p-rotate = p-rotate + label-angle
+                let angle = if (p-rotate >= 90deg) { -90deg + p-rotate } else { 90deg + p-rotate }
+                content((rel: (angle, label-distance), to: name+"-component.center"), display, anchor: label-anchor, padding: 6pt)
             }
         })
     })

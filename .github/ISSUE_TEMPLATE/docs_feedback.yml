@@ -33,7 +33,7 @@ body:
     attributes:
       label: Documentation Page (if applicable)
       description: Provide the URL or section name of the documentation page where the issue occurs.
-      placeholder: e.g. https://circuitor.github.io/
+      placeholder: e.g. https://zap.github.io/
     validations:
       required: false
 

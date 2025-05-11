@@ -29,10 +29,10 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             anchor("in", (0, 0))
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if type == "earth" {
                 let y1 = -symbol-distance
                 let y2 = y1 - earth-spacing
@@ -53,7 +53,7 @@
                 line((0, -signal-height - symbol-distance), (-signal-width / 2, -symbol-distance), (signal-width / 2, -symbol-distance), close: true)
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             set-origin(position.first())
             line((0,0), (rel: (0, -symbol-distance)), stroke: wires-stroke)
         }

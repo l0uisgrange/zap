@@ -15,7 +15,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("minus", position.first())
                 anchor("plus", position.last())
@@ -24,7 +24,7 @@
                 anchor("plus", (rel: (2*radius, 0)))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             circle((0, 0), radius: radius, fill: white, ..styling)
             if (variant == "iec") {
                 line((0, -radius), (rel: (0, 2*radius)), stroke: component-stroke)
@@ -32,13 +32,13 @@
                 line((-radius + padding, 0), (rel: (2*radius - 1.85*padding, 0)), mark: (end: ">"), fill: black, stroke: component-stroke)
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             quick-wires(rotate, ..position)
         }
     )
 
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component(uid, node, draw: draw, label-distance: 27pt, ..params)
 }
 
 #let acisource(uid, node, ..params) = isource(uid, node, current: "ac", ..params)
@@ -57,7 +57,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("minus", position.first())
                 anchor("plus", position.last())
@@ -66,7 +66,7 @@
                 anchor("plus", (rel: (2*radius, 0)))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             circle((0, 0), radius: (radius, radius), fill: white, ..styling)
             if (variant == "iec") {
                 line((-radius, 0), (rel: (2*radius, 0)))
@@ -76,13 +76,13 @@
                 line((rel: (sign-size, -sign-size)),(rel: (-2*sign-size, 0)), stroke: sign-stroke)
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             quick-wires(rotate, ..position)
         }
     )
 
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component(uid, node, draw: draw, label-distance: 27pt, ..params)
 }
 
 #let acvsource(uid, node, ..params) = vsource(uid, node, current: "ac", ..params)

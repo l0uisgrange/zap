@@ -24,7 +24,7 @@ You can find the full list of examples [here](https://l0uisgrange.github.io/zap/
 </tr>
 <tr>
   <td>Simple example</td>
-  <td>More complex example</td>
+  <td>Wheatstone bridge</td>
 </tr>
 </table>
 

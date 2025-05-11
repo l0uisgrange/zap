@@ -1,11 +1,10 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
+#import cetz.vector: dist
 #import cetz.draw: anchor, rect, arc, line, floating
 #import "../utils.typ": quick-wires
 
-#let inductor(uid, node, variant: "iec", ..params) = {
-    assert(variant in ("iec", "ieee"))
-
+#let inductor(uid, node, ..params) = {
     // TODO: move to defaults
     let wires-length = 7pt
     let component-stroke = 1pt
@@ -21,7 +20,7 @@
 
     // Drawing functions
     let draw = (
-        anchors: (position, variant, scale, rotate, wires, ..styling) => {
+        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (position.len() == 2) {
                 anchor("in", position.first())
                 anchor("out", position.last())
@@ -30,7 +29,7 @@
                 anchor("out", (rel: (width, 0)))
             }
         },
-        component: (position, variant, scale, rotate, wires, ..styling) => {
+        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             if (variant == "iec") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
             } else {
@@ -42,8 +41,14 @@
                 }
             }
         },
-        wires: (position, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, ..position)
+        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
+            if (position.len() == 2 and position.at(1, default: none) != none) {
+                let distance = dist(position.first(), position.last()) - cetz.util.resolve-number(ctx, width * scale)
+                line(position.first(), (rel: (angle: rotate, radius: distance / 2)), stroke: wires-stroke)
+                line(position.last(), (rel: (angle: rotate + 180deg, radius: distance / 2)), stroke: wires-stroke)
+            } else {
+                line((to: position.first(), rel: (-wires-length, 0)), (to: position.first(), rel: (wires-length, 0)), stroke: wires-stroke)
+            }
         }
     )
 
