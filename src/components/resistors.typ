@@ -1,55 +1,49 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
-#import cetz.vector: dist
-#import cetz.draw: anchor, rect, line, circle, set-origin, scale as cetzscale, rotate as cetzrotate, floating, set-style, translate, scope
+#import cetz.draw: anchor, rect, line
 #import "/src/mini.typ": adjustable-arrow
-#import "/src/utils.typ": quick-wires
 
-#let resistor(uid, node, adjustable: false, movable: false, ..params) = {
+#let resistor(name, node, adjustable: false, movable: false, ..params) = {
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
     assert(type(movable) == bool, message: "movable must be of type bool")
 
-    // TODO: move to package defaults
-    let wires-length = 7pt
-    let component-stroke = 1pt
-    let wires-stroke = 0.6pt
-    let sign-stroke = 0.6pt
+    // Resistor style
+    let style = (
+        width: 40pt,
+        height: 40pt/3,
+        zigs: 3
+    )
 
-    // Style constants
-    let width = 40pt
-    let height = width / 3
-    let zigs = 3
+    // Drawing function
+    let draw(ctx, style) = {
+        anchor("0", (-style.width/2, -style.height/2))
+        anchor("1", (style.width/2, style.height/2))
 
-    // Drawing functions
-    let draw(ctx, position, variant, scale, rotate, wires, ..styling) = {
-        anchor("0", (-width/2, -height/2))
-        anchor("1", (width/2, height/2))
-        if (variant == "iec") {
-            rect((-width / 2, -height / 2), (width / 2, height / 2), fill: white, ..styling)
+        if style.variant == "iec" {
+            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2))
         } else {
-            let step = width / (zigs * 2)
-            let height = height
+            let step = style.width / (style.zigs * 2)
             let sign = -1
-            let x = width / 2
-            line((-x, 0), (rel: (step/2, height/2)),
-                ..for _ in range(zigs * 2 - 1) {
-                ((rel: (step, height * sign)),)
+            let x = style.width / 2
+            line((-x, 0), (rel: (step/2, style.height/2)),
+                ..for _ in range(style.zigs * 2 - 1) {
+                ((rel: (step, style.height * sign)),)
                 sign *= -1 },
                 (x, 0), fill: none
             )
         }
-        if (adjustable) {
+        if adjustable {
             adjustable-arrow()
-        } else if (movable) {
+        } else if movable {
             let arrow-length = 40pt
             let arrow-distance = 20pt
-            let arrow-origin = (1.3*width/2, arrow-distance)
-            line(arrow-origin, (0, arrow-distance), (0,height/2), mark: (end: ">", fill: black))
+            let arrow-origin = (1.3*style.width/2, arrow-distance)
+            line(arrow-origin, (0, arrow-distance), (0,style.height/2), mark: (end: ">", fill: black))
         }
     }
 
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component("resistor", name, node, draw: draw, style: style, ..params)
 }
 
-#let potentiometer(uid, node, ..params) = resistor(uid, node, adjustable: true, ..params)
+#let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)

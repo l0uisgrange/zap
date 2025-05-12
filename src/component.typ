@@ -2,30 +2,29 @@
 #import "utils.typ": *
 #import "styles.typ": default-style
 
-#let component(draw: none, label: none, variant: "iec", scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "center", label-distance: 20pt, debug: false, ..params) = {
-    let (name, ..position) = params.pos()
+#let component(draw: none, label: none, scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "center", label-distance: 20pt, debug: false, style: none, ..params) = {
+    let (uid, name, ..position) = params.pos()
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
-    assert(type(name) == str, message: "component ID must be a string")
+    assert(type(name) == str, message: "component name must be a string")
     assert(type(scale) == float, message: "scale must be a float")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str), message: "label must content or string")
-    assert(variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
+    assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(type(wires) == bool, message: "wires must be a bool")
 
     let p-rotate = rotate
     let p-scale = scale
     let p-draw = draw
+    let p-style = style
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let style = cetz.styles.resolve(
-            ctx.style,
-            root: "zap",
-            merge: params.named(),
-            base: default-style
+        let pre-style = cetz.styles.resolve(
+             ctx.style,
+             root: "zap",
+             base: default-style
         )
-
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
@@ -41,8 +40,13 @@
         // Component
         on-layer(1, {
             group(name: "component", anchor: "center", {
+                let style = cetz.styles.resolve(
+                    pre-style,
+                    merge: pre-style.at(uid),
+                    base: cetz.util.merge-dictionary(params.named(), p-style),
+                )
                 scale(p-scale * style.at("scale", default: 1))
-                draw(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
+                draw(ctx, style)
                 hide(rect("0", "1", name: "rect"))
                 copy-anchors("rect")
             })
@@ -59,8 +63,8 @@
             }
         })
         if position.len() == 2 {
-            line("in", "component.west", stroke: style.at("wires").stroke)
-            line("out", "component.east", stroke: style.at("wires").stroke)
+            line("in", "component.west", stroke: pre-style.at("wires").stroke)
+            line("out", "component.east", stroke: pre-style.at("wires").stroke)
         }
         copy-anchors("component")
     })
