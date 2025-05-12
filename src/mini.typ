@@ -1,15 +1,17 @@
 #import "dependencies.typ": cetz
-#import cetz.draw: anchor, set-origin, rotate, line, set-style, hobby
+#import cetz.draw: anchor, set-origin, rotate, line, set-style, hobby, scope
 
 #let adjustable-arrow() = {
-    let arrow-length = 40pt
-    let arrow-angle = 55deg
-    let arrow-origin = (-0.5*calc.cos(arrow-angle)*arrow-length, -0.5*calc.sin(arrow-angle)*arrow-length)
-    anchor("adjust", arrow-origin)
+    scope({
+        let arrow-length = 40pt
+        let arrow-angle = 55deg
+        let arrow-origin = (-0.5*calc.cos(arrow-angle)*arrow-length, -0.5*calc.sin(arrow-angle)*arrow-length)
+        anchor("adjust", arrow-origin)
 
-    set-origin(arrow-origin)
-    rotate(arrow-angle)
-    line((0,0), (arrow-length,0), mark: (end: ">", fill: black))
+        set-origin(arrow-origin)
+        rotate(arrow-angle)
+        line((0,0), (arrow-length,0), mark: (end: ">", fill: black))
+    })
 }
 
 #let radiation-arrows(origin, reversed: false) = {

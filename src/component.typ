@@ -1,5 +1,6 @@
 #import "dependencies.typ": cetz
 #import "utils.typ": *
+#import "styles.typ": default-style
 
 #let component(draw: none, label: none, variant: "iec", scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "center", label-distance: 20pt, debug: false, ..params) = {
     let (name, ..position) = params.pos()
@@ -18,40 +19,55 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
+        let style = cetz.styles.resolve(
+            ctx.style,
+            root: "zap",
+            merge: params.named(),
+            base: default-style
+        )
+
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
         if position.len() == 2 {
+            anchor("in", position.first())
+            anchor("out", position.last())
             p-rotate = cetz.vector.angle2(..position)
             p-origin = (position.first(), 50%, position.last())
         }
+        set-origin(p-origin)
+        rotate(p-rotate)
+
         // Component
         on-layer(1, {
-            (p-draw.anchors)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
-            group(name: name+"-component", {
-                set-origin(p-origin)
-                rotate(p-rotate)
-                scale(p-scale)
-                (p-draw.component)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
+            group(name: "component", anchor: "center", {
+                scale(p-scale * style.at("scale", default: 1))
+                draw(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
+                hide(rect("0", "1", name: "rect"))
+                copy-anchors("rect")
             })
         })
+        //let label-size =  cetz.util.resolve-number(ctx, cetz.util.measure(ctx, "component").at(1))
+
         // Wires and label
         on-layer(0, {
-            if (wires) {
-                (p-draw.wires)(ctx, position, variant, p-scale, p-rotate, wires, ..params.named())
-            }
             if (label != none) {
                 let display = if type(label) == str { $label$ } else { label }
                 p-rotate = p-rotate + label-angle
                 let angle = if (p-rotate >= 90deg) { -90deg + p-rotate } else { 90deg + p-rotate }
-                content((rel: (angle, label-distance), to: name+"-component.center"), display, anchor: label-anchor, padding: 6pt)
+                content((rel: (angle, label-distance), to: "component.center"), display, anchor: label-anchor, padding: 6pt)
             }
         })
+        if position.len() == 2 {
+            line("in", "component.west", stroke: style.at("wires").stroke)
+            line("out", "component.east", stroke: style.at("wires").stroke)
+        }
+        copy-anchors("component")
     })
 
     if (debug) {
         on-layer(1, {
-            for-each-anchor(name, exclude: ("north", "south", "south-east", "north-east", "east", "west", "north-west", "south-west", "center", "start", "end", "mid", name+"-component"), (name) => {
+            for-each-anchor(name, exclude: ("start", "end", "mid"), (name) => {
                content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)))
             })
         })

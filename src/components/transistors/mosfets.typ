@@ -1,7 +1,7 @@
-#import "../../component.typ": component
-#import "../../dependencies.typ": cetz
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, mark, translate, circle, set-origin, floating
-#import "../../mini.typ": adjustable-arrow
+#import "/src/mini.typ": adjustable-arrow
 
 #let mosfet(uid, node, channel: "n", envelope: false, mode: "enhancement", bulk: "internal", ..params) = {
     assert(type(envelope) == bool, message: "envelope must be of type bool")
