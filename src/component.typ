@@ -2,7 +2,7 @@
 #import "utils.typ": *
 #import "styles.typ": default-style
 
-#let component(draw: none, label: none, scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "center", label-distance: 20pt, debug: false, style: none, ..params) = {
+#let component(draw: none, label: none, scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "west", label-distance: 20pt, debug: false, style: none, ..params) = {
     let (uid, name, ..position) = params.pos()
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
@@ -39,10 +39,10 @@
 
         // Component
         on-layer(1, {
-            group(name: "component", anchor: "center", {
+            group(name: "component", {
                 let style = cetz.styles.resolve(
                     pre-style,
-                    merge: pre-style.at(uid),
+                    merge: pre-style.at(uid, default: (variant: "iec")),
                     base: cetz.util.merge-dictionary(params.named(), p-style),
                 )
                 scale(p-scale * style.at("scale", default: 1))
@@ -51,22 +51,20 @@
                 copy-anchors("rect")
             })
         })
-        //let label-size =  cetz.util.resolve-number(ctx, cetz.util.measure(ctx, "component").at(1))
+
+        copy-anchors("component")
 
         // Wires and label
         on-layer(0, {
             if (label != none) {
-                let display = if type(label) == str { $label$ } else { label }
-                p-rotate = p-rotate + label-angle
-                let angle = if (p-rotate >= 90deg) { -90deg + p-rotate } else { 90deg + p-rotate }
-                content((rel: (angle, label-distance), to: "component.center"), display, anchor: label-anchor, padding: 6pt)
+                let (width, height) = cetz.util.measure(ctx, label)
+                content((rel: (0, -1.7em), to: (rel: (0, width/2 * calc.abs(calc.sin(p-rotate)) + height/2 * calc.abs(calc.cos(p-rotate))), to: "component.south")), label)
             }
         })
         if position.len() == 2 {
             line("in", "component.west", stroke: pre-style.at("wires").stroke)
             line("out", "component.east", stroke: pre-style.at("wires").stroke)
         }
-        copy-anchors("component")
     })
 
     if (debug) {
