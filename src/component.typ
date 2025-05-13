@@ -8,14 +8,14 @@
     scale: 1.0,
     wires: true,
     rotate: 0deg,
-    label-angle: 0deg,
-    label-anchor: "west",
-    label-distance: 20pt,
     debug: false,
     style: none,
     ..params,
 ) = {
     let (uid, name, ..position) = params.pos()
+    if position.at(1, default: none) == none {
+        position = (position.first(),)
+    }
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
     assert(type(name) == str, message: "component name must be a string")
