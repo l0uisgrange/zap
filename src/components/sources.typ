@@ -38,7 +38,7 @@
     let style = (
         radius: .53,
         padding: .25,
-        sign-stroke: .4pt,
+        sign-stroke: .55pt,
         sign-size: .14,
         sign-delta: .07,
     )

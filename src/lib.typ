@@ -10,6 +10,7 @@
 #import "components/wires.typ": wire
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode
+#import "components/opamp.typ": opamp
 #import "components/fuses.typ": afuse, fuse
 #import "components/grounds.typ": earth, frame, ground
 #import "components/inductors.typ": inductor
