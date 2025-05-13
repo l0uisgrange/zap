@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, line, circle, set-origin, rotate as cetzrotate, floating
+#import cetz.draw: anchor, circle, floating, line, rect, rotate as cetzrotate, set-origin
 #import "../mini.typ": adjustable-arrow
 #import "../utils.typ": quick-wires
 
@@ -25,20 +25,28 @@
                 anchor("in", position.first())
                 anchor("out", position.last())
             } else {
-                anchor("in", (rel: (-width/2, 0)))
+                anchor("in", (rel: (-width / 2, 0)))
                 anchor("out", (rel: (width, 0)))
             }
         },
-        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
+        component: (
+            ctx,
+            position,
+            variant,
+            scale,
+            rotate,
+            wires,
+            ..styling,
+        ) => {
             rect((-width / 2, -height / 2), (width / 2, height / 2), fill: white, ..styling)
-            line((-width/2, 0), (width/2, 0), stroke: wires-stroke)
+            line((-width / 2, 0), (width / 2, 0), stroke: wires-stroke)
             if (asymmetric) {
                 rect((-width / 2, -height / 2), (-width / 2 + a-width, height / 2), fill: black, ..styling)
             }
         },
         wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             quick-wires(rotate, ..position)
-        }
+        },
     )
 
     // Componant call

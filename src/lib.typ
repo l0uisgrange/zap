@@ -10,13 +10,13 @@
 #import "components/wires.typ": wire
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode
-#import "components/fuses.typ": fuse, afuse
-#import "components/grounds.typ": ground, earth, frame
+#import "components/fuses.typ": afuse, fuse
+#import "components/grounds.typ": earth, frame, ground
 #import "components/inductors.typ": inductor
-#import "components/resistors.typ": resistor, potentiometer
+#import "components/resistors.typ": potentiometer, resistor
 #import "components/sources.typ": isource, vsource
 #import "components/motors.typ": dcmotor
 
 // Export transistors
-#import "components/transistors/bjts.typ": bjt, pnp, npn
-#import "components/transistors/mosfets.typ": mosfet, pmos, nmos, pmosd, nmosd
+#import "components/transistors/bjts.typ": bjt, npn, pnp
+#import "components/transistors/mosfets.typ": mosfet, nmos, nmosd, pmos, pmosd

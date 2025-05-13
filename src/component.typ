@@ -2,7 +2,19 @@
 #import "utils.typ": *
 #import "styles.typ": default-style
 
-#let component(draw: none, label: none, scale: 1.0, wires: true, rotate: 0deg, label-angle: 0deg, label-anchor: "west", label-distance: 20pt, debug: false, style: none, ..params) = {
+#let component(
+    draw: none,
+    label: none,
+    scale: 1.0,
+    wires: true,
+    rotate: 0deg,
+    label-angle: 0deg,
+    label-anchor: "west",
+    label-distance: 20pt,
+    debug: false,
+    style: none,
+    ..params,
+) = {
     let (uid, name, ..position) = params.pos()
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
@@ -20,11 +32,7 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let pre-style = cetz.styles.resolve(
-             ctx.style,
-             root: "zap",
-             base: default-style
-        )
+        let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
@@ -40,11 +48,10 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                let style = cetz.styles.resolve(
-                    pre-style,
-                    merge: pre-style.at(uid, default: (variant: "iec")),
-                    base: cetz.util.merge-dictionary(params.named(), p-style),
-                )
+                let style = cetz.styles.resolve(pre-style, merge: pre-style.at(uid, default: (variant: "iec")), base: cetz.util.merge-dictionary(
+                    params.named(),
+                    p-style,
+                ))
                 scale(p-scale * style.at("scale", default: 1))
                 draw(ctx, style)
                 hide(rect("0", "1", name: "rect"))
@@ -58,7 +65,8 @@
         on-layer(0, {
             if (label != none) {
                 let (width, height) = cetz.util.measure(ctx, label)
-                content((rel: (0, -1.7em), to: (rel: (0, width/2 * calc.abs(calc.sin(p-rotate)) + height/2 * calc.abs(calc.cos(p-rotate))), to: "component.south")), label)
+                let new-position = (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)))
+                content((rel: (0, -20pt), to: (rel: (0, new-position), to: "component.south")), label)
             }
         })
         if position.len() == 2 {
@@ -69,8 +77,8 @@
 
     if (debug) {
         on-layer(1, {
-            for-each-anchor(name, exclude: ("start", "end", "mid"), (name) => {
-               content((), box(inset: 1pt, fill: black, text(4pt, [#name], fill: white)))
+            for-each-anchor(name, exclude: ("start", "end", "mid"), name => {
+                content((), box(inset: 1pt, fill: black, text(4pt, name, fill: white)))
             })
         })
     }

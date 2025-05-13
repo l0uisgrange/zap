@@ -1,7 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, line, circle, mark, rotate as cetzrotate, floating
-#import "../utils.typ": quick-wires
+#import cetz.draw: anchor, circle, line, mark, rect
 
 #let isource(name, node, current: "dc", ..params) = {
     assert(current in ("dc", "ac"), message: "current must be ac or dc")
@@ -10,7 +9,7 @@
     let style = (
         radius: 15pt,
         padding: 7pt,
-        arrow-scale: 3
+        arrow-scale: 3,
     )
 
     // Drawing function
@@ -18,11 +17,11 @@
         anchor("0", (-style.radius, -style.radius))
         anchor("1", (style.radius, style.radius))
 
-        circle((0, 0), radius: style.radius, fill: white)
+        circle((0, 0), radius: style.radius, fill: white, ..style)
         if (style.variant == "iec") {
-            line((0, -style.radius), (rel: (0, 2*style.radius)))
+            line((0, -style.radius), (rel: (0, 2 * style.radius)), ..style, fill: none)
         } else {
-            line((-style.radius + padding, 0), (rel: (2*style.radius - 1.85*padding, 0)), mark: (end: ">"), fill: black)
+            line((-style.radius + padding, 0), (rel: (2 * style.radius - 1.85 * padding, 0)), mark: (end: ">"), fill: black)
         }
     }
 
@@ -40,7 +39,7 @@
         radius: 15pt,
         padding: 7pt,
         sign-size: 4pt,
-        sign-delta: 2pt
+        sign-delta: 2pt,
     )
 
     // Drawing function
@@ -50,11 +49,18 @@
 
         circle((0, 0), radius: style.radius, fill: white)
         if (style.variant == "iec") {
-            line((-style.radius, 0), (rel: (2*style.radius, 0)))
+            line((-style.radius, 0), (rel: (2 * style.radius, 0)))
         } else {
-            line((rel: (- style.radius + style.padding, -style.sign-size)), (rel:  (0, 2*style.sign-size)), stroke: sign-stroke)
-            line((style.radius - style.padding - style.sign-delta, -style.sign-size),(rel: (0, 2*style.sign-size)), stroke: sign-stroke)
-            line((rel: (style.sign-size, -style.sign-size)),(rel: (-2*style.sign-size, 0)), stroke: sign-stroke)
+            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: sign-stroke)
+            line(
+                (
+                    style.radius - style.padding - style.sign-delta,
+                    -style.sign-size,
+                ),
+                (rel: (0, 2 * style.sign-size)),
+                stroke: sign-stroke,
+            )
+            line((rel: (style.sign-size, -style.sign-size)), (rel: (-2 * style.sign-size, 0)), stroke: sign-stroke)
         }
     }
 

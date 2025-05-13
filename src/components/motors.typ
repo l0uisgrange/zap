@@ -1,6 +1,6 @@
 #import "../component.typ": component
 #import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, arc, line, circle, content, set-origin, group, rotate as cetzrotate, floating
+#import cetz.draw: anchor, arc, circle, content, floating, group, line, rect, rotate as cetzrotate, set-origin
 #import "../mini.typ": dc-sign
 #import "../utils.typ": quick-wires
 
@@ -27,27 +27,29 @@
                 anchor("out", (circle-radius, 0))
             }
         },
-        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
+        component: (
+            ctx,
+            position,
+            variant,
+            scale,
+            rotate,
+            wires,
+            ..styling,
+        ) => {
             if (variant == "pretty") {
                 rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
-                circle((0,0), radius: circle-radius, fill: white)
+                circle((0, 0), radius: circle-radius, fill: white)
             } else {
-                circle((0,0), radius: width / 2, fill: white)
-                content(
-                  (0,0),
-                  padding: .1,
-                  rotate: -rotate,
-                  anchor: "south",
-                  $"M"$
-                )
+                circle((0, 0), radius: width / 2, fill: white)
+                content((0, 0), padding: .1, rotate: -rotate, anchor: "south", $"M"$)
                 cetzrotate(-rotate)
-                set-origin((0,-5pt))
+                set-origin((0, -5pt))
                 dc-sign()
             }
         },
         wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
             quick-wires(rotate, ..position)
-        }
+        },
     )
 
     // Componant call
