@@ -26,7 +26,7 @@
                     start.at(0) + bump-radius + i * 2 * bump-radius
                 )
                 let arc-center = (arc-center-x, 0)
-                arc(arc-center, radius: bump-radius, start: sgn * 180deg, stop: 0deg)
+                arc(arc-center, radius: bump-radius, start: sgn * 180deg, stop: 0deg, ..style)
             }
         }
     }

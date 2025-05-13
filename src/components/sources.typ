@@ -38,6 +38,7 @@
     let style = (
         radius: .53,
         padding: .25,
+        sign-stroke: .4pt,
         sign-size: .14,
         sign-delta: .07,
     )
@@ -47,20 +48,20 @@
         anchor("0", (-style.radius, -style.radius))
         anchor("1", (style.radius, style.radius))
 
-        circle((0, 0), radius: style.radius, fill: white)
+        circle((0, 0), radius: style.radius, fill: white, ..style)
         if (style.variant == "iec") {
-            line((-style.radius, 0), (rel: (2 * style.radius, 0)))
+            line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
         } else {
-            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: sign-stroke)
+            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
             line(
                 (
                     style.radius - style.padding - style.sign-delta,
                     -style.sign-size,
                 ),
                 (rel: (0, 2 * style.sign-size)),
-                stroke: sign-stroke,
+                stroke: style.sign-stroke,
             )
-            line((rel: (style.sign-size, -style.sign-size)), (rel: (-2 * style.sign-size, 0)), stroke: sign-stroke)
+            line((rel: (style.sign-size, -style.sign-size)), (rel: (-2 * style.sign-size, 0)), stroke: style.sign-stroke)
         }
     }
 

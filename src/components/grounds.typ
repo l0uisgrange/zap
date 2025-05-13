@@ -15,7 +15,7 @@
     // Drawing function
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
-        polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon")
+        polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", ..style)
 
         let (width, height) = cetz.util.measure(ctx, "polygon")
         anchor("0", (-width / 2, -height / 2))
@@ -41,7 +41,7 @@
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
         let delta = style.width / 2
-        line((-style.width / 2, -style.distance), (style.width / 2, -style.distance))
+        line((-style.width / 2, -style.distance), (style.width / 2, -style.distance), ..style)
         for i in (0, 1, 2) {
             line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
         }

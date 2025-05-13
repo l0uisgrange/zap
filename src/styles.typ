@@ -1,5 +1,5 @@
 #let default-style = (
     variant: "iec",
-    wires: (stroke: 0.6pt),
-    stroke: 1pt,
+    wires: (stroke: 0.4pt),
+    stroke: .8pt,
 )
