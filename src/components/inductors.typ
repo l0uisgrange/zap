@@ -5,7 +5,6 @@
 #import "../utils.typ": quick-wires
 
 #let inductor(name, node, ..params) = {
-
     // Inductor style
     let style = (
         width: 40pt,

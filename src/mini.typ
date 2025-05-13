@@ -51,9 +51,9 @@
 }
 
 #let dc-sign() = {
-    let width = 12pt
+    let width = 10pt
     let spacing = 1.5pt
-    let vspace = 3.5pt
+    let vspace = 3pt
     let symbol-stroke = 0.6pt
     let tick-width = (width - 2 * spacing) / 3
 
@@ -66,11 +66,11 @@
 }
 
 #let ac-sign() = {
-    let width = 12pt
-    let height = 12
+    let width = 10pt
+    let height = 4pt
     let symbol-stroke = 0.6pt
 
     set-style(stroke: symbol-stroke)
 
-    hobby((-1.5, 0), (-.5, 1), (.5, -1), (1.5, 0), omega: 0)
+    hobby((-width / 2, 0), (-width / 4, height / 2), (width / 4, -height / 2), (width / 2, 0))
 }

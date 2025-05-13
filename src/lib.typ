@@ -15,7 +15,7 @@
 #import "components/inductors.typ": inductor
 #import "components/resistors.typ": potentiometer, resistor
 #import "components/sources.typ": isource, vsource
-#import "components/motors.typ": dcmotor
+#import "components/motors.typ": acmotor, dcmotor
 
 // Export transistors
 #import "components/transistors/bjts.typ": bjt, npn, pnp

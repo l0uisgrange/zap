@@ -20,10 +20,14 @@
         anchor("1", (style.width / 2, style.height / 2))
 
         if style.variant == "iec" {
-            rect((-style.width / 2, -style.height / 2), (
-                style.width / 2,
-                style.height / 2,
-            ), ..style)
+            rect(
+                (-style.width / 2, -style.height / 2),
+                (
+                    style.width / 2,
+                    style.height / 2,
+                ),
+                ..style,
+            )
         } else {
             let step = style.width / (style.zigs * 2)
             let sign = -1
@@ -37,7 +41,7 @@
                 },
                 (x, 0),
                 ..style,
-                fill: none
+                fill: none,
             )
         }
         if adjustable {
