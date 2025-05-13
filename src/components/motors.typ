@@ -11,12 +11,12 @@
 
     // DCmotor style
     let style = (
-        radius: 14pt,
-        magnet-width: 35pt,
-        magnet-height: 35pt / 4,
+        radius: 0.49,
+        magnet-width: 1.23,
+        magnet-height: 1.23 / 4,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         anchor("0", (-style.radius, -style.radius))
         anchor("1", (style.radius, style.radius))

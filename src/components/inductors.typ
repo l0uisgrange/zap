@@ -7,12 +7,12 @@
 #let inductor(name, node, ..params) = {
     // Inductor style
     let style = (
-        width: 40pt,
-        height: 40pt / 3,
+        width: 1.41,
+        height: 1.41 / 3,
         bumps: 3,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         anchor("0", (-style.width / 2, -style.height / 2))
         anchor("1", (style.width / 2, style.height / 2))

@@ -8,11 +8,11 @@
 
     // Ground style
     let style = (
-        radius: 0.22, // TODO: replace with points units
-        distance: 8pt,
+        radius: 0.22,
+        distance: 0.28,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
         polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon")
@@ -31,19 +31,19 @@
 
     // Earth style
     let style = (
-        width: 13pt,
+        width: 0.46,
         angle: 20deg,
-        depth: 7pt,
-        distance: 8pt,
+        depth: 0.25,
+        distance: 0.28,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
         let delta = style.width / 2
         line((-style.width / 2, -style.distance), (style.width / 2, -style.distance))
         for i in (0, 1, 2) {
-            line((-style.width / 2 + (1 - i) * .4pt + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
+            line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
         }
         anchor("0", (-style.width / 2, style.distance))
         anchor("1", (style.width / 2, -style.distance))
@@ -58,13 +58,13 @@
 
     // Earth style
     let style = (
-        width: 15pt,
-        delta: 2.5pt,
-        spacing: 3pt,
-        distance: 8pt,
+        width: 0.53,
+        delta: 0.09,
+        spacing: 0.11,
+        distance: 0.28,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
         for i in (0, 1, 2) {

@@ -9,20 +9,20 @@
 
     // Fuses style
     let style = (
-        width: 25pt,
-        height: 25pt / 2.4,
+        width: 0.88,
+        height: 0.88 / 2.4,
         asymmetry: 25%,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
         anchor("0", (-style.width / 2, -style.height / 2))
         anchor("1", (style.width / 2, style.height / 2))
 
         rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)
-        line((-style.width / 2, 0), (style.width / 2, 0), stroke: style.at("wires").stroke)
+        line((-style.width / 2, 0), (style.width / 2, 0), ..style.at("wires"))
         if (asymmetric) {
-            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + style.asymmetry * style.width, style.height / 2), fill: black)
+            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), fill: black)
         }
     }
 

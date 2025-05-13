@@ -9,8 +9,8 @@
 
     // Resistor style
     let style = (
-        width: 40pt,
-        height: 40pt / 3,
+        width: 1.41,
+        height: 0.47,
         zigs: 3,
     )
 
