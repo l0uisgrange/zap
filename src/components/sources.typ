@@ -1,5 +1,5 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, mark, rect
 
 #let isource(name, node, current: "dc", ..params) = {

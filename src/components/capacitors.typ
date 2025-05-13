@@ -1,7 +1,7 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line
-#import "../mini.typ": adjustable-arrow
+#import "/src/mini.typ": adjustable-arrow
 
 #let capacitor(name, node, adjustable: false, ..params) = {
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")

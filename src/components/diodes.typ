@@ -1,7 +1,7 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, polygon, scope, translate
-#import "../mini.typ": radiation-arrows
+#import "/src/mini.typ": radiation-arrows
 
 #let diode(name, node, emitting: false, receiving: false, ..params) = {
     assert(type(emitting) == bool, message: "emitting must be of type bool")

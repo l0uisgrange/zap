@@ -1,5 +1,4 @@
 #import "dependencies.typ": cetz
-#import "utils.typ": *
 #import "styles.typ": default-style
 
 #let component(

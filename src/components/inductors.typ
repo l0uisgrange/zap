@@ -1,8 +1,6 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
-#import cetz.vector: dist
-#import cetz.draw: anchor, arc, floating, line, rect
-#import "../utils.typ": quick-wires
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
+#import cetz.draw: anchor, arc, line, rect
 
 #let inductor(name, node, ..params) = {
     // Inductor style
