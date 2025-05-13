@@ -24,7 +24,7 @@
         let arrows-scale = 0.8
 
         set-origin(origin)
-        set-style(stroke: 0.6pt)
+        set-style(stroke: 0.55pt)
         rotate(-30deg)
         if (reversed) {
             line((arrows-length, -arrows-distance), (0, -arrows-distance), mark: (
@@ -56,7 +56,7 @@
     let width = 10pt
     let spacing = 1.5pt
     let vspace = 3pt
-    let symbol-stroke = 0.6pt
+    let symbol-stroke = 0.55pt
     let tick-width = (width - 2 * spacing) / 3
 
     set-style(stroke: symbol-stroke)
@@ -70,7 +70,7 @@
 #let ac-sign() = {
     let width = 10pt
     let height = 4pt
-    let symbol-stroke = 0.6pt
+    let symbol-stroke = 0.55pt
 
     set-style(stroke: symbol-stroke)
 

@@ -1,6 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, polygon, rect, translate, scope
+#import cetz.draw: anchor, line, polygon, rect, scope, translate
 #import "/src/mini.typ": adjustable-arrow
 
 #let opamp(name, node, invert: false, ..params) = {
@@ -18,7 +18,6 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-
         let sgn = if invert { -1 } else { 1 }
         anchor("minus", (-style.width / 2, sgn * style.sign-delta))
         anchor("plus", (-style.width / 2, -sgn * style.sign-delta))
