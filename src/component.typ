@@ -53,9 +53,13 @@
                     p-style,
                 ))
                 scale(p-scale * style.at("scale", default: 1))
-                draw(ctx, style)
+                draw(ctx, position, style)
                 hide(rect("0", "1", name: "rect"))
                 copy-anchors("rect")
+                if position.len() < 2 {
+                    anchor("in", "rect.west")
+                    anchor("out", "rect.east")
+                }
             })
         })
 
@@ -70,8 +74,8 @@
             }
         })
         if position.len() == 2 {
-            line("in", "component.west", stroke: pre-style.at("wires").stroke)
-            line("out", "component.east", stroke: pre-style.at("wires").stroke)
+            line("in", "component.west", ..pre-style.at("wires"))
+            line("out", "component.east", ..pre-style.at("wires"))
         }
     })
 

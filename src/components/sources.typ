@@ -13,7 +13,7 @@
     )
 
     // Drawing function
-    let draw(ctx, style) = {
+    let draw(ctx, position, style) = {
         anchor("0", (-style.radius, -style.radius))
         anchor("1", (style.radius, style.radius))
 
@@ -43,7 +43,7 @@
     )
 
     // Drawing function
-    let draw(ctx, style) = {
+    let draw(ctx, position, style) = {
         anchor("0", (-style.radius, -style.radius))
         anchor("1", (style.radius, style.radius))
 

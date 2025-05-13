@@ -15,7 +15,7 @@
     )
 
     // Drawing function
-    let draw(ctx, style) = {
+    let draw(ctx, position, style) = {
         anchor("0", (-style.width / 2, -style.height / 2))
         anchor("1", (style.width / 2, style.height / 2))
 
