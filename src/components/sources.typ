@@ -7,8 +7,8 @@
 
     // Isource style
     let style = (
-        radius: 0.53,
-        padding: 0.25,
+        radius: .53,
+        padding: .25,
         arrow-scale: 3,
     )
 
@@ -36,10 +36,10 @@
 
     // Vsource style
     let style = (
-        radius: 0.53,
-        padding: 0.25,
-        sign-size: 0.14,
-        sign-delta: 0.07,
+        radius: .53,
+        padding: .25,
+        sign-size: .14,
+        sign-delta: .07,
     )
 
     // Drawing function

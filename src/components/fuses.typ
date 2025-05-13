@@ -9,8 +9,8 @@
 
     // Fuses style
     let style = (
-        width: 0.88,
-        height: 0.88 / 2.4,
+        width: .88,
+        height: .88 / 2.4,
         asymmetry: 25%,
     )
 

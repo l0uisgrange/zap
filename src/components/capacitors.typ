@@ -9,13 +9,13 @@
     // Capacitor style
     let style = (
         width: .7,
-        distance: 0.25,
+        distance: .23,
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.distance / 2, -style.width/2))
-        anchor("1", (style.distance / 2, style.width/2))
+        anchor("0", (-style.distance / 2, -style.width / 2))
+        anchor("1", (style.distance / 2, style.width / 2))
 
         line((-style.distance / 2, -style.width / 2), (-style.distance / 2, style.width / 2), ..style)
         line((style.distance / 2, -style.width / 2), (style.distance / 2, style.width / 2), ..style)

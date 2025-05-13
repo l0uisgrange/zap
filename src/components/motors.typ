@@ -11,7 +11,7 @@
 
     // DCmotor style
     let style = (
-        radius: 0.49,
+        radius: .49,
         magnet-width: 1.23,
         magnet-height: 1.23 / 4,
     )

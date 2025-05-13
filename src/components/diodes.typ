@@ -10,7 +10,7 @@
     // Diode style
     let style = (
         radius: .3,
-        line: 0.25,
+        line: .25,
     )
 
     // Drawing function

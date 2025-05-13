@@ -58,10 +58,10 @@
 
     // Earth style
     let style = (
-        width: 0.53,
-        delta: 0.09,
-        spacing: 0.11,
-        distance: 0.28,
+        width: .53,
+        delta: .09,
+        spacing: .11,
+        distance: .28,
     )
 
     // Drawing function

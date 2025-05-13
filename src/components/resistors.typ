@@ -10,7 +10,7 @@
     // Resistor style
     let style = (
         width: 1.41,
-        height: 0.47,
+        height: .47,
         zigs: 3,
     )
 
