@@ -4,6 +4,7 @@
 #let component(
     draw: none,
     label: none,
+    position: 50%,
     scale: 1.0,
     wires: true,
     rotate: 0deg,
@@ -11,6 +12,7 @@
     style: none,
     ..params,
 ) = {
+    let p-position = position
     let (uid, name, ..position) = params.pos()
     if position.at(1, default: none) == none {
         position = (position.first(),)
@@ -39,7 +41,7 @@
             anchor("in", position.first())
             anchor("out", position.last())
             p-rotate = cetz.vector.angle2(..position)
-            p-origin = (position.first(), 50%, position.last())
+            p-origin = (position.first(), p-position, position.last())
         }
         set-origin(p-origin)
         rotate(p-rotate)
