@@ -1,6 +1,10 @@
 #import "dependencies.typ": cetz
 #import cetz.draw: anchor, hobby, line, rotate, scope, set-origin, set-style
 
+#let center-mark(symbol: ">") = {
+    (end: ((pos: 50%, symbol: symbol, fill: black, anchor: "center"), (pos: 0%, symbol: ">", scale: 0)))
+}
+
 #let adjustable-arrow() = {
     scope({
         let arrow-length = 40pt
