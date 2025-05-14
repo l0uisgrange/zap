@@ -49,11 +49,8 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                let merged0 = cetz.util.merge-dictionary(pre-style, pre-style.at(uid, default: (something: none)), overwrite: true)
-                let merged = cetz.util.merge-dictionary(merged0, params.named(), overwrite: true)
-                let merged2 = cetz.util.merge-dictionary(p-style, merged, overwrite: true)
-                let style = cetz.styles.resolve(pre-style, base: pre-style, merge: merged2)
-                //if uid == "resistor" { panic(merged, merged2, style) }
+                let base-style = p-style + pre-style + pre-style.at(uid, default: (something: none))
+                let style = cetz.styles.resolve(base-style, merge: params.named())
                 scale(p-scale * style.at("scale", default: 1))
                 draw(ctx, position, style)
                 hide(rect("0", "1", name: "rect"))
