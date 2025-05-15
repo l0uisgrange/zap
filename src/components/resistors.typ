@@ -3,9 +3,9 @@
 #import cetz.draw: anchor, line, rect
 #import "/src/mini.typ": variable-arrow
 
-#let resistor(name, node, variable: false, movable: false, ..params) = {
+#let resistor(name, node, variable: false, adjustable: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
-    assert(type(movable) == bool, message: "movable must be of type bool")
+    assert(type(adjustable) == bool, message: "adjustable must be of type bool")
 
     // Resistor style
     let style = (
@@ -46,11 +46,10 @@
         }
         if variable {
             variable-arrow()
-        } else if movable {
-            let arrow-length = 40pt
-            let arrow-distance = 20pt
-            let arrow-origin = (1.3 * style.width / 2, arrow-distance)
-            line(arrow-origin, (0, arrow-distance), (0, style.height / 2), mark: (end: ">", fill: black), ..style, fill: none)
+        } else if adjustable {
+            let arrow-length = .8
+            anchor("a", (0, style.height/2 + arrow-length))
+            line("a", (0,style.height/2), mark: (end: ">", fill: black), ..style, fill: none)
         }
     }
 
@@ -58,4 +57,5 @@
     component("resistor", name, node, draw: draw, style: style, ..params)
 }
 
-#let potentiometer(name, node, ..params) = resistor(name, node, variable: true, ..params)
+#let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)
+#let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)
