@@ -1,10 +1,10 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line
-#import "/src/mini.typ": adjustable-arrow
+#import "/src/mini.typ": variable-arrow
 
-#let capacitor(name, node, adjustable: false, ..params) = {
-    assert(type(adjustable) == bool, message: "adjustable must be of type bool")
+#let capacitor(name, node, variable: false, ..params) = {
+    assert(type(variable) == bool, message: "variable must be of type bool")
 
     // Capacitor style
     let style = (
@@ -19,8 +19,8 @@
 
         line((-style.distance / 2, -style.width / 2), (-style.distance / 2, style.width / 2), ..style)
         line((style.distance / 2, -style.width / 2), (style.distance / 2, style.width / 2), ..style)
-        if (adjustable) {
-            adjustable-arrow()
+        if (variable) {
+            variable-arrow()
         }
     }
 

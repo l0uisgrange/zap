@@ -1,7 +1,7 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, mark, translate
-#import "/src/mini.typ": adjustable-arrow, center-mark
+#import "/src/mini.typ": center-mark
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
     assert(polarisation in ("npn", "pnp"), message: "polarisation must `npn` or `pnp`")

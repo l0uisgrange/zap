@@ -1,7 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, floating, line, rect
-#import "/src/mini.typ": adjustable-arrow
 
 #let fuse(name, node, asymmetric: false, ..params) = {
     assert(type(asymmetric) == bool, message: "asymmetric must be of type bool")

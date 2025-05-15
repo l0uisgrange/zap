@@ -1,7 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, content, line, polygon, rect, scope, translate
-#import "/src/mini.typ": adjustable-arrow
 
 #let opamp(name, node, invert: false, label: none, ..params) = {
     assert(params.pos().len() == 0, message: "opamp supports only one node")

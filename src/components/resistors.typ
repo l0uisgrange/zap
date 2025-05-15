@@ -1,10 +1,10 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, rect
-#import "/src/mini.typ": adjustable-arrow
+#import "/src/mini.typ": variable-arrow
 
-#let resistor(name, node, adjustable: false, movable: false, ..params) = {
-    assert(type(adjustable) == bool, message: "adjustable must be of type bool")
+#let resistor(name, node, variable: false, movable: false, ..params) = {
+    assert(type(variable) == bool, message: "variable must be of type bool")
     assert(type(movable) == bool, message: "movable must be of type bool")
 
     // Resistor style
@@ -44,8 +44,8 @@
                 fill: none,
             )
         }
-        if adjustable {
-            adjustable-arrow()
+        if variable {
+            variable-arrow()
         } else if movable {
             let arrow-length = 40pt
             let arrow-distance = 20pt
@@ -58,4 +58,4 @@
     component("resistor", name, node, draw: draw, style: style, ..params)
 }
 
-#let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)
+#let potentiometer(name, node, ..params) = resistor(name, node, variable: true, ..params)

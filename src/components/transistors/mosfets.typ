@@ -1,7 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, floating, line, mark, set-origin, translate
-#import "/src/mini.typ": adjustable-arrow
 
 #let mosfet(
     uid,
