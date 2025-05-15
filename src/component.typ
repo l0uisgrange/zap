@@ -6,7 +6,6 @@
     label: none,
     position: 50%,
     scale: 1.0,
-    wires: true,
     rotate: 0deg,
     debug: false,
     style: none,
@@ -24,7 +23,6 @@
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str), message: "label must content or string")
     assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
-    assert(type(wires) == bool, message: "wires must be a bool")
 
     let p-rotate = rotate
     let p-scale = scale

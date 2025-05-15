@@ -1,1 +1,0 @@
-import{t as e,a as s}from"../chunks/C-hBxsOW.js";import{c as i,r as p}from"../chunks/DhzbSWZ_.js";import{s as c}from"../chunks/BL_W6jdS.js";var l=e('<article class="flex-auto"><!></article>');function d(r,t){var a=l(),o=i(a);c(o,()=>t.children),p(a),s(r,a)}export{d as component};
