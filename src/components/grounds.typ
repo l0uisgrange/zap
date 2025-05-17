@@ -1,67 +1,83 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
-#import cetz.draw: anchor, polygon, line, rotate as cetzrotate, set-origin, merge-path
-#import "../mini.typ": radiation-arrows
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
+#import cetz.draw: anchor, line, polygon
+#import "/src/mini.typ": radiation-arrows
 
-#let ground(uid, node, type: "signal", ..params) = {
-    assert(type in ("signal", "earth", "frame"), message: "type must `signal`, `earth` or `frame`")
+#let ground(name, node, ..params) = {
+    assert(params.pos().len() == 0, message: "ground supports only one node")
 
-    // TODO: move to defaults
-    let wires-length = 7pt
-    let component-stroke = 1pt
-    let wires-stroke = 0.6pt
-    let sign-stroke = 0.6pt
-
-    // IEC/ANSI/IEEE style constants
-    let earth-l1 = wires-length * 2.4
-    let earth-l2 = wires-length * 1.4
-    let earth-l3 = wires-length * 0.7
-    let earth-spacing = wires-length * 0.35
-
-    let signal-width = 12pt
-    let signal-height = 9pt
-
-    let frame-width = 15pt
-    let frame-diag-len = 8pt
-    let frame-angle = 60deg
-    let frame-spacing = frame-width / 4
-    let symbol-distance = wires-length + 5pt
-
-    // Drawing functions
-    let draw = (
-        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            anchor("in", (0, 0))
-        },
-        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            if type == "earth" {
-                let y1 = -symbol-distance
-                let y2 = y1 - earth-spacing
-                let y3 = y2 - earth-spacing
-                line((-earth-l1/2, y1), (earth-l1/2, y1))
-                line((-earth-l2/2, y2), (earth-l2/2, y2))
-                line((-earth-l3/2, y3), (earth-l3/2, y3))
-            } else if type == "frame" or type == "chassis" {
-                 let y = -symbol-distance
-                 let x1 = -frame-width/2
-                 let x2 = 0pt
-                 let x3 = frame-width/2
-                 let dy = frame-diag-len * calc.sin(frame-angle)
-                 let dx = frame-diag-len * calc.cos(frame-angle)
-                 line((x2, y), (x2 - dx, y - dy))
-                 line((x1 - dx, y - dy), (-frame-width/2, y), (frame-width/2, y), (x3 - dx, y - dy))
-            } else {
-                line((0, -signal-height - symbol-distance), (-signal-width / 2, -symbol-distance), (signal-width / 2, -symbol-distance), close: true)
-            }
-        },
-        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            set-origin(position.first())
-            line((0,0), (rel: (0, -symbol-distance)), stroke: wires-stroke)
-        }
+    // Ground style
+    let style = (
+        radius: 0.22,
+        distance: 0.28,
     )
 
+    // Drawing function
+    let draw(ctx, position, style) = {
+        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", ..style)
+
+        let (width, height) = cetz.util.measure(ctx, "polygon")
+        anchor("0", (-width / 2, -height / 2))
+        anchor("1", (width / 2, height / 2))
+    }
+
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component("ground", name, node, draw: draw, style: style, ..params)
 }
 
-#let earth(uid, node, ..params) = ground(uid, node, type: "earth", ..params)
-#let frame(uid, node, ..params) = ground(uid, node, type: "frame", ..params)
+#let frame(name, node, ..params) = {
+    assert(params.pos().len() == 0, message: "earth supports only one node")
+
+    // Earth style
+    let style = (
+        width: 0.46,
+        angle: 20deg,
+        depth: 0.25,
+        distance: 0.28,
+    )
+
+    // Drawing function
+    let draw(ctx, position, style) = {
+        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        let delta = style.width / 2
+        line((-style.width / 2, -style.distance), (style.width / 2, -style.distance), ..style)
+        for i in (0, 1, 2) {
+            line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
+        }
+        anchor("0", (-style.width / 2, style.distance))
+        anchor("1", (style.width / 2, -style.distance))
+    }
+
+    // Componant call
+    component("frame", name, node, draw: draw, style: style, ..params)
+}
+
+#let earth(name, node, ..params) = {
+    assert(params.pos().len() == 0, message: "earth supports only one node")
+
+    // Earth style
+    let style = (
+        width: .53,
+        delta: .09,
+        spacing: .11,
+        distance: .28,
+    )
+
+    // Drawing function
+    let draw(ctx, position, style) = {
+        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        for i in (0, 1, 2) {
+            line(
+                (-style.width / 2 + i * style.delta, -style.distance - i * style.spacing),
+                (style.width / 2 - i * style.delta, -style.distance - i * style.spacing),
+                ..style,
+            )
+        }
+        anchor("0", (-style.width / 2, -style.distance - style.spacing * 2))
+        anchor("1", (style.width / 2, -style.distance))
+    }
+
+    // Componant call
+    component("earth", name, node, draw: draw, style: style, ..params)
+}

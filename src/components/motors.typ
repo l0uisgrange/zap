@@ -1,55 +1,37 @@
-#import "../component.typ": component
-#import "../dependencies.typ": cetz
-#import cetz.draw: anchor, rect, arc, line, circle, content, set-origin, group, rotate as cetzrotate, floating
-#import "../mini.typ": dc-sign
-#import "../utils.typ": quick-wires
+#import "/src/component.typ": component
+#import "/src/dependencies.typ": cetz
+#import cetz.draw: anchor, arc, circle, content, rect
+#import "/src/mini.typ": ac-sign, dc-sign
 
-#let dcmotor(uid, node, ..params) = {
-    // TODO: move to defaults
-    let wires-length = 7pt
-    let component-stroke = 1pt
-    let wires-stroke = 0.6pt
-    let sign-stroke = 0.6pt
+#let motor(uid, name, node, current: "dc", magnet: false, ..params) = {
+    assert(current in ("dc", "ac"), message: "current must be ac or dc")
+    assert(type(magnet) == bool, message: "magnet must be bool")
+    assert(not (magnet and current == "ac"), message: "magnet only with dcmotor")
 
-    // IEC style constants
-    let circle-radius = 15pt
-    let width = 35pt
-    let height = width / 4
-
-    // Drawing functions
-    let draw = (
-        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            if (position.len() == 2) {
-                anchor("in", position.first())
-                anchor("out", position.last())
-            } else {
-                anchor("in", (-circle-radius, 0))
-                anchor("out", (circle-radius, 0))
-            }
-        },
-        component: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            if (variant == "pretty") {
-                rect((-width / 2, -height / 2), (width / 2, height / 2), fill: black, ..styling)
-                circle((0,0), radius: circle-radius, fill: white)
-            } else {
-                circle((0,0), radius: width / 2, fill: white)
-                content(
-                  (0,0),
-                  padding: .1,
-                  rotate: -rotate,
-                  anchor: "south",
-                  $"M"$
-                )
-                cetzrotate(-rotate)
-                set-origin((0,-5pt))
-                dc-sign()
-            }
-        },
-        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            quick-wires(rotate, ..position)
-        }
+    // DCmotor style
+    let style = (
+        radius: .49,
+        magnet-width: 1.23,
+        magnet-height: 1.23 / 4,
     )
 
+    // Drawing function
+    let draw(ctx, position, style) = {
+        anchor("0", (-style.radius, -style.radius))
+        anchor("1", (style.radius, style.radius))
+
+        if (magnet) {
+            rect((-style.magnet-width / 2, -style.magnet-height / 2), (style.magnet-width / 2, style.magnet-height / 2), fill: black)
+        }
+        circle((0, 0), radius: style.radius, fill: white, ..style)
+        content((0, 0), anchor: "south", "M", padding: .03)
+        let symbol = if current == "dc" { dc-sign } else { ac-sign }
+        content((0, 0), [#cetz.canvas({ symbol() })], anchor: "north", padding: .13)
+    }
+
     // Componant call
-    component(uid, node, draw: draw, label-distance: 30pt, ..params)
+    component(uid, name, node, draw: draw, style: style, ..params)
 }
+
+#let dcmotor(name, node, ..params) = motor("dcmotor", name, node, current: "dc", ..params)
+#let acmotor(name, node, ..params) = motor("acmotor", name, node, current: "ac", ..params)
