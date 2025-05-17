@@ -48,8 +48,8 @@
             variable-arrow()
         } else if adjustable {
             let arrow-length = .8
-            anchor("a", (0, style.height/2 + arrow-length))
-            line("a", (0,style.height/2), mark: (end: ">", fill: black), fill: none)
+            anchor("a", (0, style.height / 2 + arrow-length))
+            line("a", (0, style.height / 2), mark: (end: ">", fill: black), fill: none)
         }
     }
 
