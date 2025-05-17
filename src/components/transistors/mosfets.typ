@@ -1,9 +1,9 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, floating, line, mark, set-origin, translate
+#import cetz.draw: anchor, circle, floating, line, mark, set-origin, translate, content, hide
 
 #let mosfet(
-    uid,
+    name,
     node,
     channel: "n",
     envelope: false,
@@ -28,26 +28,21 @@
     let bar-length = (base-width - 2 * base-spacing) / 3
     let height = 15pt
     let base-delta = 0pt
+    let radius = .65
 
     // Drawing functions
-    let draw = (
-        anchors: (ctx, position, variant, scale, rotate, wires, ..styling) => {
-            anchor("gate", (-height, 0))
+    let draw(ctx, position, style) = {
+            anchor("0", (0, 0))
+            anchor("1", (0, height / 2))
+
+            let center = (-height / 2, 0)
+
             anchor("drain", (0, width / 2 + wires-length))
             anchor("source", (0, -width / 2 - wires-length))
             if bulk == "external" {
                 anchor("bulk", (0, 0))
             }
-        },
-        component: (
-            ctx,
-            position,
-            variant,
-            scale,
-            rotate,
-            wires,
-            ..styling,
-        ) => {
+
             if mode == "enhancement" {
                 let bar-length = (base-width - 2 * base-spacing) / 3
                 for i in range(3) {
@@ -69,10 +64,25 @@
             }
             line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
             line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
+
+        if envelope {
+            circle(center, radius: radius, ..style, name: "c")
+        } else {
+            hide(circle((0, 0), radius: radius, ..style, name: "c"))
+        }
+
+        anchor("gl", (rel: (-3 * height / 4, width / 2), to: center))
+        
             if bulk != none {
                 line((-height, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
-                mark("line.centroid", "gate", symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
+                mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
+                line("gl", (rel: (0, -width)), (rel: (-height / 4, 0)), stroke: wires-stroke)
+                anchor("gate", ())
             } else {
+                line("gl", (rel: (0, -width/2)), (rel: (0, -width/2)), stroke: wires-stroke)
+                line((rel: (0, width/2)), (rel: (-height / 2, 0)), stroke: wires-stroke)
+                anchor("gate", ())
+
                 mark(
                     (
                         -height / 2,
@@ -85,15 +95,13 @@
                     anchor: "center",
                 )
             }
-        },
-        wires: (ctx, position, variant, scale, rotate, wires, ..styling) => { },
-    )
+        }
 
     // Componant call
-    component(uid, node, draw: draw, ..params)
+    component("mosfet", name, node, draw: draw, ..params)
 }
 
-#let pmos(uid, node, ..params) = mosfet(uid, node, channel: "p", ..params)
-#let nmos(uid, node, ..params) = mosfet(uid, node, channel: "n", ..params)
-#let pmosd(uid, node, ..params) = mosfet(uid, node, channel: "p", mode: "depletion", ..params)
-#let nmosd(uid, node, ..params) = mosfet(uid, node, channel: "n", mode: "depletion", ..params)
+#let pmos(name, node, ..params) = mosfet(name, node, channel: "p", ..params)
+#let nmos(name, node, ..params) = mosfet(name, node, channel: "n", ..params)
+#let pmosd(name, node, ..params) = mosfet(name, node, channel: "p", mode: "depletion", ..params)
+#let nmosd(name, node, ..params) = mosfet(name, node, channel: "n", mode: "depletion", ..params)
