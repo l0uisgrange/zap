@@ -78,8 +78,9 @@
 
     if (debug) {
         on-layer(1, {
-            for-each-anchor(name, exclude: ("start", "end", "mid"), name => {
-                content((), box(inset: 1pt, fill: black, text(4pt, name, fill: white)))
+            for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "rect", "gl", "0", "1"), name => {
+                circle((), radius: .7pt, stroke: red+.2pt)
+                content((rel: (0,3pt)), box(inset: 1pt, text(2pt, name, fill: red)))
             })
         })
     }

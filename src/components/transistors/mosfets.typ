@@ -1,6 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, floating, line, mark, set-origin, translate, content, hide
+#import cetz.draw: anchor, circle, content, floating, hide, line, mark, set-origin, translate
 
 #let mosfet(
     name,
@@ -16,54 +16,43 @@
     assert(channel in ("p", "n"), message: "channel must be `p` or `n`")
     assert(bulk in ("internal", "external", none), message: "substrate must be `internal`, `external` or none")
 
-    // TODO: move to defaults
-    let wires-length = 7pt
-    let component-stroke = 1pt
-    let wires-stroke = 0.6pt
+    // Mosfet style
+    let style = (
+        height: .53,
+        width: .71,
+        base-width: .9,
+        base-spacing: .11,
+        base-distance: .11,
+        radius: .7,
+    )
 
-    // Style constants
-    let width = 20pt
-    let base-spacing = 3pt
-    let base-width = width + 8pt
-    let bar-length = (base-width - 2 * base-spacing) / 3
-    let height = 15pt
-    let base-delta = 0pt
-    let radius = .65
-
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
-            anchor("0", (0, 0))
-            anchor("1", (0, height / 2))
+        let (height, width, base-width, base-spacing, radius) = style
+        anchor("0", (-height, -width/2))
+        anchor("1", (0, width / 2))
 
-            let center = (-height / 2, 0)
+        let center = (-height / 2, 0)
 
-            anchor("drain", (0, width / 2 + wires-length))
-            anchor("source", (0, -width / 2 - wires-length))
-            if bulk == "external" {
-                anchor("bulk", (0, 0))
-            }
+        anchor("d", (0, width / 2))
+        anchor("s", (0, -width / 2))
+        if bulk == "external" {
+            anchor("bulk", (0, 0))
+        }
 
-            if mode == "enhancement" {
-                let bar-length = (base-width - 2 * base-spacing) / 3
-                for i in range(3) {
-                    line(
-                      (
-                          (
-                              -height,
-                              -base-width / 2 + i * (bar-length + base-spacing),
-                          )
-                      ),
-                      (rel: (0, bar-length)),
-                    )
-                }
-            } else {
-                line((-height, -base-width / 2), (rel: (0, base-width)))
+        if mode == "enhancement" {
+            let bar-length = (base-width - 2 * base-spacing) / 3
+            for i in range(3) {
+                line(((-height, -base-width / 2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)), ..style)
             }
-            if bulk == "internal" {
-                line((0, 0), (0, -width / 2), stroke: wires-stroke)
-            }
-            line("drain", (rel: (0, -wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
-            line("source", (rel: (0, wires-length)), (rel: (-height, 0)), stroke: wires-stroke)
+        } else {
+            line((-height, -base-width / 2), (rel: (0, base-width)), ..style)
+        }
+        if bulk == "internal" {
+            line((0, 0), (0, -width / 2), ..style.at("wires"))
+        }
+        line("d", (rel: (0, 0)), (rel: (-height, 0)), ..style.at("wires"))
+        line("s", (rel: (0, 0)), (rel: (-height, 0)), ..style.at("wires"))
 
         if envelope {
             circle(center, radius: radius, ..style, name: "c")
@@ -72,33 +61,33 @@
         }
 
         anchor("gl", (rel: (-3 * height / 4, width / 2), to: center))
-        
-            if bulk != none {
-                line((-height, 0), (rel: (height, 0)), name: "line", stroke: wires-stroke)
-                mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
-                line("gl", (rel: (0, -width)), (rel: (-height / 4, 0)), stroke: wires-stroke)
-                anchor("gate", ())
-            } else {
-                line("gl", (rel: (0, -width/2)), (rel: (0, -width/2)), stroke: wires-stroke)
-                line((rel: (0, width/2)), (rel: (-height / 2, 0)), stroke: wires-stroke)
-                anchor("gate", ())
 
-                mark(
-                    (
-                        -height / 2,
-                        if (channel == "n") { -width / 2 } else { width / 2 },
-                    ),
-                    (rel: (height, 0)),
-                    symbol: if (channel == "n") { ">" } else { "<" },
-                    fill: black,
-                    scale: 0.8,
-                    anchor: "center",
-                )
-            }
+        if bulk != none {
+            line((-height, 0), (rel: (height, 0)), name: "line", ..style.at("wires"))
+            mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
+            line("gl", (rel: (0, -width)), (rel: (-height / 4, 0)), ..style.at("wires"))
+            anchor("g", ())
+        } else {
+            line("gl", (rel: (0, -width / 2)), (rel: (0, -width / 2)), ..style.at("wires"))
+            line((rel: (0, width / 2)), (rel: (-height / 2, 0)), ..style.at("wires"))
+            anchor("g", ())
+
+            mark(
+                (
+                    -height / 2,
+                    if (channel == "n") { -width / 2 } else { width / 2 },
+                ),
+                (rel: (height, 0)),
+                symbol: if (channel == "n") { ">" } else { "<" },
+                fill: black,
+                scale: 0.8,
+                anchor: "center",
+            )
         }
+    }
 
     // Componant call
-    component("mosfet", name, node, draw: draw, ..params)
+    component("mosfet", name, node, draw: draw, style: style, ..params)
 }
 
 #let pmos(name, node, ..params) = mosfet(name, node, channel: "p", ..params)
