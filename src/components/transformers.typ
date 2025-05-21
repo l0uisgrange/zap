@@ -2,11 +2,12 @@
 #import "/src/components/inductors.typ": inductor
 #import "/src/components/wires.typ": wire
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, arc, line, rect, circle
+#import cetz.draw: anchor, arc, line, rect, circle, content
 
 #let transformer(
   name,
   node,
+  label: none,
   ..params
   ) = {
     assert(params.pos().len() == 0, message: "transformer supports only one node")
@@ -19,7 +20,8 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-      anchor("0", (0, 0))
+      anchor("base", (0, 0))
+      anchor("0", "base")
       anchor("1", (0, 0.3))
 
       anchor("A1", (-style.width, 0))
@@ -46,7 +48,9 @@
       anchor("outer-dot-B2", (3 * style.width / 4, - 15 * style.height / 16))
       
       // circle("inner-dot-A1", fill: black, radius: style.dot-radius)
-      
+      if label != none {
+        content((0, 0), label)
+      }
     }
 
     // Componant call
