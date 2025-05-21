@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, polygon, scope, translate
 #import "/src/mini.typ": radiation-arrows
@@ -16,8 +16,7 @@
     // Drawing function
     let draw(ctx, position, style) = {
         translate((-style.radius / 4, 0))
-        anchor("0", (-style.radius / 2, -style.radius))
-        anchor("1", (style.radius, style.radius))
+        interface((-style.radius / 2, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         polygon((0, 0), 3, radius: style.radius, fill: white, ..style)
         line((0deg, style.radius), (180deg, style.radius / 2), ..style.at("wires"))

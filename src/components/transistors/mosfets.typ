@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, content, floating, hide, line, mark, set-origin, translate
 
@@ -29,8 +29,7 @@
     // Drawing function
     let draw(ctx, position, style) = {
         let (height, width, base-width, base-spacing, radius) = style
-        anchor("0", (-height, -width/2))
-        anchor("1", (0, width / 2))
+        interface((-height, -width / 2), (0, width / 2))
 
         let center = (-height / 2, 0)
 
@@ -43,7 +42,7 @@
         if mode == "enhancement" {
             let bar-length = (base-width - 2 * base-spacing) / 3
             for i in range(3) {
-                line(((-height, -base-width / 2 + i * (bar-length + base-spacing))), (rel: (0, bar-length)), ..style)
+                line((-height, -base-width / 2 + i * (bar-length + base-spacing)), (rel: (0, bar-length)), ..style)
             }
         } else {
             line((-height, -base-width / 2), (rel: (0, base-width)), ..style)

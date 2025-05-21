@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, rect
 #import "/src/mini.typ": variable-arrow
@@ -16,8 +16,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.width / 2, -style.height / 2))
-        anchor("1", (style.width / 2, style.height / 2))
+        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
         if style.variant == "iec" {
             rect(

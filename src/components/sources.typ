@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, mark, rect
 
@@ -14,8 +14,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.radius, -style.radius))
-        anchor("1", (style.radius, style.radius))
+        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         circle((0, 0), radius: style.radius, fill: white, ..style)
         if (style.variant == "iec") {
@@ -45,8 +44,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.radius, -style.radius))
-        anchor("1", (style.radius, style.radius))
+        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         circle((0, 0), radius: style.radius, fill: white, ..style)
         if (style.variant == "iec") {

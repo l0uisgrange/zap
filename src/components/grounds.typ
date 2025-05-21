@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, polygon
 #import "/src/mini.typ": radiation-arrows
@@ -18,8 +18,7 @@
         polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", ..style)
 
         let (width, height) = cetz.util.measure(ctx, "polygon")
-        anchor("0", (-width / 2, -height / 2))
-        anchor("1", (width / 2, height / 2))
+        interface((-width / 2, -height / 2), (width / 2, height / 2))
     }
 
     // Componant call
@@ -45,8 +44,7 @@
         for i in (0, 1, 2) {
             line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
         }
-        anchor("0", (-style.width / 2, style.distance))
-        anchor("1", (style.width / 2, -style.distance))
+        interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
     }
 
     // Componant call
@@ -74,8 +72,7 @@
                 ..style,
             )
         }
-        anchor("0", (-style.width / 2, -style.distance - style.spacing * 2))
-        anchor("1", (style.width / 2, -style.distance))
+        interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
     }
 
     // Componant call
