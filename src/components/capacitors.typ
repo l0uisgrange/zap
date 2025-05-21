@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line
 #import "/src/mini.typ": variable-arrow
@@ -14,8 +14,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.distance / 2, -style.width / 2))
-        anchor("1", (style.distance / 2, style.width / 2))
+        interface((-style.distance / 2, -style.width / 2), (style.distance / 2, style.width / 2), io: position.len() < 2)
 
         line((-style.distance / 2, -style.width / 2), (-style.distance / 2, style.width / 2), ..style)
         line((style.distance / 2, -style.width / 2), (style.distance / 2, style.width / 2), ..style)
