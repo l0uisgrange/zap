@@ -18,7 +18,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((0, 0), (0, style.base-height / 2))
+        interface((-style.radius, -style.radius), (style.radius, style.radius))
 
         let sgn = if polarisation == "npn" { -1 } else { 1 }
         anchor("base", ((-style.radius, 0), 30%, (style.radius, 0)))
@@ -32,9 +32,9 @@
 
         if envelope {
             line("base", (-style.radius, 0), ..style.at("wires"))
-            circle((0, 0), radius: style.radius, ..style, name: "c")
+            circle((0, 0), radius: style.radius, ..style, name: "circle")
         } else {
-            hide(circle((0, 0), radius: style.radius, ..style, name: "c"))
+            hide(circle((0, 0), radius: style.radius, ..style, name: "circle"))
         }
     }
 
