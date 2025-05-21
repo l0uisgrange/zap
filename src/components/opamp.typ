@@ -15,6 +15,7 @@
         sign-delta: .45,
     )
 
+
     // Drawing function
     let draw(ctx, position, style) = {
         let sgn = if invert { -1 } else { 1 }
