@@ -17,10 +17,9 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2))
+        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: true)
 
         let sgn = if invert { -1 } else { 1 }
-        anchor("out", (style.width * 2 / 3, 0))
         anchor("minus", (-style.width / 2, sgn * style.sign-delta))
         anchor("plus", (-style.width / 2, -sgn * style.sign-delta))
 

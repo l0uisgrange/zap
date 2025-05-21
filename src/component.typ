@@ -86,10 +86,11 @@
 
     hide(rect(node1, node2, name: "bounds"))
     if io {
+        let (node3, node4) = (0,0)
         if params.pos().len() == 2 {
-            let (node3, node4) = params.pos()
+            (node3, node4) = params.pos()
         } else {
-            let (node3, node4) = ("bounds.west", "bounds.east")
+            (node3, node4) = ("bounds.west", "bounds.east")
         }
 
         anchor("in", node3)
