@@ -26,16 +26,16 @@
         anchor("c", (style.aperture * sgn, style.radius))
         anchor("b", if envelope { (-style.radius, 0) } else { "base" })
 
-        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
-        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", ..style.at("wires"), mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
-        line((to: "base", rel: (0, style.base-distance * sgn)), "c", ..style.at("wires"))
-
         if envelope {
-            line("base", (-style.radius, 0), ..style.at("wires"))
             circle((0, 0), radius: style.radius, ..style, name: "circle")
+            line("base", (-style.radius, 0), ..style.at("wires"))
         } else {
             hide(circle((0, 0), radius: style.radius, ..style, name: "circle"))
         }
+
+        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
+        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", ..style.at("wires"), mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
+        line((to: "base", rel: (0, style.base-distance * sgn)), "c", ..style.at("wires"))
     }
 
     // Componant call
