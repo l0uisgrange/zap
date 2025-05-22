@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, line, mark, translate
 #import "/src/mini.typ": center-mark
@@ -16,10 +16,9 @@
         aperture: 50deg,
     )
 
-    // Drawing functions
+    // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (0, 0))
-        anchor("1", (0, style.base-height / 2))
+        interface((-style.radius, -style.radius), (style.radius, style.radius))
 
         let sgn = if polarisation == "npn" { -1 } else { 1 }
         anchor("base", ((-style.radius, 0), 30%, (style.radius, 0)))
@@ -33,9 +32,9 @@
 
         if envelope {
             line("base", (-style.radius, 0), ..style.at("wires"))
-            circle((0, 0), radius: style.radius, ..style, name: "c")
+            circle((0, 0), radius: style.radius, ..style, name: "circle")
         } else {
-            hide(circle((0, 0), radius: style.radius, ..style, name: "c"))
+            hide(circle((0, 0), radius: style.radius, ..style, name: "circle"))
         }
     }
 

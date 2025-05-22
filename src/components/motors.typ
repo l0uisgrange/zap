@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, arc, circle, content, rect
 #import "/src/mini.typ": ac-sign, dc-sign
@@ -17,8 +17,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        anchor("0", (-style.radius, -style.radius))
-        anchor("1", (style.radius, style.radius))
+        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         if (magnet) {
             rect((-style.magnet-width / 2, -style.magnet-height / 2), (style.magnet-width / 2, style.magnet-height / 2), fill: black)

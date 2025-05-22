@@ -55,12 +55,7 @@
                 let style = cetz.styles.resolve(base-style, merge: params.named())
                 scale(p-scale * style.at("scale", default: 1))
                 draw(ctx, position, style)
-                hide(rect("0", "1", name: "rect"))
-                copy-anchors("rect")
-                if position.len() < 2 {
-                    anchor("in", "rect.west")
-                    anchor("out", "rect.east")
-                }
+                copy-anchors("bounds")
             })
         })
 
@@ -93,9 +88,27 @@
 
     if (debug) {
         on-layer(1, {
-            for-each-anchor(name, exclude: ("start", "end", "mid"), name => {
-                content((), box(inset: 1pt, fill: black, text(4pt, name, fill: white)))
+            for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
+                circle((), radius: .7pt, stroke: red + .2pt)
+                content((rel: (0, 3pt)), box(inset: 1pt, text(3pt, name, fill: red)), angle: -30deg)
             })
         })
+    }
+}
+
+#let interface(node1, node2, ..params, io: false) = {
+    import cetz.draw: *
+
+    hide(rect(node1, node2, name: "bounds"))
+    if io {
+        let (node3, node4) = (0,0)
+        if params.pos().len() == 2 {
+            (node3, node4) = params.pos()
+        } else {
+            (node3, node4) = ("bounds.west", "bounds.east")
+        }
+
+        anchor("in", node3)
+        anchor("out", node4)
     }
 }

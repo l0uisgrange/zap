@@ -1,4 +1,4 @@
-#import "/src/component.typ": component
+#import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, content, line, polygon, rect, scope, translate
 
@@ -18,6 +18,8 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
+        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: true)
+
         let sgn = if invert { -1 } else { 1 }
         anchor("minus", (-style.width / 2, sgn * style.sign-delta))
         anchor("plus", (-style.width / 2, -sgn * style.sign-delta))
@@ -27,12 +29,10 @@
         } else {
             scope({
                 if style.variant == "ieee" { translate((-style.width / 6, 0)) }
-                polygon((0, 0), 3, radius: style.width * 0.66666, ..style)
+                polygon((0, 0), 3, radius: style.width * 2 / 3, ..style)
             })
         }
 
-        anchor("0", (-style.width / 2, -style.height / 2))
-        anchor("1", (style.width / 2, style.height / 2))
         line((rel: (style.padding - style.sign-size, 0), to: "minus"), (rel: (2 * style.sign-size, 0)), stroke: style.sign-stroke)
         line((rel: (style.padding - style.sign-size, 0), to: "plus"), (rel: (2 * style.sign-size, 0)), stroke: style.sign-stroke)
         line((rel: (style.padding, -style.sign-size), to: "plus"), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
