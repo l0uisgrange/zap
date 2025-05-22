@@ -1,9 +1,13 @@
 #import "dependencies.typ": cetz
 #import "styles.typ": default-style
+#import "decorations.typ": current, flow, voltage
 
 #let component(
     draw: none,
     label: none,
+    i: none,
+    f: none,
+    u: none,
     position: 50%,
     scale: 1.0,
     rotate: 0deg,
@@ -65,9 +69,20 @@
                 content((rel: (0, -20pt), to: (rel: (0, new-position), to: "component.south")), label)
             }
         })
+
         if position.len() == 2 {
             line("in", "component.west", ..pre-style.at("wires"))
             line("out", "component.east", ..pre-style.at("wires"))
+
+            if i != none {
+                current(ctx, i)
+            }
+            if f != none {
+                flow(ctx, f)
+            }
+            if u != none {
+                voltage(ctx, u, p-rotate)
+            }
         }
     })
 
