@@ -1,13 +1,13 @@
 #import "dependencies.typ": cetz
 #import "styles.typ": default-style
-#import "decorations.typ": current-arrow, flow-arrow, european-voltage
+#import "decorations.typ": current-arrow, european-voltage, flow-arrow
 
 #let component(
     draw: none,
     label: none,
-    c: none,
+    i: none,
     f: none,
-    v: none,
+    u: none,
     position: 50%,
     scale: 1.0,
     rotate: 0deg,
@@ -79,14 +79,14 @@
             line("in", "component.west", ..pre-style.at("wires"))
             line("out", "component.east", ..pre-style.at("wires"))
 
-            if c != none {
-                current-arrow(ctx, c)
+            if i != none {
+                current-arrow(ctx, i)
             }
             if f != none {
                 flow-arrow(ctx, f)
             }
-            if v != none {
-                european-voltage(ctx, v, p-rotate)
+            if u != none {
+                european-voltage(ctx, u, p-rotate)
             }
         }
     })
