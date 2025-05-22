@@ -1,6 +1,6 @@
 #import "/src/component.typ": component
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, line, mark, translate, hide
+#import cetz.draw: anchor, circle, hide, line, mark, translate
 #import "/src/mini.typ": center-mark
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
