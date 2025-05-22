@@ -1,6 +1,6 @@
 #import "dependencies.typ": cetz
 #import "styles.typ": default-style
-#import "decorations.typ": current, voltage, flow-arrow
+#import "decorations.typ": current, flow, voltage
 
 #let component(
     draw: none,
@@ -83,7 +83,7 @@
                 current(ctx, i)
             }
             if f != none {
-                flow-arrow(ctx, f)
+                flow(ctx, f)
             }
             if u != none {
                 voltage(ctx, u, p-rotate)
