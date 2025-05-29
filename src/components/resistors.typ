@@ -25,6 +25,7 @@
                     style.width / 2,
                     style.height / 2,
                 ),
+                fill: white,
                 ..style,
             )
         } else {

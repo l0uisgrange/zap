@@ -25,7 +25,7 @@
         anchor("plus", (-style.width / 2, -sgn * style.sign-delta))
 
         if style.variant == "iec" {
-            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), ..style)
+            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)
         } else {
             scope({
                 if style.variant == "ieee" { translate((-style.width / 6, 0)) }
