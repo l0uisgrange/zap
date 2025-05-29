@@ -8,8 +8,8 @@
 
     // Capacitor style
     let style = (
-        width: .7,
-        distance: .23,
+        width: .8,
+        distance: .25,
     )
 
     // Drawing function
