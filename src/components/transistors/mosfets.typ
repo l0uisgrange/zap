@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, content, floating, hide, line, mark, set-origin, translate
+#import cetz.draw: anchor, circle, content, floating, hide, line, mark, set-origin, translate, scale
 
 #let mosfet(
     name,
@@ -18,12 +18,12 @@
 
     // Mosfet style
     let style = (
-        height: .53,
-        width: .71,
-        base-width: .9,
-        base-spacing: .11,
-        base-distance: .11,
-        radius: .7,
+        height: 0.795,
+        width: 1.065,
+        base-width: 1.35,
+        base-spacing: 0.165,
+        base-distance: 0.165,
+        radius: 1.05,
     )
 
     // Drawing function
@@ -63,7 +63,7 @@
 
         if bulk != none {
             line((-height, 0), (rel: (height, 0)), name: "line", ..style.at("wires"))
-            mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, scale: 0.8, anchor: "center")
+            mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, anchor: "center")
             line("gl", (rel: (0, -width)), (rel: (-height / 4, 0)), ..style.at("wires"))
             anchor("g", ())
         } else {
@@ -79,7 +79,6 @@
                 (rel: (height, 0)),
                 symbol: if (channel == "n") { ">" } else { "<" },
                 fill: black,
-                scale: 0.8,
                 anchor: "center",
             )
         }
