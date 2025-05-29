@@ -20,6 +20,8 @@
     let draw(ctx, position, style) = {
         interface((-style.radius, -style.radius), (style.radius, style.radius))
 
+        translate((- calc.cos(style.aperture) * style.radius, 0))
+
         let sgn = if polarisation == "npn" { -1 } else { 1 }
         anchor("base", ((-style.radius, 0), 30%, (style.radius, 0)))
         anchor("e", (-style.aperture * sgn, style.radius))
