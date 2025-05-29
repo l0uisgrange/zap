@@ -20,7 +20,9 @@ body:
       description: The version of Zap you are using.
       options:
         - Development
-        - 0.1.0 (default)
+        - 0.2.1 (default)
+        - 0.2.0
+        - 0.1.0
         - Other
       default: 1
     validations:
