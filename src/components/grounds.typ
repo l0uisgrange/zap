@@ -78,3 +78,24 @@
     // Componant call
     component("earth", name, node, draw: draw, style: style, ..params)
 }
+
+#let vcc(name, node, ..params) = {
+    // VCC style
+    let style = (
+        angle: 35deg,
+        radius: .4,
+        distance: .6,
+    )
+
+    // Drawing function
+    let draw(ctx, position, style) = {
+        line((0, 0), (0, style.distance), ..style.at("wires"))
+        line( (rel: (radius: style.radius, angle: -90deg -style.angle), to: (0, style.distance)), (0, style.distance), (rel: (radius: style.radius, angle: -90deg + style.angle)))
+
+        let (width, height) = (calc.sin(style.angle)*style.radius, calc.cos(style.angle)*style.radius)
+        interface((-width / 2, -height / 2), (width / 2, height / 2))
+    }
+
+    // Componant call
+    component("vcc", name, node, draw: draw, style: style, ..params)
+}
