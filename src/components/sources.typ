@@ -20,7 +20,7 @@
         if (style.variant == "iec") {
             line((0, -style.radius), (rel: (0, 2 * style.radius)), ..style, fill: none)
         } else {
-            line((-style.radius + padding, 0), (rel: (2 * style.radius - 1.85 * padding, 0)), mark: (end: ">"), fill: black)
+            line((-style.radius + style.padding, 0), (rel: (2 * style.radius - 1.85 * style.padding, 0)), mark: (end: ">"), fill: black)
         }
     }
 
