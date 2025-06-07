@@ -12,7 +12,7 @@
 #import "components/diodes.typ": diode, led, photodiode
 #import "components/opamp.typ": opamp
 #import "components/fuses.typ": afuse, fuse
-#import "components/grounds.typ": earth, frame, ground
+#import "components/grounds.typ": earth, frame, ground, vcc
 #import "components/inductors.typ": inductor
 #import "components/resistors.typ": potentiometer, resistor, rheostat
 #import "components/sources.typ": isource, vsource
