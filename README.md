@@ -30,7 +30,7 @@ You can find the full list of examples [here](https://l0uisgrange.github.io/zap/
 ## Usage
 
 ```typst
-#import "@preview/zap:0.2.1"
+#import "@preview/zap:0.2.0"
 
 #zap.canvas({
     import zap: *
