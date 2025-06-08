@@ -36,6 +36,8 @@
 
     group(name: name, ctx => {
         let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
+        let base-style = p-style + pre-style + pre-style.at(uid, default: (something: none))
+        let style = cetz.styles.resolve(base-style, merge: params.named())
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
@@ -51,8 +53,6 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                let base-style = p-style + pre-style + pre-style.at(uid, default: (something: none))
-                let style = cetz.styles.resolve(base-style, merge: params.named())
                 scale(p-scale * style.at("scale", default: 1))
                 draw(ctx, position, style)
                 copy-anchors("bounds")
@@ -61,15 +61,16 @@
 
         copy-anchors("component")
 
-        // Wires and label
+        // Label
         on-layer(0, {
             if (label != none) {
                 let (width, height) = cetz.util.measure(ctx, label)
                 let new-position = (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)))
-                content((rel: (0, -20pt), to: (rel: (0, new-position), to: "component.south")), label)
+                content((rel: (0, -20pt * style.at("scale", default: 1)), to: (rel: (0, new-position), to: "component.south")), label)
             }
         })
 
+        // Decorations
         if position.len() == 2 {
             line("in", "component.west", ..pre-style.at("wires"))
             line("out", "component.east", ..pre-style.at("wires"))
