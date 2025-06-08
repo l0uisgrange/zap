@@ -25,14 +25,14 @@ You can find the full list of examples [here](https://l0uisgrange.github.io/zap/
 ## Usage
 
 ```typst
-#import "@preview/zap:0.1.0"
+#import "@preview/zap:0.2.1"
 
 #zap.canvas({
     import zap: *
 
     isource("i1", (0,0), (5,0))
     resistor("r1", (5,5), (0,5))
-    wire("r1.out", "i1.minus")
+    wire("r1.out", "i1.out")
 })
 ```
 
