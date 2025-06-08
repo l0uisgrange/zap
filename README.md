@@ -1,3 +1,8 @@
+![](https://badgers.space/github/release/l0uisgrange/zap?theme=tailwind)
+![](https://badgers.space/github/checks/l0uisgrange/zap?theme=tailwind)
+![](https://badgers.space/github/contributors/l0uisgrange/zap?theme=tailwind)
+![](https://badgers.space/github/open-issues/l0uisgrange/zap?theme=tailwind)
+
 # ⚡️ Zap for Typst
 
 **Zap** is a lightweight 🪶 Typst package that makes drawing electronic circuits simple and intuitive. It's the first Typst library designed to align with widely recognized standards like **IEC** and **IEEE/ANSI** 📜.
