@@ -26,7 +26,7 @@
     assert(type(name) == str, message: "component name must be a string")
     assert(type(scale) == float, message: "scale must be a float")
     assert(type(rotate) == angle, message: "rotate must an angle")
-    assert(label == none or type(label) in (content, str), message: "label must content or string")
+    assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
     assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
 
     let p-rotate = rotate
@@ -64,10 +64,16 @@
 
         // Label
         on-layer(0, {
-            if (label != none) {
-                let (width, height) = cetz.util.measure(ctx, label)
+            if label != none {
+                if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
+                let (label, distance, width, height, anchor) = if type(label) == dictionary {
+                    (label.at("content", default: none), label.at("distance", default: 5pt), ..cetz.util.measure(ctx, label.at("content")), label.at("anchor", default: "north"))
+                } else {
+                    (label, 5pt, ..cetz.util.measure(ctx, label), label.at("anchor", default: "north"))
+                }
+                let reverse = "south" in anchor
                 let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
-                content("component.north", anchor: get-label-anchor(p-rotate), label, padding: 2pt)
+                content("component."+anchor, anchor: get-label-anchor(p-rotate).at(if reverse { 1 } else { 0 }), label, padding: distance)
             }
         })
 
