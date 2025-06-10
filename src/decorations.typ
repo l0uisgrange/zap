@@ -47,7 +47,7 @@
     }
 
     line(
-        (rel: (0, if bottom { - .2 } else { .2 }), to: if p-invert { a-end } else { a-start }),
+        (rel: (0, if bottom { -.2 } else { .2 }), to: if p-invert { a-end } else { a-start }),
         (rel: (0, if bottom { -.2 } else { .2 }), to: if p-invert { a-start } else { a-end }),
         mark: (end: ">"),
         fill: black,
