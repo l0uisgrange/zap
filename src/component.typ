@@ -2,6 +2,7 @@
 #import "styles.typ": default-style
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
+#import "components/nodes.typ": node
 #import "utils.typ": get-label-anchor
 
 #let component(
