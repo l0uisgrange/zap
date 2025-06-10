@@ -71,9 +71,9 @@
             if label != none {
                 if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
                 let (label, distance, width, height, anchor) = if type(label) == dictionary {
-                    (label.at("content", default: none), label.at("distance", default: 5pt), ..cetz.util.measure(ctx, label.at("content")), label.at("anchor", default: "north"))
+                    (label.at("content", default: none), label.at("distance", default: 7pt), ..cetz.util.measure(ctx, label.at("content")), label.at("anchor", default: "north"))
                 } else {
-                    (label, 5pt, ..cetz.util.measure(ctx, label), "north")
+                    (label, 7pt, ..cetz.util.measure(ctx, label), "north")
                 }
                 let reverse = "south" in anchor
                 let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
