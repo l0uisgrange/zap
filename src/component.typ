@@ -73,7 +73,7 @@
                 let (label, distance, width, height, anchor) = if type(label) == dictionary {
                     (label.at("content", default: none), label.at("distance", default: 5pt), ..cetz.util.measure(ctx, label.at("content")), label.at("anchor", default: "north"))
                 } else {
-                    (label, 5pt, ..cetz.util.measure(ctx, label), label.at("anchor", default: "north"))
+                    (label, 5pt, ..cetz.util.measure(ctx, label), "north")
                 }
                 let reverse = "south" in anchor
                 let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
