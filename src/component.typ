@@ -1,6 +1,8 @@
 #import "dependencies.typ": cetz
 #import "styles.typ": default-style
 #import "decorations.typ": current, flow, voltage
+#import "components/nodes.typ": node
+#import "components/nodes.typ": node
 #import "utils.typ": get-label-anchor
 
 #let component(
@@ -9,6 +11,7 @@
     i: none,
     f: none,
     u: none,
+    n: none,
     position: 50%,
     scale: 1.0,
     rotate: 0deg,
@@ -28,6 +31,7 @@
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
     assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
+    assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"))
 
     let p-rotate = rotate
     let p-scale = scale
@@ -90,6 +94,20 @@
             }
             if u != none {
                 voltage(ctx, u, p-rotate)
+            }
+            if n != none {
+                if "*-" in n {
+                    node("", "in")
+                }
+                if "-*" in n {
+                    node("", "out")
+                }
+                if "o-" in n {
+                    node("", "in", fill: false)
+                }
+                if "-o" in n {
+                    node("", "out", fill: false)
+                }
             }
         }
     })
