@@ -1,6 +1,7 @@
 #import "dependencies.typ": cetz
 #import "styles.typ": default-style
 #import "decorations.typ": current, flow, voltage
+#import "utils.typ": get-label-anchor
 
 #let component(
     draw: none,
@@ -65,8 +66,8 @@
         on-layer(0, {
             if (label != none) {
                 let (width, height) = cetz.util.measure(ctx, label)
-                let new-position = (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)))
-                content((rel: (0, -20pt * style.at("scale", default: 1)), to: (rel: (0, new-position), to: "component.south")), label)
+                let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
+                content("component.north", anchor: get-label-anchor(p-rotate), label, padding: 2pt)
             }
         })
 
@@ -102,7 +103,7 @@
 
     hide(rect(node1, node2, name: "bounds"))
     if io {
-        let (node3, node4) = (0,0)
+        let (node3, node4) = (0, 0)
         if params.pos().len() == 2 {
             (node3, node4) = params.pos()
         } else {

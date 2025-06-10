@@ -2,6 +2,7 @@
 #import "dependencies.typ": cetz
 #import cetz: canvas
 #import cetz.draw as draw
+#import cetz.draw: set-style
 
 // Export components
 #import "component.typ": component, interface
