@@ -1,0 +1,20 @@
+name: Typst CI Test
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Install Typst
+              run: sudo snap install typst
+            - name: Make test script executable
+              run: chmod +x test1.sh
+              working-directory: ./tests
+            - name: Run tests
+              run: ./test1.sh
+              working-directory: ./tests

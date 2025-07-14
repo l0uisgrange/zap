@@ -3,4 +3,3 @@
 *.pdf
 /doc/**/*.svg
 /main.svg
-tests
