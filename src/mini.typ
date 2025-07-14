@@ -21,9 +21,9 @@
     })
 }
 
-#let radiation-arrows(origin, angle: -30deg, reversed: false, length: 14pt) = {
+#let radiation-arrows(origin, angle: -120deg, reversed: false, length: 12pt) = {
     scope({
-        let arrows-distance = 2.5pt
+        let arrows-distance = 3pt
         let arrows-length = length
         let arrows-scale = 0.8
 

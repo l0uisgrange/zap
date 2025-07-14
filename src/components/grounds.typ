@@ -1,7 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, polygon
-#import "/src/mini.typ": radiation-arrows
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
