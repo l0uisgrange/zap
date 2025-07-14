@@ -22,7 +22,6 @@ elapsed_time_ms=$(( (end_time - start_time) / 1000000 ))
 # Check the exit code
 if [ $exit_code -eq 0 ]; then
   echo -e "${GREEN}PASS${NO_COLOR} All functions compiled successfully in ${elapsed_time_ms} ms."
-  rm "$OUTPUT_FILE"
   exit 0
 else
   echo "$output"
