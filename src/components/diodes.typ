@@ -18,7 +18,8 @@
         translate((-style.radius / 4, 0))
         interface((-style.radius / 2, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
-        polygon((0, 0), 3, radius: style.radius, ..style, fill: white)
+        polygon((0, 0), 3, radius: style.radius, fill: white, ..style)
+        line((0deg, style.radius), (180deg, style.radius / 2), ..style.at("wires"))
         line((style.radius, -style.line), (style.radius, style.line), ..style)
         if (emitting or receiving) {
             radiation-arrows((to: (0, 0), rel: (0.4, 0.6)), angle: -135deg, reversed: receiving, length: 12pt)
