@@ -10,7 +10,7 @@
     vsource("v1", (0,0), (0,3), label: $M$, debug: true)
     resistor("r2", (0,0), (0,-3), label: $4 Omega$, debug: true)*/
 
-    ledd("r3", (0,-3), (rel: (radius: 2, angle: 0deg)), c: "*-*", label: "D1")
+    led("r3", (0,-3), (rel: (radius: 2, angle: 0deg)), c: "*-*", label: "D1")
     // Branch 2
     //led("l1", "r1.out", (rel: (0,-6)), label: "LED", debug: true)
     /*inductor("i2", "r1.out", (rel: (3,0)), label: $6 mu"H" Omega not$, debug: true)
