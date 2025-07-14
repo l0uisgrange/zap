@@ -21,15 +21,15 @@
     })
 }
 
-#let radiation-arrows(origin, reversed: false) = {
+#let radiation-arrows(origin, angle: -120deg, reversed: false, length: 12pt) = {
     scope({
-        let arrows-distance = 3.5pt
-        let arrows-length = 14pt
+        let arrows-distance = 3pt
+        let arrows-length = length
         let arrows-scale = 0.8
 
         set-origin(origin)
         set-style(stroke: 0.55pt)
-        rotate(-30deg)
+        rotate(angle)
         if (reversed) {
             line((arrows-length, -arrows-distance), (0, -arrows-distance), mark: (
                 start: ">",

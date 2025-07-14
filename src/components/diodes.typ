@@ -22,7 +22,7 @@
         line((0deg, style.radius), (180deg, style.radius / 2), ..style.at("wires"))
         line((style.radius, -style.line), (style.radius, style.line), ..style)
         if (emitting or receiving) {
-            radiation-arrows((to: (0, 0), rel: (-.2, .7)), reversed: receiving)
+            radiation-arrows((to: (0, 0), rel: (0.25, 0.65)), reversed: receiving)
         }
     }
 
