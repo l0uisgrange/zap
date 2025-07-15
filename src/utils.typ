@@ -4,8 +4,6 @@
 
     let tolerance = 15
 
-    //panic(repr(normalized-angle))
-
     if calc.abs(normalized-angle) < tolerance {
         return ("south", "north")
     } else if calc.abs(normalized-angle - 90) < tolerance {
