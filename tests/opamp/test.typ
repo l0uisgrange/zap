@@ -5,5 +5,6 @@
     import lib: *
     draw.set-style(zap: (scale: 1))
 
-    opamp("o1", (0,0), label: "OP323")
+    opamp("o1", (0,0), label: "OP1")
+    opamp("o2", (3,0), label: "OP2", variant: "ieee")
 })
