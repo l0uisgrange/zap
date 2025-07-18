@@ -11,7 +11,7 @@
 #import "components/wires.typ": wire
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor
-#import "components/diodes.typ": diode, led, photodiode
+#import "components/diodes.typ": diode, led, photodiode, tunnel-diode
 #import "components/opamp.typ": opamp
 #import "components/fuses.typ": afuse, fuse
 #import "components/grounds.typ": earth, frame, ground, vcc
