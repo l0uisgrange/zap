@@ -11,7 +11,7 @@
 #import "components/wires.typ": wire
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor
-#import "components/diodes.typ": diode, led, photodiode
+#import "components/diodes.typ": diode, led, photodiode, schottky, tunnel, zener
 #import "components/opamp.typ": opamp
 #import "components/buttons.typ": button, ncbutton, nobutton
 #import "components/switches.typ": switch

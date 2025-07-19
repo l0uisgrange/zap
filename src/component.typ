@@ -77,7 +77,7 @@
                 }
                 let reverse = "south" in anchor
                 let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
-                content("component."+anchor, anchor: get-label-anchor(p-rotate).at(if reverse { 1 } else { 0 }), label, padding: distance)
+                content("component." + anchor, anchor: get-label-anchor(p-rotate).at(if reverse { 1 } else { 0 }), label, padding: distance)
             }
         })
 

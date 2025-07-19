@@ -1,4 +1,4 @@
-#let get-label-anchor(angle-deg, ) = {
+#let get-label-anchor(angle-deg) = {
     let angle = angle-deg.deg()
     let normalized-angle = calc.rem(if angle < 0 { angle + 360 } else { angle }, 360)
 
