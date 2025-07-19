@@ -2,7 +2,7 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, line, mark, rect
 
-#let switch(name, node, ..params) = {
+#let switch(name, node, closed: false, ..params) = {
     // Switch style
     let style = (
         width: .8,
@@ -13,7 +13,7 @@
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -0.1), (style.width/2, 0.1), io: position.len() < 2)
 
-        line((-style.width/2,0), (radius: style.width / 2, angle: style.angle), ..style.at("wires"))
+        line((-style.width/2,0), (radius: style.width / 2, angle: if closed { 0deg } else { style.angle }), ..style.at("wires"))
     }
 
     // Componant call
