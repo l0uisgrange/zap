@@ -10,19 +10,19 @@
     // Switch style
     let style = (
         width: .8,
-        distance: .3,
+        distance: .25,
         length: .2
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.width / 2, -0.1), (style.width/2, 0.1), io: position.len() < 2)
+        interface((-style.width / 2, -style.distance - style.length / 2), (style.width/2, style.distance + style.length / 2), io: position.len() < 2)
 
-        let altitude = if (pressed and steady == "no") or (not pressed and steady == "nc") { .04 } else { style.distance }
+        let altitude = if (pressed and steady == "no") or (not pressed and steady == "nc") { style.at("node", default: (radius: .05)).radius - .01 } else { style.distance }
         if steady == "nc" { altitude *= -1 }
 
-        line((-style.width/2, altitude), (rel: (style.width, 0)))
-        line((0, altitude), (rel: (0, style.length)))
+        line((-style.width/2, altitude), (rel: (style.width, 0)), ..style)
+        line((0, altitude), (rel: (0, style.length)), ..style)
         no("d", (-style.width/2,0), fill: false)
         no("d", (style.width/2,0), fill: false)
     }
