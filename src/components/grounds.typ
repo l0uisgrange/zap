@@ -65,11 +65,7 @@
     let draw(ctx, position, style) = {
         line((0, 0), (0, -style.distance), ..style.at("wires"))
         for i in (0, 1, 2) {
-            line(
-                (-style.width / 2 + i * style.delta, -style.distance - i * style.spacing),
-                (style.width / 2 - i * style.delta, -style.distance - i * style.spacing),
-                ..style,
-            )
+            line((-style.width / 2 + i * style.delta, -style.distance - i * style.spacing), (style.width / 2 - i * style.delta, -style.distance - i * style.spacing), ..style)
         }
         interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
     }
