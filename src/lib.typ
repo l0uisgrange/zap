@@ -13,6 +13,7 @@
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode
 #import "components/opamp.typ": opamp
+#import "components/buttons.typ": button, ncbutton, nobutton
 #import "components/switches.typ": switch
 #import "components/fuses.typ": afuse, fuse
 #import "components/grounds.typ": earth, frame, ground, vcc

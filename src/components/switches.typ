@@ -3,18 +3,17 @@
 #import cetz.draw: anchor, circle, line, mark, rect
 
 #let switch(name, node, ..params) = {
-    // Isource style
+    // Switch style
     let style = (
-        radius: .53,
-        padding: .25,
-        arrow-scale: 3,
+        width: .8,
+        angle: 35deg
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
+        interface((-style.width / 2, -0.1), (style.width/2, 0.1), io: position.len() < 2)
 
-
+        line((-style.width/2,0), (radius: style.width / 2, angle: style.angle), ..style.at("wires"))
     }
 
     // Componant call
