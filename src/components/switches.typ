@@ -11,7 +11,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.width / 2, -0.1), (style.width/2, 0.1), io: position.len() < 2)
+        interface((-style.width / 2, -0.2), (style.width/2, 0.2), io: position.len() < 2)
 
         line((-style.width/2,0), (radius: style.width / 2, angle: if closed { 0deg } else { style.angle }), ..style.at("wires"))
     }
