@@ -7,11 +7,11 @@
 
 **Zap** is a lightweight 🪶 Typst package that makes drawing electronic circuits simple and intuitive. It's the first Typst library designed to align with widely recognized standards like **IEC** and **IEEE/ANSI** 📜.
 
-[Documentation](https://l0uisgrange.github.io/zap/) — [Examples](https://l0uisgrange.github.io/zap/examples) — [Forum](https://github.com/l0uisgrange/zap/discussions/categories/q-a)
+[Documentation](https://zap.grangelouis.ch) — [Examples](https://zap.grangelouis.ch/examples) — [Forum](https://github.com/l0uisgrange/zap/discussions/categories/q-a)
 
 ## Simple examples
 
-You can find the full list of examples [here](https://l0uisgrange.github.io/zap/examples).
+You can find the full list of examples [here](https://zap.grangelouis.ch/examples).
 
 <table>
 <tr>
@@ -45,7 +45,7 @@ You can find the full list of examples [here](https://l0uisgrange.github.io/zap/
 
 ## Online documentation
 
-You can find the full documentation 📚 [available online](https://l0uisgrange.github.io/zap/). It provides comprehensive guides, a detailed list of components, full API references, and example codes to get you started easily.
+You can find the full documentation 📚 [available online](https://zap.grangelouis.ch). It provides comprehensive guides, a detailed list of components, full API references, and example codes to get you started easily.
 
 ## Contributing
 
