@@ -1,0 +1,38 @@
+{
+	"name": "my-app",
+	"private": true,
+	"version": "0.2.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"postbuild": "cp 404.html build/404.html",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check ."
+	},
+	"devDependencies": {
+		"@iconify-json/hugeicons": "^1.2.5",
+		"@iconify/tailwind4": "^1.0.6",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"@sveltejs/kit": "^2.21.1",
+		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@tailwindcss/vite": "^4.1.8",
+		"prettier": "^3.5.3",
+		"prettier-plugin-svelte": "^3.4.0",
+		"prettier-plugin-tailwindcss": "^0.6.12",
+		"svelte": "^5.33.11",
+		"svelte-check": "^4.2.1",
+		"tailwindcss": "^4.1.7",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.5"
+	},
+	"dependencies": {
+		"fuse.js": "^7.1.0",
+		"shiki": "^3.4.2",
+		"shiki-magic-move": "^1.1.0"
+	}
+}

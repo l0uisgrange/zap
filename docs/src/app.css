@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+@plugin "@iconify/tailwind4";
+
+@font-face {
+    font-family: "Mona Space";
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url("/MonaspaceArgon.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Mona Sans";
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url("/Mona-Sans.woff2") format("woff2");
+}
+
+@theme {
+    --font-display: "Mona Sans", "sans-serif";
+    --color-typst: #239dad;
+    --color-import: #CF222E;
+    --color-component: #8250DF;
+    --color-params: #953800;
+    --color-string: #0A3069;
+    --color-float: #0550AE;
+    --color-new: var(--color-purple-600);
+    --color-neutral-200: rgb(209,217,224);
+    --color-neutral-900: rgb(13,17,23);
+    --color-neutral-border: #3d444d;
+    --color-neutral-800: #151b23;
+    --color-neutral-100: rgb(246, 248, 250);
+    --color-blue-600: #0969da;
+    --color-primary: #3e5fff;
+    --color-red: #e02f1f;
+    --font-mono: 'Mona Space', monospace;
+}
+
+:root {
+    @media (prefers-color-scheme: dark) {
+        --color-import: #FF7B72 !important;
+        --color-component: #D2A8FF;
+        --color-params: #FFA657 !important;
+        --color-string: #A5D6FF;
+        --color-new: var(--color-purple-500);
+        --color-float: #79C0FF;
+    }
+}
+
+html {
+    @apply font-display scroll-smooth;
+    div:not(.dark) > pre {
+        @apply bg-neutral-100! antialiased max-w-full! w-full! dark:bg-neutral-800!;
+    }
+    pre code {
+        @apply text-sm font-mono whitespace-pre max-w-full! overflow-x-scroll!;
+    }
+}
+
+body {
+    @apply dark:bg-neutral-900 dark:text-white;
+}
+
+.border-* {
+    @apply border-neutral-200 dark:border-neutral-800;
+}
+
+h1 {
+    @apply text-4xl font-semibold font-stretch-105% mb-5;
+}
+h2 {
+    @apply text-2xl font-semibold mb-3 mt-6;
+}
+h3 {
+    @apply text-lg font-medium mb-3;
+}
+p, ul {
+    @apply subpixel-antialiased mb-2;
+}
+main a:not(.block):not(.flex) {
+    @apply text-blue-600 underline underline-offset-3;
+}
+.font-mono {
+    @apply font-light;
+}
