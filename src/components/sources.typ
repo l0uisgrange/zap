@@ -1,5 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": ac-sign
 #import cetz.draw: anchor, circle, line, mark, rect
 
 #let isource(name, node, current: "dc", ..params) = {
@@ -48,7 +49,11 @@
 
         circle((0, 0), radius: style.radius, fill: white, ..style)
         if (style.variant == "iec") {
-            line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
+            if current=="ac" {
+                ac-sign(size: 2)
+            } else {
+                line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
+            }
         } else {
             line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
             line(
