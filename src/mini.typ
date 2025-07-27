@@ -72,8 +72,8 @@
 }
 
 #let ac-sign(size: 1) = {
-    let width = 10pt*size
-    let height = 4pt*size
+    let width = 10pt * size
+    let height = 4pt * size
     let symbol-stroke = 0.55pt
 
     set-style(stroke: symbol-stroke)
