@@ -57,7 +57,7 @@
     content((rel: (0, height * if bottom { -2 } else { 2 }), to: (a-start, 50%, a-end)), p-label)
 }
 
-#let voltage(ctx, label, p-rotate) = {
+#let voltage(ctx, variant, label, p-rotate) = {
     let (p-label, p-position, ..params) = get-label(label)
 
     let (width, height) = cetz.util.measure(ctx, p-label)

@@ -93,7 +93,7 @@
                 flow(ctx, f)
             }
             if u != none {
-                voltage(ctx, u, p-rotate)
+                voltage(ctx, variant: pre-style.at("voltage").at("variant", default: "iec"), u, p-rotate)
             }
             if n != none {
                 if "*-" in n {
