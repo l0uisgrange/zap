@@ -71,9 +71,9 @@
     line((width / 2, -vspace), (width / 2 - tick-width, -vspace))
 }
 
-#let ac-sign() = {
-    let width = 10pt
-    let height = 4pt
+#let ac-sign(size: 1) = {
+    let width = 10pt * size
+    let height = 4pt * size
     let symbol-stroke = 0.55pt
 
     set-style(stroke: symbol-stroke)
