@@ -13,22 +13,34 @@
     } else {
         end + top
     }
-    (p-label, p-position, p-invert, label.at("distance", default: 50%))
+    let (p-label, p-label-distance) = if (
+        type(p-label) == dictionary and "content" in p-label and "distance" in p-label
+    ) {
+        (p-label.content, p-label.distance)
+    } else {
+        (p-label, none)
+    }
+    (p-label, p-position, p-invert, label.at("distance", default: 50%), p-label-distance)
 }
 
 #let current(ctx, label) = {
-    let (p-label, p-position, p-invert, p-distance) = get-label(label)
+    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
 
     let (width, height) = cetz.util.measure(ctx, p-label)
     let side = if p-position.y == top { (1, ">", "<") } else { (-1, ">", "<") }
-
-    if p-position.x == start {
-        mark(("in", p-distance, "component.west"), "in", symbol: if p-invert { "<" } else { ">" }, anchor: "center", fill: black, scale: 0.8)
-        content((rel: (0, (.2 + height) * side.first()), to: ("in", p-distance, "component.west")), p-label)
+    let mark-position = if p-position.x == start{
+        (("in", p-distance, "component.west"), "in")
     } else {
-        mark(("component.east", p-distance, "out"), "out", symbol: if p-invert { "<" } else { ">" }, anchor: "center", fill: black, scale: 0.8)
-        content((rel: (0, (.2 + height) * side.first()), to: ("component.east", p-distance, "out")), p-label)
+        (("component.east", p-distance, "out"), "out")
     }
+    let label-distance = if p-label-distance == none {
+        (.2 + height) * side.first()
+    } else {
+        p-label-distance
+    }
+
+    mark(..mark-position, symbol: if p-invert { "<" } else { ">" }, anchor: "center", fill: black, scale: 0.8)
+    content((rel: (0, label-distance), to: mark-position.at(0)), p-label)
 }
 
 #let flow(ctx, label) = {
