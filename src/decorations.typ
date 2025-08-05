@@ -44,7 +44,7 @@
 }
 
 #let flow(ctx, label) = {
-    let (p-label, p-position, p-invert, p-distance) = get-label(label)
+    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
 
     let (width, height) = cetz.util.measure(ctx, p-label)
 
@@ -57,16 +57,23 @@
         let first = ("component.east", p-distance, "out")
         (first, (rel: (.7, 0), to: first))
     }
+    let a-start = (rel: (0, if bottom { -.2 } else { .2 }), to: a-start)
+    let a-end = (rel: (0, if bottom { -.2 } else { .2 }), to: a-end)
+    let (a-start, a-end) = if p-invert {(a-end, a-start)} else {(a-start, a-end)}
+    let label-distance = if p-label-distance == none {
+        height * if bottom { -1 } else { 1 }
+    } else {
+        p-label-distance
+    }
 
     line(
-        (rel: (0, if bottom { -.2 } else { .2 }), to: if p-invert { a-end } else { a-start }),
-        (rel: (0, if bottom { -.2 } else { .2 }), to: if p-invert { a-start } else { a-end }),
+        a-start, a-end,
         mark: (end: ">"),
         fill: black,
         stroke: 0.55pt,
         scale: 0.8,
     )
-    content((rel: (0, height * if bottom { -2 } else { 2 }), to: (a-start, 50%, a-end)), p-label)
+    content((rel: (0, label-distance), to: (a-start, 50%, a-end)), p-label)
 }
 
 #let voltage(ctx, label, p-rotate) = {
