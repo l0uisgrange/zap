@@ -77,7 +77,7 @@
 }
 
 #let voltage(ctx, label, p-rotate) = {
-    let (p-label, p-position, ..params) = get-label(label)
+    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
 
     let (width, height) = cetz.util.measure(ctx, p-label)
     let side = if p-position.y == top { (1, "north") } else { (-1, "south") }
@@ -85,9 +85,15 @@
     let a-start = (rel: (-.4, .1 * side.first()), to: "component." + side.last() + "-west")
     let a-end = (rel: (.4, .1 * side.first()), to: "component." + side.last() + "-east")
     let a-center = (rel: (0, .3 * side.first()), to: "component." + side.last())
-    let a-label = (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)))
+    let a-label = if p-label-distance == none {
+        (width / 2 * calc.abs(calc.sin(p-rotate))
+          + height / 2 * calc.abs(calc.cos(p-rotate))
+          + cetz.util.resolve-number(ctx, 5pt * side.first()))
+    } else {
+        p-label-distance
+    }
 
-    content((rel: (0, a-label), to: (rel: (0, 5pt * side.first()), to: a-center)), p-label)
+    content((rel: (0, a-label), to: a-center), p-label)
     if p-position.x == start {
         hobby(a-end, a-center, a-start, mark: (end: ">", fill: black), scale: 0.8, stroke: 0.55pt)
     } else {
