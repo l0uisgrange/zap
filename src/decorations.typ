@@ -28,7 +28,7 @@
 
     let (width, height) = cetz.util.measure(ctx, p-label)
     let side = if p-position.y == top { (1, ">", "<") } else { (-1, ">", "<") }
-    let mark-position = if p-position.x == start{
+    let mark-position = if p-position.x == start {
         (("in", p-distance, "component.west"), "in")
     } else {
         (("component.east", p-distance, "out"), "out")
@@ -59,7 +59,7 @@
     }
     let a-start = (rel: (0, if bottom { -.2 } else { .2 }), to: a-start)
     let a-end = (rel: (0, if bottom { -.2 } else { .2 }), to: a-end)
-    let (a-start, a-end) = if p-invert {(a-end, a-start)} else {(a-start, a-end)}
+    let (a-start, a-end) = if p-invert { (a-end, a-start) } else { (a-start, a-end) }
     let label-distance = if p-label-distance == none {
         height * if bottom { -1 } else { 1 }
     } else {
@@ -67,7 +67,8 @@
     }
 
     line(
-        a-start, a-end,
+        a-start,
+        a-end,
         mark: (end: ">"),
         fill: black,
         stroke: 0.55pt,
@@ -86,9 +87,7 @@
     let a-end = (rel: (.4, .1 * side.first()), to: "component." + side.last() + "-east")
     let a-center = (rel: (0, .3 * side.first()), to: "component." + side.last())
     let a-label = if p-label-distance == none {
-        (width / 2 * calc.abs(calc.sin(p-rotate))
-          + height / 2 * calc.abs(calc.cos(p-rotate))
-          + cetz.util.resolve-number(ctx, 5pt * side.first()))
+        (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)) + cetz.util.resolve-number(ctx, 5pt * side.first()))
     } else {
         p-label-distance
     }
