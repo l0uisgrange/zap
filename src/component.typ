@@ -58,12 +58,8 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                if (type(p-scale) == float) {
-                    scale(p-scale * style.at("scale", default: 1))
-                }
-                else {
-                    scale(x: p-scale.at(0, default: 1) * style.at("scale", default: 1),y: p-scale.at(1, default: 1) * style.at("scale", default: 1))
-                }
+                let style-scale = style.at("scale", default: 1)
+                scale(x: if type(p-scale) == float { p-scale } else { p-scale.at(0, default: 1) } * if type(style-scale) == float { style-scale } else { style-scale.at(0, default: 1) }, y: if type(p-scale) == float { p-scale } else { p-scale.at(1, default: 1) } * if type(style-scale) == float { style-scale } else { style-scale.at(1, default: 1) })
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
