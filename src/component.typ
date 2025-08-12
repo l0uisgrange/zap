@@ -59,7 +59,12 @@
         on-layer(1, {
             group(name: "component", {
                 let style-scale = style.at("scale", default: 1.0)
-                scale(x: if type(p-scale) == float { p-scale } else { p-scale.at(0, default: 1.0) } * if type(style-scale) == float { style-scale } else { style-scale.at(0, default: 1.0) }, y: if type(p-scale) == float { p-scale } else { p-scale.at(1, default: 1.0) } * if type(style-scale) == float { style-scale } else { style-scale.at(1, default: 1.0) })
+                scale(
+                    x: if type(p-scale) == float { p-scale } else { p-scale.at(0, default: 1.0) }
+                        * if type(style-scale) == float { style-scale } else { style-scale.at(0, default: 1.0) },
+                    y: if type(p-scale) == float { p-scale } else { p-scale.at(1, default: 1.0) }
+                        * if type(style-scale) == float { style-scale } else { style-scale.at(1, default: 1.0) },
+                )
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
