@@ -90,9 +90,39 @@
         ))
 
         let (width, height) = (calc.sin(style.angle) * style.radius, calc.cos(style.angle) * style.radius)
-        interface((-width / 2, -height / 2), (width / 2, height / 2))
+        interface((-width / 2, 0), (width / 2, style.distance))
     }
 
     // Componant call
     component("vcc", name, node, draw: draw, style: style, ..params)
+}
+
+#let vee(name, node, label: "", ..params) = {
+    // VEE style
+    let style = (
+        angle: 35deg,
+        radius: .4,
+        distance: .6,
+    )
+
+    // Drawing function
+    let draw(ctx, position, style) = {
+        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        line((rel: (radius: style.radius, angle: 90deg + style.angle), to: (0, -style.distance)), (0, -style.distance), (
+            rel: (radius: style.radius, angle: 90deg - style.angle),
+        ))
+
+        let (width, height) = (calc.sin(style.angle) * style.radius, calc.cos(style.angle) * style.radius)
+        interface((-width / 2, -style.distance), (width / 2,0))
+    }
+
+    // Label position
+    let label = if type(label) == dictionary {
+        (content: label.at("content", default: none), anchor: label.at("anchor", default: "south"), distance: label.at("distance", default: 7pt))
+    } else {
+        (content: label, anchor: "south")
+    }
+
+    // Componant call
+    component("vee", name, node, draw: draw, style: style, label:label, ..params)
 }

@@ -16,7 +16,7 @@
 #import "components/buttons.typ": button, ncbutton, nobutton
 #import "components/switches.typ": switch
 #import "components/fuses.typ": afuse, fuse
-#import "components/grounds.typ": earth, frame, ground, vcc
+#import "components/supplies.typ": earth, frame, ground, vcc, vee
 #import "components/inductors.typ": inductor
 #import "components/resistors.typ": potentiometer, resistor, rheostat
 #import "components/sources.typ": acvsource, isource, vsource
