@@ -22,7 +22,7 @@
 			content={'#zap.canvas({\n' +
 				'    import zap: *\n' +
 				'\n' +
-				'    // Branch 1' +
+				'    // Branch 1\n' +
 				'	 resistor("r1", (0,3), (3,3), label: $3 Omega$)\n' +
 				'	 vsource("v1", (0,0), (0,3), label: (content: "V1", anchor: "south"))\n' +
 				'    resistor("r2", (0,0), (0,-3), label: $4 Omega$)\n' +
