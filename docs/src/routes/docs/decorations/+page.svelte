@@ -3,8 +3,10 @@
 	import NavButton from '$lib/components/NavButton.svelte';
 	import NexPrev from '$lib/components/NexPrev.svelte';
 	import Code from '$lib/components/Code.svelte';
-	import style1 from '$lib/examples/style1.svg';
 	import decoration from './decoration.svg';
+	import named from './named.svg';
+	import namedcustom from './namedcustom.svg';
+	import {Notice} from "$lib";
 
 	let headings: any[] = $state([]);
 
@@ -28,11 +30,47 @@
 
 <div class="items-stretch md:flex">
 	<main class="min-h-dvh p-5 pt-10 md:px-8 md:py-10">
-		<h1>Decorations</h1>
+		<h1>Labels & decorations</h1>
 		<p class="max-w-2xl text-lg">
-			Using Zap, you can easily add decorations to your components and wires to represent currents, voltages, and flows.
+			Using Zap, you can easily add labels and decorations to your components to represent currents, voltages, and flows.
 		</p>
-		<h2>Usage</h2>
+		<h2>Labels</h2>
+		<p>
+			You can name your components by giving them a label using the <span class="text-params font-mono">label</span> parameter.
+		</p>
+		<div class="grid gap-5 lg:grid-cols-4 mb-5">
+			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+				<img src={named} alt="Style 1 example" />
+			</div>
+			<div class="lg:col-span-3">
+				<Code
+						content={'#zap.canvas({\n' +
+						'    import zap: *\n\n' +
+						'    heater("v1", (0,-1), (0,2), label: $R$)\n' +
+						'})'}
+				/>
+			</div>
+		</div>
+		<Notice type="info" title="Automatic positioning">
+			The label positions itself automatically depending on the orientation of your component, even for special angles.
+		</Notice>
+		<h3 class="mt-8">Advanced labelling</h3>
+		<p>Sometimes, the label is not displayed where you want (like in the middle of the neighbour component...).</p>
+		<p>Zap provides the ability to give a dictionary instead of content to customize this behavior.</p>
+		<div class="grid gap-5 lg:grid-cols-4 mb-5">
+			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+				<img src={namedcustom} alt="Style 1 example" />
+			</div>
+			<div class="lg:col-span-3">
+				<Code
+						content={'#zap.canvas({\n' +
+						'    import zap: *\n\n' +
+						'    heater("v1", (0,-1), (0,2), label: (content: $R$, anchor: "south", distance: 20pt))\n' +
+						'})'}
+				/>
+			</div>
+		</div>
+		<h2>Decorations</h2>
 		<p>
 			You can add labels for current, voltage, or generic flow to components using the <span class="text-params font-mono">i</span> (current),
 			<span class="text-params font-mono">u</span>

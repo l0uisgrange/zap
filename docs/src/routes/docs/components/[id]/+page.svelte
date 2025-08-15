@@ -31,7 +31,7 @@
 				<span class="rounded-full font-mono text-lg text-purple-500">New</span>
 			{/if}
 		</h1>
-		<p class="flex items-center gap-2">
+		<p class="flex items-center gap-2 flex-wrap">
 			Added in <span class="text-string">{component?.release}</span>
 			{#if component?.contributors}by <Avatar username={component?.contributors[0]} displayUsername />
                 {#if component?.contributors.length > 1}
@@ -48,7 +48,7 @@
         <p>Here's a quick example on how to use this component.</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <div>
-                <img src={component?.image} class="border border-gray-200 dark:border-gray-700 rounded-lg w-full" alt={component?.full_name} />
+                <img src={component?.image} class="border border-gray-200 dark:border-neutral-border rounded-lg w-full" alt={component?.full_name} />
             </div>
             <div class="lg:col-span-2">
                 <Code
