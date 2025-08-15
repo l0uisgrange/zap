@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, rect, polygon
+#import cetz.draw: anchor, circle, content, line, mark, polygon, rect
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {
     assert(type(dependent) == bool, message: "dependent must be boolean")
@@ -23,7 +23,7 @@
         } else {
             circle((0, 0), radius: style.radius, fill: white, ..style)
         }
-        if (style.variant == "iec") {
+        if style.variant == "iec" {
             line((0, -style.radius), (rel: (0, 2 * style.radius)), ..style, fill: none)
         } else {
             line((-style.radius + style.padding, 0), (rel: (2 * style.radius - 1.85 * style.padding, 0)), mark: (end: ">"), fill: black)
