@@ -18,7 +18,7 @@
 }
 
 @theme {
-    --font-display: "Mona Sans", "sans-serif";
+    --font-display: "Mona Sans", "Arial", "sans-serif";
     --color-typst: #239dad;
     --color-import: #CF222E;
     --color-component: #8250DF;
