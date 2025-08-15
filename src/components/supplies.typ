@@ -97,7 +97,7 @@
     component("vcc", name, node, draw: draw, style: style, ..params)
 }
 
-#let vee(name, node, label: "", ..params) = {
+#let vee(name, node, label: none, ..params) = {
     // VEE style
     let style = (
         angle: 35deg,
@@ -117,10 +117,12 @@
     }
 
     // Label position
-    let label = if type(label) == dictionary {
-        (content: label.at("content", default: none), anchor: label.at("anchor", default: "south"), distance: label.at("distance", default: 7pt))
-    } else {
-        (content: label, anchor: "south")
+    if label != none {
+        let label = if type(label) == dictionary {
+            (content: label.at("content", default: none), anchor: label.at("anchor", default: "south"), distance: label.at("distance", default: 7pt))
+        } else {
+            (content: label, anchor: "south")
+        }
     }
 
     // Componant call
