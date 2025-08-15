@@ -116,9 +116,10 @@
         interface((-width / 2, -style.distance), (width / 2, 0))
     }
 
+    let p-label = label
     // Label position
-    if label != none {
-        let label = if type(label) == dictionary {
+    if p-label != none {
+        p-label = if type(label) == dictionary {
             (content: label.at("content", default: none), anchor: label.at("anchor", default: "south"), distance: label.at("distance", default: 7pt))
         } else {
             (content: label, anchor: "south")
@@ -126,5 +127,5 @@
     }
 
     // Componant call
-    component("vee", name, node, draw: draw, style: style, label: label, ..params)
+    component("vee", name, node, draw: draw, style: style, label: p-label, ..params)
 }
