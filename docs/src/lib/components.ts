@@ -16,15 +16,17 @@ import frame from './images/frame.svg';
 import capa from './images/capacitor.svg';
 import rheostat from './images/rheostat.svg';
 import potentiometer from './images/potentiometer.svg';
+import heater from './images/heater.svg';
 
 export interface Component {
 	name: string;
 	full_name: string;
 	image: string;
 	quick?: boolean;
-	release?: string;
+	release: string;
 	options?: { name: string; alias?: string; default: string; description?: string; type?: string | string[] }[];
 	origin?: string;
+	contributors?: string[]
 }
 
 export const components: Component[] = [
@@ -34,6 +36,7 @@ export const components: Component[] = [
 		image: resistor,
 		quick: true,
 		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'variable',
@@ -52,25 +55,51 @@ export const components: Component[] = [
 		]
 	},
 	{
+		name: 'heater',
+		full_name: 'heating resistor',
+		image: heater,
+		quick: true,
+		release: '0.3.0',
+		origin: 'resistor',
+		contributors: ['l0uisgrange'],
+		options: [
+			{
+				name: 'variable',
+				type: 'boolean',
+				default: 'false',
+				description: 'Draws an arrow accross the heater'
+			},
+			{
+				name: 'adjustable',
+				type: 'boolean',
+				default: 'false',
+				description: 'Draws an arrow perpendicular to the heater'
+			}
+		]
+	},
+	{
 		name: 'inductor',
 		full_name: 'inductor',
 		image: inductor,
 		quick: true,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'isource',
 		full_name: 'current source',
 		image: isource,
 		quick: true,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'vsource',
 		full_name: 'voltage source',
 		image: vsource,
 		quick: true,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange', 'LionelKarlen'],
 	},
 	{
 		name: 'fuse',
@@ -78,6 +107,7 @@ export const components: Component[] = [
 		image: fuse,
 		quick: true,
 		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'asymmetric',
@@ -94,6 +124,7 @@ export const components: Component[] = [
 		image: diode,
 		quick: true,
 		release: '0.1.0',
+		contributors: ['l0uisgrange', 'Pariatorn'],
 		options: [
 			{
 				name: 'emitting',
@@ -116,7 +147,8 @@ export const components: Component[] = [
 		full_name: 'light-emitting diode',
 		image: led,
 		quick: true,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'dcmotor',
@@ -124,6 +156,7 @@ export const components: Component[] = [
 		image: dcmotor,
 		quick: true,
 		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'magnet',
@@ -137,19 +170,22 @@ export const components: Component[] = [
 		name: 'ground',
 		full_name: 'ground',
 		image: ground,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'earth',
 		full_name: 'earth ground',
 		image: earth,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'bjt',
 		full_name: 'bipolar junction transistor',
 		image: bjt,
 		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'envelope',
@@ -164,6 +200,7 @@ export const components: Component[] = [
 		full_name: 'field-effect transistor',
 		image: mosfet,
 		release: '0.2.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'envelope',
@@ -198,6 +235,7 @@ export const components: Component[] = [
 		full_name: 'operational amplifier',
 		image: opamp,
 		release: '0.2.0',
+		contributors: ['l0uisgrange'],
 		options: [
 			{
 				name: 'invert',
@@ -211,20 +249,23 @@ export const components: Component[] = [
 		full_name: 'alternative current motor',
 		image: acmotor,
 		quick: true,
-		release: '0.2.0'
+		release: '0.2.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'frame',
 		full_name: 'frame ground',
 		image: frame,
-		release: '0.2.0'
+		release: '0.2.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'capacitor',
 		full_name: 'capacitor',
 		image: capa,
 		quick: true,
-		release: '0.1.0'
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'rheostat',
@@ -232,7 +273,8 @@ export const components: Component[] = [
 		image: rheostat,
 		quick: true,
 		release: '0.2.0',
-		origin: 'resistor'
+		origin: 'resistor',
+		contributors: ['l0uisgrange'],
 	},
 	{
 		name: 'potentiometer',
@@ -240,6 +282,7 @@ export const components: Component[] = [
 		image: potentiometer,
 		quick: true,
 		release: '0.2.0',
-		origin: 'resistor'
+		origin: 'resistor',
+		contributors: ['l0uisgrange'],
 	}
 ];

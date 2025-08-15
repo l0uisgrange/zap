@@ -1,8 +1,8 @@
 <script lang="ts">
-	let { previous = null, next = null } = $props();
+	let { previous = null, next = null, top = false } = $props();
 </script>
 
-<div class="mt-14 ml-auto flex items-center justify-between">
+<div class="{!top && 'mt-14'} ml-auto flex items-center justify-between">
 	{#if previous}
 		<a href={previous.href} class="group flex items-center gap-2 decoration-0">
 			<span
