@@ -19,7 +19,7 @@
         interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         if dependent {
-            polygon((0, 0), 4, radius: style.radius, fill: white, ..style)
+            polygon((0, 0), 4, radius: style.radius * 1.1, fill: white, ..style)
         } else {
             circle((0, 0), radius: style.radius, fill: white, ..style)
         }
@@ -37,7 +37,7 @@
 #let disource(name, node, ..params) = isource(name, node, dependent: true, ..params)
 #let acisource(name, node, ..params) = isource(name, node, current: "ac", ..params)
 
-#let vsource(name, node, current: "dc", ..params) = {
+#let vsource(name, node, dependent: false, current: "dc", ..params) = {
     assert(current in ("dc", "ac"), message: "current must be ac or dc")
 
     // Vsource style
@@ -53,18 +53,23 @@
     let draw(ctx, position, style) = {
         interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
-        circle((0, 0), radius: style.radius, fill: white, ..style)
-        if (style.variant == "iec") {
+        if dependent {
+            polygon((0, 0), 4, radius: style.radius * 1.1, fill: white, ..style)
+        } else {
+            circle((0, 0), radius: style.radius, fill: white, ..style)
+        }
+        if style.variant == "iec" {
             if current == "ac" {
                 content((0, 0), [#cetz.canvas({ ac-sign(size: 2) })])
             } else {
                 line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
             }
         } else {
-            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
+            let factor = if dependent { 0.9 } else { 1 }
+            line((rel: (-style.radius * factor + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
             line(
                 (
-                    style.radius - style.padding - style.sign-delta,
+                    style.radius * factor - style.padding - style.sign-delta,
                     -style.sign-size,
                 ),
                 (rel: (0, 2 * style.sign-size)),
@@ -78,5 +83,5 @@
     component("vsource", name, node, draw: draw, style: style, ..params)
 }
 
-#let dvsource(name, node, ..params) = isource(name, node, dependent: true, ..params)
+#let dvsource(name, node, ..params) = vsource(name, node, dependent: true, ..params)
 #let acvsource(name, node, ..params) = vsource(name, node, current: "ac", ..params)
