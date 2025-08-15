@@ -75,7 +75,7 @@
 			You can add labels for current, voltage, or generic flow to components using the <span class="text-params font-mono">i</span> (current),
 			<span class="text-params font-mono">u</span>
 			(voltage), or <span class="text-params font-mono">f</span> (flow) parameters. These parameters accept either a string for a simple label or
-			a dictionary for more detailed customization.
+			a dictionary for more detailed customization, using the same intuitive behaviour as labels.
 		</p>
 		<div class="grid gap-5 lg:grid-cols-4">
 			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
@@ -85,7 +85,7 @@
 				<Code
 					content={'#zap.canvas({\n' +
 						'    import zap: *\n\n' +
-						'    vsource("v1", (0,-2), (0,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+						'    vsource("v1", (0,-2), (0,2), u: $u_1$, i: (content: $i_1$, anchor: "west"), label: "5V")\n' +
 						'})'}
 				/>
 			</div>

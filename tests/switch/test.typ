@@ -4,6 +4,6 @@
 #lib.canvas({
     import lib: *
 
-    switch("d1", (0,0), (2,0), i: (label: $i_1$, position: right), u: $u_1$)
-    switch("d2", (0,-3), (2,-3), closed: true, i: (label: $i_1$, position: right), u: $u_1$)
+    switch("d1", (0,0), (2,0), i: (content: $i_1$, anchor: "east"), u: $u_1$)
+    switch("d2", (0,-3), (2,-3), closed: true, i: (content: $i_1$, anchor: "east"), u: $u_1$)
 })
