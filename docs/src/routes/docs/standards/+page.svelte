@@ -117,14 +117,16 @@
 			is no longer maintained, it is recommended to use the new IEC standard for your circuits.
 		</Notice>
 		<div class="grid gap-7 lg:grid-cols-2">
-			<div class="flex h-32 items-center justify-center rounded-lg border border-gray-300 bg-white dark:border-gray-700">
+			<div class="flex h-32 relative items-center justify-center rounded-lg border border-gray-300 bg-white dark:border-gray-700">
 				<img src={resistor} class="mb-4 h-18" alt="Classic IEC resistor" />
+				<img src={iec} class="size-6 absolute top-5 left-5" alt="IEC" />
 			</div>
 			<div class="lg:order-3">
 				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0), (3,0))\n' + '})'} />
 			</div>
-			<div class="flex h-32 items-center justify-center rounded-lg border border-gray-300 bg-white dark:border-gray-700">
-				<img src={resistorieee} class="mb-4 h-18" alt="Classic IEEE/ANSI resistor" />
+			<div class="flex h-32 items-center relative justify-center rounded-lg border border-gray-300 bg-white dark:border-gray-700">
+				<img src={resistorieee} class="mb-4 h-18 opacity-40" alt="Classic IEEE/ANSI resistor" />
+				<img src={ieee} class="h-5 absolute top-5 left-5 grayscale-100 opacity-40" alt="IEC" />
 			</div>
 			<div class="lg:order-last">
 				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0), (3,0), variant: "ieee")\n' + '})'} />

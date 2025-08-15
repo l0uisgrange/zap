@@ -2,6 +2,7 @@
 	import Code from '$lib/components/Code.svelte';
 	import example1 from '$lib/examples/example1.svg';
 	import example2 from '$lib/examples/example2.svg';
+	import example3 from '$lib/examples/example3.svg';
 </script>
 
 <svelte:head>
@@ -23,8 +24,8 @@
 				'    import zap: *\n' +
 				'\n' +
 				'    // Branch 1\n' +
-				'	 resistor("r1", (0,3), (3,3), label: $3 Omega$)\n' +
-				'	 vsource("v1", (0,0), (0,3), label: (content: "V1", anchor: "south"))\n' +
+				'	resistor("r1", (0,3), (3,3), label: $3 Omega$)\n' +
+				'	vsource("v1", (0,0), (0,3), label: (content: "V1", anchor: "south"))\n' +
 				'    resistor("r2", (0,0), (0,-3), label: $4 Omega$)\n' +
 				'\n' +
 				'    // Branch 2\n' +
@@ -61,7 +62,31 @@
 				'\n' +
 				'    // Wiring\n' +
 				'    wire("v1.in", "m1.out")\n' +
-				'    wire("v1.out", "r4.out")' +
+				'    wire("v1.out", "r4.out")\n' +
+				'})'}
+		/>
+	</div>
+	<h2>Transistor and charge</h2>
+	<div class="grid gap-7 md:grid-cols-2">
+		<div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+			<img src={example3} alt="example2" class="p-10" />
+		</div>
+		<Code
+				content={'#zap.canvas({\n' +
+				'    import zap: *\n' +
+				'\n' +
+				'    // Source and transistor\n' +
+				'    npn("d1", (3,3))\n'+
+				'    wire("d1.b", ("d1.b", "-|", (0,3)), (0,3))\n'+
+				'    acvsource("v1", (0,-1), (0,3), label: (content: "10V", anchor: "south"), u: $u_1$)\n'+
+				'\n'+
+				'    // Capacitor and charge\n' +
+				'    capacitor("c1", ("d1.e", "|-", "v1.in"), "d1.e", label: $C$)\n'+
+				'    wire("d1.c", (rel: (2,0)))\n'+
+				'    rheostat("r1", (rel: (2,0), to: "d1.c"), ((rel: (2,0), to: "d1.c"), "|-", "v1.in"), label: $R_"ch"$)\n'+
+				'\n' +
+				'    // Bottom wiring\n' +
+				'    wire("r1.out", "v1.in")\n' +
 				'})'}
 		/>
 	</div>
