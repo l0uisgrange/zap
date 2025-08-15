@@ -19,7 +19,7 @@
 #import "components/supplies.typ": earth, frame, ground, vcc, vee
 #import "components/inductors.typ": inductor
 #import "components/resistors.typ": potentiometer, resistor, rheostat
-#import "components/sources.typ": acvsource, isource, vsource
+#import "components/sources.typ": acvsource, disource, dvsource, isource, vsource
 #import "components/motors.typ": acmotor, dcmotor
 
 // Export transistors
