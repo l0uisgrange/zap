@@ -16,10 +16,11 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
+        let factor = if dependent { 1.1 } else { 1 }
+        interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
 
         if dependent {
-            polygon((0, 0), 4, radius: style.radius * 1.1, fill: white, ..style)
+            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
         } else {
             circle((0, 0), radius: style.radius, fill: white, ..style)
         }
@@ -51,12 +52,13 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
+        let factor = if dependent { 1.1 } else { 1 }
+        interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
 
         if dependent {
-            polygon((0, 0), 4, radius: style.radius * 1.1, fill: white, ..style)
+            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
         } else {
-            circle((0, 0), radius: style.radius, fill: white, ..style)
+            circle((0, 0), fill: white, ..style)
         }
         if style.variant == "iec" {
             if current == "ac" {
@@ -65,11 +67,10 @@
                 line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
             }
         } else {
-            let factor = if dependent { 0.9 } else { 1 }
-            line((rel: (-style.radius * factor + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
+            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
             line(
                 (
-                    style.radius * factor - style.padding - style.sign-delta,
+                    style.radius - style.padding - style.sign-delta,
                     -style.sign-size,
                 ),
                 (rel: (0, 2 * style.sign-size)),
