@@ -113,7 +113,7 @@
         ))
 
         let (width, height) = (calc.sin(style.angle) * style.radius, calc.cos(style.angle) * style.radius)
-        interface((-width / 2, -style.distance), (width / 2,0))
+        interface((-width / 2, -style.distance), (width / 2, 0))
     }
 
     // Label position
@@ -124,5 +124,5 @@
     }
 
     // Componant call
-    component("vee", name, node, draw: draw, style: style, label:label, ..params)
+    component("vee", name, node, draw: draw, style: style, label: label, ..params)
 }
