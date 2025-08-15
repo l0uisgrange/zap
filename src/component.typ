@@ -27,7 +27,7 @@
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
     assert(type(name) == str, message: "component name must be a string")
-    assert(type(scale) == float, message: "scale must be a float")
+    assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
     assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
@@ -58,7 +58,11 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                scale(p-scale * style.at("scale", default: 1))
+                if (type(p-scale) == float) {
+                    scale(p-scale * style.at("scale", default: 1))
+                } else {
+                    scale(x: p-scale.at(0, default: 1) * style.at("scale", default: 1), y: p-scale.at(1, default: 1) * style.at("scale", default: 1))
+                }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })

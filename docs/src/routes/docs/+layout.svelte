@@ -23,11 +23,11 @@
 		<NavButton href="/docs/basics" active={page.url.pathname === '/docs/basics'}>Basics</NavButton>
 		<NavButton href="/docs/positioning" active={page.url.pathname === '/docs/positioning'}>Positioning</NavButton>
 		<NavButton href="/docs/standards" active={page.url.pathname === '/docs/standards'}>Standards</NavButton>
-		<NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'}>Decorations</NavButton>
+		<NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'} newFeature>Labels & decorations</NavButton>
 		<NavButton href="/docs/styling" active={page.url.pathname === '/docs/styling'}>Styling</NavButton>
 		<div class="h-6"></div>
-		<NavButton href="/docs/components" active={page.url.pathname.startsWith('/docs/components')}>Components</NavButton>
-		<NavButton href="/docs/custom" newFeature active={page.url.pathname.startsWith('/docs/custom')}>Custom components</NavButton>
+		<NavButton href="/docs/components" active={page.url.pathname.startsWith('/docs/components')} newFeature>Components</NavButton>
+		<NavButton href="/docs/custom" active={page.url.pathname.startsWith('/docs/custom')}>Custom components</NavButton>
 	</div>
 	<article class="flex-auto">
 		{@render children()}

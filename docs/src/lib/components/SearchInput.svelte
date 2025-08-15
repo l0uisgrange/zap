@@ -15,12 +15,12 @@
 			distance: 100,
 			includeScore: true
 		});
-		results = items.toSorted((a, b) => a.name.localeCompare(b.name));
+		results = items.toSorted((a: any, b: any) => a.name.localeCompare(b.name));
 	});
 
 	$effect(() => {
 		if (!searchQuery.trim()) {
-			results = items.toSorted((a, b) => a.name.localeCompare(b.name));
+			results = items.toSorted((a: any, b: any) => a.name.localeCompare(b.name));
 			return;
 		}
 		const searchResults = fuse.search(searchQuery);

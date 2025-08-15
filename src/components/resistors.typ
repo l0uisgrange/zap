@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, line, rect
 #import "/src/mini.typ": variable-arrow
 
-#let resistor(name, node, variable: false, adjustable: false, ..params) = {
+#let resistor(name, node, variable: false, heatable: false, adjustable: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
 
@@ -51,6 +51,12 @@
             anchor("a", (0, style.height / 2 + arrow-length))
             line("a", (0, style.height / 2), mark: (end: ">", fill: black), fill: none)
         }
+        if heatable {
+            for i in range(3) {
+                let x = style.width / 4 * (i+1) - style.width / 2
+                line((x, -style.height / 2), (x, style.height / 2), ..style)
+            }
+        }
     }
 
     // Componant call
@@ -59,3 +65,4 @@
 
 #let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)
 #let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)
+#let heater(name, node, ..params) = resistor(name, node, heatable: true, ..params)

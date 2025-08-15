@@ -5,6 +5,7 @@
 	import typstlight from '$lib/typst-light.svg';
 	import githublight from '$lib/github-light.svg';
 	import { version } from '$lib';
+	import Avatar from "./docs/components/[id]/Avatar.svelte";
 
 	let { children } = $props();
 </script>
@@ -36,6 +37,6 @@
 </div>
 {@render children()}
 <div class="dark:border-neutral-border flex flex-col border-t border-neutral-200 px-5 py-5 md:flex-row md:items-center md:justify-between">
-	<span>A project by <a href="https://github.com/l0uisgrange" class="font-medium">@l0uisgrange</a></span>
+	<span class="flex items-center gap-2">A project initiated by <a href="https://github.com/l0uisgrange"><Avatar username="l0uisgrange" displayUsername /></a></span>
 	<span class="text-gray-500">Project under LGPL-3.0 license</span>
 </div>
