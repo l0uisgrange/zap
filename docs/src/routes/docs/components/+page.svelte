@@ -131,7 +131,7 @@
 					{#each selectedComponent.options ?? [] as opt}
 						<li>
 							<span class="text-params font-mono">{opt.name}</span>
-							<Type type={opt.type} />
+							{#if opt.type}<Type type={opt.type} />{/if}
 							<p class="normal-case">{opt.description}</p>
 							<ul class="ms-5">
 								{#if opt.default}
