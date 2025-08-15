@@ -53,7 +53,7 @@
         }
         if heatable {
             for i in range(3) {
-                let x = style.width / 4 * (i+1) - style.width / 2
+                let x = style.width / 4 * (i + 1) - style.width / 2
                 line((x, -style.height / 2), (x, style.height / 2), ..style)
             }
         }

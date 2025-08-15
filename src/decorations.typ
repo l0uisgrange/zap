@@ -1,40 +1,46 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
 
-#let get-label(label) = {
-    let p-label = if type(label) == dictionary and "label" in label {
-        label.label
-    } else {
-        label
+#let resolve-directions(direction) = {
+    let vertical = "north"
+    let horizontal = "east"
+    if "south" in direction {
+        vertical = "south"
     }
-    let p-invert = label.at("invert", default: false)
-    let p-position = if type(label) == dictionary and "position" in label and type(label.position) == alignment {
-        label.position
-    } else {
-        end + top
+    if "west" in direction {
+        horizontal = "west"
     }
-    let (p-label, p-label-distance) = if (
-        type(p-label) == dictionary and "content" in p-label and "distance" in p-label
-    ) {
-        (p-label.content, p-label.distance)
+    return (x: horizontal, y: vertical)
+}
+
+#let resolve-decoration(ctx, dec) = {
+    if type(dec) == dictionary and dec.at("content", default: none) == none { panic("Decoration dictionary needs at least the 'content' key") }
+    let result = if type(dec) == dictionary {
+        (
+            dec.at("content", default: none),
+            dec.at("distance", default: 7pt),
+            cetz.util.measure(ctx, dec.at("content")),
+            dec.at("invert", default: false),
+            resolve-directions(dec.at("anchor", default: "north-east")),
+            dec.at("label-distance", default: 7pt),
+        )
     } else {
-        (p-label, none)
+        (dec, 7pt, cetz.util.measure(ctx, dec), false, (x: "east", y: "north"), 7pt)
     }
-    (p-label, p-position, p-invert, label.at("distance", default: 50%), p-label-distance)
+    return result
 }
 
 #let current(ctx, label) = {
-    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
+    let (p-label, p-distance, p-size, p-invert, p-position, p-label-distance) = resolve-decoration(ctx, label)
 
-    let (width, height) = cetz.util.measure(ctx, p-label)
-    let side = if p-position.y == top { (1, ">", "<") } else { (-1, ">", "<") }
-    let mark-position = if p-position.x == start {
+    let side = if p-position.y == "north" { (1, ">", "<") } else { (-1, ">", "<") }
+    let mark-position = if p-position.x == "east" {
         (("in", p-distance, "component.west"), "in")
     } else {
         (("component.east", p-distance, "out"), "out")
     }
     let label-distance = if p-label-distance == none {
-        (.2 + height) * side.first()
+        (.2 + p-size.last()) * side.first()
     } else {
         p-label-distance
     }
@@ -44,13 +50,11 @@
 }
 
 #let flow(ctx, label) = {
-    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
+    let (p-label, p-distance, p-size, p-invert, p-position, p-label-distance) = resolve-decoration(ctx, label)
 
-    let (width, height) = cetz.util.measure(ctx, p-label)
+    let bottom = p-position.y == "south"
 
-    let bottom = p-position.y == bottom
-
-    let (a-start, a-end) = if p-position.x == start {
+    let (a-start, a-end) = if p-position.x == "west" {
         let first = ("component.west", p-distance, "in")
         (first, (rel: (-.7, 0), to: first))
     } else {
@@ -61,33 +65,25 @@
     let a-end = (rel: (0, if bottom { -.2 } else { .2 }), to: a-end)
     let (a-start, a-end) = if p-invert { (a-end, a-start) } else { (a-start, a-end) }
     let label-distance = if p-label-distance == none {
-        height * if bottom { -1 } else { 1 }
+        p-size.last() * if bottom { -1 } else { 1 }
     } else {
         p-label-distance
     }
 
-    line(
-        a-start,
-        a-end,
-        mark: (end: ">"),
-        fill: black,
-        stroke: 0.55pt,
-        scale: 0.8,
-    )
+    line(a-start, a-end, mark: (end: ">"), fill: black, stroke: 0.55pt, scale: 0.8)
     content((rel: (0, label-distance), to: (a-start, 50%, a-end)), p-label)
 }
 
 #let voltage(ctx, label, p-rotate) = {
-    let (p-label, p-position, p-invert, p-distance, p-label-distance) = get-label(label)
+    let (p-label, p-distance, p-size, p-invert, p-position, p-label-distance) = resolve-decoration(ctx, label)
 
-    let (width, height) = cetz.util.measure(ctx, p-label)
     let side = if p-position.y == top { (1, "north") } else { (-1, "south") }
 
     let a-start = (rel: (-.4, .1 * side.first()), to: "component." + side.last() + "-west")
     let a-end = (rel: (.4, .1 * side.first()), to: "component." + side.last() + "-east")
     let a-center = (rel: (0, .3 * side.first()), to: "component." + side.last())
     let a-label = if p-label-distance == none {
-        (width / 2 * calc.abs(calc.sin(p-rotate)) + height / 2 * calc.abs(calc.cos(p-rotate)) + cetz.util.resolve-number(ctx, 5pt * side.first()))
+        (p-size.first() / 2 * calc.abs(calc.sin(p-rotate)) + p.size.last() / 2 * calc.abs(calc.cos(p-rotate)) + cetz.util.resolve-number(ctx, 5pt * side.first()))
     } else {
         p-label-distance
     }
