@@ -25,7 +25,7 @@
             circle((0, 0), radius: style.radius, fill: white, ..style)
         }
         if style.variant == "iec" {
-            line((0, -style.radius), (rel: (0, 2 * style.radius)), ..style, fill: none)
+            line((0, -style.radius * factor), (rel: (0, 2 * style.radius * factor)), ..style, fill: none)
         } else {
             line((-style.radius + style.padding, 0), (rel: (2 * style.radius - 1.85 * style.padding, 0)), mark: (end: ">"), fill: black)
         }
@@ -64,7 +64,7 @@
             if current == "ac" {
                 content((0, 0), [#cetz.canvas({ ac-sign(size: 2) })])
             } else {
-                line((-style.radius, 0), (rel: (2 * style.radius, 0)), ..style)
+                line((-style.radius * factor, 0), (rel: (2 * style.radius * factor, 0)), ..style)
             }
         } else {
             line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
