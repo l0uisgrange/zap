@@ -1,9 +1,10 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, rect
+#import cetz.draw: anchor, circle, content, line, mark, rect, polygon
 
-#let isource(name, node, current: "dc", ..params) = {
+#let isource(name, node, dependent: false, current: "dc", ..params) = {
+    assert(type(dependent) == bool, message: "dependent must be boolean")
     assert(current in ("dc", "ac"), message: "current must be ac or dc")
 
     // Isource style
@@ -17,7 +18,11 @@
     let draw(ctx, position, style) = {
         interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
-        circle((0, 0), radius: style.radius, fill: white, ..style)
+        if dependent {
+            polygon((0, 0), 4, radius: style.radius, fill: white, ..style)
+        } else {
+            circle((0, 0), radius: style.radius, fill: white, ..style)
+        }
         if (style.variant == "iec") {
             line((0, -style.radius), (rel: (0, 2 * style.radius)), ..style, fill: none)
         } else {
@@ -29,6 +34,7 @@
     component("isource", name, node, draw: draw, style: style, ..params)
 }
 
+#let disource(name, node, ..params) = isource(name, node, dependent: true, ..params)
 #let acisource(name, node, ..params) = isource(name, node, current: "ac", ..params)
 
 #let vsource(name, node, current: "dc", ..params) = {
@@ -72,4 +78,5 @@
     component("vsource", name, node, draw: draw, style: style, ..params)
 }
 
+#let dvsource(name, node, ..params) = isource(name, node, dependent: true, ..params)
 #let acvsource(name, node, ..params) = vsource(name, node, current: "ac", ..params)
