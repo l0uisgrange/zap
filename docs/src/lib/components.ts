@@ -19,6 +19,10 @@ import capa from './images/capacitor.svg';
 import rheostat from './images/rheostat.svg';
 import potentiometer from './images/potentiometer.svg';
 import heater from './images/heater.svg';
+import zener from './images/zener.svg';
+import schottky from './images/schottky.svg';
+import tunnel from './images/tunnel.svg';
+import acvsource from './images/acvsource.svg';
 
 export interface Component {
 	name: string;
@@ -96,6 +100,14 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange'],
 	},
 	{
+		name: 'acvsource',
+		full_name: 'alternative voltage source',
+		image: acvsource,
+		quick: true,
+		release: '0.3.0',
+		contributors: ['l0uisgrange', 'LionelKarlen'],
+	},
+	{
 		name: 'vsource',
 		full_name: 'voltage source',
 		image: vsource,
@@ -118,6 +130,33 @@ export const components: Component[] = [
 		quick: false,
 		release: '0.3.0',
 		contributors: ['ThomasPDye'],
+	},
+	{
+		name: 'zener',
+		full_name: 'zener diode',
+		image: zener,
+		quick: true,
+		release: '0.3.0',
+		origin: "diode",
+		contributors: ['Pariatorn'],
+	},
+	{
+		name: 'tunnel',
+		full_name: 'tunnel diode',
+		image: tunnel,
+		quick: true,
+		release: '0.3.0',
+		origin: "diode",
+		contributors: ['Pariatorn'],
+	},
+	{
+		name: 'schottky',
+		full_name: 'schottky diode',
+		image: schottky,
+		quick: true,
+		release: '0.3.0',
+		origin: "diode",
+		contributors: ['Pariatorn'],
 	},
 	{
 		name: 'fuse',
