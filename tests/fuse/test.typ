@@ -4,5 +4,5 @@
 #lib.canvas({
     import lib: *
 
-    afuse("f1", (0,0), (3,0), label: (content: $F_1$, anchor: "south"), n: "*-*", i: (label: $i_1$, position: left), u: $u_1$)
+    afuse("f1", (0,0), (3,0), label: (content: $F_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
 })
