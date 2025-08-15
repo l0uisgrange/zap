@@ -11,10 +11,9 @@ Here are some important resources:
 ## How to contribute
 
 Contributing to this project is straightforward:
-1. [Open an issue](https://github.com/l0uisgrange/zap/issues/new) explaining the modification you want to do on the package
-2. Fork the repository on your own profile and start coding
-4. Push your commits to your own repository
-5. Open a Pull Request to the main `zap` repository branch
+1. Fork the repository on your own profile and start coding
+2. Push your commits to your own repository
+3. Open a Pull Request to the main `zap` repository branch
 
 And you're done!
 
@@ -25,4 +24,4 @@ And you're done!
 
 1. Before submission, please execute `typstyle src --tab-width 4 --column 160` to get your code clean
 2. One Pull Request means one feature/component
-3. Communication is necessary, please give your Pull Request a short, descriptive title with a quick explanation of the feature you developed
+3. Communication is necessary, please give your Pull Request a short, descriptive title with a quick explanation of the feature you developed. PR names should start with `feat`, `feat(component)`, `docs`, `chore`, ... for example `feat: adding voltage decorations to components`
