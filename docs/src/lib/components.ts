@@ -6,6 +6,8 @@ import fuse from './images/fuse.svg';
 import diode from './images/diode.svg';
 import led from './images/led.svg';
 import dcmotor from './images/dcmotor.svg';
+import vee from './images/vee.svg';
+import vcc from './images/vcc.svg';
 import ground from './images/ground.svg';
 import earth from './images/earth.svg';
 import bjt from './images/bjt.svg';
@@ -100,6 +102,22 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.1.0',
 		contributors: ['l0uisgrange', 'LionelKarlen'],
+	},
+	{
+		name: 'vcc',
+		full_name: 'positive voltage supply',
+		image: vcc,
+		quick: false,
+		release: '0.3.0',
+		contributors: ['l0uisgrange', 'ThomasPDye'],
+	},
+	{
+		name: 'vee',
+		full_name: 'negative voltage supply',
+		image: vee,
+		quick: false,
+		release: '0.3.0',
+		contributors: ['ThomasPDye'],
 	},
 	{
 		name: 'fuse',
