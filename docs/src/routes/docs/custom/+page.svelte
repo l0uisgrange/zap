@@ -51,7 +51,7 @@
 				'    let draw(ctx, position, style) = {\n' +
 				'        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)\n' +
 				'        \n' +
-				'        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)\n' +
+				'        d.rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)\n' +
 				'    }\n' +
 				'   \n' +
 				'    // Componant call\n' +
