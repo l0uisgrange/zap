@@ -41,7 +41,7 @@
     }
 
     // Componant call
-    component("bjt", name, node, draw: draw, style: style, ..params, label: none)
+    component("bjt", name, node, draw: draw, style: style, ..params)
 }
 
 #let pnp(name, node, ..params) = bjt(name, node, polarisation: "pnp", ..params)
