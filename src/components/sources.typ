@@ -27,7 +27,12 @@
         if style.variant == "iec" {
             line((0, -style.radius * factor), (rel: (0, 2 * style.radius * factor)), ..style, fill: none)
         } else {
-            line((-style.radius + style.padding, 0), (rel: (2 * style.radius - 1.85 * style.padding, 0)), mark: (end: ">", scale: style.arrow-scale), fill: black)
+            line(
+                (-style.radius + style.padding, 0),
+                (rel: (2 * style.radius - 1.85 * style.padding, 0)),
+                mark: (end: ">", scale: style.arrow-scale),
+                fill: black,
+            )
         }
     }
 
