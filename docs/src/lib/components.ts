@@ -343,3 +343,23 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange'],
 	}
 ];
+
+type ContributorCount = {
+	[key: string]: number;
+};
+
+const contributorCounts: ContributorCount = components.reduce((acc: ContributorCount, component) => {
+	if (component.contributors) {
+		component.contributors.forEach(contributor => {
+			acc[contributor] = (acc[contributor] || 0) + 1;
+		});
+	}
+	return acc;
+}, {});
+
+const sortedContributors = Object.entries(contributorCounts).sort(([, countA], [, countB]) => countB - countA);
+
+const specialcontributors = [
+	'thoams22', 'aortega0703', 'Geronymos', 'w-utter', 'TheRobot2105'
+]
+export const contributors = [...sortedContributors.map(([name]) => name), ...specialcontributors];
