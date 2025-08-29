@@ -4,7 +4,7 @@
 #import cetz.draw as draw
 #import cetz.draw: set-style
 
-// Export components
+// Export core
 #import "component.typ": component, interface
 
 // Export components
@@ -20,7 +20,5 @@
 #import "components/resistors.typ": heater, potentiometer, resistor, rheostat
 #import "components/sources.typ": acvsource, disource, dvsource, isource, vsource
 #import "components/motors.typ": acmotor, dcmotor
-
-// Export transistors
 #import "components/transistors/bjts.typ": bjt, npn, pnp
 #import "components/transistors/mosfets.typ": mosfet, nmos, nmosd, pmos, pmosd

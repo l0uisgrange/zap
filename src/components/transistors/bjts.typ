@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, hide, line, mark, translate
+#import cetz.draw: anchor, circle, hide, line, mark, translate, content
 #import "/src/mini.typ": center-mark
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
@@ -38,10 +38,14 @@
         line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
         line((to: "base", rel: (0, -style.base-distance * sgn)), "e", ..style.at("wires"), mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
         line((to: "base", rel: (0, style.base-distance * sgn)), "c", ..style.at("wires"))
+
+        if params.named().at("label", default: none) != none {
+            content((style.radius, 0), params.named().at("label"), anchor: "west", padding: if envelope { 0.2 } else { 0 })
+        }
     }
 
     // Componant call
-    component("bjt", name, node, draw: draw, style: style, ..params)
+    component("bjt", name, node, draw: draw, style: style, ..params, label: none)
 }
 
 #let pnp(name, node, ..params) = bjt(name, node, polarisation: "pnp", ..params)
