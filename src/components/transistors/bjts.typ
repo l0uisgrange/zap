@@ -40,7 +40,7 @@
         line((to: "base", rel: (0, style.base-distance * sgn)), "c", ..style.at("wires"))
 
         if params.named().at("label", default: none) != none {
-            content((style.radius, 0), params.named().at("label"), anchor: "west", padding: if envelope { 0.2 } else { 0 })
+            content((style.radius, 0), params.named().at("label"), anchor: "west", padding: if envelope { 0.2 } else { -0.1 })
         }
     }
 
