@@ -28,7 +28,7 @@
 
 <div class="flex w-screen flex-col px-5 text-center py-14 md:min-h-screen md:py-20">
 	<span class="text-new text-lg tracking-wide">Brand New Package</span>
-	<span class="mt-2 max-w-7xl mx-auto text-6xl font-medium text-balance tracking-tight font-stretch-expanded md:text-8xl">
+	<span class="mt-2 max-w-7xl mx-auto text-5xl sm:text-6xl font-medium text-balance tracking-tight font-stretch-expanded md:text-8xl">
 		Your Typst circuit drawing companion
 	</span>
 	<div class="mt-8 flex items-center gap-3 mx-auto">
@@ -45,9 +45,9 @@
 			Examples
 		</a>
 	</div>
-	<div class="mt-20 grid w-full px-5 justify-center items-stretch gap-8 text-left md:grid-cols-2">
+	<div class="mt-20 grid w-full justify-center items-stretch gap-8 text-left md:grid-cols-2">
 		<Animated {code} />
-		<div class="dark:border-neutral-border bg-white flex min-h-96 items-center justify-center rounded-lg border border-neutral-200">
+		<div class="dark:border-neutral-border bg-white p-5 flex min-h-96 items-center justify-center rounded-lg border border-neutral-200">
 			<img src={image} alt="circuit" />
 		</div>
 	</div>
