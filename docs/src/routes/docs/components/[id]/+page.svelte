@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type Component, components } from '$lib/components';
+	import { components } from '$lib/components';
 	import type { PageProps } from './$types';
 	import { onMount } from 'svelte';
 	import { version } from '$lib';
@@ -28,7 +28,7 @@
 		<h1 class="mt-4 flex items-baseline gap-5 capitalize">
 			{component?.full_name}
 			{#if component?.release === version}
-				<span class="rounded-full font-mono text-lg text-purple-500">New</span>
+				<span class="rounded-full font-mono text-lg font-normal text-purple-500 -tracking-tight">New</span>
 			{/if}
 		</h1>
 		<p class="flex items-center gap-2 flex-wrap">
@@ -88,42 +88,3 @@
 	</main>
 	<div class="relative hidden w-72 flex-none p-5 md:block"></div>
 </div>
-
-<!--
-		{#if selectedComponent.release}
-			<p class="mt-1 flex items-center gap-1 font-normal">
-				<span>Available since</span>
-				<span class="font-mono text-sm text-gray-500 lowercase">
-					v{selectedComponent.release}
-				</span>
-			</p>
-		{/if}
-		<div class="grid items-start">
-			{#if selectedComponent.options && selectedComponent.options.length > 0}
-				<div class="mt-3">
-					<h3>Options</h3>
-					<p>You are free to use these options as parameters in your component declaration to customize the appearance.</p>
-					<ul class="ms-5 list-disc space-y-2.5">
-						{#each selectedComponent.options ?? [] as opt}
-							<li>
-								<span class="text-params font-mono">{opt.name}</span>
-								{#if opt.type}<Type type={opt.type} />{/if}
-								<p class="normal-case">{opt.description}</p>
-								<ul class="ms-5">
-									{#if opt.default}
-										<li>Default value: <span class="text-string font-mono">{opt.default}</span></li>
-									{/if}
-									{#if opt.alias}
-										<li>Alias: <span class="text-component font-mono">{opt.alias}</span></li>
-									{/if}
-								</ul>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
-		</div>
-	</div>
-{/if}
-
--->

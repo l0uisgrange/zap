@@ -10,9 +10,9 @@
 >
 	{@render children()}
 	{#if newFeature}
-		<span class="font-mono text-purple-600">New</span>
+		<span class="text-purple-600 font-normal -tracking-tight">New</span>
 	{/if}
 	{#if nextFeature}
-		<span class="font-mono text-gray-400 dark:text-gray-600">Next</span>
+		<span class="text-gray-400 dark:text-gray-600 -tracking-tight">Next</span>
 	{/if}
 </a>

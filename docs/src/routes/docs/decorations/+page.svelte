@@ -91,9 +91,9 @@
 			</div>
 		</div>
 		<h2>Standards</h2>
-		<span class="text-gray-600 italic dark:text-gray-400"
-			>It is currently not possible to use a different style than IEC. This feature is still under development</span
-		>
+		<span class="text-gray-600 italic dark:text-gray-400">
+            It is currently not possible to use a different style than IEC. This feature is still under development
+        </span>
 		<NexPrev next={{ href: '/docs/styling', title: 'Styling' }} previous={{ href: '/docs/positioning', title: 'Positioning' }} />
 	</main>
 	<div class="relative hidden w-72 flex-none p-5 md:block">

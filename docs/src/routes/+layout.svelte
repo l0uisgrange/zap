@@ -14,6 +14,7 @@
 		<a href="/" class="flex items-center gap-2 text-lg font-medium italic font-stretch-110%">Zap</a>
 		<a href="/docs" class="ml-auto hidden md:block hover:underline underline-offset-3">Documentation</a>
 		<a href="/examples" class="hidden md:block hover:underline underline-offset-3">Examples</a>
+        <a target="_blank" href="https://github.com/l0uisgrange/zap/releases" class="hidden md:block hover:underline underline-offset-3">Changelog</a>
 		<a target="_blank" href="https://github.com/l0uisgrange/zap/discussions/categories/q-a" class="hidden md:block hover:underline underline-offset-3">
 			Forum
 		</a>

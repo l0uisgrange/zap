@@ -50,7 +50,7 @@
 						</span>
 					{/if}
 					{#if component.release === version}
-						<span class="absolute top-2 left-3 z-10 my-0 rounded-full font-mono text-purple-500"> New </span>
+						<span class="absolute top-2 left-3 z-10 my-0 rounded-full font-normal text-purple-500 -tracking-tight"> New </span>
 					{/if}
 				</a>
 			{/each}
