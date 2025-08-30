@@ -26,12 +26,12 @@
 	<title>Zap – Your Typst Circuit Drawing Companion</title>
 </svelte:head>
 
-<div class="flex w-screen flex-col px-5 py-14 md:min-h-screen md:py-20">
-	<span class="text-new font-mono">Brand New Package</span>
-	<span class="mt-2 max-w-7xl text-4xl font-medium tracking-tight text-balance font-stretch-expanded md:text-8xl">
-		Your Typst circuit drawing <span class="icon-[hugeicons--paint-brush-04] -mx-0.5 -mb-2 size-9 md:size-20"></span> companion
+<div class="flex w-screen flex-col px-5 text-center py-14 md:min-h-screen md:py-20">
+	<span class="text-new text-lg tracking-wide">Brand New Package</span>
+	<span class="mt-2 max-w-7xl mx-auto text-6xl font-medium text-balance tracking-tight font-stretch-expanded md:text-8xl">
+		Your Typst circuit drawing companion
 	</span>
-	<div class="mt-8 flex items-center gap-3">
+	<div class="mt-8 flex items-center gap-3 mx-auto">
 		<a
 			href="/docs"
 			class="flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-white transition hover:bg-neutral-900/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
@@ -45,9 +45,9 @@
 			Examples
 		</a>
 	</div>
-	<div class="mt-20 grid max-w-7xl items-start gap-8 text-left md:grid-cols-2">
+	<div class="mt-20 grid w-full px-5 justify-center items-stretch gap-8 text-left md:grid-cols-2">
 		<Animated {code} />
-		<div class="dark:border-neutral-border flex min-h-96 items-center justify-center rounded-lg border border-neutral-200">
+		<div class="dark:border-neutral-border bg-white flex min-h-96 items-center justify-center rounded-lg border border-neutral-200">
 			<img src={image} alt="circuit" />
 		</div>
 	</div>

@@ -3,7 +3,7 @@
 	import NavButton from '$lib/components/NavButton.svelte';
 	import Code from '$lib/components/Code.svelte';
 	import Type from '$lib/components/Type.svelte';
-	import { version } from '$lib';
+    import {cetzversion, version} from '$lib';
 
 	let headings: any[] = $state([]);
 
@@ -38,7 +38,7 @@
 			<span class="text-component font-mono">interface</span> utilities of Zap, which automatically handle wiring and positioning for you.
 		</p>
 		<Code
-			content={`#import "@preview/zap:${version}": component, interface, draw as d\n` +
+			content={`#import "@preview/cetz:${cetzversion}": rect\n#import "@preview/zap:${version}": component, interface\n` +
 				'\n' +
 				'#let square(name, node, ..params) = {\n' +
 				'    // New component style\n' +
@@ -51,7 +51,7 @@
 				'    let draw(ctx, position, style) = {\n' +
 				'        interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)\n' +
 				'        \n' +
-				'        d.rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)\n' +
+				'        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)\n' +
 				'    }\n' +
 				'   \n' +
 				'    // Componant call\n' +
@@ -61,7 +61,7 @@
 
 		<h2>Component drawing</h2>
 		<p>
-			Your component is now ready to be used inside your circuits! You can draw any component shapes by directly using <a
+			Your component is now ready to be used in your circuits! You can draw any component shapes by directly using <a
 				target="_blank"
 				href="https://cetz-package.github.io/docs/">CeTZ</a
 			>. Moreover, the
@@ -101,7 +101,7 @@
 				<span class="font-mono">node2</span> <Type type="coordinate" /> a 2d array representing
 				your component output position, used for automatic wiring
 			</li>
-			<li><span class="font-mono">io</span> <Type type="boolean" /> fefe</li>
+			<li><span class="font-mono">io</span> <Type type="boolean" /> true if the component supports automatic wiring (two nodes required)</li>
 		</ul>
 	</main>
 	<div class="relative hidden w-72 flex-none p-5 md:block">
