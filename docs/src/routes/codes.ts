@@ -176,7 +176,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'})',
 		image: img11
@@ -193,7 +193,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2))\n' +
 			'})',
@@ -211,7 +211,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true)\n' +
 			'})',
@@ -229,7 +229,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'})',
@@ -247,7 +247,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +
@@ -266,7 +266,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +
@@ -286,7 +286,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +
@@ -307,7 +307,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    wire("r1.out", (0,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +
@@ -329,7 +329,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    afuse("f1", "r1.out", (2,2))\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +
@@ -351,7 +351,7 @@ export const codes = [
 			'    resistor("r3", (6,0), (4,-2))\n' +
 			'    resistor("r4", (2,0), (4,-2))\n' +
 			'    afuse("f1", (2,2), "r1.out", position: 40%)\n' +
-			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (label: $i_1$, position: end + bottom), label: "5V")\n' +
+			'    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
 			'    wire("r4.out", (2,-2))\n' +
 			'    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
 			'    wire("r1.out", "n1.b")\n' +

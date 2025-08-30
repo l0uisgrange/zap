@@ -3,6 +3,7 @@
 	import example1 from '$lib/examples/example1.svg';
 	import example2 from '$lib/examples/example2.svg';
 	import example3 from '$lib/examples/example3.svg';
+	import example4 from '$lib/examples/example4.svg';
 </script>
 
 <svelte:head>
@@ -69,7 +70,7 @@
 	<h2>Transistor and charge</h2>
 	<div class="grid gap-7 md:grid-cols-2">
 		<div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
-			<img src={example3} alt="example2" class="p-10" />
+			<img src={example3} alt="example3" class="p-10" />
 		</div>
 		<Code
 				content={'#zap.canvas({\n' +
@@ -90,4 +91,28 @@
 				'})'}
 		/>
 	</div>
+    <h2>Customization</h2>
+    <div class="grid gap-7 md:grid-cols-2">
+        <div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+            <img src={example4} alt="example4" class="p-10" />
+        </div>
+        <Code content={'' +
+            '#zap.canvas({\n' +
+            '    import zap: *\n' +
+            '    \n' +
+            '    resistor("r1", (2,0), (4,2))\n' +
+            '    resistor("r2", (6,0), (4,2))\n' +
+            '    resistor("r3", (6,0), (4,-2))\n' +
+            '    resistor("r4", (2,0), (4,-2))\n' +
+            '    afuse("f1", (2,2), "r1.out", position: 40%)\n' +
+            '    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
+            '    wire("r4.out", (2,-2))\n' +
+            '    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
+            '    wire("r1.out", "n1.b")\n' +
+            '    capacitor("c1", "n1.e", (rel: (2,0)))\n' +
+            '    wire("n1.c", ((), "|-", "r4.out"), "r4.out")\n' +
+            '    wire("c1.out", ((), "|-", "r4.out"), "r4.out")\n' +
+            '})'+
+         ''}/>
+    </div>
 </main>
