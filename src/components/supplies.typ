@@ -90,12 +90,10 @@
         scope({
             scale(y: direction)
             line((0, 0), (0, style.distance), ..style.at("wires"))
-            line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (
-                rel: (sin, -cos),
-            ))
+            line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), ..style)
         })
+        interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0,0), (0,0), io: false)
         anchor("default", (0,0))
-        interface((-sin, 0), (sin, style.distance * direction), (0,0), (0,0), io: true)
     }
 
     // Componant call
