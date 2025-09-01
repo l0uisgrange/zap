@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, polygon
+#import cetz.draw: anchor, line, polygon, scope, scale
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
@@ -74,7 +74,7 @@
     component("earth", name, node, draw: draw, style: style, ..params)
 }
 
-#let vcc(name, node, ..params) = {
+#let vcc(name, node, invert: false, ..params) = {
     // VCC style
     let style = (
         angle: 35deg,
@@ -84,48 +84,22 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        line((0, 0), (0, style.distance), ..style.at("wires"))
-        line((rel: (radius: style.radius, angle: -90deg - style.angle), to: (0, style.distance)), (0, style.distance), (
-            rel: (radius: style.radius, angle: -90deg + style.angle),
-        ))
-
-        let (width, height) = (calc.sin(style.angle) * style.radius, calc.cos(style.angle) * style.radius)
-        interface((-width / 2, 0), (width / 2, style.distance))
+        let direction = if invert { -1 } else { 1 };
+        let cos = calc.cos(style.angle) * style.radius
+        let sin = calc.sin(style.angle) * style.radius
+        scope({
+            scale(y: direction)
+            line((0, 0), (0, style.distance), ..style.at("wires"))
+            line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (
+                rel: (sin, -cos),
+            ))
+        })
+        anchor("default", (0,0))
+        interface((-sin, 0), (sin, style.distance * direction))
     }
 
     // Componant call
     component("vcc", name, node, draw: draw, style: style, ..params)
 }
 
-#let vee(name, node, label: none, ..params) = {
-    // VEE style
-    let style = (
-        angle: 35deg,
-        radius: .4,
-        distance: .6,
-    )
-
-    // Drawing function
-    let draw(ctx, position, style) = {
-        line((0, 0), (0, -style.distance), ..style.at("wires"))
-        line((rel: (radius: style.radius, angle: 90deg + style.angle), to: (0, -style.distance)), (0, -style.distance), (
-            rel: (radius: style.radius, angle: 90deg - style.angle),
-        ))
-
-        let (width, height) = (calc.sin(style.angle) * style.radius, calc.cos(style.angle) * style.radius)
-        interface((-width / 2, -style.distance), (width / 2, 0))
-    }
-
-    let p-label = label
-    // Label position
-    if p-label != none {
-        p-label = if type(label) == dictionary {
-            (content: label.at("content", default: none), anchor: label.at("anchor", default: "south"), distance: label.at("distance", default: 7pt))
-        } else {
-            (content: label, anchor: "south")
-        }
-    }
-
-    // Componant call
-    component("vee", name, node, draw: draw, style: style, label: p-label, ..params)
-}
+#let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)
