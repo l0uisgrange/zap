@@ -57,8 +57,8 @@
         let first = ("component.east", p-distance, "out")
         (first, (rel: (.7, 0), to: first))
     }
-    let a-start = (rel: (0, if p-side == 1 { -.2 } else { .2 }), to: a-start)
-    let a-end = (rel: (0, if p-side == 1 { -.2 } else { .2 }), to: a-end)
+    let a-start = (rel: (0, .2 * p-side), to: a-start)
+    let a-end = (rel: (0, .2 * p-side), to: a-end)
     let (a-start, a-end) = if p-invert { (a-end, a-start) } else { (a-start, a-end) }
 
     line(a-start, a-end, mark: (end: ">"), fill: black, stroke: 0.55pt, scale: 0.8)
