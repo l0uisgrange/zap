@@ -99,7 +99,7 @@
     }
 
     // Componant call
-    component("vcc", name, node, draw: draw, style: style, label-default-position: "south", ..params)
+    component("vcc", name, node, draw: draw, style: style, label-default-position: if invert { "south" } else { none }, ..params)
 }
 
 #let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)
