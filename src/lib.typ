@@ -23,3 +23,4 @@
 #import "components/transistors/mosfets.typ": mosfet, nmos, nmosd, pmos, pmosd
 #import "components/integrated/opamp.typ": opamp
 #import "components/integrated/mcus.typ": mcu
+#import "components/integrated/converters.typ": adc, dac
