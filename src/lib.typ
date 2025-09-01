@@ -22,3 +22,4 @@
 #import "components/motors.typ": acmotor, dcmotor
 #import "components/transistors/bjts.typ": bjt, npn, pnp
 #import "components/transistors/mosfets.typ": mosfet, nmos, nmosd, pmos, pmosd
+#import "components/integrated/mcus.typ": mcu
