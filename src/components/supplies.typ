@@ -95,11 +95,11 @@
             ))
         })
         anchor("default", (0,0))
-        interface((-sin, 0), (sin, style.distance * direction))
+        interface((-sin, 0), (sin, style.distance * direction), (0,0), (0,0), io: true)
     }
 
     // Componant call
-    component("vcc", name, node, draw: draw, style: style, ..params)
+    component("vcc", name, node, draw: draw, style: style, label-default-position: "south", ..params)
 }
 
 #let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)
