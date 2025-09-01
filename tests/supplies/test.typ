@@ -4,6 +4,7 @@
 #lib.canvas({
     import lib: *
 
-    vcc("vcc1", (0,1), label: "VCC")
-    vee("vee1", (0,-1), label: "VEE")
+    vcc("vcc", (-1,0), label: "VCC")
+    vee("vee", (1,0), label: "VEE")
+    wire("vcc", "vee")
 })
