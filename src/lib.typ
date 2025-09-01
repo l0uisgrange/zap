@@ -12,7 +12,6 @@
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode, schottky, tunnel, zener
-#import "components/opamp.typ": opamp
 #import "components/switches.typ": switch
 #import "components/fuses.typ": afuse, fuse
 #import "components/supplies.typ": earth, frame, ground, vcc, vee
@@ -22,4 +21,5 @@
 #import "components/motors.typ": acmotor, dcmotor
 #import "components/transistors/bjts.typ": bjt, npn, pnp
 #import "components/transistors/mosfets.typ": mosfet, nmos, nmosd, pmos, pmosd
+#import "components/integrated/opamp.typ": opamp
 #import "components/integrated/mcus.typ": mcu
