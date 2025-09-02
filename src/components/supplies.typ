@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, polygon, scope, scale
+#import cetz.draw: anchor, line, polygon, scale, scope
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
@@ -84,7 +84,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        let direction = if invert { -1 } else { 1 };
+        let direction = if invert { -1 } else { 1 }
         let cos = calc.cos(style.angle) * style.radius
         let sin = calc.sin(style.angle) * style.radius
         scope({
@@ -92,8 +92,8 @@
             line((0, 0), (0, style.distance), ..style.at("wires"))
             line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), ..style)
         })
-        interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0,0), (0,0), io: false)
-        anchor("default", (0,0))
+        interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0, 0), (0, 0), io: false)
+        anchor("default", (0, 0))
     }
 
     // Componant call

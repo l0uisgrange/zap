@@ -3,27 +3,37 @@
 #import cetz.draw: anchor, content, line, polygon, rect, scope, translate
 
 #let opposite-anchor(side) = {
-    if "west" in side { "east" }
-    else if "north" in side { "south" }
-    else if "east" in side { "west" }
-    else if "south" in side { "north" }
+    if "west" in side { "east" } else if "north" in side { "south" } else if "east" in side { "west" } else if "south" in side { "north" }
 }
 
 #let mcu(name, node, pins: (), invert: false, label: none, ..params) = {
     assert(params.pos().len() == 0, message: "mcu supports only one node")
-    assert(type(pins) == array, message: "pins should be of type array")
+    assert(type(pins) == array or type(pins) == int, message: "pins should be an array or integer")
 
     // MCU style
     let style = (
         width: 3,
-        min-height: 2.5,
+        min-height: 1,
         padding: 0.2,
-        spacing: 0.4
+        spacing: 0.4,
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
-        let height = calc.min(style.min-height, (pins.length() - 1) * style.spacing + 2 * style.padding)
+        let pins = if type(pins) == int {
+            let pins_west = calc.ceil(pins / 2)
+            let pins_east = pins - pins_west
+            let max_pins = calc.max(pins_west, pins_east)
+            range(pins).map(i => (
+                content: str(i + 1),
+                side: if i < pins_west { "west" } else { "east" },
+            ))
+        } else {
+            pins
+        }
+        let west-count = pins.filter(p => p.side == "west").len()
+        let east-count = pins.filter(p => p.side == "east").len()
+        let height = calc.max(style.min-height, (calc.max(west-count, east-count)) * style.spacing + 2 * style.padding)
         interface((-style.width / 2, -height / 2), (style.width / 2, height / 2))
 
         rect((-style.width / 2, -height / 2), (style.width / 2, height / 2), fill: white, ..style)

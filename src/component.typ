@@ -77,7 +77,12 @@
                 if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
                 let default-anchor = if label-default-position != none { label-default-position } else { "north" }
                 let (label, distance, width, height, anchor) = if type(label) == dictionary {
-                    (label.at("content", default: none), label.at("distance", default: 7pt), ..cetz.util.measure(ctx, label.at("content")), label.at("anchor", default: default-anchor))
+                    (
+                        label.at("content", default: none),
+                        label.at("distance", default: 7pt),
+                        ..cetz.util.measure(ctx, label.at("content")),
+                        label.at("anchor", default: default-anchor),
+                    )
                 } else {
                     (label, 7pt, ..cetz.util.measure(ctx, label), default-anchor)
                 }

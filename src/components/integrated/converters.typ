@@ -15,7 +15,6 @@
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: true)
-
     }
 
     // Componant call
