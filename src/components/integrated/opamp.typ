@@ -42,6 +42,6 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("opamp", name, node, draw: draw, style: style, ..params, label: none)
 }

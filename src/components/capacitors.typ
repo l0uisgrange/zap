@@ -23,6 +23,6 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("capacitor", name, node, draw: draw, style: style, ..params)
 }

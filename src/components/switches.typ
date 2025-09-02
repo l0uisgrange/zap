@@ -16,6 +16,6 @@
         line((-style.width / 2, 0), (radius: style.width / 2, angle: if closed { 0deg } else { style.angle }), ..style.at("wires"))
     }
 
-    // Componant call
+    // Component call
     component("switch", name, node, draw: draw, style: style, ..params)
 }

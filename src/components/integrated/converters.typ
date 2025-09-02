@@ -11,13 +11,12 @@
         height: 2.5,
     )
 
-
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: true)
     }
 
-    // Componant call
+    // Component call
     component("converter", name, node, draw: draw, style: style, ..params, label: none)
 }
 

@@ -55,6 +55,6 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("mcu", name, node, draw: draw, style: style, ..params)
 }

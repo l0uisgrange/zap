@@ -20,7 +20,7 @@
         interface((-width / 2, -height / 2), (width / 2, height / 2))
     }
 
-    // Componant call
+    // Component call
     component("ground", name, node, draw: draw, style: style, ..params)
 }
 
@@ -46,7 +46,7 @@
         interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
     }
 
-    // Componant call
+    // Component call
     component("frame", name, node, draw: draw, style: style, ..params)
 }
 
@@ -70,7 +70,7 @@
         interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
     }
 
-    // Componant call
+    // Component call
     component("earth", name, node, draw: draw, style: style, ..params)
 }
 
@@ -96,7 +96,7 @@
         anchor("default", (0, 0))
     }
 
-    // Componant call
+    // Component call
     component("vcc", name, node, draw: draw, style: style, label-default-position: if invert { "south" } else { none }, ..params)
 }
 
