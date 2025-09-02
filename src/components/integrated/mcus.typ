@@ -23,7 +23,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        let height = style.min-height
+        let height = calc.min(style.min-height, (pins.length() - 1) * style.spacing + 2 * style.padding)
         interface((-style.width / 2, -height / 2), (style.width / 2, height / 2))
 
         rect((-style.width / 2, -height / 2), (style.width / 2, height / 2), fill: white, ..style)
