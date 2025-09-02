@@ -7,8 +7,8 @@
 
     // Converter style
     let style = (
-        width: 2,
-        height: 1,
+        width: 1.9,
+        height: 0.8,
         arrow-width: 0.5
     )
 
@@ -16,12 +16,17 @@
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
+        let inverse = if input == "d" { -1 } else { 1 }
         scope({
-            scale(x: if input == "d" { -1 } else { 1 })
+            scale(x: inverse)
             merge-path(close: true, {
                 line((-style.width/2, style.height/2), (style.width/2 - style.arrow-width, style.height/2), (style.width/2, 0), (style.width/2 - style.arrow-width, -style.height/2), (-style.width/2, -style.height/2), (-style.width/2, style.height/2))
-            })
+            }, ..style)
         })
+
+        let x-delta = inverse * 0.15
+        anchor("vcc", (-x-delta, style.height/2))
+        anchor("gnd", (-x-delta, -style.height/2))
     }
 
     // Component call
