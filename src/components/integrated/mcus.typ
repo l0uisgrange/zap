@@ -6,7 +6,7 @@
     if "west" in side { "east" } else if "north" in side { "south" } else if "east" in side { "west" } else if "south" in side { "north" }
 }
 
-#let mcu(name, node, pins: (), invert: false, label: none, ..params) = {
+#let mcu(name, node, pins: (), invert: false, ..params) = {
     assert(params.pos().len() == 0, message: "mcu supports only one node")
     assert(type(pins) == array or type(pins) == int, message: "pins should be an array or integer")
 
@@ -56,5 +56,5 @@
     }
 
     // Componant call
-    component("mcu", name, node, draw: draw, style: style, ..params, label: none)
+    component("mcu", name, node, draw: draw, style: style, ..params)
 }
