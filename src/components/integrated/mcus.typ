@@ -30,7 +30,7 @@
 
         let (wi, ei) = (0, 0)
         for pin in pins {
-            if type(pin) != dictionary or pin.at("content", default: none) == none { continue }
+            assert(type(pin) == dictionary, message: "pins must be dictionnaries")
             let is_west = "west" in pin.at("side", default: "west")
             let (reverse, counter) = if is_west {
                 wi += 1
