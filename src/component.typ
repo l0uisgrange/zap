@@ -9,6 +9,7 @@
     draw: none,
     label: none,
     label-default-position: none,
+    label-default-align: none,
     i: none,
     f: none,
     u: none,
@@ -76,19 +77,21 @@
             if label != none {
                 if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
                 let default-anchor = if label-default-position != none { label-default-position } else { "north" }
-                let (label, distance, width, height, anchor) = if type(label) == dictionary {
+                let default-align = if label-default-align != none { label-default-align } else { "south" }
+                let (label, distance, width, height, anchor, align, reverse) = if type(label) == dictionary {
                     (
                         label.at("content", default: none),
                         label.at("distance", default: 7pt),
                         ..cetz.util.measure(ctx, label.at("content")),
                         label.at("anchor", default: default-anchor),
+                        get-label-anchor(p-rotate),
+                        "south" in label.at("anchor", default: default-anchor),
                     )
                 } else {
-                    (label, 7pt, ..cetz.util.measure(ctx, label), default-anchor)
+                    (label, 7pt, ..cetz.util.measure(ctx, label), default-anchor, (default-align, default-align), "south" in default-anchor)
                 }
-                let reverse = "south" in anchor
                 let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
-                content("component." + anchor, anchor: get-label-anchor(p-rotate).at(if reverse { 1 } else { 0 }), label, padding: distance)
+                content(if type(anchor) == str { "component." + anchor } else { anchor }, anchor: align.at(if reverse { 1 } else { 0 }), label, padding: distance)
             }
         })
 
