@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/l0uisgrange/zap/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 📚 Documentation
+    url: https://zap.grangelouis.ch
+    about: Check the official documentation for usage guides and API reference
