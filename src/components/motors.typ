@@ -28,7 +28,7 @@
         content((0, 0), [#cetz.canvas({ symbol() })], anchor: "north", padding: .13)
     }
 
-    // Componant call
+    // Component call
     component(uid, name, node, draw: draw, style: style, ..params)
 }
 

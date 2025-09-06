@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, hide, line, mark, translate, content
+#import cetz.draw: anchor, circle, content, hide, line, mark, translate
 #import "/src/mini.typ": center-mark
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
@@ -44,7 +44,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("bjt", name, node, draw: draw, style: style, ..params, label: none)
 }
 

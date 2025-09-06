@@ -23,7 +23,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("fuse", name, node, draw: draw, style: style, ..params)
 }
 

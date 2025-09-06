@@ -36,7 +36,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("isource", name, node, draw: draw, style: style, ..params)
 }
 
@@ -85,7 +85,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("vsource", name, node, draw: draw, style: style, ..params)
 }
 

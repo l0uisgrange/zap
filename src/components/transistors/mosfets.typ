@@ -84,7 +84,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("mosfet", name, node, draw: draw, style: style, ..params)
 }
 

@@ -26,7 +26,7 @@
             dec.at("invert", default: false),
             directions,
             dec.at("label-distance", default: (0.1 + p-size.last()) * p-side),
-            p-side
+            p-side,
         )
     } else {
         let p-size = cetz.util.measure(ctx, dec)

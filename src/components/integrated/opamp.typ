@@ -5,7 +5,7 @@
 #let opamp(name, node, invert: false, label: none, ..params) = {
     assert(params.pos().len() == 0, message: "opamp supports only one node")
 
-    // Capacitor style
+    // OpAmp style
     let style = (
         width: 1.8,
         height: 1.75,
@@ -42,6 +42,6 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("opamp", name, node, draw: draw, style: style, ..params, label: none)
 }
