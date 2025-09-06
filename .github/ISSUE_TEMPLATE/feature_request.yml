@@ -7,19 +7,11 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Feature description
-      description: Clearly explain the feature you are requesting.
-      placeholder: Describe what the feature is and how it would improve the package.
+      label: Description
+      description: Clearly explain the feature/component you are requesting.
+      placeholder: Describe what the feature/component is and how it would improve the package.
     validations:
       required: true
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives considered
-      description: Have you considered any alternative approaches?
-      placeholder: List alternative solutions or explain why none exist.
-    validations:
-      required: false
   - type: textarea
     id: references
     attributes:
