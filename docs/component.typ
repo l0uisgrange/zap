@@ -5,5 +5,5 @@
     import "../src/lib.typ": *
 
     draw.grid((-3,-3), (3,3), stroke: .5pt + luma(90%))
-    heater("s1", (-3,0), (3,0))
+    dac("s1", (-3,0), (3,0))
 })

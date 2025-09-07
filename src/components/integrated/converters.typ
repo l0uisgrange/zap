@@ -1,15 +1,15 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, content, line, polygon, rect, scope, translate, merge-path, scale
+#import cetz.draw: anchor, content, line, polygon, rect, scope, translate, merge-path, scale, on-layer
 
-#let adc(name, node, input: "a", ..params) = {
+#let adc(name, node, input: "a", label: "ADC", ..params) = {
     assert(input in ("a", "d"), message: "input can only be d or a")
 
     // Converter style
     let style = (
-        width: 1.9,
-        height: 0.8,
-        arrow-width: 0.5
+        width: 1.7,
+        height: 0.7,
+        arrow-width: 0.4
     )
 
     // Drawing function
@@ -17,20 +17,21 @@
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
         let inverse = if input == "d" { -1 } else { 1 }
-        scope({
-            scale(x: inverse)
-            merge-path(close: true, {
-                line((-style.width/2, style.height/2), (style.width/2 - style.arrow-width, style.height/2), (style.width/2, 0), (style.width/2 - style.arrow-width, -style.height/2), (-style.width/2, -style.height/2), (-style.width/2, style.height/2))
-            }, ..style)
+        on-layer(0, {
+            scope({
+                scale(x: inverse)
+                merge-path(close: true, {
+                    line((-style.width/2, style.height/2), (style.width/2 - style.arrow-width, style.height/2), (style.width/2, 0), (style.width/2 - style.arrow-width, -style.height/2), (-style.width/2, -style.height/2), (-style.width/2, style.height/2))
+                }, fill: white, ..style)
+            })
         })
 
-        let x-delta = inverse * 0.15
-        anchor("vcc", (-x-delta, style.height/2))
-        anchor("gnd", (-x-delta, -style.height/2))
+        anchor("vcc", (0, style.height/2))
+        anchor("gnd", (0, -style.height/2))
     }
 
     // Component call
-    component("converter", name, node, draw: draw, style: style, label-default-position: (-0.15 * if input == "d" { -1 } else { 1 },0), label-default-align: "center", ..params)
+    component("converter", name, node, draw: draw, style: style, label: label, label-default-position: (-0.15 * if input == "d" { -1 } else { 1 },0), label-default-align: "center", ..params)
 }
 
-#let dac(name, node, ..params) = adc(name, node, input: "d", ..params)
+#let dac(name, node, ..params) = adc(name, node, input: "d", label: "DAC", ..params)
