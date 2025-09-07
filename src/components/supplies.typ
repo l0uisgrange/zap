@@ -97,7 +97,16 @@
     }
 
     // Component call
-    component("vcc", name, node, draw: draw, style: style, label-default-position: if invert { "south" } else { none }, label-default-align: if invert { "north" } else { none }, ..params)
+    component(
+        "vcc",
+        name,
+        node,
+        draw: draw,
+        style: style,
+        label-default-position: if invert { "south" } else { none },
+        label-default-align: if invert { "north" } else { none },
+        ..params,
+    )
 }
 
 #let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)

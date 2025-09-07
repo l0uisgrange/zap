@@ -22,6 +22,6 @@ And you're done!
 >[!WARNING]
 >These guidelines are here to help keep this project well-organized and easy to manage for me.
 
-1. Before submission, please execute `typstyle src --tab-width 4 --column 160` to get your code clean
+1. Before submission, please execute `typstyle -l 180 -t 4 -i src` to get your code clean
 2. One Pull Request means one feature/component
 3. Communication is necessary, please give your Pull Request a short, descriptive title with a quick explanation of the feature you developed. PR names should start with `feat`, `feat(component)`, `docs`, `chore`, ... for example `feat: adding voltage decorations to components`
