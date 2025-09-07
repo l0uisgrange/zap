@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, polygon, scope, scale
+#import cetz.draw: anchor, line, polygon, scale, scope
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
@@ -20,7 +20,7 @@
         interface((-width / 2, -height / 2), (width / 2, height / 2))
     }
 
-    // Componant call
+    // Component call
     component("ground", name, node, draw: draw, style: style, ..params)
 }
 
@@ -46,7 +46,7 @@
         interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
     }
 
-    // Componant call
+    // Component call
     component("frame", name, node, draw: draw, style: style, ..params)
 }
 
@@ -70,7 +70,7 @@
         interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
     }
 
-    // Componant call
+    // Component call
     component("earth", name, node, draw: draw, style: style, ..params)
 }
 
@@ -84,7 +84,7 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        let direction = if invert { -1 } else { 1 };
+        let direction = if invert { -1 } else { 1 }
         let cos = calc.cos(style.angle) * style.radius
         let sin = calc.sin(style.angle) * style.radius
         scope({
@@ -92,12 +92,12 @@
             line((0, 0), (0, style.distance), ..style.at("wires"))
             line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), ..style)
         })
-        interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0,0), (0,0), io: false)
-        anchor("default", (0,0))
+        interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0, 0), (0, 0), io: false)
+        anchor("default", (0, 0))
     }
 
-    // Componant call
-    component("vcc", name, node, draw: draw, style: style, label-default-position: if invert { "south" } else { none }, ..params)
+    // Component call
+    component("vcc", name, node, draw: draw, style: style, label-default-position: if invert { "south" } else { none }, label-default-align: if invert { "north" } else { none }, ..params)
 }
 
 #let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)

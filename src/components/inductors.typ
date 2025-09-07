@@ -30,6 +30,6 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("inductor", name, node, draw: draw, style: style, ..params)
 }

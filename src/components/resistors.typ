@@ -59,7 +59,7 @@
         }
     }
 
-    // Componant call
+    // Component call
     component("resistor", name, node, draw: draw, style: style, ..params)
 }
 
