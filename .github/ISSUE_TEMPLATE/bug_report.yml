@@ -1,6 +1,5 @@
 name: 🐞 Bug Report
-description: Report a problem or error when using Zap.
-title: "[Bug]: "
+description: Report a problem or error
 labels: ["bug"]
 assignees:
   - l0uisgrange
