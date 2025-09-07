@@ -23,6 +23,9 @@ import zener from './images/zener.svg';
 import schottky from './images/schottky.svg';
 import tunnel from './images/tunnel.svg';
 import acvsource from './images/acvsource.svg';
+import adc from './images/adc.svg';
+import dac from './images/dac.svg';
+import mcu from './images/mcu.svg';
 
 export interface Component {
 	name: string;
@@ -341,6 +344,41 @@ export const components: Component[] = [
 		release: '0.2.0',
 		origin: 'resistor',
 		contributors: ['l0uisgrange'],
+	},
+	{
+		name: 'adc',
+		full_name: 'analog-digital converter',
+		image: adc,
+		quick: true,
+		release: '0.3.1',
+		origin: 'converter',
+		contributors: ['l0uisgrange'],
+	},
+	{
+		name: 'dac',
+		full_name: 'digital-analog converter',
+		image: dac,
+		quick: true,
+		release: '0.3.1',
+		origin: 'converter',
+		contributors: ['l0uisgrange'],
+	},
+	{
+		name: 'mcu',
+		full_name: 'microcontroller unit',
+		image: mcu,
+		quick: false,
+		release: '0.3.1',
+		origin: 'mcu',
+		contributors: ['l0uisgrange'],
+		options: [
+			{
+				name: 'pins',
+				type: ['dictionary', 'number'],
+				default: 'none',
+				description: 'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
+			}
+		]
 	}
 ];
 
