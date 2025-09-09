@@ -3,3 +3,5 @@
 *.pdf
 /doc/**/*.svg
 /main.svg
+tests/**/diff
+tests/**/out

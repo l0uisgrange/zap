@@ -38,12 +38,11 @@
     let p-rotate = rotate
     let p-scale = scale
     let p-draw = draw
-    let p-style = style
     import cetz.draw: *
 
     group(name: name, ctx => {
         let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
-        let base-style = p-style + pre-style + pre-style.at(uid, default: (something: none))
+        let base-style = style + pre-style + pre-style.at(uid, default: (something: none))
         let style = cetz.styles.resolve(base-style, merge: params.named())
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)

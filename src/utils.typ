@@ -24,3 +24,27 @@
         }
     }
 }
+
+#let opposite-anchor(anchor) = {
+    if anchor == "north" {
+        "south"
+    } else if anchor == "south" {
+        "north"
+    } else if anchor == "east" {
+        "west"
+    } else if anchor == "west" {
+        "east"
+    } else if anchor == "north-east" {
+        "south-west"
+    } else if anchor == "north-west" {
+        "south-east"
+    } else if anchor == "south-east" {
+        "north-west"
+    } else if anchor == "south-west" {
+        "north-east"
+    } else if anchor == "center" {
+        "center"
+    } else {
+        panic("anchor not recognized: " + anchor)
+    }
+}
