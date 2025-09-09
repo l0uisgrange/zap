@@ -8,7 +8,7 @@
 #import "component.typ": component, interface
 
 // Export components
-#import "components/wires.typ": wire, zwire, swire
+#import "components/wires.typ": swire, wire, zwire
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor
 #import "components/diodes.typ": diode, led, photodiode, schottky, tunnel, zener
