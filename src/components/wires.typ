@@ -12,7 +12,7 @@
 
     group(name: "wireeeweeee", ctx => {
         let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
-        let style = cetz.styles.resolve(pre-style, merge: params.named())
+        let style = cetz.styles.resolve(pre-style, merge: (wires: params.named()))
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
         if shape == "direct" {
