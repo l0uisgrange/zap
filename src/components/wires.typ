@@ -1,5 +1,6 @@
-#import "../dependencies.typ": cetz
-#import "../styles.typ": default-style
+#import "/src/dependencies.typ": cetz
+#import "/src/styles.typ": default-style
+#import "/src/utils.typ":  opposite-anchor
 #import cetz.draw: anchor, circle, content, group, hide, line, mark
 
 #let ra = ratio
@@ -44,7 +45,7 @@
 
         // Current decoration
         if i != none {
-            let default-params = (position: 50%, distance: 7pt, anchor: "south")
+            let default-params = (position: 50%, distance: 7pt, anchor: "north")
             let current = if type(i) == dictionary {
                 cetz.util.merge-dictionary(i, default-params, overwrite: false)
             } else {
@@ -58,7 +59,7 @@
                 fill: black,
                 scale: 0.8,
             )
-            content((name: "line", anchor: current.position), anchor: current.anchor, current.content, padding: current.distance)
+            content((name: "line", anchor: current.position), anchor: opposite-anchor(current.anchor), current.content, padding: current.distance)
         }
     })
 }
