@@ -30,3 +30,12 @@
 
     wire((0,0), (3,2), i: (content: $i_1$))
 })
+
+#pagebreak()
+
+#lib.canvas({
+    import lib: *
+    set-style(zap: (wires: (stroke: 1pt)))
+
+    wire((0,0), (3,2), i: (content: $i_1$))
+})
