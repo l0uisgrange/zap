@@ -9,6 +9,12 @@
     acvsource("v2", (0, -3), (2, -3))
 })
 
+// Test rotation (horizontal ac symbol)
+#test({
+    import lib: *
+    acvsource("v2", (0, 0), (2, 2))
+})
+
 // Test decorations
 #test({
     import lib: *
