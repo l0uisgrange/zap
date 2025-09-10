@@ -1,41 +1,23 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
-
-    zwire((0,0), (3,2), i: (content: $i_1$))
+    swire((0, 0), (3, 2))
+    zwire((3, 2), (5, 0), axis: "x", ratio: 2)
+    wire((5, 0), (0, 0))
 })
 
-#pagebreak()
-
-#lib.canvas({
+// Test decorations
+#test({
     import lib: *
-
-    zwire((0,0), (3,2), axis: "x", ratio: 5, i: (content: $i_1$))
+    wire((0, 0), (3, 2), i: (content: $i_1$, anchor: "south-east"))
 })
 
-#pagebreak()
-
-#lib.canvas({
+// Test global styling
+#test({
     import lib: *
-
-    swire((0,0), (3,2), i: (content: $i_1$))
-})
-
-#pagebreak()
-
-#lib.canvas({
-    import lib: *
-
-    wire((0,0), (3,2), i: (content: $i_1$))
-})
-
-#pagebreak()
-
-#lib.canvas({
-    import lib: *
-    set-style(zap: (wires: (stroke: 1pt)))
-
-    wire((0,0), (3,2), i: (content: $i_1$))
+    set-style(zap: (wires: (stroke: 1pt + red)))
+    wire((0, 0), (3, 2), i: (content: $i_1$))
 })

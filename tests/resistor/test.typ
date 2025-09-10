@@ -1,9 +1,21 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
+    resistor("r1", (0, 0), (2, 0))
+    resistor("r2", (0, -1), (2, -1), variant: "ieee")
+})
 
-    resistor("r2", (0,0), (3,0), label: (content: $R_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    resistor("r2", (5,0), (8,0), variant: "ieee", label: (content: $R_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
+// Test decorations
+#test({
+    import lib: *
+    resistor("v1", (0, 0), (2, 0), label: $V_1$, u: $u_1$, i: $i_1$, f: $f_1$)
+})
+
+// Test styling
+#test({
+    import lib: *
+    resistor("r1", (0, 0), (2, 0), fill: red.lighten(90%), stroke: 1pt + red)
 })
