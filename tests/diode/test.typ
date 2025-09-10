@@ -1,13 +1,19 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
+    diode("d1", (0, 0), (2, 0))
+    led("d2", (0, -1.5), (2, -1.5))
+    photodiode("d3", (0, -3), (2, -3))
+    tunnel("d4", (0, -4.5), (2, -4.5))
+    zener("d5", (0, -6), (2, -6))
+    schottky("d6", (0, -7.5), (2, -7.5))
+})
 
-    diode("d1", (0,0), (3,0), label: (content: $D_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    led("d2", (0,-3), (3,-3), label: (content: $"LED"_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    photodiode("d3", (0,-6), (3,-6), label: (content: $"PD"_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    tunnel("d4", (0,-9), (3,-9), label: (content: $"TD"_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    zener("d5", (0,-12), (3,-12), label: (content: $"ZD"_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
-    schottky("d6", (0,-15), (3,-15), label: (content: $"SD"_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
+// Test styling
+#test({
+    import lib: *
+    diode("d1", (0, 0), (2, 0), fill: red.lighten(50%), stroke: red)
 })
