@@ -1,10 +1,30 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
+    vcc("vcc", (0, 0))
+    vee("vee", (1, 0))
+})
 
-    vcc("vcc", (-1,0), label: "VCC")
-    vee("vee", (1,0), label: "VEE")
+// Test label position
+#test({
+    import lib: *
+    vcc("vcc", (0, 0), label: "VCC")
+    vee("vee", (1, 0), label: "VEE")
+})
+
+// Test default anchor
+#test({
+    import lib: *
+    vcc("vcc", (0, 0))
+    vee("vee", (1, 0))
     wire("vcc", "vee")
+})
+
+// Test styling
+#test({
+    import lib: *
+    vcc("v1", (0, 0), stroke: 1pt + red)
 })
