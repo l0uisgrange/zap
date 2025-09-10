@@ -1,9 +1,23 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
+    opamp("o1", (0, 0))
+    opamp("o2", (3, 0), variant: "ieee")
+})
 
-    opamp("o1", (0,0), label: "OP1")
-    opamp("o2", (3,0), label: "OP2", variant: "ieee")
+// Test label position
+#test({
+    import lib: *
+    opamp("o1", (0, 0), label: "OP131")
+    opamp("o2", (3, 0), variant: "ieee", label: "OP131")
+})
+
+// Test styling
+#test({
+    import lib: *
+    opamp("o1", (0, 0), fill: red.lighten(50%), stroke: red)
+    opamp("o2", (3, 0), variant: "ieee", fill: red.lighten(50%), stroke: red)
 })

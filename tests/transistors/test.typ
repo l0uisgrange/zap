@@ -1,9 +1,25 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
-    npn("Q1", (0,0), label: $Q_1$)
-    npn("Q2", (2,0), label: $Q_2$)
-    pnp("Q4", (4,0), envelope: true, label: $Q_4$)
+    npn("Q1", (0, 0))
+    pnp("Q2", (2, 0))
+    npn("Q3", (0, -2), envelope: true)
+    pnp("Q4", (2, -2), envelope: true)
+})
+
+// Test label position
+#test({
+    import lib: *
+    npn("Q1", (0, 0), label: "NPN")
+    npn("Q4", (3, 0), envelope: true, label: "NPN")
+})
+
+// Test styling
+#test({
+    import lib: *
+    npn("Q1", (0, 0), stroke: red)
+    npn("Q4", (2, 0), envelope: true, fill: red.lighten(50%), stroke: red)
 })
