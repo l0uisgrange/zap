@@ -1,8 +1,22 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
+    fuse("f1", (0, 0), (2, 0))
+    afuse("f2", (0, -1), (2, -1))
+    afuse("f2", (0, -2), (2, -2), asymmetry: 50%)
+})
 
-    afuse("f1", (0,0), (3,0), label: (content: $F_1$, anchor: "south"), n: "*-*", i: (content: $i_1$, anchor: "west"), u: $u_1$)
+// Test decorations
+#test({
+    import lib: *
+    fuse("f1", (0, 0), (2, 0), label: $V_1$, u: $u_1$, i: $i_1$, f: $f_1$)
+})
+
+// Test styling
+#test({
+    import lib: *
+    fuse("f1", (0, 0), (2, 0), fill: red.lighten(50%), stroke: red)
 })

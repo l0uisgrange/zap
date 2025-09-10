@@ -1,9 +1,9 @@
-#set page(margin: 4pt, width: auto, height: auto)
-#import "../../src/lib.typ"
+#import "/tests/utils.typ": test
+#import "/src/lib.typ"
 
-#lib.canvas({
+// Test symbols
+#test({
     import lib: *
-
-    switch("d1", (0,0), (2,0), i: (content: $i_1$, anchor: "east"), u: $u_1$)
-    switch("d2", (0,-3), (2,-3), closed: true, i: (content: $i_1$, anchor: "east"), u: $u_1$)
+    switch("s1", (0, 0), (2, 0))
+    switch("s2", (0, -1), (2, -1), closed: true)
 })
