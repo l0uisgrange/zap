@@ -1,7 +1,7 @@
 #import "/src/lib.typ"
 #set page(width: auto, height: auto, margin: 5pt, fill: white)
 
-#lib.canvas({
+#lib.circuit({
     import lib: *
 
     resistor("r1", (2,0), (4,2))

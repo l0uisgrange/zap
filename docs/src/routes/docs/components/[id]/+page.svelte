@@ -54,7 +54,7 @@
                 <Code
                         content={`#import "@preview/zap:${version}"\n` +
 					'\n' +
-					'#zap.canvas({\n' +
+					'#zap.circuit({\n' +
 					'    import zap: *\n' +
 					'    \n' +
 					`    ${component?.name}("id", (0,0)${component?.quick ? ', (5,0)' : ''})\n` +

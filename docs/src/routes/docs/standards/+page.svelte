@@ -107,14 +107,14 @@
                 <span class="absolute top-2 left-2 bg-gray-500/20 rounded-full font-mono text-xs px-2 py-0.5 ">iec</span>
 			</div>
 			<div class="lg:order-3">
-				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0), (3,0))\n' + '})'} />
+				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0), (3,0))\n' + '})'} />
 			</div>
 			<div class="flex h-32 items-center relative justify-center rounded-lg border border-gray-300 bg-white dark:border-gray-700">
 				<img src={resistorieee} class="mb-4 h-18" alt="Classic IEEE/ANSI resistor" />
                 <span class="absolute top-2 left-2 bg-gray-500/20 rounded-full font-mono text-xs px-2 py-0.5 ">ieee</span>
 			</div>
 			<div class="lg:order-last">
-				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0), (3,0), variant: "ieee")\n' + '})'} />
+				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0), (3,0), variant: "ieee")\n' + '})'} />
 			</div>
 		</div>
 		<NexPrev next={{ href: '/docs/decorations', title: 'Decorations' }} previous={{ href: '/docs/positioning', title: 'Positioning' }} />

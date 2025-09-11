@@ -47,7 +47,7 @@
 		<Code
 			content={`#import "@preview/zap:${version}"\n` +
 				'\n' +
-				'#zap.canvas({\n' +
+				'#zap.circuit({\n' +
 				'    import zap: *\n' +
 				'    \n' +
 				'    isource("i1", (0,0), (5,0))\n' +

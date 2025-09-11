@@ -1,6 +1,6 @@
 // Export dependencies
 #import "dependencies.typ": cetz
-#import cetz: canvas
+#import cetz: canvas as circuit
 #import cetz.draw: set-style
 #import cetz: draw
 

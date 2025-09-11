@@ -36,7 +36,7 @@
 			You can draw a grid to better understand the coordinates used by Zap to draw your components.
 		</p>
 		<Code
-			content={`#import "@preview/cetz:${cetzversion}": grid\n#import "@preview/zap:${version}"\n\n#zap.canvas({\n    import zap: *\n\n    grid((-5,-5), (5,5))\n})`}
+			content={`#import "@preview/cetz:${cetzversion}": grid\n#import "@preview/zap:${version}"\n\n#zap.circuit({\n    import zap: *\n\n    grid((-5,-5), (5,5))\n})`}
 		/>
 		<h2>Anchors</h2>
 		<p>

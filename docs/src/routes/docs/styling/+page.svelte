@@ -37,7 +37,7 @@
 			<span class="text-params font-mono">params</span> optional arguments.
 		</p>
 		<Code
-			content={'#zap.canvas({\n' +
+			content={'#zap.circuit({\n' +
 				'    import zap: *\n\n' +
 				'    resistor("r1", (0,0), (3,0), variant: "iec", fill: red.lighten(80%), stroke: 1pt + red)\n})'}
 		/>
@@ -51,7 +51,7 @@
 			<img src={style1} class="dark:border-neutral-border w-full rounded-lg border border-neutral-200 object-cover" alt="Style 1 example" />
 			<div class="lg:col-span-3">
 				<Code
-					content={'#zap.canvas({\n' +
+					content={'#zap.circuit({\n' +
 						'    import zap: *\n' +
 						'    set-style(zap: (\n' +
 						'        resistor: (\n' +

@@ -28,7 +28,7 @@
     (content: "PC3", side: "east"),
 )
 
-#lib.canvas({
+#lib.circuit({
     import lib: *
 
     mcu("esp33", (0,0), pins: pins, fill: rgb("#FBBEDF"), stroke: rgb("#FBBEDF"), width: 4, label: "ESP33")

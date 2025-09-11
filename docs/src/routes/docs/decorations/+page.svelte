@@ -44,7 +44,7 @@
 			</div>
 			<div class="lg:col-span-3">
 				<Code
-						content={'#zap.canvas({\n' +
+						content={'#zap.circuit({\n' +
 						'    import zap: *\n\n' +
 						'    heater("v1", (0,-1), (0,2), label: $R$)\n' +
 						'})'}
@@ -63,7 +63,7 @@
 			</div>
 			<div class="lg:col-span-3">
 				<Code
-						content={'#zap.canvas({\n' +
+						content={'#zap.circuit({\n' +
 						'    import zap: *\n\n' +
 						'    heater("v1", (0,-1), (0,2), label: (content: $R$, anchor: "south", distance: 20pt))\n' +
 						'})'}
@@ -83,7 +83,7 @@
 			</div>
 			<div class="lg:col-span-3">
 				<Code
-					content={'#zap.canvas({\n' +
+					content={'#zap.circuit({\n' +
 						'    import zap: *\n\n' +
 						'    vsource("v1", (0,-2), (0,2), u: $u_1$, i: (content: $i_1$, anchor: "west"), label: "5V")\n' +
 						'})'}

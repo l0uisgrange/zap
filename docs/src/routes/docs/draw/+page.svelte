@@ -37,7 +37,7 @@
 			As discovered before, Zap uses a canvas as its drawing environment, it's therefore compatible with CeTZ native drawings.
 		</p>
 		<Code
-			content={`#import "@preview/cetz:${cetzversion}": rect\n#import "@preview/zap:${version}"\n\n#zap.canvas({\n    import zap: *\n\n    resistor("r1", (0,0), (3,0), label: $R_1$)\n    rect((0,0), (5,5))\n})`}
+			content={`#import "@preview/cetz:${cetzversion}": rect\n#import "@preview/zap:${version}"\n\n#zap.circuit({\n    import zap: *\n\n    resistor("r1", (0,0), (3,0), label: $R_1$)\n    rect((0,0), (5,5))\n})`}
 		/>
         <p>
             You have access to all available shapes and options on the package online <a target="_blank" href="https://cetz-package.github.io/docs/api/draw-functions/shapes/">documentation</a>.
