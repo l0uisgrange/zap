@@ -1,28 +1,20 @@
 # ⚡️ Zap for Typst
 
-**Zap** is a lightweight 🪶 Typst package that makes drawing electronic circuits simple and intuitive. It's the first Typst library designed to align with widely recognized standards like **IEC** and **IEEE/ANSI** 📜.
+**Zap** is a lightweight 🪶 Typst package that makes drawing electronic circuits simple and intuitive. It's the first circuit library inspired by widely recognized standards 📃 like **IEC** and **IEEE/ANSI**.
 
 [Documentation](https://zap.grangelouis.ch) — [Examples](https://zap.grangelouis.ch/examples) — [Forum](https://github.com/l0uisgrange/zap/discussions/categories/q-a)
 
-## Simple examples
+## Examples
 
 You can find the full list of examples [here](https://zap.grangelouis.ch/examples).
 
-<table>
-<tr>
-  <td>
-    <img alt="Example 1" src="https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example1.png" width="250px">
-  </td>
-  <td>
-    <img alt="Example 2" src="https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example2.png" width="250px">
-  </td>
-</tr>
-<tr>
-  <td>Simple example</td>
-  <td>Wheatstone bridge</td>
-</tr>
-</table>
+### Operational amplifier
 
+![Mini example](https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example2.png?raw=true)
+
+### MicroController Unit
+
+![Mini example](https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example2.png?raw=true)
 
 ## Quick usage
 
@@ -32,9 +24,7 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 #zap.canvas({
     import zap: *
 
-    isource("i1", (0,0), (5,0))
-    resistor("r1", (5,5), (0,5))
-    wire("r1.out", "i1.out")
+    // Here goes your circuit
 })
 ```
 
