@@ -21,7 +21,7 @@
 			<img src={example1} alt="example1" class="p-10" />
 		</div>
 		<Code
-			content={'#zap.canvas({\n' +
+			content={'#zap.circuit({\n' +
 				'    import zap: *\n' +
 				'\n' +
 				'    // Branch 1\n' +
@@ -45,7 +45,7 @@
 			<img src={example2} alt="example2" class="p-10" />
 		</div>
 		<Code
-			content={'#zap.canvas({\n' +
+			content={'#zap.circuit({\n' +
 				'    import zap: *\n' +
 				'\n' +
 				'    // Wheatstone bridge\n' +
@@ -73,7 +73,7 @@
 			<img src={example3} alt="example3" class="p-10" />
 		</div>
 		<Code
-				content={'#zap.canvas({\n' +
+				content={'#zap.circuit({\n' +
 				'    import zap: *\n' +
 				'\n' +
 				'    // Source and transistor\n' +
@@ -97,7 +97,7 @@
             <img src={example4} alt="example4" class="p-10" />
         </div>
         <Code content={'' +
-            '#zap.canvas({\n' +
+            '#zap.circuit({\n' +
             '    import zap: *\n' +
             '    \n' +
             '    resistor("r1", (2,0), (4,2))\n' +

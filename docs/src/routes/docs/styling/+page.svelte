@@ -37,21 +37,21 @@
 			<span class="text-params font-mono">params</span> optional arguments.
 		</p>
 		<Code
-			content={'#zap.canvas({\n' +
+			content={'#zap.circuit({\n' +
 				'    import zap: *\n\n' +
 				'    resistor("r1", (0,0), (3,0), variant: "iec", fill: red.lighten(80%), stroke: 1pt + red)\n})'}
 		/>
 		<h2>Global styling</h2>
 		<p>
 			If you wish to change the default appearance for <span class="font-medium">all components</span>
-			of a specific type throughout the same canvas, Zap supports the
+			of a specific type throughout the same circuit, Zap supports the
 			<span class="text-import font-mono">set-style</span> from CeTZ.
 		</p>
 		<div class="grid gap-5 lg:grid-cols-4">
 			<img src={style1} class="dark:border-neutral-border w-full rounded-lg border border-neutral-200 object-cover" alt="Style 1 example" />
 			<div class="lg:col-span-3">
 				<Code
-					content={'#zap.canvas({\n' +
+					content={'#zap.circuit({\n' +
 						'    import zap: *\n' +
 						'    set-style(zap: (\n' +
 						'        resistor: (\n' +

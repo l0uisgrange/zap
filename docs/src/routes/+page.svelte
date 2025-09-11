@@ -1,25 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import Animated from './Animated.svelte';
-	import { codes } from './codes';
-
-	let code = $state(codes[0].code);
-	let image = $state(codes[0].image);
-	let counter = $state(0);
-
-	onMount(() => {
-		let interval = setInterval(() => {
-			console.log(counter);
-			if (counter === codes.length - 1) {
-				clearInterval(interval);
-			} else {
-				counter++;
-			}
-			code = codes[counter].code;
-			image = codes[counter].image;
-		}, 400);
-		return () => clearInterval(interval);
-	});
+	import example1 from '$lib/hero/example1.svg';
+	import example2 from '$lib/hero/example2.svg';
 </script>
 
 <svelte:head>
@@ -45,10 +26,8 @@
 			Examples
 		</a>
 	</div>
-	<div class="mt-20 grid w-full justify-center items-stretch gap-8 text-left md:grid-cols-2">
-		<Animated {code} />
-		<div class="dark:border-neutral-border bg-white p-5 flex min-h-96 items-center justify-center rounded-lg border border-neutral-200">
-			<img src={image} alt="circuit" />
-		</div>
+	<div class="mt-20 flex flex-wrap px-5 w-full justify-center items-stretch gap-8 text-left md:grid-cols-2">
+		<img src={example1} class="flex-auto max-w-max order-2" alt="Example 1" />
+		<img src={example2} class="flex-auto max-w-max order-1" alt="Example 2" />
 	</div>
 </div>

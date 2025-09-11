@@ -43,13 +43,13 @@
 				<div class="dark:border-neutral-border mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
 					<img src={onenode} class="w-full" alt="resistor using one-node placement" />
 				</div>
-				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0))\n' + '})'} />
+				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0))\n' + '})'} />
 			</div>
 			<div>
 				<div class="dark:border-neutral-border mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
 					<img src={twonode} class="w-full" alt="resistor using one-node placement" />
 				</div>
-				<Code content={'#zap.canvas({\n' + '    resistor("r1", (0,0), (5,0))\n' + '})'} />
+				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0), (5,0))\n' + '})'} />
 			</div>
 		</div>
 		<Notice type="warning" title="Warning">
@@ -72,12 +72,12 @@
 			where named anchors come in.
 		</p>
 		<p>The name provided as the first argument acts as an identifier for the component, as shown below.</p>
-		<Code content={'#zap.canvas({\n' +'    import zap: *\n\n' +  '    resistor("r1", (0,0), (5,0))\n' + '})'} />
+		<Code content={'#zap.circuit({\n' +'    import zap: *\n\n' +  '    resistor("r1", (0,0), (5,0))\n' + '})'} />
 		<p>
 			Now that this resistor is identified by its name <span class="text-string font-mono">r1</span>, we can attach a voltage source to one of
 			it's nodes like this.
 		</p>
-		<Code content={'#zap.canvas({\n' +'    import zap: *\n\n' + '    resistor("r1", (0,0), (5,0))\n' + '    vsource("v1", "r1.out", (5,5))\n' + '})'} />
+		<Code content={'#zap.circuit({\n' +'    import zap: *\n\n' + '    resistor("r1", (0,0), (5,0))\n' + '    vsource("v1", "r1.out", (5,5))\n' + '})'} />
 		<p>
 			The only slightly tricky part is knowing which sub-anchors each component provides, but don't worry, you can always refer to the <a
 				href="/docs/components/">components list</a
@@ -98,7 +98,7 @@
             </div>
             <div class="lg:col-span-3">
                 <Code
-                        content={'#zap.canvas({\n' +
+                        content={'#zap.circuit({\n' +
 						'    import zap: *\n\n' +
 						'    node("node1", (0,0), fill: true)\n' +
 						'})'}
@@ -112,7 +112,7 @@
             </div>
             <div class="lg:col-span-3">
                 <Code
-                        content={'#zap.canvas({\n' +
+                        content={'#zap.circuit({\n' +
 						'    import zap: *\n\n' +
 						'    resistor("r1", (0,0), (3,0), n: "*-*")\n' +
 						'})'}

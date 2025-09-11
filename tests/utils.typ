@@ -5,7 +5,7 @@
 
     pagebreak(weak: true)
 
-    lib.canvas({
+    lib.circuit({
         import lib: *
         body
     })

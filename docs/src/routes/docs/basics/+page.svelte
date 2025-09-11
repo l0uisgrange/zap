@@ -34,16 +34,16 @@
 
 		<h2>Canvas</h2>
 		<p>
-			All diagrams drawn must be contained within a <span class="text-component font-mono">canvas</span> block. This block initializes the necessary
+			All diagrams drawn must be contained within a <span class="text-component font-mono">circuit</span> block. This block initializes the necessary
 			drawing environment, managed by CeTZ, and allows you to place your components.
 		</p>
 		<Code
-			content={`#import "@preview/zap:${version}"\n\n#zap.canvas({\n    import zap: *\n\n    resistor("r1", (0,0), (3,0), label: $R_1$)\n})`}
+			content={`#import "@preview/zap:${version}"\n\n#zap.circuit({\n    import zap: *\n\n    resistor("r1", (0,0), (3,0), label: $R_1$)\n})`}
 		/>
 
 		<h2>Declaration</h2>
 		<p>
-			After you set up your canvas, you'll start adding different items called components. You add these components by using their own special
+			After you set up your circuit, you'll start adding different items called components. You add these components by using their own special
 			functions.
 		</p>
 		<div class="mb-2 flex flex-wrap items-center justify-center gap-1 px-4 py-4 font-mono text-sm *:rounded-full *:px-3 *:py-1 *:font-light">
