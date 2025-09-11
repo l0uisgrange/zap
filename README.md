@@ -21,7 +21,7 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 ```typst
 #import "@preview/zap:0.4.0"
 
-#zap.canvas({
+#zap.circuit({
     import zap: *
     
     // Here is a minimalist example
