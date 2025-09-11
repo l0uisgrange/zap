@@ -10,7 +10,7 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 
 ### Operational amplifier
 
-![Mini example](https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example2.png?raw=true)
+![Mini example](https://github.com/l0uisgrange/zap/blob/c2974ac3bf0434edc9749cd02118f409271b2444/examples/example1.svg?raw=true)
 
 ### MicroController Unit
 
