@@ -35,3 +35,27 @@
     cetz.draw.circle("r1.out", radius: 2pt, stroke: red)
     cetz.draw.circle("r1.in", radius: 2pt, stroke: green)
 })
+
+// Test label
+#test({
+    import lib: *
+    resistor("r1", (0, 0), (2, 2), label: (content: $R_1$, distance: 1, anchor: "south", align: "west"))
+})
+
+// Test current
+#test({
+    import lib: *
+    resistor("r1", (0, 0), (3, 3), i: (content: $i_1$, distance: 1, label-distance: 1, invert: true))
+})
+
+// Test voltage
+#test({
+    import lib: *
+    resistor("r1", (0, 0), (3, 3), u: (content: $u_1$, distance: 1, label-distance: -.3, invert: true, anchor: "south"))
+})
+
+// Test flow
+#test({
+    import lib: *
+    resistor("r1", (0, 0), (3, 3), f: (content: $f_1$, distance: 1, label-distance: -1, invert: true, anchor: "south"))
+})
