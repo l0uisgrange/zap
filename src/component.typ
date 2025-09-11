@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
 #import "components/nodes.typ": node
-#import "utils.typ": get-label-anchor, default-style, opposite-anchor
+#import "utils.typ": default-style, get-label-anchor, opposite-anchor
 
 #let component(
     draw: none,
@@ -81,7 +81,13 @@
                 }
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
-                content(..l, if type(l.anchor) == str { "component." + l.anchor } else { l.anchor }, anchor: l.at("align", default: resolved-anchor), l.content, padding: l.distance)
+                content(
+                    ..l,
+                    if type(l.anchor) == str { "component." + l.anchor } else { l.anchor },
+                    anchor: l.at("align", default: resolved-anchor),
+                    l.content,
+                    padding: l.distance,
+                )
             }
         })
 
