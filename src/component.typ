@@ -1,15 +1,12 @@
 #import "dependencies.typ": cetz
-#import "styles.typ": default-style
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
 #import "components/nodes.typ": node
-#import "utils.typ": get-label-anchor
+#import "utils.typ": default-style, get-label-anchor, opposite-anchor
 
 #let component(
     draw: none,
     label: none,
-    label-default-position: none,
-    label-default-align: none,
     i: none,
     f: none,
     u: none,
@@ -32,7 +29,7 @@
     assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
-    assert(params.at("variant", default: default-style.variant) in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
+    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"))
 
     let p-rotate = rotate
@@ -74,23 +71,23 @@
         // Label
         on-layer(0, {
             if label != none {
-                if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
-                let default-anchor = if label-default-position != none { label-default-position } else { "north" }
-                let default-align = if label-default-align != none { label-default-align } else { "south" }
-                let (label, distance, width, height, anchor, align, reverse) = if type(label) == dictionary {
-                    (
-                        label.at("content", default: none),
-                        label.at("distance", default: 7pt),
-                        ..cetz.util.measure(ctx, label.at("content")),
-                        label.at("anchor", default: default-anchor),
-                        get-label-anchor(p-rotate),
-                        "south" in label.at("anchor", default: default-anchor),
-                    )
+                let forced-params = params.named().at("label-defaults", default: (a: none))
+                let default-params = (distance: 7pt, anchor: "north")
+                let forced-default-params = cetz.util.merge-dictionary(default-params, forced-params)
+                let l = if type(label) == dictionary {
+                    cetz.util.merge-dictionary(label, forced-default-params, overwrite: false)
                 } else {
-                    (label, 7pt, ..cetz.util.measure(ctx, label), default-anchor, (default-align, default-align), "south" in default-anchor)
+                    (content: label, ..forced-default-params)
                 }
-                let new-position = (0.5 * width * calc.abs(calc.sin(p-rotate)) + 0.5 * height * calc.abs(calc.cos(p-rotate)))
-                content(if type(anchor) == str { "component." + anchor } else { anchor }, anchor: align.at(if reverse { 1 } else { 0 }), label, padding: distance)
+                let anchor = get-label-anchor(p-rotate)
+                let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
+                content(
+                    ..l,
+                    if type(l.anchor) == str { "component." + l.anchor } else { l.anchor },
+                    anchor: l.at("align", default: resolved-anchor),
+                    l.content,
+                    padding: l.distance,
+                )
             }
         })
 

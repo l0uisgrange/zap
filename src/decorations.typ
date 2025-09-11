@@ -68,9 +68,11 @@
 #let voltage(ctx, label, p-rotate) = {
     let (p-label, p-distance, p-size, p-invert, p-position, p-label-distance, p-side) = resolve-decoration(ctx, label)
 
-    let a-start = (rel: (-.4, .1 * p-side), to: "component." + p-position.y + "-west")
-    let a-end = (rel: (.4, .1 * p-side), to: "component." + p-position.y + "-east")
-    let a-center = (rel: (0, .3 * p-side), to: "component." + p-position.y)
+    let c = cetz.util.resolve-number(ctx, 9pt)
+    let r-p-distance = cetz.util.resolve-number(ctx, p-distance)
+    let a-start = (rel: (-.4, (r-p-distance - c + .1) * p-side), to: "component." + p-position.y + "-west")
+    let a-end = (rel: (.4, (r-p-distance - c + .1) * p-side), to: "component." + p-position.y + "-east")
+    let a-center = (rel: (0, (r-p-distance - c + .3) * p-side), to: "component." + p-position.y)
 
     content((rel: (0, p-label-distance), to: a-center), p-label)
     if p-position.x == "west" {

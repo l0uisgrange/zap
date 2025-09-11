@@ -103,8 +103,7 @@
         node,
         draw: draw,
         style: style,
-        label-default-position: if invert { "south" } else { none },
-        label-default-align: if invert { "north" } else { none },
+        label-defaults: if invert { (anchor: "south", align: "north") } else { (a: 1) },
         ..params,
     )
 }

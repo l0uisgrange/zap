@@ -50,8 +50,7 @@
         draw: draw,
         style: style,
         label: label,
-        label-default-position: (-0.15 * if input == "d" { -1 } else { 1 }, 0),
-        label-default-align: "center",
+        label-defaults: (anchor: (-0.15 * if input == "d" { -1 } else { 1 }, 0), align: "center"),
         ..params,
     )
 }
