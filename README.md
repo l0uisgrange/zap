@@ -14,7 +14,7 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 
 ### MicroController Unit
 
-![Mini example](https://github.com/l0uisgrange/zap/blob/eb470d9f259e325dd4b726c82bd17225fd867df7/examples/example2.png?raw=true)
+![Mini example](https://github.com/l0uisgrange/zap/blob/8664fcad4fb42d744ea5b424246acbbfce74530e/examples/example2.svg?raw=true)
 
 ## Quick usage
 
