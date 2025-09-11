@@ -1,6 +1,5 @@
 #import "/src/dependencies.typ": cetz
-#import "/src/styles.typ": default-style
-#import "/src/utils.typ":  opposite-anchor
+#import "/src/utils.typ": opposite-anchor, default-style
 #import cetz.draw: anchor, circle, content, group, hide, line, mark
 
 #let ra = ratio
