@@ -1,4 +1,5 @@
-#import "../dependencies.typ": cetz
+#import "/src/dependencies.typ": cetz
+#import "/src/utils.typ": opposite-anchor
 #import cetz.draw: circle, content, get-ctx, on-layer
 
 #let node(name, position, fill: true, label: none, ..params) = {
@@ -10,7 +11,7 @@
 
     get-ctx(ctx => {
         if label != none {
-            if type(label) == dictionary and label.at("content", default: none) == none { panic("Label dictionary needs at least content key") }
+            if type(label) == dictionary and label.at("content", default: none) == none { panic("label dictionary needs at least content key") }
             let (label, distance, width, height, anchor, reverse) = if type(label) == dictionary {
                 (
                     label.at("content", default: none),
@@ -22,7 +23,7 @@
             } else {
                 (label, 7pt, ..cetz.util.measure(ctx, label), "north", false)
             }
-            content(if type(anchor) == str { name + "." + anchor } else { anchor }, anchor: "south", label, padding: distance)
+            content(if type(anchor) == str { name + "." + anchor } else { anchor }, anchor: opposite-anchor(anchor), label, padding: distance)
         }
     })
 }
