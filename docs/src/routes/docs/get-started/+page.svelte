@@ -41,7 +41,7 @@
 		<h2>Create your first circuit</h2>
 		<p>To get started with Zap, here's a minimal working example showing how to draw a simple circuit with just a few lines of code.</p>
 		<Notice type="tip" title="Tip"
-			>It is recommended to import Zap components <span class="font-medium">inside your canvas</span>, as some Zap functions override some basic
+			>It is recommended to import Zap components <span class="font-medium">inside your circuit</span>, as some Zap functions override some basic
 			Typst elements.</Notice
 		>
 		<Code

@@ -44,7 +44,7 @@
 		<h2>Global styling</h2>
 		<p>
 			If you wish to change the default appearance for <span class="font-medium">all components</span>
-			of a specific type throughout the same canvas, Zap supports the
+			of a specific type throughout the same circuit, Zap supports the
 			<span class="text-import font-mono">set-style</span> from CeTZ.
 		</p>
 		<div class="grid gap-5 lg:grid-cols-4">
