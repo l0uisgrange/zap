@@ -4,7 +4,7 @@
 
 #let ra = ratio
 
-#let wire(bits: 0, shape: "direct", ratio: 50%, axis: "y", i: none, ..params) = {
+#let wire(bits: 0, shape: "direct", ratio: 50%, axis: "x", i: none, ..params) = {
     assert(type(bits) == int, message: "bits must be an int")
     assert(params.pos().len() >= 2, message: "wires need at least two points")
     assert(type(ratio) in (ra, int, float, length), message: "ratio must be a ratio, a number or a length")

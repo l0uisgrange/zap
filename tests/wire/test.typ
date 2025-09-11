@@ -4,7 +4,7 @@
 // Test symbols
 #test({
     import lib: *
-    swire((0, 0), (3, 2))
+    swire((0, 0), (3, 2), axis: "y")
     zwire((3, 2), (5, 0), axis: "x", ratio: 2)
     wire((5, 0), (0, 0))
 })
