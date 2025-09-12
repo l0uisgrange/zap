@@ -8,6 +8,7 @@
 #import "component.typ": component, interface
 
 // Export components
+#import "components/antennas.typ": antenna
 #import "components/wires.typ": swire, wire, zwire
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor
