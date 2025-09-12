@@ -18,6 +18,7 @@
 
         let (width, height) = cetz.util.measure(ctx, "polygon")
         interface((-width / 2, -height / 2), (width / 2, height / 2))
+        anchor("default", (0, 0))
     }
 
     // Component call
@@ -44,6 +45,7 @@
             line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
         }
         interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
+        anchor("default", (0, 0))
     }
 
     // Component call
@@ -68,6 +70,7 @@
             line((-style.width / 2 + i * style.delta, -style.distance - i * style.spacing), (style.width / 2 - i * style.delta, -style.distance - i * style.spacing), ..style)
         }
         interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
+        anchor("default", (0, 0))
     }
 
     // Component call

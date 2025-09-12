@@ -6,6 +6,9 @@
     import lib: *
     vcc("vcc", (0, 0))
     vee("vee", (1, 0))
+    ground("gnd", (2, 0))
+    frame("fr", (3, 0))
+    earth("ea", (4, 0))
 })
 
 // Test label position
@@ -20,7 +23,10 @@
     import lib: *
     vcc("vcc", (0, 0))
     vee("vee", (1, 0))
-    wire("vcc", "vee")
+    ground("gnd", (2, 0))
+    frame("fr", (3, 0))
+    earth("ea", (4, 0))
+    wire("vcc", "vee", "gnd", "fr", "ea")
 })
 
 // Test styling
