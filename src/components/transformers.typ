@@ -7,15 +7,14 @@
     let style = (
         radius: 0.35,
         distance: 0.45,
-        // nothing
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.distance / 2 - style.radius, -style.radius), (style.distance / 2 + style.radius, style.radius), io: position.len() < 2)
 
-        circle((-style.distance/2, 0), radius: style.radius, ..style, fill: none)
-        circle((style.distance/2, 0), radius: style.radius, ..style, fill: none)
+        circle((-style.distance / 2, 0), radius: style.radius, ..style, fill: none)
+        circle((style.distance / 2, 0), radius: style.radius, ..style, fill: none)
     }
 
     // Component call
