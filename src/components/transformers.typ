@@ -2,19 +2,22 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, line, mark, rect
 
-#let transformers(name, node, closed: false, ..params) = {
+#let transformer(name, node, closed: false, ..params) = {
     // Switch style
     let style = (
-        radius: 0.7,
-        distance: 1
+        radius: 0.35,
+        distance: 0.45,
         // nothing
     )
 
     // Drawing function
     let draw(ctx, position, style) = {
-        interface((-style.width / 2, -0.2), (style.width / 2, 0.2), io: position.len() < 2)
+        interface((-style.distance / 2 - style.radius, -style.radius), (style.distance / 2 + style.radius, style.radius), io: position.len() < 2)
 
-        // fill here
+        circle((-style.distance/2, 0), radius: style.radius, ..style, fill: none)
+        circle((style.distance/2, 0), radius: style.radius, ..style, fill: none)
+
+        line((-style.distance / 2 - style.radius, 0), (style.distance / 2 + style.radius, 0), ..style.at("wires"))
     }
 
     // Component call

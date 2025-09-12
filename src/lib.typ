@@ -9,7 +9,7 @@
 
 // Export components
 #import "components/antennas.typ": antenna
-#import "components/transformers.typ": transformers
+#import "components/transformers.typ": transformer
 #import "components/wires.typ": swire, wire, zwire
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor, pcapacitor
