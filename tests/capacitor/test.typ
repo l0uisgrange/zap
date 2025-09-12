@@ -5,6 +5,7 @@
 #test({
     import lib: *
     capacitor("c1", (0, 0), (2, 0))
+    pcapacitor("c1", (0, -1.5), (2, -1.5))
 })
 
 // Test styling

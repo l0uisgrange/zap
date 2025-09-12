@@ -11,7 +11,7 @@
 #import "components/antennas.typ": antenna
 #import "components/wires.typ": swire, wire, zwire
 #import "components/nodes.typ": node
-#import "components/capacitors.typ": capacitor
+#import "components/capacitors.typ": capacitor, pcapacitor
 #import "components/diodes.typ": diode, led, photodiode, schottky, tunnel, zener
 #import "components/switches.typ": switch
 #import "components/fuses.typ": afuse, fuse
