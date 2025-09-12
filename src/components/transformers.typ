@@ -16,8 +16,6 @@
 
         circle((-style.distance/2, 0), radius: style.radius, ..style, fill: none)
         circle((style.distance/2, 0), radius: style.radius, ..style, fill: none)
-
-        line((-style.distance / 2 - style.radius, 0), (style.distance / 2 + style.radius, 0), ..style.at("wires"))
     }
 
     // Component call
