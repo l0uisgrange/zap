@@ -6,6 +6,7 @@
     import lib: *
     isource("i1", (0, 0), (2, 0))
     isource("i2", (0, -1.5), (2, -1.5), variant: "ieee")
+    disource("i2", (0, -3), (2, -3))
 })
 
 // Test decorations

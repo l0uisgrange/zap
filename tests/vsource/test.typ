@@ -7,6 +7,7 @@
     vsource("v1", (0, 0), (2, 0))
     vsource("v1", (0, -1.5), (2, -1.5), variant: "ieee")
     acvsource("v2", (0, -3), (2, -3))
+    dvsource("v3", (0, -4.5), (2, -4.5))
 })
 
 // Test rotation (horizontal ac symbol)
