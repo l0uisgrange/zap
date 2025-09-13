@@ -29,5 +29,5 @@
 #test({
     import lib: *
     potentiometer("r4", (0, -3.5), (2, -3.5))
-    wire("r4.a", (rel: (2,0)))
+    wire("r4.a", (rel: (2, 0)))
 })
