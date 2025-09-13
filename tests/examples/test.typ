@@ -31,6 +31,7 @@
 // Test example 1
 #test({
     import lib: *
+    set-style(zap: (wires: (stroke: (thickness: 0.8pt, paint: red)), stroke: (thickness: 0.8pt, paint: blue)))
 
     resistor("r1", (2, 0), (4, 2))
     resistor("r2", (6, 0), (4, 2))
