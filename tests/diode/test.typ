@@ -15,5 +15,5 @@
 // Test styling
 #test({
     import lib: *
-    diode("d1", (0, 0), (2, 0), fill: red.lighten(50%), stroke: red)
+    diode("d1", (0, 0), (2, 0), fill: red.lighten(50%), stroke: red + 1.3pt)
 })

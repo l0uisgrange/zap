@@ -1,5 +1,5 @@
+#import "/tests/utils.typ": test
 #import "/src/lib.typ"
-#set page(width: auto, height: auto, margin: 5pt, fill: white)
 
 #let pins = (
     (content: "VCC", side: "west"),
@@ -28,19 +28,47 @@
     (content: "PC3", side: "east"),
 )
 
-#lib.circuit({
+// Test example 1
+#test({
+    import lib: *
+    set-style(zap: (wires: (stroke: (thickness: 0.8pt, paint: red)), stroke: (thickness: 0.8pt, paint: blue)))
+
+    resistor("r1", (2, 0), (4, 2))
+    resistor("r2", (6, 0), (4, 2))
+    resistor("r3", (6, 0), (4, -2))
+    resistor("r4", (2, 0), (4, -2))
+    afuse("f1", (0, 2), "r1.out", position: 40%, label: $F_1$)
+    vsource("v1", (0, -2), (0, 2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: (content: "5V", anchor: "south"))
+    wire("r4.out", (0, -2))
+    pnp("n1", (8, 2), envelope: true)
+    wire("r1.out", "n1.b")
+    capacitor("c1", "n1.e", (rel: (2, 0)), label: $C_1$)
+    swire("n1.c", "r4.out", axis: "y")
+    swire("c1.out", (8, -2), axis: "y")
+    node("A", (4, 2))
+    node("B", (4, -2))
+    opamp("o1", (13, 2.05), label: "OP1")
+    wire("o1.minus", "c1.out")
+    zwire("o1.out", (rel: (1, 0)))
+    rheostat("r2", (rel: (1, 0), to: "o1.out"), (rel: (0, -4.05)), label: $R_"eq"$)
+    swire("r2.out", (rel: (-6, 0)))
+    earth("g1", (11, 1))
+    swire("o1.plus", "g1", axis: "x")
+})
+
+// Test example 2
+#test({
     import lib: *
 
     mcu("esp33", (0, 0), pins: pins, fill: rgb("#FBBEDF"), stroke: rgb("#FBBEDF"), width: 4, label: "ESP33")
     mcu("esp32", (-6, -3), pins: ((content: "IN", side: "west"), (content: "OUT", side: "east")), fill: rgb("#F2FA95"), stroke: rgb("#F2FA95"), width: 2.5, label: "ESP34")
     mcu("esp34", (9, 2.298), pins: ((content: "IN", side: "west"), (content: "OUT", side: "east")), fill: rgb("#93FDEA"), stroke: rgb("#93FDEA"), width: 3, label: "ESP35")
-
-    zwire("esp33.pin7", "esp32.pin2", axis: "x")
+    zwire("esp33.pin7", "esp32.pin2")
     resistor("r1", "esp33.pin5", (rel: (-5, 0)), label: (content: $R_1$, anchor: "south"), position: 70%, i: $i$)
-    zwire("r1.out", "esp32.pin1", axis: "x", ratio: 10)
-    swire("esp33.pin12", (-3, -4), axis: "x")
-    swire("esp33.pin1", (-3, 4), axis: "x")
-    led("led", "esp33.pin19", (rel: (4, 0)), axis: "x", n: "-*")
+    zwire("r1.out", "esp32.pin1", ratio: 10)
+    swire("esp33.pin12", (-3, -4))
+    swire("esp33.pin1", (-3, 4))
+    led("led", "esp33.pin19", (rel: (4, 0)), n: "-*")
     resistor("r2", "led.out", (rel: (0, -4.2)), label: (content: $R_2$, anchor: "north"), variable: true, position: 60%)
     capacitor("c1", "esp33.pin14", (rel: (4, 0)), label: (content: $C_1$, anchor: "north"))
     wire("c1.out", "led.out")
@@ -49,6 +77,6 @@
     vcc("e", (-3, 4))
     frame("f1", (-3, -4))
     wire("esp34.pin1", "A")
-    zwire("esp34.pin2", (rel: (8, 0), to: "esp33.pin21"), axis: "x", ratio: -3)
+    zwire("esp34.pin2", (rel: (8, 0), to: "esp33.pin21"), ratio: -3)
     zener("zener", (rel: (8, 0), to: "esp33.pin21"), "esp33.pin21", position: 1, label: (content: $Z_1$, anchor: "south"))
 })
