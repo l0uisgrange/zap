@@ -26,7 +26,7 @@
 			Examples
 		</a>
 	</div>
-	<div class="mt-20 flex flex-wrap px-5 w-full justify-center items-stretch gap-8 text-left md:grid-cols-2">
+	<div class="mt-20 flex flex-wrap px-5 w-full justify-center *:bg-white *:rounded-lg *:md:p-8 *:p-5 items-stretch gap-8 text-left md:grid-cols-2">
 		<img src={example1} class="flex-auto max-w-max order-2" alt="Example 1" />
 		<img src={example2} class="flex-auto max-w-max order-1" alt="Example 2" />
 	</div>

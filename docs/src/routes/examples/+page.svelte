@@ -99,19 +99,19 @@
         <Code content={'' +
             '#zap.circuit({\n' +
             '    import zap: *\n' +
-            '    \n' +
-            '    resistor("r1", (2,0), (4,2))\n' +
-            '    resistor("r2", (6,0), (4,2))\n' +
-            '    resistor("r3", (6,0), (4,-2))\n' +
-            '    resistor("r4", (2,0), (4,-2))\n' +
-            '    afuse("f1", (2,2), "r1.out", position: 40%)\n' +
-            '    vsource("v1", (2,-2), (2,2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: "5V")\n' +
-            '    wire("r4.out", (2,-2))\n' +
-            '    npn("n1", (9,2), envelope: true, fill: blue.lighten(90%))\n' +
-            '    wire("r1.out", "n1.b")\n' +
-            '    capacitor("c1", "n1.e", (rel: (2,0)))\n' +
-            '    wire("n1.c", ((), "|-", "r4.out"), "r4.out")\n' +
-            '    wire("c1.out", ((), "|-", "r4.out"), "r4.out")\n' +
+            '    set-style(zap: (resistor: (width: 1.2, height: 0.4)))\n'+
+            '\n'+
+            '    resistor("r1", (2, 0), (4, 2))\n'+
+            '    resistor("r2", (6, 0), (4, 2))\n'+
+            '    resistor("r3", (6, 0), (4, -2))\n'+
+            '    resistor("r4", (2, 0), (4, -2))\n'+
+            '    vsource("v1", (0, -2), (0, 2), stroke: blue, u: $u_1$, i: (content: $i_1$, anchor: "south"), label: (content: "5V", anchor: "south"))\n'+
+            '    afuse("f1", "r1.out", "v1.out", position: 60%)\n'+
+            '    npn("n1", (9, 2), envelope: true, fill: blue.lighten(90%))\n'+
+            '    wire("f1.in", "n1.b")\n'+
+            '    capacitor("c1", "n1.c", (rel: (2, 0)))\n'+
+            '    swire("c1.out", "v1.in", axis: "y")\n'+
+            '    wire("n1.e", (rel: (0, -3.5)))\n' +
             '})'+
          ''}/>
     </div>

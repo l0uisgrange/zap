@@ -3,4 +3,4 @@ export { default as Notice } from './components/Notice.svelte';
 
 // @ts-expect-error
 export const version = __APP_VERSION__;
-export const cetzversion = "0.4.1";
+export const cetzversion = "0.4.2";
