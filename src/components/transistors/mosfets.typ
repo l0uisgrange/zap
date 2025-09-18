@@ -53,13 +53,13 @@
         anchor("gl", (rel: (-3 * height / 4, width / 2), to: center))
 
         if bulk != none {
-            wire((-height, 0), (rel: (height, 0)), name: "line")
-            mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, anchor: "center")
+            wire((-height, 0), (rel: (height, 0)))
+            mark(((-height, 0), 50%, (rel: (height, 0))), (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, anchor: "center")
             wire("gl", (rel: (0, -width)), (rel: (-height / 4, 0)))
             anchor("g", ())
         } else {
             wire("gl", (rel: (0, -width / 2)), (rel: (0, -width / 2)))
-            line((rel: (0, width / 2)), (rel: (-height / 2, 0)), ..style.at("wires"))
+            wire((rel: (0, width / 2)), (rel: (-height / 2, 0)))
             anchor("g", ())
 
             mark(
