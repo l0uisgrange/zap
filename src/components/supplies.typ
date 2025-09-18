@@ -1,19 +1,14 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, polygon, scale, scope
+#import "/src/components/wires.typ": wire
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
 
-    // Ground style
-    let style = (
-        radius: 0.22,
-        distance: 0.28,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
-        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        wire((0, 0), (0, -style.distance))
         polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", ..style)
 
         let (width, height) = cetz.util.measure(ctx, "polygon")
@@ -22,23 +17,15 @@
     }
 
     // Component call
-    component("ground", name, node, draw: draw, style: style, ..params)
+    component("ground", name, node, draw: draw, ..params)
 }
 
 #let frame(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "earth supports only one node")
 
-    // Earth style
-    let style = (
-        width: 0.46,
-        angle: 20deg,
-        depth: 0.25,
-        distance: 0.28,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
-        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        wire((0, 0), (0, -style.distance))
         let delta = style.width / 2
         line((-style.width / 2, -style.distance), (style.width / 2, -style.distance), ..style)
         for i in (0, 1, 2) {
@@ -49,23 +36,15 @@
     }
 
     // Component call
-    component("frame", name, node, draw: draw, style: style, ..params)
+    component("frame", name, node, draw: draw, ..params)
 }
 
 #let earth(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "earth supports only one node")
 
-    // Earth style
-    let style = (
-        width: .53,
-        delta: .09,
-        spacing: .11,
-        distance: .28,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
-        line((0, 0), (0, -style.distance), ..style.at("wires"))
+        wire((0, 0), (0, -style.distance))
         for i in (0, 1, 2) {
             line((-style.width / 2 + i * style.delta, -style.distance - i * style.spacing), (style.width / 2 - i * style.delta, -style.distance - i * style.spacing), ..style)
         }
@@ -74,7 +53,7 @@
     }
 
     // Component call
-    component("earth", name, node, draw: draw, style: style, ..params)
+    component("earth", name, node, draw: draw, ..params)
 }
 
 #let vcc(name, node, invert: false, ..params) = {
@@ -92,7 +71,7 @@
         let sin = calc.sin(style.angle) * style.radius
         scope({
             scale(y: direction)
-            line((0, 0), (0, style.distance), ..style.at("wires"))
+            wire((0, 0), (0, style.distance))
             line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), ..style)
         })
         interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0, 0), (0, 0), io: false)
@@ -105,7 +84,6 @@
         name,
         node,
         draw: draw,
-        style: style,
         label-defaults: if invert { (anchor: "south", align: "north") } else { (a: 1) },
         ..params,
     )

@@ -16,16 +16,6 @@
     assert(channel in ("p", "n"), message: "channel must be `p` or `n`")
     assert(bulk in ("internal", "external", none), message: "substrate must be `internal`, `external` or none")
 
-    // Mosfet style
-    let style = (
-        height: 0.795,
-        width: 1.065,
-        base-width: 1.35,
-        base-spacing: 0.165,
-        base-distance: 0.165,
-        radius: 1.05,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         let (height, width, base-width, base-spacing, radius) = style
@@ -85,7 +75,7 @@
     }
 
     // Component call
-    component("mosfet", name, node, draw: draw, style: style, ..params)
+    component("mosfet", name, node, draw: draw, ..params)
 }
 
 #let pmos(name, node, ..params) = mosfet(name, node, channel: "p", ..params)

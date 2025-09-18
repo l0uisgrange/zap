@@ -1,12 +1,21 @@
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": opposite-anchor
 #import cetz.draw: circle, content, get-ctx, on-layer
+#import "/src/utils.typ": get-style
 
 #let node(name, position, fill: true, label: none, ..params) = {
     assert(type(name) == str, message: "node name must be a string")
 
     on-layer(1, {
-        circle(position, radius: .05, fill: if fill { black } else { white }, stroke: .4pt, ..params, name: name)
+        get-ctx(ctx => {
+            let node-style = get-style(ctx).node
+            circle(position,
+                   radius: node-style.radius,
+                   fill: if fill { node-style.fill } else { node-style.nofill },
+                   name: name,
+                   stroke: node-style.stroke,
+                   ..params)
+        })
     })
 
     get-ctx(ctx => {

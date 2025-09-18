@@ -51,9 +51,20 @@
     }
 }
 
-// Default general styles which are not component specific
-#let default-style = (
-    variant: "iec",
-    wires: (stroke: 0.5pt),
-    stroke: .8pt,
-)
+#import "/src/dependencies.typ": cetz
+
+#let set-style(..style) = {
+    cetz.draw.set-ctx(ctx => {
+        ctx.zap.style = cetz.util.merge-dictionary(ctx.zap.style, style.named())
+        return ctx
+    })
+}
+
+#let get-style(ctx) = {
+    let zap-style = ctx.zap.style
+
+    //TODO Definition of auto
+
+    zap-style = cetz.styles.resolve(zap-style)
+    return zap-style
+}

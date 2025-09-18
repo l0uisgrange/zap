@@ -7,13 +7,6 @@
     assert(type(variable) == bool, message: "variable must be of type bool")
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
 
-    // Resistor style
-    let style = (
-        width: 1.41,
-        height: .47,
-        zigs: 3,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
@@ -60,7 +53,7 @@
     }
 
     // Component call
-    component("resistor", name, node, draw: draw, style: style, ..params)
+    component("resistor", name, node, draw: draw, ..params)
 }
 
 #let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)

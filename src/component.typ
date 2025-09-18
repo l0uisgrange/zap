@@ -1,8 +1,9 @@
 #import "dependencies.typ": cetz
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
-#import "components/nodes.typ": node
-#import "utils.typ": default-style, get-label-anchor, opposite-anchor
+#import "components/wires.typ": wire
+#import "utils.typ": get-style, get-label-anchor, opposite-anchor
+#import cetz.util: merge-dictionary
 
 #let component(
     draw: none,
@@ -15,7 +16,6 @@
     scale: 1.0,
     rotate: 0deg,
     debug: false,
-    style: none,
     ..params,
 ) = {
     let p-position = position
@@ -38,9 +38,13 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
-        let base-style = style + pre-style + pre-style.at(uid, default: (something: none))
-        let style = cetz.styles.resolve(base-style, merge: params.named())
+        let zap-style = get-style(ctx)
+        let style = zap-style.at(uid)
+        
+        style.at("variant") = params.named().at("variant", default: style.variant)
+        style = merge-dictionary(style, style.at(style.variant, default: (:)))
+        style = merge-dictionary(style, params.named())
+
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
@@ -56,10 +60,13 @@
         // Component
         on-layer(1, {
             group(name: "component", {
+                //Scaling
                 if (type(p-scale) == float) {
-                    scale(p-scale * style.at("scale", default: 1))
+                    scale(x: p-scale * style.scale.x,
+                          y: p-scale * style.scale.y)
                 } else {
-                    scale(x: p-scale.at(0, default: 1) * style.at("scale", default: 1), y: p-scale.at(1, default: 1) * style.at("scale", default: 1))
+                    scale(x: p-scale.at(0, default: 1.0) * style.scale.x,
+                          y: p-scale.at(1, default: 1.0) * style.scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
@@ -92,8 +99,8 @@
 
         // Decorations
         if position.len() == 2 {
-            line("in", "component.west", ..style.at("wires"))
-            line("component.east", "out", ..style.at("wires"))
+            wire("in", "component.west")
+            wire("component.east", "out")
 
             if i != none {
                 current(ctx, i)

@@ -5,17 +5,6 @@
 #let opamp(name, node, invert: false, label: none, ..params) = {
     assert(params.pos().len() == 0, message: "opamp supports only one node")
 
-    // OpAmp style
-    let style = (
-        width: 1.8,
-        height: 1.75,
-        padding: .28,
-        sign-stroke: .55pt,
-        sign-size: .14,
-        sign-delta: .45,
-    )
-
-
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: true)
@@ -43,5 +32,5 @@
     }
 
     // Component call
-    component("opamp", name, node, draw: draw, style: style, ..params, label: none)
+    component("opamp", name, node, draw: draw, ..params, label: none)
 }

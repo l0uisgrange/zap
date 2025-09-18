@@ -5,13 +5,6 @@
 #let adc(name, node, input: "a", label: "ADC", ..params) = {
     assert(input in ("a", "d"), message: "input can only be d or a")
 
-    // Converter style
-    let style = (
-        width: 1.7,
-        height: 0.7,
-        arrow-width: 0.4,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
@@ -48,7 +41,6 @@
         name,
         node,
         draw: draw,
-        style: style,
         label: label,
         label-defaults: (anchor: (-0.15 * if input == "d" { -1 } else { 1 }, 0), align: "center"),
         ..params,

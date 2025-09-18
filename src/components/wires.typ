@@ -1,5 +1,5 @@
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": default-style, opposite-anchor
+#import "/src/utils.typ": opposite-anchor, get-style
 #import cetz.draw: anchor, circle, content, group, hide, line, mark
 
 #let ra = ratio
@@ -11,13 +11,12 @@
     assert(shape in ("direct", "zigzag", "dodge"), message: "shape must be direct, zigzag or dodge")
 
     group(ctx => {
-        let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
-        let style = cetz.styles.resolve(pre-style, merge: (wires: params.named()))
+        let wire-style = get-style(ctx).wire
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
         // Drawing the wire using the shape parameter
         if shape == "direct" {
-            line(..points, ..style.at("wires"), name: "line")
+            line(..points, ..wire-style, name: "line")
         } else if shape == "zigzag" {
             if points.len() < 2 { return }
 
@@ -33,7 +32,7 @@
                 generated-points = (..generated-points, p1, p-mid1, p-mid2)
             }
 
-            line(..generated-points, points.last(), ..style.at("wires"), name: "line")
+            line(..generated-points, points.last(), ..wire-style, name: "line")
         }
 
         // TODO Multi-bits wiring by displaying a slash with a number
