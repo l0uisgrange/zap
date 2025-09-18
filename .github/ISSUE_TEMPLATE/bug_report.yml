@@ -12,7 +12,7 @@ body:
       placeholder: Describe the bug here...
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: reproduction
     attributes:
       label: Reproduction
