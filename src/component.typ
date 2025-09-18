@@ -127,11 +127,13 @@
     })
 
     if (debug) {
-        on-layer(1, {
+        on-layer(1, ctx => {
+            let style = ctx.zap.style.debug
             for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
-                circle((), radius: .7pt, stroke: red + .2pt)
-                content((rel: (0, 3pt)), box(inset: 1pt, text(3pt, name, fill: red)), angle: -30deg)
+                circle((), radius: style.radius, stroke: style.stroke)
+                content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
             })
+
         })
     }
 }

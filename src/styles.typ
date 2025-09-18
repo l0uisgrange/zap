@@ -22,6 +22,18 @@
             tie: 0.001,
             min-length: 0.01,
         ),
+        debug: (
+            radius: .7pt,
+            stroke: (
+                thickness: .2pt,
+                paint: red
+            ),
+            angle: -30deg,
+            shift: 3pt,
+            inset: 1pt,
+            font: 3pt,
+            fill: red,
+        ),
 
         // Components
         capacitor: (
