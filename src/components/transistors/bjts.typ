@@ -29,7 +29,9 @@
         }
 
         line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
-        wire((to: "base", rel: (0, -style.base-distance * sgn)), "e", mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
+        wire((to: "base", rel: (0, -style.base-distance * sgn)), "e")
+        mark(((to: "base", rel: (0, -style.base-distance * sgn)), 50%, "e"), "e", symbol: if sgn == -1 { "<" } else { ">" }, fill: black, anchor: "center")
+
         wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 
         if params.named().at("label", default: none) != none {

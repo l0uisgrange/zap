@@ -1,6 +1,6 @@
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": opposite-anchor, get-style
-#import cetz.draw: anchor, circle, content, group, hide, line, mark
+#import cetz.draw: anchor, circle, content, group, hide, line
 
 #let ra = ratio
 
@@ -16,7 +16,7 @@
 
         // Drawing the wire using the shape parameter
         if shape == "direct" {
-            line(..points, ..wire-style, mark: params.named().at("mark", default: (:)), name: "line")
+            line(..points, ..wire-style, name: "line")
         } else if shape == "zigzag" {
             if points.len() < 2 { return }
 
@@ -32,13 +32,13 @@
                 generated-points = (..generated-points, p1, p-mid1, p-mid2)
             }
 
-            line(..generated-points, points.last(), ..wire-style, mark: params.named().at("mark", default: (:)), name: "line")
+            line(..generated-points, points.last(), ..wire-style, name: "line")
         }
 
         // TODO Multi-bits wiring by displaying a slash with a number
         for i in range(bits) {
             let delta = i * 0.4
-            wire((rel: (0, -0.2), to: "line.50%"), (rel: (0, 0.2), to: "line.50%"), mark: params.named().at("mark", default: (:)))
+            wire((rel: (0, -0.2), to: "line.50%"), (rel: (0, 0.2), to: "line.50%"))
         }
 
         // Current decoration
