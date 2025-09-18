@@ -3,7 +3,7 @@
 #import cetz.draw: anchor, circle, line, polygon, scope, translate
 #import "/src/mini.typ": radiation-arrows
 #import "/src/components/wires.typ": wire
-#import "/src/utils.typ": to-points
+#import "/src/utils.typ": get-style
 
 #let diode(name, node, type: none, ..params) = {
     assert((type in ("emitting", "receiving", "tunnel", "zener", "schottky") or type == none), message: "type must be tunnel, zener, schottky, ...")
@@ -22,7 +22,7 @@
         // Diode specific lines - horizontal lines orthogonal to cathode
         if (type in ("tunnel", "zener", "schottky")) {
             // Calculate extension to account for cathode line thickness
-            let stroke-width = to-points(ctx, cetz.util.resolve-stroke(style.at("stroke", default: 0.8pt)).at("thickness", default: 0.8pt)).cm()
+            let stroke-width = style.stroke.thickness
             let half-stroke = stroke-width / 2
 
             if (type == "tunnel") {
