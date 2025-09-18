@@ -2,10 +2,7 @@
     style: (
         variant: "iec",
         scale: (x: 1.0, y: 1.0),
-        stroke: (
-            thickness: 0.021,
-            paint: black,
-        ),
+        stroke: (thickness: 0.0282222, paint: black),
         node: (
             radius: .04,
             stroke: auto,
@@ -14,7 +11,7 @@
         ),
         wire: (
             variant: auto,
-            stroke: auto,
+            stroke: (thickness: 0.0176388, paint: black),
             lbind: true,
             tie: 0.001,
             min-length: 0.01,
