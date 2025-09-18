@@ -12,6 +12,21 @@ body:
       placeholder: Describe the bug here...
     validations:
       required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Please provide a minimal reproduction to help the investigation. Please **do not** just copy your project.
+      placeholder: |
+        ```
+        // For example, if the resistor was causing a bug
+        #zap.circuit({
+            import zap: *
+            resistor("r1", (0, 0), (0, 2))
+        })
+        ```
+    validations:
+      required: true
   - type: dropdown
     id: package_version
     attributes:
@@ -19,7 +34,8 @@ body:
       description: The version of Zap you are using.
       options:
         - Development
-        - 0.3.0 (default)
+        - 0.4.0 (default)
+        - 0.3.0
         - 0.2.1
         - 0.2.0
         - 0.1.0
