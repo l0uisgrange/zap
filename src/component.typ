@@ -77,13 +77,12 @@
         // Label
         on-layer(0, {
             if label != none {
-                let forced-params = params.named().at("label-defaults", default: (a: none))
-                let default-params = (distance: 7pt, anchor: "north")
-                let forced-default-params = cetz.util.merge-dictionary(default-params, forced-params)
+                let label-style = zap-style.label
+                
                 let l = if type(label) == dictionary {
-                    cetz.util.merge-dictionary(label, forced-default-params, overwrite: false)
+                    merge-dictionary(label, label-style, overwrite: false)
                 } else {
-                    (content: label, ..forced-default-params)
+                    merge-dictionary(label-style, (content: label,))
                 }
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }

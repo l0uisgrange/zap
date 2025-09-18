@@ -3,6 +3,12 @@
         variant: "iec",
         scale: (x: 1.0, y: 1.0),
         stroke: (thickness: 0.0282222, paint: black),
+        label: (
+            scale: auto,
+            content: none,
+            distance: 7pt,
+            anchor: "north",
+        ),
         node: (
             radius: .04,
             stroke: auto,
