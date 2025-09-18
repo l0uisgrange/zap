@@ -23,7 +23,7 @@
             line(
                 (-style.radius + style.padding, 0),
                 (rel: (2 * style.radius - 1.85 * style.padding, 0)),
-                mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.at("scale", default: 1.0))),
+                mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.scale.at("x", default: 1.0))),
                 fill: black,
             )
         }

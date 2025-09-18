@@ -2,6 +2,7 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, content, hide, line, mark, translate
 #import "/src/mini.typ": center-mark
+#import "/src/components/wires.typ": wire
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
     assert(polarisation in ("npn", "pnp"), message: "polarisation must `npn` or `pnp`")
@@ -22,14 +23,14 @@
 
         if envelope {
             circle((0, 0), radius: style.radius, ..style, name: "circle")
-            line("base", (-style.radius, 0), ..style.at("wires"))
+            wire("base", (-style.radius, 0))
         } else {
             hide(circle((0, 0), radius: style.radius, ..style, name: "circle"))
         }
 
         line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
-        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", ..style.at("wires"), mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
-        line((to: "base", rel: (0, style.base-distance * sgn)), "c", ..style.at("wires"))
+        wire((to: "base", rel: (0, -style.base-distance * sgn)), "e", mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
+        wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 
         if params.named().at("label", default: none) != none {
             content((style.radius, 0), params.named().at("label"), anchor: "west", padding: if envelope { 0.2 } else { -0.1 })

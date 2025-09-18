@@ -1,6 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, translate
+#import "/src/components/wires.typ": wire
 
 #let mosfet(
     name,
@@ -38,10 +39,10 @@
             line((-height, -base-width / 2), (rel: (0, base-width)), ..style)
         }
         if bulk == "internal" {
-            line((0, 0), (0, -width / 2), ..style.at("wires"))
+            wire((0, 0), (0, -width / 2))
         }
-        line("d", (rel: (0, 0)), (rel: (-height, 0)), ..style.at("wires"))
-        line("s", (rel: (0, 0)), (rel: (-height, 0)), ..style.at("wires"))
+        wire("d", (rel: (0, 0)), (rel: (-height, 0)))
+        wire("s", (rel: (0, 0)), (rel: (-height, 0)))
 
         if envelope {
             circle(center, radius: radius, ..style, name: "c")
@@ -52,12 +53,12 @@
         anchor("gl", (rel: (-3 * height / 4, width / 2), to: center))
 
         if bulk != none {
-            line((-height, 0), (rel: (height, 0)), name: "line", ..style.at("wires"))
+            wire((-height, 0), (rel: (height, 0)), name: "line")
             mark("line.centroid", (-height, 0), symbol: if (channel == "n") { ">" } else { "<" }, fill: black, anchor: "center")
-            line("gl", (rel: (0, -width)), (rel: (-height / 4, 0)), ..style.at("wires"))
+            wire("gl", (rel: (0, -width)), (rel: (-height / 4, 0)))
             anchor("g", ())
         } else {
-            line("gl", (rel: (0, -width / 2)), (rel: (0, -width / 2)), ..style.at("wires"))
+            wire("gl", (rel: (0, -width / 2)), (rel: (0, -width / 2)))
             line((rel: (0, width / 2)), (rel: (-height / 2, 0)), ..style.at("wires"))
             anchor("g", ())
 

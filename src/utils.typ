@@ -53,6 +53,10 @@
 
 #import "/src/dependencies.typ": cetz
 
+#let to-points(ctx, number) = {
+    return (number / cetz.util.resolve-number(ctx, 1pt)) * 1pt
+}
+
 #let set-style(..style) = {
     cetz.draw.set-ctx(ctx => {
         ctx.zap.style = cetz.util.merge-dictionary(ctx.zap.style, style.named())
