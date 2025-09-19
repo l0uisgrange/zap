@@ -84,7 +84,7 @@
         name,
         node,
         draw: draw,
-        label-defaults: if invert { (anchor: "south", align: "north") } else { (a: 1) },
+        label-defaults: if invert { (anchor: "south", align: "north") } else { (:) },
         ..params,
     )
 }

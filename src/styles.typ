@@ -209,6 +209,9 @@
             width: 1.7,
             height: 0.7,
             arrow-width: 0.4,
+            label: (
+                align: "center",
+            ),
         ),
         mcu: (
             variant: auto,

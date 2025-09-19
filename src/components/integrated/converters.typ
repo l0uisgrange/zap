@@ -42,7 +42,7 @@
         node,
         draw: draw,
         label: label,
-        label-defaults: (anchor: (-0.15 * if input == "d" { -1 } else { 1 }, 0), align: "center"),
+        label-defaults: (anchor: (-0.15 * if input == "d" { -1 } else { 1 }, 0)),
         ..params,
     )
 }

@@ -78,7 +78,9 @@
         on-layer(0, {
             if label != none {
                 let label-style = zap-style.label
-                
+                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
+                label-style = merge-dictionary(label-style, params.named().at("label-defaults", default: (:)))
+
                 let l = if type(label) == dictionary {
                     merge-dictionary(label, label-style, overwrite: false)
                 } else {
