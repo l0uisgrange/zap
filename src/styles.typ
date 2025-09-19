@@ -2,7 +2,7 @@
     style: (
         variant: "iec",
         scale: (x: 1.0, y: 1.0),
-        stroke: (thickness: 0.0282222, paint: black),
+        stroke: (thickness: 0.028222222222222222, paint: black),
         label: (
             scale: auto,
             content: none,
@@ -17,10 +17,7 @@
         ),
         wire: (
             variant: auto,
-            stroke: (thickness: 0.0176388, paint: black),
-            lbind: true,
-            tie: 0.001,
-            min-length: 0.01,
+            stroke: (thickness: 0.017638888888888888, paint: black),
         ),
         debug: (
             radius: .7pt,
@@ -135,17 +132,6 @@
             width: 1.41,
             height: .47,
             zigs: 3,
-            extra: 0.001,
-            pretty: (
-                stroke: (
-                    thickness: 0.034,
-                ),
-            ),
-            arrow: (
-                angle: 63deg,
-                length: 1.4,
-                ratio: (0.5, 0.5),
-            ),
         ),
         vsource: (
             variant: auto,
