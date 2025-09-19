@@ -8,13 +8,6 @@
     assert(type(magnet) == bool, message: "magnet must be bool")
     assert(not (magnet and current == "ac"), message: "magnet only with dcmotor")
 
-    // DCmotor style
-    let style = (
-        radius: .49,
-        magnet-width: 1.23,
-        magnet-height: 1.23 / 4,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
@@ -29,7 +22,7 @@
     }
 
     // Component call
-    component(uid, name, node, draw: draw, style: style, ..params)
+    component(uid, name, node, draw: draw, ..params)
 }
 
 #let dcmotor(name, node, ..params) = motor("dcmotor", name, node, current: "dc", ..params)

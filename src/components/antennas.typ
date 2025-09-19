@@ -2,18 +2,12 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, merge-path
 #import "/src/mini.typ": variable-arrow
+#import "/src/components/wires.typ": wire
 
 #let antenna(name, node, closed: false, ..params) = {
-    // Antenna style
-    let style = (
-        distance: 0.8,
-        spacing: 0.35,
-        length: 0.5,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
-        line((0, 0), (0, style.distance), ..style.at("wires"))
+        wire((0, 0), (0, style.distance))
         let width = 2 * style.spacing
 
         merge-path(
@@ -35,5 +29,5 @@
     }
 
     // Component call
-    component("antenna", name, node, draw: draw, style: style, ..params)
+    component("antenna", name, node, draw: draw, ..params)
 }

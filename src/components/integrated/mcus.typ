@@ -10,14 +10,6 @@
     assert(params.pos().len() == 0, message: "mcu supports only one node")
     assert(type(pins) == array or type(pins) == int, message: "pins should be an array or integer")
 
-    // MCU style
-    let style = (
-        width: 3,
-        min-height: 1,
-        padding: 0.2,
-        spacing: 0.4,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         let pins = if type(pins) == int {
@@ -56,5 +48,5 @@
     }
 
     // Component call
-    component("mcu", name, node, draw: draw, style: style, ..params)
+    component("mcu", name, node, draw: draw, ..params)
 }
