@@ -2,7 +2,7 @@
     style: (
         variant: "iec",
         scale: (x: 1.0, y: 1.0),
-        stroke: (thickness: 0.028222222222222222, paint: black),
+        stroke: (thickness: 0.028222222222222225, paint: black),
         label: (
             scale: auto,
             content: none,
