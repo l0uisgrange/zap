@@ -13,7 +13,7 @@
         rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)
         wire((-style.width / 2, 0), (style.width / 2, 0))
         if (asymmetric) {
-            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), fill: black)
+            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), fill: black, ..style)
         }
     }
 

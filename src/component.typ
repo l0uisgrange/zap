@@ -39,8 +39,12 @@
 
     group(name: name, ctx => {
         let zap-style = get-style(ctx)
+
+        // Keep Cetz default stroke
+        let keep-stroke = ctx.style.stroke
+        cetz.draw.set-style(stroke: zap-style.stroke)
+
         let style = zap-style.at(uid)
-        
         style = merge-dictionary(style, params.named())
         style = merge-dictionary(style, style.at(style.variant, default: (:)))
 
@@ -96,6 +100,9 @@
                 )
             }
         })
+        
+        // Bringing back the Cetz default stroke
+        cetz.draw.set-style(stroke: keep-stroke)
 
         // Decorations
         if position.len() == 2 {

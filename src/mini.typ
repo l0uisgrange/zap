@@ -1,59 +1,69 @@
 #import "dependencies.typ": cetz
 #import cetz.draw: anchor, hobby, line, rotate, scope, set-origin, set-style
+#import cetz.util: merge-dictionary
+#import "utils.typ": get-style
 
 #let center-mark(symbol: ">") = {
     (end: ((pos: 50%, symbol: symbol, fill: black, anchor: "center"), (pos: 0%, symbol: ">", scale: 0)))
 }
 
-#let variable-arrow() = {
-    scope({
-        let arrow-length = 40pt
-        let arrow-angle = 55deg
-        let arrow-origin = (
-            -0.5 * calc.cos(arrow-angle) * arrow-length,
-            -0.5 * calc.sin(arrow-angle) * arrow-length,
+#let variable-arrow(..params) = {
+    scope(ctx => {
+        let arrow-style = get-style(ctx).arrow
+        let style = merge-dictionary(arrow-style, arrow-style.variable)
+        style = merge-dictionary(style, params.named())
+        
+        let origin = (
+           -style.ratio.at(0) * calc.cos(style.angle) * style.length,
+           -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
-        anchor("adjust", arrow-origin)
+        anchor("adjust", origin)
 
-        set-origin(arrow-origin)
-        rotate(arrow-angle)
-        line((0, 0), (arrow-length, 0), mark: (end: ">", fill: black))
+        set-origin(origin)
+        rotate(style.angle)
+        line((0, 0), (style.length, 0), mark: (end: ">", fill: style.stroke.paint), stroke: style.stroke)
     })
 }
 
-#let radiation-arrows(origin, angle: -120deg, reversed: false, length: 12pt) = {
-    scope({
-        let arrows-distance = 3pt
-        let arrows-length = length
-        let arrows-scale = 0.8
+#let radiation-arrows(origin, ..params) = {
+    scope(ctx => {
+        let arrow-style = get-style(ctx).arrow
+        let style = merge-dictionary(arrow-style, arrow-style.radiation)
+        style = merge-dictionary(style, params.named())
 
         set-origin(origin)
-        set-style(stroke: 0.55pt)
-        rotate(angle)
-        if (reversed) {
-            line((arrows-length, -arrows-distance), (0, -arrows-distance), mark: (
-                start: ">",
-                scale: arrows-scale,
-                fill: black,
-            ))
-            line((arrows-length, arrows-distance), (0, arrows-distance), mark: (
-                start: ">",
-                scale: arrows-scale,
-                fill: black,
-            ))
+        rotate(style.angle)
+        set-style(
+            stroke: style.stroke,
+            mark: (
+                scale: style.scale,
+                fill: style.stroke.paint,
+            )
+        )
+        
+        if (style.reversed) {
+            line((style.length, -style.distance), (0, -style.distance), mark: (start: ">"))
+            line((style.length, +style.distance), (0, +style.distance), mark: (start: ">"))
         } else {
-            line((arrows-length, -arrows-distance), (0, -arrows-distance), mark: (
-                end: ">",
-                scale: arrows-scale,
-                fill: black,
-            ))
-            line((arrows-length, arrows-distance), (0, arrows-distance), mark: (
-                end: ">",
-                scale: arrows-scale,
-                fill: black,
-            ))
+            line((style.length, -style.distance), (0, -style.distance), mark: (end: ">"))
+            line((style.length, +style.distance), (0, +style.distance), mark: (end: ">"))
         }
     })
+}
+
+#let adjustable-arrow(node, ..params) = {
+    scope(ctx => {
+        let arrow-style = get-style(ctx).arrow
+        let style = merge-dictionary(arrow-style, arrow-style.adjustable)
+        style = merge-dictionary(style, params.named())
+        
+        anchor("a", (to: node, rel: (0, style.length)))
+        anchor("tip", node)
+
+        line("a", node, mark: ( end: ">", fill: style.stroke.paint, scale: style.scale), stroke: style.stroke)
+    })
+    anchor("tip", "tip")
+    anchor("a", "a")
 }
 
 #let dc-sign() = {

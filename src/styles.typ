@@ -2,7 +2,7 @@
     style: (
         variant: "iec",
         scale: (x: 1.0, y: 1.0),
-        stroke: (thickness: 0.028222222222222225, paint: black),
+        stroke: (thickness: .8pt, paint: black),
         label: (
             scale: auto,
             content: none,
@@ -10,14 +10,34 @@
             anchor: "north",
         ),
         node: (
-            radius: .04,
-            stroke: auto,
+            radius: .05,
+            stroke: (thickness: .4pt, paint: black),
             fill: black,
             nofill: white,
         ),
         wire: (
-            variant: auto,
-            stroke: (thickness: 0.017638888888888888, paint: black),
+            stroke: (thickness: .5pt, paint: black),
+        ),
+        arrow: (
+            variant: "default",
+            scale: 1.0,
+            stroke: (thickness: 1pt, paint: black),
+            variable: (
+                length: 40pt,
+                angle: 55deg,
+                ratio: (0.5, 0.5),
+            ),
+            radiation: (
+                scale: 0.8,
+                stroke: (thickness: .55pt, paint: black),
+                distance: 3pt,
+                length: 12pt,
+                angle: -120deg,
+                reversed: false,
+            ),
+            adjustable: (
+                length: 0.8,
+            ),
         ),
         debug: (
             radius: .7pt,

@@ -3,6 +3,7 @@
 #import cetz.draw: anchor, circle, content, hide, line, mark, translate
 #import "/src/mini.typ": center-mark
 #import "/src/components/wires.typ": wire
+#import "/src/utils.typ": get-style
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
     assert(polarisation in ("npn", "pnp"), message: "polarisation must `npn` or `pnp`")
@@ -29,9 +30,7 @@
         }
 
         line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
-        wire((to: "base", rel: (0, -style.base-distance * sgn)), "e")
-        mark(((to: "base", rel: (0, -style.base-distance * sgn)), 50%, "e"), "e", symbol: if sgn == -1 { "<" } else { ">" }, fill: black, anchor: "center")
-
+        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: get-style(ctx).wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
         wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 
         if params.named().at("label", default: none) != none {
