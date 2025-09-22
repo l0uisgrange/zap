@@ -12,10 +12,10 @@
         let arrow-style = get-style(ctx).arrow
         let style = merge-dictionary(arrow-style, arrow-style.variable)
         style = merge-dictionary(style, params.named())
-        
+
         let origin = (
-           -style.ratio.at(0) * calc.cos(style.angle) * style.length,
-           -style.ratio.at(1) * calc.sin(style.angle) * style.length,
+            -style.ratio.at(0) * calc.cos(style.angle) * style.length,
+            -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
         anchor("adjust", origin)
 
@@ -38,9 +38,9 @@
             mark: (
                 scale: style.scale,
                 fill: style.stroke.paint,
-            )
+            ),
         )
-        
+
         if (style.reversed) {
             line((style.length, -style.distance), (0, -style.distance), mark: (start: ">"))
             line((style.length, +style.distance), (0, +style.distance), mark: (start: ">"))
@@ -56,11 +56,11 @@
         let arrow-style = get-style(ctx).arrow
         let style = merge-dictionary(arrow-style, arrow-style.adjustable)
         style = merge-dictionary(style, params.named())
-        
+
         anchor("a", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node, mark: ( end: ">", fill: style.stroke.paint, scale: style.scale), stroke: style.stroke)
+        line("a", node, mark: (end: ">", fill: style.stroke.paint, scale: style.scale), stroke: style.stroke)
     })
     anchor("tip", "tip")
     anchor("a", "a")

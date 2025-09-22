@@ -43,7 +43,7 @@
             radius: .7pt,
             stroke: (
                 thickness: .2pt,
-                paint: red
+                paint: red,
             ),
             angle: -30deg,
             shift: 3pt,
@@ -51,7 +51,6 @@
             font: 3pt,
             fill: red,
         ),
-
         // Components
         capacitor: (
             variant: auto,
@@ -244,6 +243,6 @@
         ),
     ),
     params: (
-        debug: false
-    )
+        debug: false,
+    ),
 )

@@ -29,7 +29,7 @@
                 } else {
                     line((style.radius + style.tunnel-length, style.width), (style.radius, style.width))
                 }
-                
+
                 // Main cathode line (vertical)
                 line((style.radius, style.width), (style.radius, -style.width))
 

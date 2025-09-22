@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
 #import "components/wires.typ": wire
-#import "utils.typ": get-style, get-label-anchor, opposite-anchor
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor
 #import cetz.util: merge-dictionary
 
 #let component(
@@ -65,11 +65,9 @@
             group(name: "component", {
                 //Scaling
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x,
-                          y: p-scale * style.scale.y)
+                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
                 } else {
-                    scale(x: p-scale.at(0, default: 1.0) * style.scale.x,
-                          y: p-scale.at(1, default: 1.0) * style.scale.y)
+                    scale(x: p-scale.at(0, default: 1.0) * style.scale.x, y: p-scale.at(1, default: 1.0) * style.scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
@@ -88,7 +86,7 @@
                 let l = if type(label) == dictionary {
                     merge-dictionary(label, label-style, overwrite: false)
                 } else {
-                    merge-dictionary(label-style, (content: label,))
+                    merge-dictionary(label-style, (content: label))
                 }
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
@@ -100,7 +98,7 @@
                 )
             }
         })
-        
+
         // Bringing back the Cetz default stroke
         cetz.draw.set-style(stroke: keep-stroke)
 
@@ -142,7 +140,6 @@
                 circle((), radius: style.radius, stroke: style.stroke)
                 content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
             })
-
         })
     }
 }

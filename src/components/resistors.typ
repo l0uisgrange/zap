@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, rect
-#import "/src/mini.typ": variable-arrow, adjustable-arrow
+#import "/src/mini.typ": adjustable-arrow, variable-arrow
 
 #let resistor(name, node, variable: false, heatable: false, adjustable: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
