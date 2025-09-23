@@ -59,7 +59,15 @@
 
 #let set-style(..style) = {
     cetz.draw.set-ctx(ctx => {
-        ctx.zap.style = cetz.util.merge-dictionary(ctx.zap.style, style.named())
+        let new-style = style.named()
+        for root in new-style.keys() {
+            let style-dict = ((root): (new-style.at(root)))
+            if ctx.zap.style.at(root, default: none) == none {
+                ctx.style = cetz.styles.merge(ctx.style, style-dict)
+            } else {
+                ctx.zap.style = cetz.styles.merge(ctx.zap.style, style-dict)
+            }
+        }
         return ctx
     })
 }
