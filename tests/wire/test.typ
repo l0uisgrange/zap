@@ -18,7 +18,7 @@
 // Test global styling
 #test({
     import lib: *
-    set-style(zap: (wires: (stroke: 1pt + red)))
+    set-style(wire: (stroke: 1pt + red))
     wire((0, 0), (3, 2), i: (content: $i_1$))
     resistor("r1", (0, 0), (4, 0))
 })

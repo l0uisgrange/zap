@@ -2,17 +2,11 @@
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect
+#import "/src/utils.typ": get-style
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {
     assert(type(dependent) == bool, message: "dependent must be boolean")
     assert(current in ("dc", "ac"), message: "current must be ac or dc")
-
-    // Isource style
-    let style = (
-        radius: .53,
-        padding: .25,
-        arrow-scale: 1,
-    )
 
     // Drawing function
     let draw(ctx, position, style) = {
@@ -30,14 +24,15 @@
             line(
                 (-style.radius + style.padding, 0),
                 (rel: (2 * style.radius - 1.85 * style.padding, 0)),
-                mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.at("scale", default: 1.0))),
+                mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.scale.at("x", default: 1.0))),
                 fill: black,
+                stroke: get-style(ctx).arrow.stroke,
             )
         }
     }
 
     // Component call
-    component("isource", name, node, draw: draw, style: style, ..params)
+    component("isource", name, node, draw: draw, ..params)
 }
 
 #let disource(name, node, ..params) = isource(name, node, dependent: true, ..params)
@@ -45,15 +40,6 @@
 
 #let vsource(name, node, dependent: false, current: "dc", ..params) = {
     assert(current in ("dc", "ac"), message: "current must be ac or dc")
-
-    // Vsource style
-    let style = (
-        radius: .53,
-        padding: .25,
-        sign-stroke: .55pt,
-        sign-size: .14,
-        sign-delta: .07,
-    )
 
     // Drawing function
     let draw(ctx, position, style) = {
@@ -86,7 +72,7 @@
     }
 
     // Component call
-    component("vsource", name, node, draw: draw, style: style, ..params)
+    component("vsource", name, node, draw: draw, ..params)
 }
 
 #let dvsource(name, node, ..params) = vsource(name, node, dependent: true, ..params)

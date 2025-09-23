@@ -1,18 +1,11 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, rect
-#import "/src/mini.typ": variable-arrow
+#import "/src/mini.typ": adjustable-arrow, variable-arrow
 
 #let resistor(name, node, variable: false, heatable: false, adjustable: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
-
-    // Resistor style
-    let style = (
-        width: 1.41,
-        height: .47,
-        zigs: 3,
-    )
 
     // Drawing function
     let draw(ctx, position, style) = {
@@ -47,9 +40,7 @@
         if variable {
             variable-arrow()
         } else if adjustable {
-            let arrow-length = .8
-            anchor("a", (0, style.height / 2 + arrow-length))
-            line("a", (0, style.height / 2), mark: (end: ">", fill: black), fill: none)
+            adjustable-arrow((0, style.height / 2))
         }
         if heatable {
             for i in range(3) {
@@ -60,7 +51,7 @@
     }
 
     // Component call
-    component("resistor", name, node, draw: draw, style: style, ..params)
+    component("resistor", name, node, draw: draw, ..params)
 }
 
 #let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)

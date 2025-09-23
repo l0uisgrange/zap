@@ -1,8 +1,9 @@
 #import "dependencies.typ": cetz
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
-#import "components/nodes.typ": node
-#import "utils.typ": default-style, get-label-anchor, opposite-anchor
+#import "components/wires.typ": wire
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor
+#import cetz.util: merge-dictionary
 
 #let component(
     draw: none,
@@ -15,7 +16,6 @@
     scale: 1.0,
     rotate: 0deg,
     debug: false,
-    style: none,
     ..params,
 ) = {
     let p-position = position
@@ -38,9 +38,16 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let pre-style = cetz.styles.resolve(ctx.style, root: "zap", base: default-style)
-        let base-style = style + pre-style + pre-style.at(uid, default: (something: none))
-        let style = cetz.styles.resolve(base-style, merge: params.named())
+        let zap-style = get-style(ctx)
+
+        // Keep Cetz default stroke
+        let keep-stroke = ctx.style.stroke
+        cetz.draw.set-style(stroke: zap-style.stroke)
+
+        let style = zap-style.at(uid)
+        style = merge-dictionary(style, params.named())
+        style = merge-dictionary(style, style.at(style.variant, default: (:)))
+
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
@@ -56,10 +63,11 @@
         // Component
         on-layer(1, {
             group(name: "component", {
+                //Scaling
                 if (type(p-scale) == float) {
-                    scale(p-scale * style.at("scale", default: 1))
+                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
                 } else {
-                    scale(x: p-scale.at(0, default: 1) * style.at("scale", default: 1), y: p-scale.at(1, default: 1) * style.at("scale", default: 1))
+                    scale(x: p-scale.at(0, default: 1.0) * style.scale.x, y: p-scale.at(1, default: 1.0) * style.scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
@@ -71,13 +79,14 @@
         // Label
         on-layer(0, {
             if label != none {
-                let forced-params = params.named().at("label-defaults", default: (a: none))
-                let default-params = (distance: 7pt, anchor: "north")
-                let forced-default-params = cetz.util.merge-dictionary(default-params, forced-params)
+                let label-style = zap-style.label
+                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
+                label-style = merge-dictionary(label-style, params.named().at("label-defaults", default: (:)))
+
                 let l = if type(label) == dictionary {
-                    cetz.util.merge-dictionary(label, forced-default-params, overwrite: false)
+                    merge-dictionary(label, label-style, overwrite: false)
                 } else {
-                    (content: label, ..forced-default-params)
+                    merge-dictionary(label-style, (content: label))
                 }
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
@@ -90,10 +99,13 @@
             }
         })
 
+        // Bringing back the Cetz default stroke
+        cetz.draw.set-style(stroke: keep-stroke)
+
         // Decorations
         if position.len() == 2 {
-            line("in", "component.west", ..style.at("wires"))
-            line("component.east", "out", ..style.at("wires"))
+            wire("in", "component.west")
+            wire("component.east", "out")
 
             if i != none {
                 current(ctx, i)
@@ -122,10 +134,11 @@
     })
 
     if (debug) {
-        on-layer(1, {
+        on-layer(1, ctx => {
+            let style = ctx.zap.style.debug
             for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
-                circle((), radius: .7pt, stroke: red + .2pt)
-                content((rel: (0, 3pt)), box(inset: 1pt, text(3pt, name, fill: red)), angle: -30deg)
+                circle((), radius: style.radius, stroke: style.stroke)
+                content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
             })
         })
     }
