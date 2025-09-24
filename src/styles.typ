@@ -51,6 +51,7 @@
             font: 3pt,
             fill: red,
         ),
+
         // Components
         capacitor: (
             variant: auto,

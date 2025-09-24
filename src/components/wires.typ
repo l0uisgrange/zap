@@ -45,7 +45,7 @@
         if i != none {
             let default-params = (position: 50%, distance: 7pt, anchor: "north")
             let current = if type(i) == dictionary {
-                cetz.util.merge-dictionary(i, default-params, overwrite: false)
+                cetz.styles.merge(default-params, i)
             } else {
                 (content: i, ..default-params)
             }
