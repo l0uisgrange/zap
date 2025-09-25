@@ -2,8 +2,8 @@ import { defineConfig } from 'mdsx';
 
 export const mdsxConfig = defineConfig({
 	blueprints: {
-		special: {
-			path: "src/lib/blueprints/special/blueprint.svelte",
+		default: {
+			path: "src/lib/blueprints/default/blueprint.svelte",
 		},
 	},
 	extensions: ['.md'],
