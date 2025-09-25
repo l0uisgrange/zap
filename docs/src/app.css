@@ -53,6 +53,9 @@ html {
     div:not(.dark) > pre {
         @apply bg-neutral-100! antialiased max-w-full! w-full! dark:bg-neutral-800!;
     }
+    strong {
+        @apply font-medium
+    }
     pre code {
         @apply text-sm font-mono whitespace-pre max-w-full! overflow-x-scroll!;
     }
