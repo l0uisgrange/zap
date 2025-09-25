@@ -70,7 +70,185 @@
 			of your components, and merges them (with override) with the
 			<span class="text-import font-mono">set-style</span> options.
 		</p>
-
+        <h2>List of parameters</h2>
+        <p>Below is the list of possible parameters with their default values you can use either in the <span class="font-mono">set-style</span> or in the components themselves.</p>
+        <Code content={'#let default-styles = (\n'+
+'    variant: "iec",\n'+
+'    scale: (x: 1.0, y: 1.0),\n'+
+'    stroke: (thickness: .8pt, paint: black),\n'+
+'    label: (\n'+
+'        scale: auto,\n'+
+'        content: none,\n'+
+'        distance: 7pt,\n'+
+'        anchor: "north",\n'+
+'    ),\n'+
+'    node: (\n'+
+'        radius: .05,\n'+
+'        stroke: (thickness: .4pt, paint: black),\n'+
+'        fill: black,\n'+
+'        nofill: white,\n'+
+'    ),\n'+
+'    wire: (\n'+
+'        stroke: (thickness: .5pt, paint: black),\n'+
+'    ),\n'+
+'    arrow: (\n'+
+'        variant: "default",\n'+
+'        scale: 1.0,\n'+
+'        stroke: (thickness: 1pt, paint: black),\n'+
+'        variable: (\n'+
+'            length: 40pt,\n'+
+'            angle: 55deg,\n'+
+'            ratio: (0.5, 0.5),\n'+
+'        ),\n'+
+'        radiation: (\n'+
+'            scale: 0.8,\n'+
+'            stroke: (thickness: .55pt, paint: black),\n'+
+'            distance: 3pt,\n'+
+'            length: 12pt,\n'+
+'            angle: -120deg,\n'+
+'            reversed: false,\n'+
+'        ),\n'+
+'        adjustable: (\n'+
+'            length: 0.8,\n'+
+'        ),\n'+
+'    ),\n'+
+'    debug: (\n'+
+'        radius: .7pt,\n'+
+'        stroke: (\n'+
+'            thickness: .2pt,\n'+
+'            paint: red,\n'+
+'        ),\n'+
+'        angle: -30deg,\n'+
+'        shift: 3pt,\n'+
+'        inset: 1pt,\n'+
+'        font: 3pt,\n'+
+'        fill: red,\n'+
+'    ),\n'+
+'    // Components\n'+
+'    capacitor: (\n'+
+'        width: .8,\n'+
+'        distance: .25,\n'+
+'        radius: 0.6,\n'+
+'        angle: 40deg,\n'+
+'    ),\n'+
+'    diode: (\n'+
+'        radius: .3,\n'+
+'        width: .25,\n'+
+'        tunnel-length: .11,\n'+
+'    ),\n'+
+'    opamp: (\n'+
+'        width: 1.8,\n'+
+'        height: 1.75,\n'+
+'        padding: .28,\n'+
+'        sign-stroke: .55pt,\n'+
+'        sign-size: .14,\n'+
+'        sign-delta: .45,\n'+
+'    ),\n'+
+'    switch: (\n'+
+'        width: .8,\n'+
+'        angle: 35deg,\n'+
+'    ),\n'+
+'    fuse: (\n'+
+'        width: .88,\n'+
+'        height: .88 / 2.4,\n'+
+'        asymmetry: 25%,\n'+
+'    ),\n'+
+'    ground: (\n'+
+'        radius: 0.22,\n'+
+'        distance: 0.28,\n'+
+'    ),\n'+
+'    frame: (\n'+
+'        width: 0.46,\n'+
+'        angle: 20deg,\n'+
+'        depth: 0.25,\n'+
+'        distance: 0.28,\n'+
+'    ),\n'+
+'    earth: (\n'+
+'        width: .53,\n'+
+'        delta: .09,\n'+
+'        spacing: .11,\n'+
+'        distance: .28,\n'+
+'    ),\n'+
+'    vcc: (\n'+
+'        angle: 35deg,\n'+
+'        radius: .4,\n'+
+'        distance: .6,\n'+
+'    ),\n'+
+'    vee: (\n'+
+'        angle: 35deg,\n'+
+'        radius: .4,\n'+
+'        distance: .6,\n'+
+'    ),\n'+
+'    inductor: (\n'+
+'        width: 1.41,\n'+
+'        height: 1.41 / 3,\n'+
+'        bumps: 3,\n'+
+'    ),\n'+
+'    resistor: (\n'+
+'        width: 1.41,\n'+
+'        height: .47,\n'+
+'        zigs: 3,\n'+
+'    ),\n'+
+'    vsource: (\n'+
+'        radius: .53,\n'+
+'        padding: .25,\n'+
+'        sign-stroke: .55pt,\n'+
+'        sign-size: .14,\n'+
+'        sign-delta: .07,\n'+
+'    ),\n'+
+'    isource: (\n'+
+'        radius: .53,\n'+
+'        padding: .25,\n'+
+'        arrow-scale: 1,\n'+
+'    ),\n'+
+'    acmotor: (\n'+
+'        radius: .49,\n'+
+'        magnet-width: 1.23,\n'+
+'        magnet-height: 1.23 / 4,\n'+
+'    ),\n'+
+'    dcmotor: (\n'+
+'        radius: .49,\n'+
+'        magnet-width: 1.23,\n'+
+'        magnet-height: 1.23 / 4,\n'+
+'    ),\n'+
+'    bjt: (\n'+
+'        radius: .65,\n'+
+'        base-height: .6,\n'+
+'        base-distance: .12,\n'+
+'        aperture: 50deg,\n'+
+'    ),\n'+
+'    mosfet: (\n'+
+'        height: 0.795,\n'+
+'        width: 1.065,\n'+
+'        base-width: 1.35,\n'+
+'        base-spacing: 0.165,\n'+
+'        base-distance: 0.165,\n'+
+'        radius: 1.05,\n'+
+'    ),\n'+
+'    antenna: (\n'+
+'        distance: 0.8,\n'+
+'        spacing: 0.35,\n'+
+'        length: 0.5,\n'+
+'    ),\n'+
+'    transformer: (\n'+
+'        radius: 0.35,\n'+
+'        distance: 0.45,\n'+
+'    ),\n'+
+'    converter: (\n'+
+'        width: 1.7,\n'+
+'        height: 0.7,\n'+
+'        arrow-width: 0.4,\n'+
+'        label: (\n'+
+'            align: "center",\n'+
+'        ),\n'+
+'    ),\n'+
+'    mcu: (\n'+
+'        width: 3,\n'+
+'        min-height: 1,\n'+
+'        padding: 0.2,\n'+
+'        spacing: 0.4,\n'+
+'    )\n'+
+')'} />
 		<NexPrev previous={{ href: '/docs/decorations', title: 'Decorations' }} />
 	</main>
 	<div class="relative hidden w-72 flex-none p-5 md:block">
