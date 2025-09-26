@@ -15,7 +15,7 @@
     position: 50%,
     scale: 1.0,
     rotate: 0deg,
-    debug: false,
+    debug: none,
     ..params,
 ) = {
     let p-position = position
@@ -94,11 +94,6 @@
                 label-style = merge(label-style, style.at("label", default: (:)))
                 label-style = merge(label-style, params.named().at("label-defaults", default: (:)))
 
-                // label-style = if type(label) == dictionary {
-                //     merge(label-style, label)
-                // } else {
-                //     merge(label-style, (content: label))
-                // }
                 label-style = merge(label-style, if type(label) == dictionary {label} else {(content: label)})
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
@@ -145,15 +140,18 @@
         }
     })
 
-    if (debug) {
-        on-layer(1, ctx => {
-            let style = ctx.zap.style.debug
-            for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
-                circle((), radius: style.radius, stroke: style.stroke)
-                content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
+    cetz.draw.get-ctx(ctx => {
+        let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
+        if (debug) {
+            on-layer(1, ctx => {
+                let style = ctx.zap.style.debug
+                for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
+                    circle((), radius: style.radius, stroke: style.stroke)
+                    content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
+                })
             })
-        })
-    }
+        }
+    })
 }
 
 #let interface(node1, node2, ..params, io: false) = {

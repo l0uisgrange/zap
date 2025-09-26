@@ -17,12 +17,6 @@
             if type(label) == dictionary and label.at("content", default: none) == none { panic("label dictionary needs at least content key") }
             let label-style = get-style(ctx).label
 
-            // let l = if type(label) == dictionary {
-            //     cetz.styles.merge(label, label-style, overwrite: false)
-            // } else {
-            //     cetz.styles.merge(label-style, (content: label))
-            // }
-
             label-style = cetz.styles.merge(label-style, if type(label) == dictionary {label} else {(content: label)})
             content(
                 if type(label-style.anchor) == str { name + "." + label-style.anchor } else { label-style.anchor },
