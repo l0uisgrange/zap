@@ -12,6 +12,7 @@
         let arrow-style = get-style(ctx).arrow
         let style = merge(arrow-style, arrow-style.variable)
         style = merge(style, params.named())
+        style.scale *= arrow-style.scale
 
         let origin = (
             -style.ratio.at(0) * calc.cos(style.angle) * style.length,
@@ -21,7 +22,15 @@
 
         set-origin(origin)
         rotate(style.angle)
-        line((0, 0), (style.length, 0), mark: (end: ">", fill: style.stroke.paint), stroke: style.stroke)
+        line((0, 0), (style.length, 0),
+            stroke: style.stroke,
+            mark: (
+                end: style.variant,
+                fill: style.stroke.paint,
+                scale: style.scale,
+                ..arrow-style.at(style.variant, default: (:))
+            ),
+        )
     })
 }
 
@@ -30,6 +39,7 @@
         let arrow-style = get-style(ctx).arrow
         let style = merge(arrow-style, arrow-style.radiation)
         style = merge(style, params.named())
+        style.scale *= arrow-style.scale
 
         set-origin(origin)
         rotate(style.angle)
@@ -38,15 +48,16 @@
             mark: (
                 scale: style.scale,
                 fill: style.stroke.paint,
+                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
 
         if (style.reversed) {
-            line((style.length, -style.distance), (0, -style.distance), mark: (start: ">"))
-            line((style.length, +style.distance), (0, +style.distance), mark: (start: ">"))
+            line((style.length, -style.distance), (0, -style.distance), mark: (start: style.variant))
+            line((style.length, +style.distance), (0, +style.distance), mark: (start: style.variant))
         } else {
-            line((style.length, -style.distance), (0, -style.distance), mark: (end: ">"))
-            line((style.length, +style.distance), (0, +style.distance), mark: (end: ">"))
+            line((style.length, -style.distance), (0, -style.distance), mark: (end: style.variant))
+            line((style.length, +style.distance), (0, +style.distance), mark: (end: style.variant))
         }
     })
 }
@@ -56,11 +67,20 @@
         let arrow-style = get-style(ctx).arrow
         let style = merge(arrow-style, arrow-style.adjustable)
         style = merge(style, params.named())
+        style.scale *= arrow-style.scale
 
         anchor("a", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node, mark: (end: ">", fill: style.stroke.paint, scale: style.scale), stroke: style.stroke)
+        line("a", node,
+            stroke: style.stroke,
+            mark: (
+                end: style.variant,
+                fill: style.stroke.paint,
+                scale: style.scale,
+                ..arrow-style.at(style.variant, default: (:))
+            ),
+        )
     })
     anchor("tip", "tip")
     anchor("a", "a")

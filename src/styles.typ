@@ -11,35 +11,47 @@
         ),
         node: (
             radius: .05,
-            stroke: (thickness: .4pt, paint: black),
+            stroke: (thickness: .4pt, paint: auto),
             fill: black,
             nofill: white,
         ),
         wire: (
-            stroke: (thickness: .5pt, paint: black),
+            stroke: (thickness: .5pt, paint: auto),
         ),
         arrow: (
-            variant: "default",
+            variant: ">",
             scale: 1.0,
-            stroke: (thickness: 1pt, paint: black),
+            stroke: (thickness: 1pt, paint: auto),
             variable: (
+                variant: auto,
+                scale: 1.0,
+                stroke: auto,
                 length: 40pt,
                 angle: 55deg,
                 ratio: (0.5, 0.5),
             ),
             radiation: (
+                variant: auto,
                 scale: 0.8,
-                stroke: (thickness: .55pt, paint: black),
+                stroke: (thickness: .55pt, paint: auto),
                 distance: 3pt,
                 length: 12pt,
                 angle: -120deg,
                 reversed: false,
             ),
             adjustable: (
+                variant: auto,
+                scale: 1.0,
+                stroke: auto,
                 length: 0.8,
+            ),
+            pretty: (
+                width-ratio: 0.75,
+                k: (0.05, 0.14, 0.36),
             ),
         ),
         debug: (
+            enabled: false,
             radius: .7pt,
             stroke: (
                 thickness: .2pt,
@@ -144,6 +156,20 @@
             width: 1.41,
             height: 1.41 / 3,
             bumps: 3,
+            fall: auto,
+            pretty: (
+                height: 0.6,
+                width: 1.3,
+                bumps: 5,
+                stroke: (
+                    thickness: 0.04,
+                ),
+                arrow: (
+                    ratio: (0.5, 0.35),
+                    angle: 63deg,
+                    length: 28pt,
+                ),
+            ),
         ),
         resistor: (
             variant: auto,
@@ -242,8 +268,5 @@
             padding: 0.2,
             spacing: 0.4,
         ),
-    ),
-    params: (
-        debug: false,
     ),
 )
