@@ -11,7 +11,7 @@
         ),
         node: (
             radius: .05,
-            stroke: (thickness: .4pt, paint: auto),
+            stroke: (thickness: .4pt, paint: black),
             fill: black,
             nofill: white,
         ),
@@ -21,7 +21,7 @@
         arrow: (
             variant: ">",
             scale: 1.0,
-            stroke: (thickness: 1pt, paint: auto),
+            stroke: (thickness: 1pt, paint: black),
             variable: (
                 variant: auto,
                 scale: 1.0,
