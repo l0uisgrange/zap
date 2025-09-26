@@ -72,11 +72,52 @@
     })
 }
 
+#let resolve(dict) = {
+    // Special dictionaries
+    let hold = ("stroke", "scale")
+
+    let resolve-recursive(dict, defs) = {
+        let dict-defs = (:)
+
+        for (k, v) in dict {
+            if type(v) != dictionary {
+                if v == auto and k in defs.keys() {
+                    dict.at(k) = defs.at(k)
+                }
+                dict-defs.insert(k, dict.at(k))
+            } else if k in hold {
+                for key in v.keys() {
+                    if v.at(key) == auto and key in defs.at(k).keys() {
+                        dict.at(k).at(key) = defs.at(k).at(key)
+                    }
+                }
+                dict-defs.insert(k, dict.at(k))
+            }
+        }
+
+        for (k, v) in dict {
+            if type(v) == dictionary and k not in hold {
+                dict.at(k) = resolve-recursive(dict.at(k), defs + dict-defs)
+            }
+        }
+        return dict
+    }
+
+    return resolve-recursive(dict, (:))
+}
+
+
 #let get-style(ctx) = {
     let zap-style = ctx.zap.style
 
-    //TODO Definition of auto
+    // Resolve auto
+    if zap-style.inductor.fall == auto {
+        zap-style = resolve(zap-style)
+        zap-style.inductor.fall = zap-style.wire.stroke.thickness * 127 / 3600pt / 2
+    } else {
+        zap-style = resolve(zap-style)
+    }
 
-    zap-style = cetz.styles.resolve(zap-style)
     return zap-style
 }
+
