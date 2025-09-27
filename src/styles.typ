@@ -28,7 +28,7 @@
             variable: (
                 variant: auto,
                 scale: 1.0,
-                stroke: auto,
+                stroke: (thickness: auto, paint: auto),
                 length: 40pt,
                 angle: 55deg,
                 ratio: (0.5, 0.5),
@@ -45,7 +45,7 @@
             adjustable: (
                 variant: auto,
                 scale: 1.0,
-                stroke: auto,
+                stroke: (thickness: auto, paint: auto),
                 length: 0.8,
             ),
         ),
@@ -66,7 +66,7 @@
         capacitor: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: none,
             width: .8,
             distance: .25,
@@ -76,7 +76,7 @@
         diode: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: .3,
             width: .25,
@@ -85,7 +85,7 @@
         opamp: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             width: 1.8,
             height: 1.75,
             padding: .28,
@@ -96,14 +96,14 @@
         switch: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             width: .8,
             angle: 35deg,
         ),
         fuse: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             width: .88,
             height: .88 / 2.4,
@@ -112,7 +112,7 @@
         ground: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: 0.22,
             distance: 0.28,
@@ -120,7 +120,7 @@
         frame: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             number: 3,
             width: 0.46,
             angle: 20deg,
@@ -130,7 +130,7 @@
         earth: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             width: .53,
             delta: .09,
             spacing: .11,
@@ -139,7 +139,7 @@
         vcc: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             angle: 35deg,
             radius: .4,
             distance: .6,
@@ -147,7 +147,7 @@
         vee: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             angle: 35deg,
             radius: .4,
             distance: .6,
@@ -155,7 +155,7 @@
         inductor: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: black,
             width: 1.41,
             height: 1.41 / 3,
@@ -164,7 +164,7 @@
         resistor: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             width: 1.41,
             height: .47,
@@ -173,7 +173,7 @@
         vsource: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: .53,
             padding: .25,
@@ -184,7 +184,7 @@
         isource: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: .53,
             padding: .25,
@@ -193,7 +193,7 @@
         acmotor: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: .49,
             magnet-width: 1.23,
@@ -202,7 +202,7 @@
         dcmotor: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: white,
             radius: .49,
             magnet-width: 1.23,
@@ -211,7 +211,7 @@
         bjt: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             radius: .65,
             base-height: .6,
             base-distance: .12,
@@ -220,7 +220,7 @@
         mosfet: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             height: 0.795,
             width: 1.065,
             base-width: 1.35,
@@ -231,7 +231,7 @@
         antenna: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             fill: none,
             distance: 0.8,
             spacing: 0.35,
@@ -240,14 +240,14 @@
         transformer: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             radius: 0.35,
             distance: 0.45,
         ),
         converter: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             width: 1.7,
             height: 0.7,
             arrow-width: 0.4,
@@ -258,14 +258,11 @@
         mcu: (
             variant: auto,
             scale: auto,
-            stroke: auto,
+            stroke: (thickness: auto, paint: auto),
             width: 3,
             min-height: 1,
             padding: 0.2,
             spacing: 0.4,
         ),
-    ),
-    params: (
-        debug: false,
     ),
 )
