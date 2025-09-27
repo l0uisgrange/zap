@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, rect
+#import cetz.draw: anchor, line, rect, set-style
 #import "/src/mini.typ": adjustable-arrow, variable-arrow
 
 #let resistor(name, node, variable: false, heatable: false, adjustable: false, ..params) = {
@@ -11,6 +11,7 @@
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
+        set-style(stroke: style.stroke)
         if style.variant == "iec" {
             rect(
                 (-style.width / 2, -style.height / 2),
@@ -18,8 +19,7 @@
                     style.width / 2,
                     style.height / 2,
                 ),
-                fill: white,
-                ..style,
+                fill: style.fill,
             )
         } else {
             let step = style.width / (style.zigs * 2)
@@ -33,8 +33,6 @@
                     sign *= -1
                 },
                 (x, 0),
-                ..style,
-                fill: none,
             )
         }
         if variable {
@@ -45,7 +43,7 @@
         if heatable {
             for i in range(3) {
                 let x = style.width / 4 * (i + 1) - style.width / 2
-                line((x, -style.height / 2), (x, style.height / 2), ..style)
+                line((x, -style.height / 2), (x, style.height / 2))
             }
         }
     }

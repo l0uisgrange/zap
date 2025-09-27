@@ -24,10 +24,11 @@
         line((0, 0), (style.length, 0),
             stroke: style.stroke,
             mark: (
+                stroke: (thickness: 0pt),
                 end: style.variant,
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:))
+                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
     })
@@ -44,6 +45,7 @@
         set-style(
             stroke: style.stroke,
             mark: (
+                stroke: (thickness: 0pt),
                 scale: style.scale,
                 fill: style.stroke.paint,
                 ..arrow-style.at(style.variant, default: (:)),
@@ -72,10 +74,11 @@
         line("a", node,
             stroke: style.stroke,
             mark: (
+                stroke: (thickness: 0pt),
                 end: style.variant,
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:))
+                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
     })

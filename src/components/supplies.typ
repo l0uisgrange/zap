@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, line, polygon, scale, scope
+#import cetz.draw: anchor, line, polygon, scale, scope, set-style
 #import "/src/components/wires.typ": wire
 
 #let ground(name, node, ..params) = {
@@ -9,7 +9,7 @@
     // Drawing function
     let draw(ctx, position, style) = {
         wire((0, 0), (0, -style.distance))
-        polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", ..style)
+        polygon((0, -style.distance), 3, anchor: "north", radius: style.radius, angle: -90deg, name: "polygon", stroke: style.stroke, fill: style.fill)
 
         let (width, height) = cetz.util.measure(ctx, "polygon")
         interface((-width / 2, -height / 2), (width / 2, height / 2))
@@ -27,10 +27,13 @@
     let draw(ctx, position, style) = {
         wire((0, 0), (0, -style.distance))
         let delta = style.width / 2
-        line((-style.width / 2, -style.distance), (style.width / 2, -style.distance), ..style)
+
+        set-style(stroke: style.stroke)
+        line((-style.width / 2, -style.distance), (style.width / 2, -style.distance))
         for i in (0, 1, 2) {
-            line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)), ..style)
+            line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)))
         }
+        
         interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
         anchor("default", (0, 0))
     }
@@ -48,6 +51,7 @@
         for i in (0, 1, 2) {
             line((-style.width / 2 + i * style.delta, -style.distance - i * style.spacing), (style.width / 2 - i * style.delta, -style.distance - i * style.spacing), ..style)
         }
+
         interface((-style.width / 2, -style.distance - style.spacing * 2), (style.width / 2, -style.distance))
         anchor("default", (0, 0))
     }
@@ -57,13 +61,6 @@
 }
 
 #let vcc(name, node, invert: false, ..params) = {
-    // VCC style
-    let style = (
-        angle: 35deg,
-        radius: .4,
-        distance: .6,
-    )
-
     // Drawing function
     let draw(ctx, position, style) = {
         let direction = if invert { -1 } else { 1 }
@@ -72,7 +69,7 @@
         scope({
             scale(y: direction)
             wire((0, 0), (0, style.distance))
-            line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), ..style)
+            line((rel: (-sin, -cos), to: (0, style.distance)), (0, style.distance), (rel: (sin, -cos)), stroke: style.stroke)
         })
         interface((-sin, (style.distance - cos) * direction), (sin, style.distance * direction), (0, 0), (0, 0), io: false)
         anchor("default", (0, 0))
