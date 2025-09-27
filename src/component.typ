@@ -44,9 +44,20 @@
         let keep-stroke = ctx.style.stroke
         cetz.draw.set-style(stroke: zap-style.stroke)
 
+        // Identify default style
         let style = zap-style.at(uid)
-        style = merge-dictionary(style, params.named())
+        
+        // Identify variant
+        let params-variant = params.named().at("variant", default: none)
+        let variant = if params-variant != none { params-variant }
+                                            else { style.variant }
+        style.at("variant") = variant
+
+        // Identify predefined variant style
         style = merge-dictionary(style, style.at(style.variant, default: (:)))
+
+        // Override style by user params
+        style = merge-dictionary(style, params.named())
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
