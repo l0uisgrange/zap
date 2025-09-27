@@ -47,6 +47,7 @@
             ),
         ),
         debug: (
+            enabled: false,
             radius: .7pt,
             stroke: (
                 thickness: .2pt,
