@@ -93,19 +93,15 @@
                 let label-style = zap-style.label
                 label-style = merge-dictionary(label-style, style.at("label", default: (:)))
                 label-style = merge-dictionary(label-style, params.named().at("label-defaults", default: (:)))
+                label-style = merge-dictionary(label-style, if type(label) == dictionary {label} else {(content: label)})
 
-                let l = if type(label) == dictionary {
-                    merge-dictionary(label, label-style, overwrite: false)
-                } else {
-                    merge-dictionary(label-style, (content: label))
-                }
                 let anchor = get-label-anchor(p-rotate)
-                let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
+                let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
                 content(
-                    if type(l.anchor) == str { "component." + l.anchor } else { l.anchor },
-                    anchor: l.at("align", default: resolved-anchor),
-                    l.content,
-                    padding: l.distance,
+                    if type(label-style.anchor) == str { "component." + label-style.anchor } else { label-style.anchor },
+                    anchor: label-style.at("align", default: resolved-anchor),
+                    label-style.content,
+                    padding: label-style.distance,
                 )
             }
         })
