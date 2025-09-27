@@ -16,7 +16,7 @@
             nofill: white,
         ),
         wire: (
-            stroke: (thickness: .5pt, paint: black),
+            stroke: (thickness: .5pt, paint: auto),
         ),
         arrow: (
             variant: "default",
