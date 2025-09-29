@@ -54,26 +54,21 @@
     let style = resolve-decoration(ctx, label, ..decor-style.flow)
     style.scale *= decor-style.scale
 
-    let (a-start, a-end) = if style.position.x == "west" {
-        let first = ("component.west", style.distance, "in")
-        (first, (rel: (-.7, 0), to: first))
-    } else {
-        let first = ("component.east", style.distance, "out")
-        (first, (rel: (.7, 0), to: first))
-    }
-    let a-start = (rel: (0, .2 * style.side), to: a-start)
-    let a-end = (rel: (0, .2 * style.side), to: a-end)
+    let west = style.position.x == "west"
+    let a-start = (to: ("component." + style.position.x, style.distance, if west { "in" } else { "out" }),
+                   rel: (0, style.indent * style.side))
+    let a-end = (to: a-start, rel: (style.length * if west { -1 } else { 1 }, 0))
 
     line(a-start, a-end,
         mark: (
             (if style.invert { "start" } else { "end" }): style.variant,
             stroke: 0pt,
             fill: style.stroke.paint,
+            scale: style.scale,
         ),
         stroke: style.stroke,
-        scale: style.scale,
     )
-    content((rel: (0, style.label-distance), to: (a-start, 50%, a-end)), style.content)
+    content((rel: (0, style.label-distance), to: (a-start, style.label-ratio, a-end)), style.content)
 }
 
 #let voltage(ctx, label, p-rotate) = {
@@ -81,11 +76,13 @@
     let style = resolve-decoration(ctx, label, ..decor-style.voltage)
     style.scale *= decor-style.scale
 
-    let c = cetz.util.resolve-number(ctx, 9pt)
     let r-distance = cetz.util.resolve-number(ctx, style.distance)
-    let a-start = (rel: (-.4, (r-distance - c + .1) * style.side), to: "component." + style.position.y + "-west")
-    let a-end = (rel: (.4, (r-distance - c + .1) * style.side), to: "component." + style.position.y + "-east")
-    let a-center = (rel: (0, (r-distance - c + .3) * style.side), to: "component." + style.position.y)
+    let a-start = (rel: (style.start.at(0), (r-distance + style.start.at(1)) * style.side),
+                   to: "component." + style.position.y + "-west")
+    let a-end = (rel: (style.end.at(0), (r-distance + style.end.at(1)) * style.side),
+                 to: "component." + style.position.y + "-east")
+    let a-center = (rel: (style.center.at(0), (r-distance + style.center.at(1)) * style.side),
+                    to: "component." + style.position.y)
 
     let (a-start, a-end) = if style.position.x == "west" { (a-end, a-start) } else { (a-start, a-end) }
     content((rel: (0, style.label-distance), to: a-center), style.content)
@@ -93,9 +90,9 @@
         mark: (
             (if style.invert { "start" } else { "end" }): style.variant,
             stroke: 0pt,
-            fill: style.stroke.paint
+            fill: style.stroke.paint,
+            scale: style.scale,
         ),
         stroke: style.stroke,
-        scale: style.scale,
     )
 }

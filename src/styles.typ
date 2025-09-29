@@ -150,6 +150,9 @@
                 position: (x: auto, y: auto),
                 anchor: auto,
                 invert: auto,
+                length: 0.7,
+                indent: 0.2,
+                label-ratio: 50%,
             ),
             voltage: (
                 variant: auto,
@@ -167,6 +170,9 @@
                 position: (x: auto, y: auto),
                 anchor: auto,
                 invert: auto,
+                start: (-.4, .1),
+                end: (.4, .1),
+                center: (0, .3),
             ),
         ),
         debug: (
