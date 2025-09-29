@@ -59,7 +59,7 @@
 
 #let resolve(dict) = {
     // Special dictionaries
-    let hold = ("stroke", "scale")
+    let hold = ("stroke", "scale", "position")
 
     let resolve-recursive(dict, defs) = {
         let dict-defs = (:)
