@@ -43,6 +43,7 @@
         reverse: style.invert,
         anchor: "center",
         fill: style.stroke.paint,
+        stroke: 0pt,
         scale: style.scale,
     )
     content((rel: (0, style.label-distance), to: mark-position.at(0)), style.content)
@@ -62,11 +63,13 @@
     }
     let a-start = (rel: (0, .2 * style.side), to: a-start)
     let a-end = (rel: (0, .2 * style.side), to: a-end)
-    let (a-start, a-end) = if style.invert { (a-end, a-start) } else { (a-start, a-end) }
 
     line(a-start, a-end,
-        mark: (end: style.variant),
-        fill: style.stroke.paint,
+        mark: (
+            (if style.invert { "start" } else { "end" }): style.variant,
+            stroke: 0pt,
+            fill: style.stroke.paint,
+        ),
         stroke: style.stroke,
         scale: style.scale,
     )
@@ -89,9 +92,10 @@
     hobby(a-start, a-center, a-end,
         mark: (
             (if style.invert { "start" } else { "end" }): style.variant,
+            stroke: 0pt,
             fill: style.stroke.paint
         ),
+        stroke: style.stroke,
         scale: style.scale,
-        stroke: style.stroke
     )
 }
