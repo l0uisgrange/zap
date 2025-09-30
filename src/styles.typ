@@ -14,7 +14,7 @@
             fill: none,
         ),
         foreground: (
-            fill: white,
+            fill: black,
         ),
         label: (
             scale: auto,

@@ -107,8 +107,14 @@
 #let get-style(ctx) = {
     let zap-style = ctx.zap.style
 
-    //TODO Definition of auto
-
+    // Override auto
+    if zap-style.arrow.stroke.paint == auto {
+        zap-style.arrow.stroke.paint = zap-style.foreground.fill
+    }
+    if zap-style.decoration.stroke.paint == auto {
+        zap-style.decoration.stroke.paint = zap-style.foreground.fill
+    }
     zap-style = resolve(zap-style)
+
     return zap-style
 }
