@@ -1,4 +1,10 @@
 <script lang="ts">
+    import SomeContent from '$lib/markdown/decorations.md';
+</script>
+
+<SomeContent />
+
+<!--<script lang="ts">
 	import { onMount } from 'svelte';
 	import NavButton from '$lib/components/NavButton.svelte';
 	import NexPrev from '$lib/components/NexPrev.svelte';
@@ -40,7 +46,7 @@
 			You can name your components by giving them a label using the <span class="text-params font-mono">label</span> parameter.
 		</p>
 		<div class="grid gap-5 lg:grid-cols-4 mb-5">
-			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+			<div class="dark:border-neutral-800 flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
 				<img src={named} alt="Style 1 example" />
 			</div>
 			<div class="lg:col-span-3">
@@ -59,7 +65,7 @@
 		<p>Sometimes, the label is not displayed where you want (like in the middle of the neighbour component...).</p>
 		<p>You can just give a dictionary instead of some content to customize this behavior, using the keys described in the table below.</p>
 		<div class="grid gap-5 lg:grid-cols-4 mb-5">
-			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+			<div class="dark:border-neutral-800 flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
 				<img src={namedcustom} alt="Style 1 example" class="-mb-8" />
 			</div>
 			<div class="lg:col-span-3">
@@ -109,7 +115,7 @@
 			a dictionary for more detailed customization, using the same intuitive behaviour as labels.
 		</p>
 		<div class="grid gap-5 mb-4 lg:grid-cols-4">
-			<div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+			<div class="dark:border-neutral-800 flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
 				<img src={decoration} alt="Style 1 example" />
 			</div>
 			<div class="lg:col-span-3">
@@ -181,4 +187,4 @@
 			{/each}
 		</ul>
 	</div>
-</div>
+</div>-->

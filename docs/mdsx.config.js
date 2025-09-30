@@ -1,4 +1,14 @@
 import { defineConfig } from 'mdsx';
+import { rehypeCustomHighlight } from '@mdsx/rehype-custom-highlighter';
+
+
+/** @type {import('@mdsx/rehype-custom-highlighter').HighlightOptions} */
+const highlightOptions = {
+	highlight: async ({ value, lang, meta }) => {
+		// your highlighting logic here
+		return value;
+	},
+};
 
 export const mdsxConfig = defineConfig({
 	blueprints: {
@@ -7,4 +17,5 @@ export const mdsxConfig = defineConfig({
 		},
 	},
 	extensions: ['.md'],
+	rehypePlugins: [[rehypeCustomHighlight, highlightOptions]],
 });

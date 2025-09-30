@@ -27,9 +27,6 @@
     --color-float: #0550AE;
     --color-new: var(--color-purple-600);
     --color-neutral-200: rgb(209,217,224);
-    --color-neutral-900: rgb(13,17,23);
-    --color-neutral-border: #3d444d;
-    --color-neutral-800: #151b23;
     --color-neutral-100: rgb(246, 248, 250);
     --color-blue-600: #0969da;
     --color-primary: #3e5fff;
@@ -62,11 +59,11 @@ html {
 }
 
 body {
-    @apply dark:bg-neutral-900 dark:text-white;
+    @apply dark:bg-neutral-950 dark:text-white;
 }
 
 .border-* {
-    @apply border-neutral-200 dark:border-neutral-800;
+    @apply border-neutral-200 dark:border-neutral-900;
 }
 
 h1 {

@@ -40,13 +40,13 @@
 		</p>
 		<div class="mb-4 grid gap-7 md:grid-cols-2">
 			<div>
-				<div class="dark:border-neutral-border mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
+				<div class="dark:border-neutral-800 mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
 					<img src={onenode} class="w-full" alt="resistor using one-node placement" />
 				</div>
 				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0))\n' + '})'} />
 			</div>
 			<div>
-				<div class="dark:border-neutral-border mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
+				<div class="dark:border-neutral-800 mb-4 flex max-h-40 items-center overflow-hidden rounded-lg border border-neutral-200">
 					<img src={twonode} class="w-full" alt="resistor using one-node placement" />
 				</div>
 				<Code content={'#zap.circuit({\n' + '    resistor("r1", (0,0), (5,0))\n' + '})'} />
@@ -93,7 +93,7 @@
             You can also use the <span class="font-mono text-component">node</span> component instead of anchors. They work pretty much the same, but <span class="font-mono text-component">node</span> can be shown using a circle.
         </p>
         <div class="grid gap-5 lg:grid-cols-4 mb-5">
-            <div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+            <div class="dark:border-neutral-800 flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
                 <img src={node} alt="Style 1 example" />
             </div>
             <div class="lg:col-span-3">
@@ -107,7 +107,7 @@
         </div>
         <p>It's also possible to display this nodes directly when calling your components. The nodes will then be placed and represent the <span class="text-string font-mono">in</span> and <span class="text-string font-mono">out</span> anchors.</p>
         <div class="grid gap-5 lg:grid-cols-4 mb-5">
-            <div class="dark:border-neutral-border flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
+            <div class="dark:border-neutral-800 flex items-center justify-center rounded-lg border border-neutral-200 bg-white p-3">
                 <img src={nodes} alt="Style 1 example" />
             </div>
             <div class="lg:col-span-3">
