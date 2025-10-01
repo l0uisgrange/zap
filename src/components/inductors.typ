@@ -11,7 +11,7 @@
 
         set-style(stroke: style.stroke)
         if (style.variant == "iec") {
-            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.stroke.paint)
+            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.fill)
         } else {
             merge-path({
                 let sgn = if position.last().at(0) < position.first().at(0) { -1 } else { 1 }

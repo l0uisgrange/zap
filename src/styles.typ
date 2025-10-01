@@ -361,6 +361,7 @@
                 miter-limit: auto,
                 dash: auto,
             ),
+            fill: auto,
             width: 1.41,
             height: 1.41 / 3,
             bumps: 3,
