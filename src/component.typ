@@ -3,7 +3,7 @@
 #import "components/nodes.typ": node
 #import "components/wires.typ": wire
 #import "utils.typ": get-label-anchor, get-style, opposite-anchor
-#import cetz.util: merge-dictionary
+#import cetz.styles: merge
 
 #let component(
     draw: none,
@@ -54,10 +54,10 @@
         style.at("variant") = variant
 
         // Identify predefined variant style
-        style = merge-dictionary(style, style.at(style.variant, default: (:)))
+        style = merge(style, style.at(style.variant, default: (:)))
 
         // Override style by user params
-        style = merge-dictionary(style, params.named())
+        style = merge(style, params.named())
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -91,9 +91,9 @@
         on-layer(0, {
             if label != none {
                 let label-style = zap-style.label
-                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
-                label-style = merge-dictionary(label-style, params.named().at("label-defaults", default: (:)))
-                label-style = merge-dictionary(label-style, if type(label) == dictionary {label} else {(content: label)})
+                label-style = merge(label-style, style.at("label", default: (:)))
+                label-style = merge(label-style, params.named().at("label-defaults", default: (:)))
+                label-style = merge(label-style, if type(label) == dictionary {label} else {(content: label)})
 
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }

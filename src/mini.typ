@@ -1,6 +1,6 @@
 #import "dependencies.typ": cetz
 #import cetz.draw: anchor, hobby, line, rotate, scope, set-origin, set-style
-#import cetz.util: merge-dictionary
+#import cetz.styles: merge
 #import "utils.typ": get-style
 
 #let center-mark(symbol: ">") = {
@@ -10,7 +10,7 @@
 #let variable-arrow(..params) = {
     scope(ctx => {
         let arrow-style = get-style(ctx).arrow
-        let style = merge-dictionary(arrow-style.variable, params.named())
+        let style = merge(arrow-style.variable, params.named())
         style.scale *= arrow-style.scale
 
         let origin = (
@@ -37,7 +37,7 @@
 #let radiation-arrows(origin, ..params) = {
     scope(ctx => {
         let arrow-style = get-style(ctx).arrow
-        let style = merge-dictionary(arrow-style.radiation, params.named())
+        let style = merge(arrow-style.radiation, params.named())
         style.scale *= arrow-style.scale
 
         set-origin(origin)
@@ -65,7 +65,7 @@
 #let adjustable-arrow(node, ..params) = {
     scope(ctx => {
         let arrow-style = get-style(ctx).arrow
-        let style = merge-dictionary(arrow-style.adjustable, params.named())
+        let style = merge(arrow-style.adjustable, params.named())
         style.scale *= arrow-style.scale
 
         anchor("a", (to: node, rel: (0, style.length)))
