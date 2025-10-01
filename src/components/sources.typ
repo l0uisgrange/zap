@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, polygon, rect
+#import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 #import "/src/utils.typ": get-style
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {
@@ -13,19 +13,20 @@
         let factor = if dependent { 1.1 } else { 1 }
         interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
 
+        set-style(stroke: style.stroke)
         if dependent {
-            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
+            polygon((0, 0), 4, fill: style.fill, radius: style.radius * factor)
         } else {
-            circle((0, 0), radius: style.radius, fill: white, ..style)
+            circle((0, 0), fill: style.fill, radius: style.radius)
         }
         if style.variant == "iec" {
-            line((0, -style.radius * factor), (rel: (0, 2 * style.radius * factor)), ..style, fill: none)
+            line((0, -style.radius * factor), (rel: (0, 2 * style.radius * factor)))
         } else {
             line(
                 (-style.radius + style.padding, 0),
                 (rel: (2 * style.radius - 1.85 * style.padding, 0)),
                 mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.scale.at("x", default: 1.0))),
-                fill: black,
+                fill: get-style(ctx).arrow.stroke.paint,
                 stroke: get-style(ctx).arrow.stroke,
             )
         }
@@ -46,16 +47,17 @@
         let factor = if dependent { 1.1 } else { 1 }
         interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
 
+        set-style(stroke: style.stroke)
         if dependent {
-            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
+            polygon((0, 0), 4, fill: style.fill, radius: style.radius * factor)
         } else {
-            circle((0, 0), fill: white, ..style)
+            circle((0, 0), fill: style.fill, radius: style.radius)
         }
         if style.variant == "iec" {
             if current == "ac" {
                 content((0, 0), [#cetz.canvas({ ac-sign(size: 2) })])
             } else {
-                line((-style.radius * factor, 0), (rel: (2 * style.radius * factor, 0)), ..style)
+                line((-style.radius * factor, 0), (rel: (2 * style.radius * factor, 0)))
             }
         } else {
             line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)

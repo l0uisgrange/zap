@@ -12,18 +12,19 @@
 
         merge-path(
             close: true,
+            stroke: style.stroke,
+            fill: style.fill,
             {
                 for i in (0, 2) {
-                    line((0, style.distance), (rel: (style.spacing * (i - 1), style.length)), ..style)
+                    line((0, style.distance), (rel: (style.spacing * (i - 1), style.length)))
                 }
                 if closed {
-                    line((0, style.distance + style.length), (rel: (style.spacing, 0)), ..style)
-                    line((0, style.distance + style.length), (rel: (-style.spacing, 0)), ..style)
+                    line((0, style.distance + style.length), (rel: (style.spacing, 0)))
+                    line((0, style.distance + style.length), (rel: (-style.spacing, 0)))
                 }
-            },
-            ..style,
+            }
         )
-        line((0, style.distance), (rel: (0, style.length)), ..style)
+        line((0, style.distance), (rel: (0, style.length)), stroke: style.stroke)
         interface((-width / 2, style.distance + style.spacing * 2), (width / 2, style.distance))
         anchor("default", (0, 0))
     }
