@@ -94,7 +94,7 @@
         let new-style = style.named()
         for root in new-style.keys() {
             let style-dict = ((root): (new-style.at(root)))
-            if ctx.zap.style.at(root, default: none) == none {
+            if ctx.zap.style.at(root, default: (:)) == (:) {
                 ctx.style = cetz.styles.merge(ctx.style, style-dict)
             } else {
                 ctx.zap.style = cetz.styles.merge(ctx.zap.style, style-dict)
@@ -109,10 +109,25 @@
 
     // Override auto
     if zap-style.arrow.stroke.paint == auto {
-        zap-style.arrow.stroke.paint = zap-style.foreground.fill
+        zap-style.arrow.stroke.paint = zap-style.foreground
+    }
+    if zap-style.stroke.paint == auto {
+        zap-style.stroke.paint = zap-style.foreground
     }
     if zap-style.decoration.stroke.paint == auto {
-        zap-style.decoration.stroke.paint = zap-style.foreground.fill
+        zap-style.decoration.stroke.paint = zap-style.foreground
+    }
+    if zap-style.background == auto {
+        zap-style.background = ctx.background
+    }
+    if zap-style.fill == auto {
+        zap-style.fill = zap-style.background
+    }
+    if zap-style.node.fill == auto {
+        zap-style.node.fill = zap-style.foreground
+    }
+    if zap-style.node.nofill == auto {
+        zap-style.node.nofill = zap-style.fill
     }
     zap-style = resolve(zap-style)
 

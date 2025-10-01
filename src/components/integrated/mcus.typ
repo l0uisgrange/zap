@@ -28,7 +28,7 @@
         let height = calc.max(style.min-height, (calc.max(west-count, east-count)) * style.spacing + 2 * style.padding)
         interface((-style.width / 2, -height / 2), (style.width / 2, height / 2))
 
-        rect((-style.width / 2, -height / 2), (style.width / 2, height / 2), fill: white, ..style)
+        rect((-style.width / 2, -height / 2), (style.width / 2, height / 2), fill: style.fill, stroke: style.stroke)
 
         let (wi, ei) = (0, 0)
         for pin in pins {

@@ -7,7 +7,11 @@
     let draw(ctx, position, style) = {
         interface((-style.distance / 2 - style.radius, -style.radius), (style.distance / 2 + style.radius, style.radius), io: position.len() < 2)
 
-        set-style(stroke: style.stroke, fill: none)
+        set-style(fill: style.fill)
+        circle((-style.distance / 2, 0), radius: style.radius)
+        circle((style.distance / 2, 0), radius: style.radius)
+
+        set-style(fill: none, stroke: style.stroke)
         circle((-style.distance / 2, 0), radius: style.radius)
         circle((style.distance / 2, 0), radius: style.radius)
     }
