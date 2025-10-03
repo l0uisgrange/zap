@@ -8,9 +8,9 @@
     const target = $derived(isExternal ? '_blank' : undefined);
 </script>
 
-<a {href} {target} {...restProps}>
+<a {href} {target} {...restProps} class="text-blue-600 hover:underline underline-offset-4">
     {@render children?.()}
     {#if isExternal}
-        (external)
+
     {/if}
 </a>

@@ -9,7 +9,7 @@
 	let { children } = $props();
 </script>
 
-<div class="dark:gray-dark dark:border-neutral-800 sticky top-0 left-0 z-10 border-b border-neutral-200 bg-white py-3 dark:bg-neutral-950">
+<div class="sticky top-0 left-0 z-10 border-b bg-white py-3 dark:bg-black">
 	<div class="mx-auto flex items-center justify-between gap-5 px-5 py-2.5">
 		<a href="/" class="flex items-center gap-2 text-lg font-medium italic font-stretch-110%">Zap</a>
 		<a href="/docs" class="ml-auto hidden md:block hover:underline underline-offset-3">Documentation</a>
@@ -29,7 +29,7 @@
 	</div>
 </div>
 {@render children()}
-<div class="dark:border-neutral-800 flex flex-col border-t border-neutral-200 px-5 py-5 md:flex-row md:items-center md:justify-between">
+<div class="flex flex-col border-t px-5 py-5 md:flex-row md:items-center md:justify-between">
 	<span class="flex items-center gap-2">A project initiated by <Avatar username="l0uisgrange" displayUsername /></span>
 	<span class="text-gray-500">Project under LGPL-3.0 license</span>
 </div>

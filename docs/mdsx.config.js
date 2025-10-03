@@ -11,7 +11,7 @@ const highlightOptions = {
 		if (!highlighter) {
 			highlighter = await highlighterPromise;
 		}
-		return highlighter.codeToHtml(value, { lang: 'typst', themes: { light: 'github-light', dark: 'github-dark' } });
+		return highlighter.codeToHtml(value, { lang, themes: { light: 'github-light', dark: 'github-dark' } });
 	}
 };
 

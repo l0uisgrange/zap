@@ -55,8 +55,8 @@
     <title>{metadata.title}</title>
 </svelte:head>
 
-<div class="items-stretch md:flex w-full">
-    <article class="min-h-dvh p-5 pt-10 md:px-8 md:py-10">
+<div class="items-stretch md:flex w-full bg-neutral-50 dark:bg-neutral-950">
+    <article class="min-h-dvh p-5 flex-auto pt-10 md:px-10 md:py-10">
         <h1>{metadata.title}</h1>
         <p class="max-w-2xl text-lg">{metadata.subtitle}</p>
         {@render children?.()}

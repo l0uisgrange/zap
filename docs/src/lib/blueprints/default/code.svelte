@@ -4,4 +4,4 @@
     let { children }: { children: Snippet } = $props();
 </script>
 
-{@render children()}
+<code class="text-xs antialiased *:bg-neutral-950">`{@render children()}`</code>
