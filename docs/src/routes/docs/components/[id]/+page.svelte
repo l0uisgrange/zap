@@ -48,7 +48,7 @@
         <p>Here's a quick example on how to use this component.</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <div>
-                <img src={component?.image} class="border border-gray-200 dark:border-neutral-border rounded-lg w-full" alt={component?.full_name} />
+                <img src={component?.image} class="border border-gray-200 dark:border-neutral-800 rounded-lg w-full" alt={component?.full_name} />
             </div>
             <div class="lg:col-span-2">
                 <Code

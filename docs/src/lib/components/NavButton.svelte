@@ -4,8 +4,8 @@
 
 <a
 	{href}
-	class="block {active && 'bg-neutral-100 dark:bg-neutral-800'} flex w-full max-w-none items-center justify-between rounded-md px-3 py-1 {href
-		? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800'
+	class="block {active && 'bg-neutral-100 dark:bg-neutral-900'} flex w-full max-w-none items-center justify-between rounded-md px-3 py-1 {href
+		? 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-900'
 		: 'cursor-not-allowed'}"
 >
 	{@render children()}

@@ -34,7 +34,7 @@
 			{#each results as component}
 				<a
 					href="/docs/components/{component.name}"
-					class="dark:border-neutral-border group relative flex h-40 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-neutral-200 text-current! decoration-0! hover:shadow-xs"
+					class="dark:border-neutral-800 group relative flex h-40 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-neutral-200 text-current! decoration-0! hover:shadow-xs"
 				>
 					<img
 						src={component.image}

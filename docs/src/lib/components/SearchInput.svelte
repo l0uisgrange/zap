@@ -36,7 +36,7 @@
 			type="text"
 			bind:value={searchQuery}
 			placeholder="Search components"
-			class="dark:border-neutral-border w-full rounded-full border border-neutral-200 px-4 py-1.5 pl-10 subpixel-antialiased focus:border-blue-600 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+			class="dark:border-neutral-800 w-full rounded-full border border-neutral-200 px-4 py-1.5 pl-10 subpixel-antialiased focus:border-blue-600 focus:ring-1 focus:ring-blue-600 focus:outline-none"
 		/>
 		<span
 			class="icon-[hugeicons--search-01] absolute top-1/2 left-3 size-5 -translate-y-1/2 text-gray-500"
