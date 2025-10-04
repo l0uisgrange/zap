@@ -7,25 +7,23 @@ subtitle: Using Zap, you can easily add labels and decorations to your component
 
 You can name your components by giving them a label using the `label` parameter.
 
+![dede](/docs/label.svg)
+
 ```typst
 #zap.circuit({
     import zap: *
 
-    heater("v1", (0,-1), (0,2), label: $R$)
+    heater("h1", (1, 0), (4, 0), label: $R$)
 })
 ```
 
-### Advanced labelling
-
-Sometimes, the label is not displayed where you want (like in the middle of the neighbour component...).
-
-Zap provides the ability to give a dictionary instead of content to customize this behavior.
+Sometimes, the label is not displayed where you want (like in the middle of another component). In that case, you can just give a dictionary to customize this behavior.
 
 ```typst
 #zap.circuit({
     import zap: *
 
-    heater("v1", (0,-1), (0,2), label: (content: $R$, anchor: "south", distance: 20pt))
+    heater("h2", (5, 0), (8, 0), label: (content: $R$, anchor: "south", distance: 5pt))
 })
 ```
 

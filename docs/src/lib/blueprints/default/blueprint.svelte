@@ -14,7 +14,7 @@
     export { default as li } from './h6.svelte';
     export { default as code } from './code.svelte';
     export { default as pre } from './pre.svelte';
-    export { default as img } from './h6.svelte';
+    export { default as img } from './img.svelte';
     export { default as blockquote } from './h6.svelte';
     export { default as hr } from './h6.svelte';
     export { default as table } from './h6.svelte';
@@ -27,6 +27,7 @@
 
 <script lang="ts">
     import NavButton from "$lib/components/NavButton.svelte";
+    import NexPrev from "$lib/components/NexPrev.svelte";
 
     let {
         metadata,
@@ -60,6 +61,9 @@
         <h1>{metadata.title}</h1>
         <p class="max-w-2xl text-lg">{metadata.subtitle}</p>
         {@render children?.()}
+        {#if metadata.next}
+
+        {/if}
     </article>
     <div class="relative hidden w-72 flex-none p-5 md:block">
         <ul class="sticky top-32 block">

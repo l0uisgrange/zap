@@ -20,7 +20,7 @@ let highlighter = null;
 
 const highlighterPromise = createHighlighterCore({
 	themes: [import('@shikijs/themes/github-light'), import('@shikijs/themes/github-dark')],
-	langs: [typstLang],
+	langs: [typstLang, import('@shikijs/langs/shell')],
 	engine: jsEngine
 });
 

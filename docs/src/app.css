@@ -52,6 +52,17 @@
         --color-new: var(--color-purple-500);
         --color-float: #79C0FF;
     }
+
+    @media (prefers-color-scheme: dark) {
+        .shiki,
+        .shiki span {
+            color: var(--shiki-dark) !important;
+            /* Optional, if you also want font styles */
+            font-style: var(--shiki-dark-font-style) !important;
+            font-weight: var(--shiki-dark-font-weight) !important;
+            text-decoration: var(--shiki-dark-text-decoration) !important;
+        }
+    }
 }
 
 html {
@@ -84,10 +95,4 @@ h3 {
 }
 p, ul {
     @apply subpixel-antialiased mb-2;
-}
-main a:not(.block):not(.flex) {
-    @apply text-blue-600 underline underline-offset-3;
-}
-.font-mono {
-    @apply font-light;
 }

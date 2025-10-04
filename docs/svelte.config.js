@@ -3,6 +3,8 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsx } from 'mdsx';
 import { mdsxConfig } from './mdsx.config.js';
 
+// https://github.com/typst/typst/blob/main/tools/support/typst.tmLanguage.json
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: [mdsx(mdsxConfig), vitePreprocess()],
