@@ -4,4 +4,4 @@
     let { children }: { children: Snippet } = $props();
 </script>
 
-<h1>{@render children()}</h1>
+<h1 class="scroll-mt-24">{@render children()}</h1>

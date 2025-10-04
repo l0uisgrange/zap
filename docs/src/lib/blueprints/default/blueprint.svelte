@@ -56,16 +56,16 @@
     <title>{metadata.title}</title>
 </svelte:head>
 
-<div class="items-stretch md:flex w-full bg-neutral-50 dark:bg-neutral-950">
-    <article class="min-h-dvh p-5 flex-auto pt-10 md:px-10 md:py-10">
-        <h1>{metadata.title}</h1>
+<div class="items-stretch overflow-hidden md:flex w-full! bg-neutral-50 dark:bg-neutral-950">
+    <article class="min-h-dvh max-w-full overflow-hidden p-5 flex-auto pt-10 md:px-10 md:py-10">
+        <h1 class="scroll-mt-32">{metadata.title}</h1>
         <p class="max-w-2xl text-lg">{metadata.subtitle}</p>
         {@render children?.()}
         {#if metadata.next}
 
         {/if}
     </article>
-    <div class="relative hidden w-72 flex-none p-5 md:block">
+    <div class="hidden w-72 flex-none p-5 md:block">
         <ul class="sticky top-32 block">
             {#each headings as heading}
                 <li style="margin-left: {heading.level * 10}px;">
