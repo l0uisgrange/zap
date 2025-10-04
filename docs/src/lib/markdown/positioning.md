@@ -23,6 +23,20 @@ To position components within your circuit, you can choose to either attach them
 
 Note that some components can only be placed using one node, like operational amplifiers, grounds and transistors.
 
+You can also customize the position of the component alongside the wire using the `position` parameter like below.
+
+![dede](/docs/position.svg)
+
+```typst
+#zap.circuit({
+    import zap: *
+
+    resistor("r1", (0, 0), (3, 0), position: 70%)
+})
+```
+
+The `position` parameter also accepts a distance, which will be relative to the `in` anchor.
+
 ## Named anchors
 
 Sometimes, you just want to connect a component to another without worrying about coordinates or doing mental math. That's where named anchors come in.

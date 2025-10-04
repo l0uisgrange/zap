@@ -56,7 +56,7 @@
     <title>{metadata.title}</title>
 </svelte:head>
 
-<div class="items-stretch overflow-hidden md:flex w-full! bg-neutral-50 dark:bg-neutral-950">
+<div class="items-stretch md:flex w-full! bg-neutral-50 dark:bg-neutral-950">
     <article class="min-h-dvh max-w-full overflow-hidden p-5 flex-auto pt-10 md:px-10 md:py-10">
         <h1 class="scroll-mt-32">{metadata.title}</h1>
         <p class="max-w-2xl text-lg">{metadata.subtitle}</p>
