@@ -35,7 +35,6 @@
             <div class="h-6"></div>
 
             <NavButton href="/docs/positioning" active={page.url.pathname === '/docs/positioning'}>Positioning</NavButton>
-            <NavButton href="/docs/standards" active={page.url.pathname === '/docs/standards'}>Standards</NavButton>
             <NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'} newFeature>Labels & decorations</NavButton>
             <NavButton href="/docs/styling" active={page.url.pathname === '/docs/styling'}>Styling</NavButton>
             <NavButton href="/docs/wiring" active={page.url.pathname === '/docs/wiring'} newFeature>Wiring</NavButton>

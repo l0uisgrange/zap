@@ -44,6 +44,31 @@ If you wish to change the default appearance of **all components of a specific t
 })
 ```
 
+## Standards
+
+As industries have become more interconnected through globalization, numerous standards have emerged. Many of these have since been replaced by a smaller set of conventions that have gained wider global acceptance.
+
+- **IEC 60617** (default) — The leading international standard, widely adopted.
+- **IEEE/ANSI 315-1975** — The North-American standard for electrical and electronics symbols.
+- **JIS C 0617** — The official Japanese standard, largely harmonized with the international IEC series.
+- **GB/T 4728** — The official Chinese national standard, also closely aligned with IEC guidelines.
+
+Zap currently supports either `iec` (default) or `ieee` in the `variant` styling parameter.
+
+![st](/docs/standards.svg)
+
+```typst
+#zap.circuit({
+    import zap: *
+    
+    // remember you can use global styling
+    // set-style(zap: (variant: "ieee"))
+    
+    resistor("r1", (0, 0), (3, 0))
+    resistor("r2", (3, 0), (6, 0), variant: "ieee")
+})
+```
+
 ## Available options
 
 The following constant is used in the background and represents all the available customization option for each component.
