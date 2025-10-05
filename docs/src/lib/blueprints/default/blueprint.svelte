@@ -9,9 +9,9 @@
     export { default as h4 } from './h4.svelte';
     export { default as h5 } from './h5.svelte';
     export { default as h6 } from './h6.svelte';
-    export { default as ul } from './h6.svelte';
-    export { default as ol } from './h6.svelte';
-    export { default as li } from './h6.svelte';
+    export { default as ul } from './ul.svelte';
+    export { default as ol } from './ol.svelte';
+    export { default as li } from './li.svelte';
     export { default as code } from './code.svelte';
     export { default as pre } from './pre.svelte';
     export { default as img } from './img.svelte';

@@ -4,6 +4,6 @@
     let { children }: { children: Snippet } = $props();
 </script>
 
-<ol>
+<ol class="list-disc list-outside ms-5">
     {@render children()}
 </ol>
