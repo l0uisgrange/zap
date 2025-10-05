@@ -84,10 +84,10 @@ You can add labels for current, voltage, or generic flow to components using the
 #zap.circuit({
     import zap: *
 
-    // simple voltage
+    // simple flow
     vsource("v1", (1, 0), (4, 0), f: $f_1$)
     
-    // custom voltage (only "content" key is required)
+    // custom flow (only "content" key is required)
     vsource("v1", (5, 0), (8, 0), f: (content: $f_1$, anchor: "south-west", label-distance: -20pt, distance: 17pt))
 })
 ```

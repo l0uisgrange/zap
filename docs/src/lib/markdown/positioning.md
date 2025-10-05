@@ -21,7 +21,7 @@ To position components within your circuit, you can choose to either attach them
 })
 ```
 
-Note that some components can only be placed using one node, like operational amplifiers, grounds and transistors.
+Note that **some components can only be placed using one node**, like operational amplifiers, grounds and transistors.
 
 You can also customize the position of the component alongside the wire using the `position` parameter like below.
 
@@ -35,7 +35,7 @@ You can also customize the position of the component alongside the wire using th
 })
 ```
 
-The `position` parameter also accepts a distance, which will be relative to the `in` anchor.
+The `position` parameter also accepts a distance, which is always relative to the `in` anchor.
 
 ## Named anchors
 

@@ -38,10 +38,17 @@
     } = $props();
 
     let headings = $state([]);
-    onMount(() => {
+
+    function kebabCase(str: string) {
+        return str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+            .join('-')
+            .toLowerCase();
+    }
+
+    $effect(() => {
         const headingElements = document.querySelectorAll('h1, h2, h3');
         headings = Array.from(headingElements).map((element, index) => {
-            const uid = `heading-${index}`;
+            const uid = kebabCase(element.textContent);
             element.id = uid;
             return {
                 level: parseInt(element.tagName.substring(1)),
@@ -49,7 +56,7 @@
                 uid
             };
         });
-    });
+    })
 </script>
 
 <svelte:head>

@@ -38,6 +38,7 @@
             <NavButton href="/docs/standards" active={page.url.pathname === '/docs/standards'}>Standards</NavButton>
             <NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'} newFeature>Labels & decorations</NavButton>
             <NavButton href="/docs/styling" active={page.url.pathname === '/docs/styling'}>Styling</NavButton>
+            <NavButton href="/docs/wiring" active={page.url.pathname === '/docs/wiring'} newFeature>Wiring</NavButton>
             <div class="h-6"></div>
             <NavButton href="/docs/components" active={page.url.pathname.startsWith('/docs/components')} newFeature>Components</NavButton>
             <NavButton href="/docs/custom" active={page.url.pathname.startsWith('/docs/custom')}>Custom components</NavButton>
