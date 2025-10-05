@@ -4,7 +4,7 @@ subtitle: Everything has been thought to give you a complete and easy-to-use lib
 ---
 
 <div class="flex items-start gap-4">
-<div class="mt-8 flex-none bg-neutral-900 text-white text-center size-4 text-xs rounded-full">1</div>
+<div class="mt-8 flex-none bg-neutral-400 text-white dark:bg-neutral-700 text-center size-4 text-xs rounded-full">1</div>
 <div>
 
 ## Installation
@@ -21,7 +21,7 @@ It will automatically install the library from Typst Universe.
 </div>
 
 <div class="flex items-start gap-4">
-<div class="mt-8 flex-none bg-neutral-900 text-white text-center size-4 text-xs rounded-full">2</div>
+<div class="mt-8 flex-none bg-neutral-400 text-white dark:bg-neutral-700 text-center size-4 text-xs rounded-full">2</div>
 <div>
 
 ## Create your first circuit

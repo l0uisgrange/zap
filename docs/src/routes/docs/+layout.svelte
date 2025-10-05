@@ -33,17 +33,17 @@
                 </span>
             </NavButton>
             <div class="h-6"></div>
-            <NavButton href="/docs/basics" active={page.url.pathname === '/docs/basics'}>Basics</NavButton>
+
             <NavButton href="/docs/positioning" active={page.url.pathname === '/docs/positioning'}>Positioning</NavButton>
             <NavButton href="/docs/standards" active={page.url.pathname === '/docs/standards'}>Standards</NavButton>
             <NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'} newFeature>Labels & decorations</NavButton>
             <NavButton href="/docs/styling" active={page.url.pathname === '/docs/styling'}>Styling</NavButton>
             <NavButton href="/docs/wiring" active={page.url.pathname === '/docs/wiring'} newFeature>Wiring</NavButton>
             <div class="h-6"></div>
-            <NavButton href="/docs/components" active={page.url.pathname.startsWith('/docs/components')} newFeature>Components</NavButton>
-            <NavButton href="/docs/custom" active={page.url.pathname.startsWith('/docs/custom')}>Custom components</NavButton>
+            <NavButton href="/docs/integrated" active={page.url.pathname === '/docs/integrated'} newFeature>Integrated circuits</NavButton>
+            <NavButton href="/docs/symbols" active={page.url.pathname.startsWith('/docs/symbols')}>Symbols</NavButton>
+            <NavButton href="/docs/custom" active={page.url.pathname.startsWith('/docs/custom')}>Custom symbol</NavButton>
             <div class="h-6"></div>
-            <NavButton href="/docs/draw" active={page.url.pathname === '/docs/draw'}>Drawing</NavButton>
             <NavButton href="/docs/debug" active={page.url.pathname === '/docs/debug'}>Debugging</NavButton>
         </div>
     </div>

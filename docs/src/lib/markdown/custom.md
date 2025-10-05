@@ -1,6 +1,6 @@
 ---
 title: Custom symbol
-subtitle: For circuits demanding specialized components, Zap delivers the intuitive tools you need to easily manufacture your own.
+subtitle: For circuits demanding specialized symbols, Zap delivers the intuitive tools you need to easily manufacture your own.
 ---
 
 ## Base template

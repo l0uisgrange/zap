@@ -14,6 +14,11 @@ const config = {
 			fallback: 'index.html',
 			precompress: false
 		})
+	},
+	compilerOptions: {
+		experimental: {
+			async: true
+		}
 	}
 };
 

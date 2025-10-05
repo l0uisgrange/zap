@@ -4,7 +4,7 @@
 	import typst from '$lib/typst.svg';
 	import typstlight from '$lib/typst-light.svg';
 	import githublight from '$lib/github-light.svg';
-	import Avatar from "./docs/components/[id]/Avatar.svelte";
+	import Avatar from "./docs/symbols/[id]/Avatar.svelte";
 
 	let { children } = $props();
 </script>

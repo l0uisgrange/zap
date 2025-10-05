@@ -18,9 +18,9 @@
 	<main class="min-h-dvh flex-auto p-5 pt-10 md:px-8 md:py-10">
 		<h1>Components</h1>
 		<p class="max-w-2xl text-lg">
-			The package offers a wide range of standardized electronic component symbols according to international standards.
+			The package offers a wide range of electronic symbols and variants inspired by international standards.
 		</p>
-		<h2>Components list</h2>
+		<h2>Symbols list</h2>
 		<Notice title="Component suggestion">This project is just getting started. Component suggestions are welcome and appreciated!</Notice>
 		<span class="h-5"></span>
 		<SearchInput items={components} bind:results />
