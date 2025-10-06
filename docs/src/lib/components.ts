@@ -35,7 +35,7 @@ export interface Component {
 	release: string;
 	options?: { name: string; alias?: string; default: string; description?: string; type?: string | string[] }[];
 	origin?: string;
-	contributors?: string[]
+	contributors?: string[];
 }
 
 export const components: Component[] = [
@@ -92,7 +92,7 @@ export const components: Component[] = [
 		image: inductor,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'isource',
@@ -100,7 +100,7 @@ export const components: Component[] = [
 		image: isource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'acvsource',
@@ -108,7 +108,7 @@ export const components: Component[] = [
 		image: acvsource,
 		quick: true,
 		release: '0.3.0',
-		contributors: ['l0uisgrange', 'LionelKarlen'],
+		contributors: ['l0uisgrange', 'LionelKarlen']
 	},
 	{
 		name: 'vsource',
@@ -116,7 +116,7 @@ export const components: Component[] = [
 		image: vsource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange', 'LionelKarlen'],
+		contributors: ['l0uisgrange', 'LionelKarlen']
 	},
 	{
 		name: 'vcc',
@@ -124,7 +124,7 @@ export const components: Component[] = [
 		image: vcc,
 		quick: false,
 		release: '0.3.0',
-		contributors: ['l0uisgrange', 'ThomasPDye'],
+		contributors: ['l0uisgrange', 'ThomasPDye']
 	},
 	{
 		name: 'vee',
@@ -132,7 +132,7 @@ export const components: Component[] = [
 		image: vee,
 		quick: false,
 		release: '0.3.0',
-		contributors: ['ThomasPDye'],
+		contributors: ['ThomasPDye']
 	},
 	{
 		name: 'zener',
@@ -140,8 +140,8 @@ export const components: Component[] = [
 		image: zener,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
 	},
 	{
 		name: 'tunnel',
@@ -149,8 +149,8 @@ export const components: Component[] = [
 		image: tunnel,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
 	},
 	{
 		name: 'schottky',
@@ -158,8 +158,8 @@ export const components: Component[] = [
 		image: schottky,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
 	},
 	{
 		name: 'fuse',
@@ -208,7 +208,7 @@ export const components: Component[] = [
 		image: led,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'dcmotor',
@@ -231,14 +231,14 @@ export const components: Component[] = [
 		full_name: 'ground',
 		image: ground,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'earth',
 		full_name: 'earth ground',
 		image: earth,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'bjt',
@@ -310,14 +310,14 @@ export const components: Component[] = [
 		image: acmotor,
 		quick: true,
 		release: '0.2.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'frame',
 		full_name: 'frame ground',
 		image: frame,
 		release: '0.2.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'capacitor',
@@ -325,7 +325,7 @@ export const components: Component[] = [
 		image: capa,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'rheostat',
@@ -334,7 +334,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.2.0',
 		origin: 'resistor',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'potentiometer',
@@ -343,7 +343,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.2.0',
 		origin: 'resistor',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'adc',
@@ -352,7 +352,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.0',
 		origin: 'converter',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'dac',
@@ -361,7 +361,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.0',
 		origin: 'converter',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'mcu',
@@ -376,7 +376,8 @@ export const components: Component[] = [
 				name: 'pins',
 				type: ['dictionary', 'number'],
 				default: 'none',
-				description: 'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
+				description:
+					'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
 			}
 		]
 	}
@@ -388,7 +389,7 @@ type ContributorCount = {
 
 const contributorCounts: ContributorCount = components.reduce((acc: ContributorCount, component) => {
 	if (component.contributors) {
-		component.contributors.forEach(contributor => {
+		component.contributors.forEach((contributor) => {
 			acc[contributor] = (acc[contributor] || 0) + 1;
 		});
 	}
@@ -397,7 +398,5 @@ const contributorCounts: ContributorCount = components.reduce((acc: ContributorC
 
 const sortedContributors = Object.entries(contributorCounts).sort(([, countA], [, countB]) => countB - countA);
 
-const specialcontributors = [
-	'thoams22', 'aortega0703', 'Geronymos', 'w-utter', 'TheRobot2105'
-]
+const specialcontributors = ['thoams22', 'aortega0703', 'Geronymos', 'w-utter', 'TheRobot2105'];
 export const contributors = [...sortedContributors.map(([name]) => name), ...specialcontributors];

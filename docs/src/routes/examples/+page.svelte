@@ -17,7 +17,7 @@
 	</p>
 	<h2>Simple example</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
 			<img src={example1} alt="example1" class="p-10" />
 		</div>
 		<Code
@@ -41,7 +41,7 @@
 	</div>
 	<h2>Wheatstone bridge</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
 			<img src={example2} alt="example2" class="p-10" />
 		</div>
 		<Code
@@ -69,7 +69,7 @@
 	</div>
 	<h2>Transistor and charge</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
 			<img src={example3} alt="example3" class="p-10" />
 		</div>
 		<Code
@@ -93,7 +93,7 @@
 	</div>
     <h2>Customization</h2>
     <div class="grid gap-7 md:grid-cols-2">
-        <div class="dark:border-neutral-border flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+        <div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
             <img src={example4} alt="example4" class="p-10" />
         </div>
         <Code content={'' +
