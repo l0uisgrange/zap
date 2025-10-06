@@ -48,9 +48,9 @@
 	</p>
 	<H2>Minimal usage</H2>
 	<P>Here's a quick example on how to use this component.</P>
-	<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+	<div class="flex flex-wrap gap-5">
 		<Img src={component.image} alt={component?.full_name} />
-		<div class="lg:col-span-2">
+		<div class="flex-auto">
 			<Code
 				content={`#import "@preview/zap:${version}"\n` +
 					'\n' +

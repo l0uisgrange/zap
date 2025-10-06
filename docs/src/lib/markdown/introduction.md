@@ -9,7 +9,8 @@ I started Zap in 2025 during my engineering studies at [EPFL](https://epfl.ch/en
 
 ## Contributors
 
-Special thanks to all the contributors who bring amazing features and bug fixes.
+Special thanks to all the [contributors](https://github.com/l0uisgrange/zap/graphs/contributors) who bring amazing features and bug fixes.
 
 ### How to contribute
 
+Contributions are very welcome, and it's very easy to set up. You have a lot more informations on the dedicated [contributing guidelines](https://github.com/l0uisgrange/zap?tab=contributing-ov-file#contributions).
