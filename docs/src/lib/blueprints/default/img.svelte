@@ -1,9 +1,8 @@
 <script lang="ts">
-    import type { Snippet } from 'svelte';
+	import type { Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-    let { src, alt }: { src: string, alt: string } = $props();
-
-    let srcI = $derived(src.includes('$lib') ? import(src) : src)
+	let { src, alt, ...rest }: { src: string; alt: string } & HTMLAttributes<HTMLImageElement> = $props();
 </script>
 
-<img src={await srcI} alt={alt} class="border rounded-lg bg-white" />
+<img {src} {alt} class="rounded-lg border bg-white {rest.class}" />
