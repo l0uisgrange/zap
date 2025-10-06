@@ -1,7 +1,7 @@
 #set page(margin: 0pt, width: auto, height: auto)
-#import "../src/lib.typ": canvas
+#import "../src/lib.typ": cetz
 
-#canvas({
+#cetz.canvas({
     import "../src/lib.typ": *
 
     draw.grid(

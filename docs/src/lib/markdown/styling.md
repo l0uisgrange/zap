@@ -5,7 +5,7 @@ subtitle: Zap allows you to style most electrical components using optional argu
 
 ## Inline
 
-If you want to customize the appearance of a **single component** instance, rather than all components of the same type, simply use the various `params` optional arguments.
+If you want to customize the appearance of a **single symbol** instance, rather than all, simply use the various `params` optional arguments.
 
 ![st](/docs/style-params.svg)
 
@@ -20,7 +20,7 @@ If you want to customize the appearance of a **single component** instance, rath
 
 ## Global
 
-If you wish to change the default appearance of **all components of a specific type** throughout the same circuit, Zap supports the `set-style` method from CeTZ.
+If you wish to change the default appearance of **all symbols of a specific type** throughout the same circuit, Zap supports the `set-style` method from CeTZ.
 
 ![st](/docs/style.svg)
 
@@ -71,7 +71,7 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
 
 ## Available options
 
-The following constant is used in the background and represents all the available customization option for each component.
+The following constant is used in the background and represents all the available customization option for each symbol.
 
 ```typst
 #let default = (

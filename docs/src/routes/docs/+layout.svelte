@@ -28,22 +28,37 @@
             </NavButton>
             <NavButton href="/docs/get-started" active={page.url.pathname === '/docs/get-started'}>
                 <span class="flex items-center gap-2">
-                    <span class="icon-[hugeicons--drawing-compass] size-5"></span>
+                    <span class="icon-[hugeicons--start-up-01] size-5"></span>
                     Get started
                 </span>
             </NavButton>
             <div class="h-6"></div>
-
+            <NavButton href="/docs/symbols" active={page.url.pathname.startsWith('/docs/symbols')}>
+                <span class="flex items-center gap-2">
+                    <span class="icon-[hugeicons--archive-02] size-5"></span>
+                    Symbols
+                </span>
+            </NavButton>
+            <div class="h-6"></div>
             <NavButton href="/docs/positioning" active={page.url.pathname === '/docs/positioning'}>Positioning</NavButton>
             <NavButton href="/docs/decorations" active={page.url.pathname === '/docs/decorations'} newFeature>Labels & decorations</NavButton>
+            <NavButton href="/docs/annotations" active={page.url.pathname === '/docs/annotations'}>Annotations</NavButton>
             <NavButton href="/docs/styling" active={page.url.pathname === '/docs/styling'}>Styling</NavButton>
             <NavButton href="/docs/wiring" active={page.url.pathname === '/docs/wiring'} newFeature>Wiring</NavButton>
-            <div class="h-6"></div>
             <NavButton href="/docs/integrated" active={page.url.pathname === '/docs/integrated'} newFeature>Integrated circuits</NavButton>
-            <NavButton href="/docs/symbols" active={page.url.pathname.startsWith('/docs/symbols')}>Symbols</NavButton>
-            <NavButton href="/docs/custom" active={page.url.pathname.startsWith('/docs/custom')}>Custom symbol</NavButton>
             <div class="h-6"></div>
-            <NavButton href="/docs/debug" active={page.url.pathname === '/docs/debug'}>Debugging</NavButton>
+            <NavButton href="/docs/custom" active={page.url.pathname === '/docs/custom'}>
+                <span class="flex items-center gap-2">
+                    <span class="icon-[hugeicons--geometric-shapes-02] size-5"></span>
+                    Custom symbol
+                </span>
+            </NavButton>
+            <NavButton href="/docs/debug" active={page.url.pathname === '/docs/debug'}>
+                <span class="flex items-center gap-2">
+                    <span class="icon-[hugeicons--bug-01] size-5"></span>
+                    Debugging
+                </span>
+            </NavButton>
         </div>
     </div>
 	<article class="flex-auto">

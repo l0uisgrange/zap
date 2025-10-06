@@ -11,3 +11,5 @@ I started Zap in 2025 during my engineering studies at [EPFL](https://epfl.ch/en
 
 Special thanks to all the contributors who bring amazing features and bug fixes.
 
+### How to contribute
+
