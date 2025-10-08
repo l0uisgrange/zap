@@ -27,3 +27,4 @@
 #import "components/integrated/opamp.typ": opamp
 #import "components/integrated/mcus.typ": mcu
 #import "components/integrated/converters.typ": adc, dac
+#import "components/instruments/round-meters.typ": ammeter, ohmmeter, round-meter, voltmeter, wattmeter

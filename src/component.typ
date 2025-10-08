@@ -60,6 +60,8 @@
         set-origin(p-origin)
         rotate(p-rotate)
 
+        ctx.insert("component-rotation", p-rotate) // make component rotation available in draw function to enable consistent arrow direction independent of component orientation
+
         // Component
         on-layer(1, {
             group(name: "component", {

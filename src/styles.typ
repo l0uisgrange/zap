@@ -241,6 +241,16 @@
             padding: 0.2,
             spacing: 0.4,
         ),
+        round-meter: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            radius: .53,
+            pointer-start-scale: 0.6, // Radius of pointer start / Radius of circle
+            pointer-end-scale: 1.6, // Radius of pointer end / Radius of circle
+            pointer-angle: 30deg,
+            pointer-arrow-scale: 1,
+        ),
     ),
     params: (
         debug: false,
