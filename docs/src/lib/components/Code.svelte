@@ -27,14 +27,6 @@
 			lang: language
 		});
 	});
-
-	let copied = $state(false);
-
-	function copy() {
-		navigator.clipboard.writeText(content.toString());
-		copied = true;
-		setTimeout(() => (copied = false), 2000);
-	}
 </script>
 
 <div class="group relative mb-2 grid w-full max-w-full rounded-lg border bg-neutral-100/30 px-4 py-3 antialiased dark:bg-neutral-900/30">
