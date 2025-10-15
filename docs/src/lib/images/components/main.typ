@@ -173,3 +173,71 @@
     import lib: *
     transformer("r1", (-3, 0), (3, 0))
 })
+
+// Image 29
+#image({
+    import lib: *
+    mcu("r1", (0, 0), pins: 5, width: 2, height: 2)
+    draw.floating({
+        wire("r1.pin1", (rel: (-5, 0)))
+        wire("r1.pin2", (rel: (-5, 0)))
+        wire("r1.pin3", (rel: (-5, 0)))
+        wire("r1.pin4", (rel: (5, 0)))
+        wire("r1.pin5", (rel: (5, 0)))
+    })
+})
+
+// Image 30
+#image({
+    import lib: *
+    opamp("r1", (0, 0))
+    draw.floating({
+        wire("r1.plus", (rel: (-5, 0)))
+        wire("r1.minus", (rel: (-5, 0)))
+        wire("r1.out", (rel: (5, 0)))
+    })
+})
+
+// Image 31
+#image({
+    import lib: *
+    npn("r1", (0, 0))
+    draw.floating({
+        wire("r1.c", (rel: (0, 5)))
+        wire("r1.b", (rel: (-5, 0)))
+        wire("r1.e", (rel: (0, -5)))
+    })
+})
+
+// Image 32
+#image({
+    import lib: *
+    pmos("r1", (0, 0))
+    draw.floating({
+        wire("r1.s", (rel: (0, 5)))
+        wire("r1.d", (rel: (0, -5)))
+        wire("r1.c", (rel: (-5, 0)))
+    })
+})
+
+// Image 33
+#image({
+    import lib: *
+    pnp("r1", (0, 0))
+    draw.floating({
+        wire("r1.e", (rel: (0, 5)))
+        wire("r1.b", (rel: (-5, 0)))
+        wire("r1.c", (rel: (0, -5)))
+    })
+})
+
+// Image 34
+#image({
+    import lib: *
+    nmos("r1", (0, 0))
+    draw.floating({
+        wire("r1.d", (rel: (0, 5)))
+        wire("r1.s", (rel: (0, -5)))
+        wire("r1.c", (rel: (-5, 0)))
+    })
+})

@@ -26,7 +26,12 @@ import vcc from './images/components/25.svg';
 import vee from './images/components/26.svg';
 import afuse from './images/components/27.svg';
 import transformer from './images/components/28.svg';
-import nothing from './images/components/06.svg';
+import mcu from './images/components/29.svg';
+import opamp from './images/components/30.svg';
+import npn from './images/components/31.svg';
+import pmos from './images/components/32.svg';
+import pnp from './images/components/33.svg';
+import nmos from './images/components/34.svg';
 
 export interface Component {
 	name: string;
@@ -277,9 +282,9 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
-		name: 'bjt',
+		name: 'npn',
 		full_name: 'bipolar junction transistor',
-		image: nothing, // TODO
+		image: npn,
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -292,9 +297,25 @@ export const components: Component[] = [
 		]
 	},
 	{
-		name: 'mosfet',
+		name: 'pnp',
+		full_name: 'bipolar junction transistor',
+		image: pnp,
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
+		origin: "npn"
+	},
+	{
+		name: 'nmos',
 		full_name: 'field-effect transistor',
-		image: nothing, // TODO
+		image: nmos,
+		release: '0.2.0',
+		contributors: ['l0uisgrange'],
+		origin: "pmos"
+	},
+	{
+		name: 'pmos',
+		full_name: 'field-effect transistor',
+		image: pmos,
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -329,7 +350,7 @@ export const components: Component[] = [
 	{
 		name: 'opamp',
 		full_name: 'operational amplifier',
-		image: nothing, // TODO
+		image: opamp,
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -402,7 +423,7 @@ export const components: Component[] = [
 	{
 		name: 'mcu',
 		full_name: 'microcontroller unit',
-		image: nothing, // TODO
+		image: mcu,
 		quick: false,
 		release: '0.4.0',
 		origin: 'mcu',
