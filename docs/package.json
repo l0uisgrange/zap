@@ -11,7 +11,7 @@
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"svg:optimize": "svgo -f src/lib/images/components",
+		"svg:optimize": "svgo -f static/docs",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
 	},
