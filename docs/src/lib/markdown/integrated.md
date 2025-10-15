@@ -5,7 +5,7 @@ subtitle: With Zap, you can also draw IC schematics in just a second, and have a
 
 ## Microcontroller Unit
 
-The `mcu` is the most complex component, hence this dedicated page. 
+The `mcu` is the most complex component, hence this dedicated page.
 
 ![](/docs/mcu.svg)
 
@@ -22,7 +22,7 @@ The `mcu` is the most complex component, hence this dedicated page.
 
 #zap.circuit({
     import zap: *
-    
+
     mcu("mcu",
         (3, 0),
         pins: pins, // you can also provide a number instead of a list

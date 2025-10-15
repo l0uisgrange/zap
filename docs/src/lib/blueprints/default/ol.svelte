@@ -1,9 +1,9 @@
 <script lang="ts">
-    import type { Snippet } from 'svelte';
+	import type { Snippet } from 'svelte';
 
-    let { children }: { children: Snippet } = $props();
+	let { children }: { children: Snippet } = $props();
 </script>
 
-<ol class="list-disc list-outside ms-5">
-    {@render children()}
+<ol class="ms-5 list-outside list-disc">
+	{@render children()}
 </ol>

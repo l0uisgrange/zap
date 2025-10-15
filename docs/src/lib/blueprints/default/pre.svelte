@@ -5,6 +5,7 @@
 </script>
 
 <span
-	class="group relative *:max-w-92 *:scroll-mr-5 *:*:max-w-full *:*:overflow-hidden overflow-x-scroll border *:*:bg-transparent! *:bg-transparent! mb-3 w-full max-w-full mt-4 block rounded-lg bg-neutral-100/30 px-5 py-4 text-sm antialiased dark:bg-neutral-900/30">
-    {@render children()}
+	class="group relative mt-4 mb-3 block w-full max-w-full overflow-x-scroll rounded-lg border bg-neutral-100/30 px-5 py-4 text-sm antialiased *:*:max-w-full *:max-w-92 *:scroll-mr-5 *:*:overflow-hidden *:*:bg-transparent! *:bg-transparent! dark:bg-neutral-900/30"
+>
+	{@render children()}
 </span>

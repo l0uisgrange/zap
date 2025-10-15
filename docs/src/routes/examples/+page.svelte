@@ -17,7 +17,7 @@
 	</p>
 	<h2>Simple example</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white dark:border-neutral-800">
 			<img src={example1} alt="example1" class="p-10" />
 		</div>
 		<Code
@@ -41,7 +41,7 @@
 	</div>
 	<h2>Wheatstone bridge</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white dark:border-neutral-800">
 			<img src={example2} alt="example2" class="p-10" />
 		</div>
 		<Code
@@ -69,50 +69,52 @@
 	</div>
 	<h2>Transistor and charge</h2>
 	<div class="grid gap-7 md:grid-cols-2">
-		<div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
+		<div class="flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white dark:border-neutral-800">
 			<img src={example3} alt="example3" class="p-10" />
 		</div>
 		<Code
-				content={'#zap.circuit({\n' +
+			content={'#zap.circuit({\n' +
 				'    import zap: *\n' +
 				'\n' +
 				'    // Source and transistor\n' +
-				'    npn("d1", (3,3))\n'+
-				'    wire("d1.b", ("d1.b", "-|", (0,3)), (0,3))\n'+
-				'    acvsource("v1", (0,-1), (0,3), label: (content: "10V", anchor: "south"), u: $u_1$)\n'+
-				'\n'+
+				'    npn("d1", (3,3))\n' +
+				'    wire("d1.b", ("d1.b", "-|", (0,3)), (0,3))\n' +
+				'    acvsource("v1", (0,-1), (0,3), label: (content: "10V", anchor: "south"), u: $u_1$)\n' +
+				'\n' +
 				'    // Capacitor and charge\n' +
-				'    capacitor("c1", ("d1.e", "|-", "v1.in"), "d1.e", label: $C$)\n'+
-				'    wire("d1.c", (rel: (2,0)))\n'+
-				'    rheostat("r1", (rel: (2,0), to: "d1.c"), ((rel: (2,0), to: "d1.c"), "|-", "v1.in"), label: $R_"ch"$)\n'+
+				'    capacitor("c1", ("d1.e", "|-", "v1.in"), "d1.e", label: $C$)\n' +
+				'    wire("d1.c", (rel: (2,0)))\n' +
+				'    rheostat("r1", (rel: (2,0), to: "d1.c"), ((rel: (2,0), to: "d1.c"), "|-", "v1.in"), label: $R_"ch"$)\n' +
 				'\n' +
 				'    // Bottom wiring\n' +
 				'    wire("r1.out", "v1.in")\n' +
 				'})'}
 		/>
 	</div>
-    <h2>Customization</h2>
-    <div class="grid gap-7 md:grid-cols-2">
-        <div class="dark:border-neutral-800 flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white">
-            <img src={example4} alt="example4" class="p-10" />
-        </div>
-        <Code content={'' +
-            '#zap.circuit({\n' +
-            '    import zap: *\n' +
-            '    set-style(zap: (resistor: (width: 1.2, height: 0.4)))\n'+
-            '\n'+
-            '    resistor("r1", (2, 0), (4, 2))\n'+
-            '    resistor("r2", (6, 0), (4, 2))\n'+
-            '    resistor("r3", (6, 0), (4, -2))\n'+
-            '    resistor("r4", (2, 0), (4, -2))\n'+
-            '    vsource("v1", (0, -2), (0, 2), stroke: blue, u: $u_1$, i: (content: $i_1$, anchor: "south"), label: (content: "5V", anchor: "south"))\n'+
-            '    afuse("f1", "r1.out", "v1.out", position: 60%)\n'+
-            '    npn("n1", (9, 2), envelope: true, fill: blue.lighten(90%))\n'+
-            '    wire("f1.in", "n1.b")\n'+
-            '    capacitor("c1", "n1.c", (rel: (2, 0)))\n'+
-            '    swire("c1.out", "v1.in", axis: "y")\n'+
-            '    wire("n1.e", (rel: (0, -3.5)))\n' +
-            '})'+
-         ''}/>
-    </div>
+	<h2>Customization</h2>
+	<div class="grid gap-7 md:grid-cols-2">
+		<div class="flex items-center justify-center overflow-scroll rounded-lg border border-neutral-200 bg-white dark:border-neutral-800">
+			<img src={example4} alt="example4" class="p-10" />
+		</div>
+		<Code
+			content={'' +
+				'#zap.circuit({\n' +
+				'    import zap: *\n' +
+				'    set-style(zap: (resistor: (width: 1.2, height: 0.4)))\n' +
+				'\n' +
+				'    resistor("r1", (2, 0), (4, 2))\n' +
+				'    resistor("r2", (6, 0), (4, 2))\n' +
+				'    resistor("r3", (6, 0), (4, -2))\n' +
+				'    resistor("r4", (2, 0), (4, -2))\n' +
+				'    vsource("v1", (0, -2), (0, 2), stroke: blue, u: $u_1$, i: (content: $i_1$, anchor: "south"), label: (content: "5V", anchor: "south"))\n' +
+				'    afuse("f1", "r1.out", "v1.out", position: 60%)\n' +
+				'    npn("n1", (9, 2), envelope: true, fill: blue.lighten(90%))\n' +
+				'    wire("f1.in", "n1.b")\n' +
+				'    capacitor("c1", "n1.c", (rel: (2, 0)))\n' +
+				'    swire("c1.out", "v1.in", axis: "y")\n' +
+				'    wire("n1.e", (rel: (0, -3.5)))\n' +
+				'})' +
+				''}
+		/>
+	</div>
 </main>

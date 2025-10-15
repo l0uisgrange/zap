@@ -26,4 +26,3 @@ As the `circuit` is just a boosted version of CeTZ' `canvas`, you can directly d
     draw.line((2, 2), (4, 0), mark: (end: ">", fill: purple), stroke: purple + .8pt)
 })
 ```
-

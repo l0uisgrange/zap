@@ -38,11 +38,7 @@
 
 	type NoticeType = 'info' | 'warning' | 'danger' | 'tip' | 'note';
 
-	let {
-		children,
-		type = 'info',
-		title = undefined
-	} = $props<{ children: Snippet; type?: NoticeType; title?: string }>();
+	let { children, type = 'info', title = undefined } = $props<{ children: Snippet; type?: NoticeType; title?: string }>();
 </script>
 
 <div class="mb-4 border-l-4 px-4 subpixel-antialiased {getTypeClasses(type)}">

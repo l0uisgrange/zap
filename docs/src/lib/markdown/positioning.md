@@ -15,7 +15,7 @@ To position components within your circuit, you can choose to either attach them
 
     // using one node ...
     resistor("r1", (-2, 0))
-    
+
     // ... or using two nodes
     resistor("r2", (1, 0), (4, 0))
 })
@@ -99,7 +99,7 @@ You can easily define a new coordinate with the perpendicular position between 2
     import zap: *
 
     node("n1", (3, -1), label: "A")
-    
+
     // using either (A, "-|", B) or (A, "|-", B) is possible
     node("n2", ((0, 0), "-|", "n1"), label: "P")
 })
@@ -107,7 +107,7 @@ You can easily define a new coordinate with the perpendicular position between 2
 
 ### Relative coordinates
 
-You can also define the new coordinate using a previously defined anchor. 
+You can also define the new coordinate using a previously defined anchor.
 
 In the example below, we want to point `r2` to the `out` anchor of `r1`, but a little bit on the right.
 
@@ -119,7 +119,7 @@ In the example below, we want to point `r2` to the `out` anchor of `r1`, but a l
 
     // relative to the previous coordinate, here (1, 0)
     resistor("r1", (1, 0), (rel: (3, 0)))
-    
+
     // relative to a specific coordinate
     resistor("r2", (5, -3), (rel: (1, 0), to: "r1.out"))
 })

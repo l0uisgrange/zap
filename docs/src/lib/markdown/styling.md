@@ -12,7 +12,7 @@ If you want to customize the appearance of a **single symbol** instance, rather 
 ```typst
 #zap.circuit({
     import zap: *
-    
+
     resistor("r1", (0, 0), (3, 0))
     resistor("r2", (3, 0), (6, 0), variant: "ieee", stroke: 1pt + red)
 })
@@ -27,18 +27,18 @@ If you wish to change the default appearance of **all symbols of a specific type
 ```typst
 #zap.circuit({
     import zap: *
-    
+
     set-style(zap: (
         resistors: (
             stroke: red
         ),
         heaters: (
-            stroke: blue, 
+            stroke: blue,
             fill: blue.lighten(90%),
             scale: 1.4
         )
     ))
-    
+
     resistor("r1", (0, 0), (3, 0))
     heater("r2", (3, 0), (6, 0))
 })
@@ -60,10 +60,10 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
 ```typst
 #zap.circuit({
     import zap: *
-    
+
     // remember you can use global styling
     // set-style(zap: (variant: "ieee"))
-    
+
     resistor("r1", (0, 0), (3, 0))
     resistor("r2", (3, 0), (6, 0), variant: "ieee")
 })
@@ -127,7 +127,7 @@ The following constant is used in the background and represents all the availabl
             font: 3pt,
             fill: red,
         ),
-        
+
         // Components
         capacitor: (
             variant: auto,

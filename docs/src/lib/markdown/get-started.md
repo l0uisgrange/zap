@@ -33,7 +33,7 @@ To get started with Zap, here's a minimal working example.
 
 #zap.circuit({
     import zap: *
-    
+
     isource("i1", (0, 0), (5, 0))
 })
 ```

@@ -7,12 +7,12 @@
 	<title>Zap – Your Typst Circuit Drawing Companion</title>
 </svelte:head>
 
-<div class="flex w-screen flex-col px-5 text-center py-14 md:min-h-screen md:py-20">
+<div class="flex w-screen flex-col px-5 py-14 text-center md:min-h-screen md:py-20">
 	<span class="text-new text-lg tracking-wide">Brand New Package</span>
-	<span class="mt-2 max-w-7xl mx-auto text-5xl sm:text-6xl font-medium text-balance tracking-tight font-stretch-expanded md:text-8xl">
+	<span class="mx-auto mt-2 max-w-7xl text-5xl font-medium tracking-tight text-balance font-stretch-expanded sm:text-6xl md:text-8xl">
 		Your Typst circuit drawing companion
 	</span>
-	<div class="mt-8 flex items-center gap-3 mx-auto">
+	<div class="mx-auto mt-8 flex items-center gap-3">
 		<a
 			href="/docs"
 			class="flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-white transition hover:bg-neutral-900/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
@@ -26,8 +26,8 @@
 			Examples
 		</a>
 	</div>
-	<div class="mt-20 flex flex-wrap px-5 w-full justify-center *:bg-white *:rounded-lg *:md:p-8 *:p-5 items-stretch gap-8 text-left md:grid-cols-2">
-		<img src={example1} class="flex-auto max-w-full md:max-w-max order-2" alt="Example 1" />
-		<img src={example2} class="flex-auto max-w-full md:max-w-max order-1" alt="Example 2" />
+	<div class="mt-20 flex w-full flex-wrap items-stretch justify-center gap-8 px-5 text-left *:rounded-lg *:bg-white *:p-5 md:grid-cols-2 *:md:p-8">
+		<img src={example1} class="order-2 max-w-full flex-auto md:max-w-max" alt="Example 1" />
+		<img src={example2} class="order-1 max-w-full flex-auto md:max-w-max" alt="Example 2" />
 	</div>
 </div>

@@ -1,31 +1,32 @@
-import resistor from './images/resistor.svg';
-import inductor from './images/inductor.svg';
-import isource from './images/isource.svg';
-import vsource from './images/vsource.svg';
-import fuse from './images/fuse.svg';
-import diode from './images/diode.svg';
-import led from './images/led.svg';
-import dcmotor from './images/dcmotor.svg';
-import vee from './images/vee.svg';
-import vcc from './images/vcc.svg';
-import ground from './images/ground.svg';
-import earth from './images/earth.svg';
-import bjt from './images/bjt.svg';
-import mosfet from './images/mosfet.svg';
-import opamp from './images/opamp.svg';
-import acmotor from './images/acmotor.svg';
-import frame from './images/frame.svg';
-import capa from './images/capacitor.svg';
-import rheostat from './images/rheostat.svg';
-import potentiometer from './images/potentiometer.svg';
-import heater from './images/heater.svg';
-import zener from './images/zener.svg';
-import schottky from './images/schottky.svg';
-import tunnel from './images/tunnel.svg';
-import acvsource from './images/acvsource.svg';
-import adc from './images/adc.svg';
-import dac from './images/dac.svg';
-import mcu from './images/mcu.svg';
+import acmotor from './images/components/01.svg';
+import acvsource from './images/components/02.svg';
+import adc from './images/components/03.svg';
+import capacitor from './images/components/04.svg';
+import dac from './images/components/05.svg';
+import dcmotor from './images/components/06.svg';
+import diode from './images/components/07.svg';
+import earth from './images/components/08.svg';
+import frame from './images/components/09.svg';
+import ground from './images/components/10.svg';
+import fuse from './images/components/11.svg';
+import heater from './images/components/12.svg';
+import dvsource from './images/components/13.svg';
+import disource from './images/components/14.svg';
+import inductor from './images/components/15.svg';
+import isource from './images/components/16.svg';
+import led from './images/components/17.svg';
+import potentiometer from './images/components/18.svg';
+import resistor from './images/components/19.svg';
+import rheostat from './images/components/20.svg';
+import schottky from './images/components/21.svg';
+import tunnel from './images/components/22.svg';
+import vsource from './images/components/23.svg';
+import zener from './images/components/24.svg';
+import vcc from './images/components/25.svg';
+import vee from './images/components/26.svg';
+import afuse from './images/components/27.svg';
+import transformer from './images/components/28.svg';
+import nothing from './images/components/06.svg';
 
 export interface Component {
 	name: string;
@@ -119,6 +120,24 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange', 'LionelKarlen']
 	},
 	{
+		name: 'dvsource',
+		full_name: 'dependent voltage source',
+		image: dvsource,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange'],
+		origin: 'vsource'
+	},
+	{
+		name: 'disource',
+		full_name: 'dependent current source',
+		image: disource,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange'],
+		origin: 'isource'
+	},
+	{
 		name: 'vcc',
 		full_name: 'positive voltage supply',
 		image: vcc,
@@ -160,6 +179,23 @@ export const components: Component[] = [
 		release: '0.3.0',
 		origin: 'diode',
 		contributors: ['Pariatorn']
+	},
+	{
+		name: 'afuse',
+		full_name: 'asymmetric fuse',
+		image: afuse,
+		quick: true,
+		release: '0.1.0',
+		origin: 'fuse',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'transformer',
+		full_name: 'transformer',
+		image: transformer,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'fuse',
@@ -243,7 +279,7 @@ export const components: Component[] = [
 	{
 		name: 'bjt',
 		full_name: 'bipolar junction transistor',
-		image: bjt,
+		image: nothing, // TODO
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -258,7 +294,7 @@ export const components: Component[] = [
 	{
 		name: 'mosfet',
 		full_name: 'field-effect transistor',
-		image: mosfet,
+		image: nothing, // TODO
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -293,7 +329,7 @@ export const components: Component[] = [
 	{
 		name: 'opamp',
 		full_name: 'operational amplifier',
-		image: opamp,
+		image: nothing, // TODO
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -322,7 +358,7 @@ export const components: Component[] = [
 	{
 		name: 'capacitor',
 		full_name: 'capacitor',
-		image: capa,
+		image: capacitor,
 		quick: true,
 		release: '0.1.0',
 		contributors: ['l0uisgrange']
@@ -366,7 +402,7 @@ export const components: Component[] = [
 	{
 		name: 'mcu',
 		full_name: 'microcontroller unit',
-		image: mcu,
+		image: nothing, // TODO
 		quick: false,
 		release: '0.4.0',
 		origin: 'mcu',
