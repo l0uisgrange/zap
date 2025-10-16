@@ -1,6 +1,6 @@
 # Zap for Typst
 
-**Zap** ⚡ is a Typst package that makes drawing electronic circuits simple and intuitive 💥. It's the first circuit library inspired by widely recognized standards 🧷 like **IEC** and **IEEE/ANSI**.
+**Zap** ⚡ is a Typst package that makes drawing electronic circuits simple and intuitive 💥. It's the first circuit library inspired by widely recognized standards 🧷 like **IEC** and **IEEE/ANSI**. Unlike circuitikz in LaTeX (2007), its design philosophy balances ease of use with powerful customization, avoiding any awkward syntax.
 
 [Documentation](https://zap.grangelouis.ch) — [Examples](https://zap.grangelouis.ch/examples) — [Forum](https://github.com/l0uisgrange/zap/discussions/categories/q-a)
 

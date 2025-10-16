@@ -1,31 +1,37 @@
-import resistor from './images/resistor.svg';
-import inductor from './images/inductor.svg';
-import isource from './images/isource.svg';
-import vsource from './images/vsource.svg';
-import fuse from './images/fuse.svg';
-import diode from './images/diode.svg';
-import led from './images/led.svg';
-import dcmotor from './images/dcmotor.svg';
-import vee from './images/vee.svg';
-import vcc from './images/vcc.svg';
-import ground from './images/ground.svg';
-import earth from './images/earth.svg';
-import bjt from './images/bjt.svg';
-import mosfet from './images/mosfet.svg';
-import opamp from './images/opamp.svg';
-import acmotor from './images/acmotor.svg';
-import frame from './images/frame.svg';
-import capa from './images/capacitor.svg';
-import rheostat from './images/rheostat.svg';
-import potentiometer from './images/potentiometer.svg';
-import heater from './images/heater.svg';
-import zener from './images/zener.svg';
-import schottky from './images/schottky.svg';
-import tunnel from './images/tunnel.svg';
-import acvsource from './images/acvsource.svg';
-import adc from './images/adc.svg';
-import dac from './images/dac.svg';
-import mcu from './images/mcu.svg';
+import acmotor from './images/components/01.svg';
+import acvsource from './images/components/02.svg';
+import adc from './images/components/03.svg';
+import capacitor from './images/components/04.svg';
+import dac from './images/components/05.svg';
+import dcmotor from './images/components/06.svg';
+import diode from './images/components/07.svg';
+import earth from './images/components/08.svg';
+import frame from './images/components/09.svg';
+import ground from './images/components/10.svg';
+import fuse from './images/components/11.svg';
+import heater from './images/components/12.svg';
+import dvsource from './images/components/13.svg';
+import disource from './images/components/14.svg';
+import inductor from './images/components/15.svg';
+import isource from './images/components/16.svg';
+import led from './images/components/17.svg';
+import potentiometer from './images/components/18.svg';
+import resistor from './images/components/19.svg';
+import rheostat from './images/components/20.svg';
+import schottky from './images/components/21.svg';
+import tunnel from './images/components/22.svg';
+import vsource from './images/components/23.svg';
+import zener from './images/components/24.svg';
+import vcc from './images/components/25.svg';
+import vee from './images/components/26.svg';
+import afuse from './images/components/27.svg';
+import transformer from './images/components/28.svg';
+import mcu from './images/components/29.svg';
+import opamp from './images/components/30.svg';
+import npn from './images/components/31.svg';
+import pmos from './images/components/32.svg';
+import pnp from './images/components/33.svg';
+import nmos from './images/components/34.svg';
 
 export interface Component {
 	name: string;
@@ -35,7 +41,7 @@ export interface Component {
 	release: string;
 	options?: { name: string; alias?: string; default: string; description?: string; type?: string | string[] }[];
 	origin?: string;
-	contributors?: string[]
+	contributors?: string[];
 }
 
 export const components: Component[] = [
@@ -92,7 +98,7 @@ export const components: Component[] = [
 		image: inductor,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'isource',
@@ -100,7 +106,7 @@ export const components: Component[] = [
 		image: isource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'acvsource',
@@ -108,7 +114,7 @@ export const components: Component[] = [
 		image: acvsource,
 		quick: true,
 		release: '0.3.0',
-		contributors: ['l0uisgrange', 'LionelKarlen'],
+		contributors: ['l0uisgrange', 'LionelKarlen']
 	},
 	{
 		name: 'vsource',
@@ -116,7 +122,25 @@ export const components: Component[] = [
 		image: vsource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange', 'LionelKarlen'],
+		contributors: ['l0uisgrange', 'LionelKarlen']
+	},
+	{
+		name: 'dvsource',
+		full_name: 'dependent voltage source',
+		image: dvsource,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange'],
+		origin: 'vsource'
+	},
+	{
+		name: 'disource',
+		full_name: 'dependent current source',
+		image: disource,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange'],
+		origin: 'isource'
 	},
 	{
 		name: 'vcc',
@@ -124,7 +148,7 @@ export const components: Component[] = [
 		image: vcc,
 		quick: false,
 		release: '0.3.0',
-		contributors: ['l0uisgrange', 'ThomasPDye'],
+		contributors: ['l0uisgrange', 'ThomasPDye']
 	},
 	{
 		name: 'vee',
@@ -132,7 +156,7 @@ export const components: Component[] = [
 		image: vee,
 		quick: false,
 		release: '0.3.0',
-		contributors: ['ThomasPDye'],
+		contributors: ['ThomasPDye']
 	},
 	{
 		name: 'zener',
@@ -140,8 +164,8 @@ export const components: Component[] = [
 		image: zener,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
 	},
 	{
 		name: 'tunnel',
@@ -149,8 +173,8 @@ export const components: Component[] = [
 		image: tunnel,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
 	},
 	{
 		name: 'schottky',
@@ -158,8 +182,25 @@ export const components: Component[] = [
 		image: schottky,
 		quick: true,
 		release: '0.3.0',
-		origin: "diode",
-		contributors: ['Pariatorn'],
+		origin: 'diode',
+		contributors: ['Pariatorn']
+	},
+	{
+		name: 'afuse',
+		full_name: 'asymmetric fuse',
+		image: afuse,
+		quick: true,
+		release: '0.1.0',
+		origin: 'fuse',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'transformer',
+		full_name: 'transformer',
+		image: transformer,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'fuse',
@@ -208,7 +249,7 @@ export const components: Component[] = [
 		image: led,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'dcmotor',
@@ -231,19 +272,19 @@ export const components: Component[] = [
 		full_name: 'ground',
 		image: ground,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'earth',
 		full_name: 'earth ground',
 		image: earth,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
-		name: 'bjt',
+		name: 'npn',
 		full_name: 'bipolar junction transistor',
-		image: bjt,
+		image: npn,
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -256,9 +297,25 @@ export const components: Component[] = [
 		]
 	},
 	{
-		name: 'mosfet',
+		name: 'pnp',
+		full_name: 'bipolar junction transistor',
+		image: pnp,
+		release: '0.1.0',
+		contributors: ['l0uisgrange'],
+		origin: "npn"
+	},
+	{
+		name: 'nmos',
 		full_name: 'field-effect transistor',
-		image: mosfet,
+		image: nmos,
+		release: '0.2.0',
+		contributors: ['l0uisgrange'],
+		origin: "pmos"
+	},
+	{
+		name: 'pmos',
+		full_name: 'field-effect transistor',
+		image: pmos,
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
 		options: [
@@ -310,22 +367,22 @@ export const components: Component[] = [
 		image: acmotor,
 		quick: true,
 		release: '0.2.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'frame',
 		full_name: 'frame ground',
 		image: frame,
 		release: '0.2.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'capacitor',
 		full_name: 'capacitor',
-		image: capa,
+		image: capacitor,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'rheostat',
@@ -334,7 +391,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.2.0',
 		origin: 'resistor',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'potentiometer',
@@ -343,7 +400,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.2.0',
 		origin: 'resistor',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'adc',
@@ -352,7 +409,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.0',
 		origin: 'converter',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'dac',
@@ -361,7 +418,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.0',
 		origin: 'converter',
-		contributors: ['l0uisgrange'],
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'mcu',
@@ -376,7 +433,8 @@ export const components: Component[] = [
 				name: 'pins',
 				type: ['dictionary', 'number'],
 				default: 'none',
-				description: 'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
+				description:
+					'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
 			}
 		]
 	}
@@ -388,7 +446,7 @@ type ContributorCount = {
 
 const contributorCounts: ContributorCount = components.reduce((acc: ContributorCount, component) => {
 	if (component.contributors) {
-		component.contributors.forEach(contributor => {
+		component.contributors.forEach((contributor) => {
 			acc[contributor] = (acc[contributor] || 0) + 1;
 		});
 	}
@@ -397,7 +455,5 @@ const contributorCounts: ContributorCount = components.reduce((acc: ContributorC
 
 const sortedContributors = Object.entries(contributorCounts).sort(([, countA], [, countB]) => countB - countA);
 
-const specialcontributors = [
-	'thoams22', 'aortega0703', 'Geronymos', 'w-utter', 'TheRobot2105'
-]
+const specialcontributors = ['thoams22', 'aortega0703', 'Geronymos', 'w-utter', 'TheRobot2105'];
 export const contributors = [...sortedContributors.map(([name]) => name), ...specialcontributors];

@@ -49,4 +49,4 @@ jobs:
       -   name: Check Svelte app
           run: |
             cd ./docs
-            npm run check
+            npm run build

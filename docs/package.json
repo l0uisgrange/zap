@@ -9,29 +9,37 @@
 		"postbuild": "cp build/index.html build/404.html",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"typst": "cd src/lib/images/components && typst compile main.typ {0p}.svg -f svg --root ../../../../../",
+		"posttypst": "npm run svg:optimize",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"svg:optimize": "svgo -f . -r",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"@iconify-json/hugeicons": "^1.2.16",
+		"@iconify-json/hugeicons": "^1.2.17",
 		"@iconify/tailwind4": "^1.0.6",
-		"@sveltejs/adapter-static": "^3.0.9",
-		"@sveltejs/kit": "^2.39.1",
-		"@sveltejs/vite-plugin-svelte": "^6.2.0",
-		"@tailwindcss/vite": "^4.1.13",
+		"@mdsx/rehype-custom-highlighter": "^0.0.3",
+		"@shikijs/langs": "^3.13.0",
+		"@shikijs/themes": "^3.13.0",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.44.0",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.1.14",
+		"mdsx": "^0.0.7",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.6.14",
-		"svelte": "^5.38.10",
-		"svelte-check": "^4.3.1",
+		"shiki": "^3.13.0",
+		"svelte": "^5.39.8",
+		"svelte-check": "^4.3.2",
+		"svgo": "^4.0.0",
 		"tailwindcss": "^4.1.7",
-		"typescript": "^5.9.2",
-		"vite": "^7.1.5"
+		"typescript": "^5.9.3",
+		"vite": "^7.1.9"
 	},
 	"dependencies": {
-		"fuse.js": "^7.1.0",
-		"shiki": "^3.12.2"
+		"fuse.js": "^7.1.0"
 	}
 }

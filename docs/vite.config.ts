@@ -7,5 +7,6 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	define: {
 		__APP_VERSION__: JSON.stringify(version)
-	}
+	},
+	assetsInclude: ['**/*.md']
 });

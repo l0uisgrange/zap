@@ -2,85 +2,102 @@
 @plugin "@iconify/tailwind4";
 
 @font-face {
-    font-family: "Mona Space";
-    font-style: normal;
-    font-weight: 200 700;
-    font-display: swap;
-    src: url("/MonaspaceArgon.ttf") format("truetype");
+	font-family: 'Mona Space';
+	font-style: normal;
+	font-weight: 200 700;
+	font-display: swap;
+	src: url('/MonaspaceArgon.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: "Mona Sans";
-    font-style: normal;
-    font-weight: 200 700;
-    font-display: swap;
-    src: url("/Mona-Sans.woff2") format("woff2");
+	font-family: 'Mona Sans';
+	font-style: normal;
+	font-weight: 200 700;
+	font-display: swap;
+	src: url('/Mona-Sans.woff2') format('woff2');
 }
 
 @theme {
-    --font-display: "Mona Sans", "Arial", "sans-serif";
-    --color-typst: #239dad;
-    --color-import: #CF222E;
-    --color-component: #8250DF;
-    --color-params: #953800;
-    --color-string: #0A3069;
-    --color-float: #0550AE;
-    --color-new: var(--color-purple-600);
-    --color-neutral-200: rgb(209,217,224);
-    --color-neutral-900: rgb(13,17,23);
-    --color-neutral-border: #3d444d;
-    --color-neutral-800: #151b23;
-    --color-neutral-100: rgb(246, 248, 250);
-    --color-blue-600: #0969da;
-    --color-primary: #3e5fff;
-    --color-red: #e02f1f;
-    --font-mono: 'Mona Space', monospace;
+	--font-display: 'Mona Sans', 'Arial', 'sans-serif';
+	--color-typst: #239dad;
+	--color-import: #cf222e;
+	--color-component: #8250df;
+	--color-params: #953800;
+	--color-string: #0a3069;
+	--color-float: #0550ae;
+	--color-new: var(--color-purple-600);
+	--color-neutral-50: oklch(0.985 0 0);
+	--color-neutral-100: oklch(0.967 0.001 286.375);
+	--color-neutral-200: oklch(0.92 0.004 286.32);
+	--color-neutral-300: oklch(0.871 0.006 286.286);
+	--color-neutral-400: oklch(0.705 0.015 286.067);
+	--color-neutral-500: oklch(0.552 0.016 285.938);
+	--color-neutral-600: oklch(0.442 0.017 285.786);
+	--color-neutral-700: oklch(0.37 0.013 285.805);
+	--color-neutral-800: oklch(0.274 0.006 286.033);
+	--color-neutral-900: oklch(0.21 0.006 285.885);
+	--color-neutral-950: oklch(0.141 0.005 285.823);
+	--color-blue-600: #0969da;
+	--color-primary: #3e5fff;
+	--color-red: #e02f1f;
+	--font-mono: 'Mona Space', monospace;
 }
 
 :root {
-    @media (prefers-color-scheme: dark) {
-        --color-import: #FF7B72 !important;
-        --color-component: #D2A8FF;
-        --color-params: #FFA657 !important;
-        --color-string: #A5D6FF;
-        --color-new: var(--color-purple-500);
-        --color-float: #79C0FF;
-    }
+	@media (prefers-color-scheme: dark) {
+		--color-import: #ff7b72 !important;
+		--color-component: #d2a8ff;
+		--color-params: #ffa657 !important;
+		--color-string: #a5d6ff;
+		--color-new: var(--color-purple-500);
+		--color-float: #79c0ff;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.shiki,
+		.shiki span {
+			color: var(--shiki-dark) !important;
+			/* Optional, if you also want font styles */
+			font-style: var(--shiki-dark-font-style) !important;
+			font-weight: var(--shiki-dark-font-weight) !important;
+			text-decoration: var(--shiki-dark-text-decoration) !important;
+		}
+	}
 }
 
 html {
-    @apply font-display scroll-smooth;
-    div:not(.dark) > pre {
-        @apply bg-neutral-100! antialiased max-w-full! w-full! dark:bg-neutral-800!;
-    }
-    pre code {
-        @apply text-sm font-mono whitespace-pre max-w-full! overflow-x-scroll!;
-    }
+	@apply font-display scroll-smooth;
+	strong {
+		@apply font-medium;
+	}
+}
+
+:not(pre) > code {
+	@apply inline rounded bg-neutral-200/60 p-0.5 px-1.5 text-sm text-nowrap antialiased dark:bg-neutral-700/40;
 }
 
 body {
-    @apply dark:bg-neutral-900 dark:text-white;
+	@apply dark:bg-black dark:text-white;
 }
 
-.border-* {
-    @apply border-neutral-200 dark:border-neutral-800;
+.border-r,
+.border-b,
+.border-t,
+.border-l,
+.border {
+	@apply border-neutral-200/90 dark:border-neutral-900;
 }
 
 h1 {
-    @apply text-4xl font-semibold font-stretch-105% mb-5;
+	@apply mb-5 text-4xl font-semibold font-stretch-105%;
 }
 h2 {
-    @apply text-2xl font-semibold mb-3 mt-6;
+	@apply mt-6 mb-3 text-2xl font-semibold;
 }
 h3 {
-    @apply text-lg font-medium mb-3;
+	@apply mb-3 text-lg font-medium;
 }
-p, ul {
-    @apply subpixel-antialiased mb-2;
-}
-main a:not(.block):not(.flex) {
-    @apply text-blue-600 underline underline-offset-3;
-}
-.font-mono {
-    @apply font-light;
+p,
+ul {
+	@apply mb-2 subpixel-antialiased;
 }
