@@ -9,8 +9,11 @@
 		"postbuild": "cp build/index.html build/404.html",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"typst": "cd src/lib/images/components && typst compile main.typ {0p}.svg -f svg --root ../../../../../",
+		"posttypst": "npm run svg:optimize",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"svg:optimize": "svgo -f . -r",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
 	},
@@ -31,6 +34,7 @@
 		"shiki": "^3.13.0",
 		"svelte": "^5.39.8",
 		"svelte-check": "^4.3.2",
+		"svgo": "^4.0.0",
 		"tailwindcss": "^4.1.7",
 		"typescript": "^5.9.3",
 		"vite": "^7.1.9"

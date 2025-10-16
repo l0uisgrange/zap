@@ -14,7 +14,7 @@
 	<title>Components</title>
 </svelte:head>
 
-<main class="min-h-dvh p-5 pt-10 md:px-10 md:py-10 bg-neutral-50 dark:bg-neutral-950">
+<main class="min-h-dvh bg-neutral-50 p-5 pt-10 md:px-10 md:py-10 dark:bg-neutral-950">
 	<h1>Symbols</h1>
 	<p class="max-w-2xl text-lg">The package offers a wide range of electronic symbols and variants inspired by international standards.</p>
 	<h2 class="mt-8!">Symbols list</h2>

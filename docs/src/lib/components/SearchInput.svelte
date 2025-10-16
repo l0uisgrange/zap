@@ -24,9 +24,7 @@
 			return;
 		}
 		const searchResults = fuse.search(searchQuery);
-		results = searchResults
-			.map((result) => result.item)
-			.toSorted((a, b) => a.name.localeCompare(b.name));
+		results = searchResults.map((result) => result.item).toSorted((a, b) => a.name.localeCompare(b.name));
 	});
 </script>
 
@@ -36,11 +34,9 @@
 			type="text"
 			bind:value={searchQuery}
 			placeholder="Search components"
-			class="dark:border-neutral-800 w-full rounded-full border bg-neutral-100 dark:bg-neutral-900  px-4 py-1.5 pl-10 subpixel-antialiased focus:border-neutral-300! dark:focus:border-neutral-700! focus:outline-none"
+			class="w-full rounded-full border bg-neutral-100 px-4 py-1.5 pl-10 subpixel-antialiased focus:border-neutral-300! focus:outline-none dark:border-neutral-800 dark:bg-neutral-900 dark:focus:border-neutral-700!"
 		/>
-		<span
-			class="icon-[hugeicons--search-01] absolute top-1/2 left-3 size-5 -translate-y-1/2 text-neutral-500"
-		></span>
+		<span class="icon-[hugeicons--search-01] absolute top-1/2 left-3 size-5 -translate-y-1/2 text-neutral-500"></span>
 		{#if searchQuery.trim()}
 			<button
 				class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-800 px-3 py-1 text-xs text-white dark:bg-white dark:text-black"

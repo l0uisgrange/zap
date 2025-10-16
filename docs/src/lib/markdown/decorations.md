@@ -54,7 +54,7 @@ You can add labels for current, voltage, or generic flow to components using the
 
     // simple current
     vsource("v1", (1, 0), (4, 0), i: $i_1$)
-    
+
     // custom current (only "content" key is required)
     vsource("v1", (5, 0), (8, 0), i: (content: $i_1$, anchor: "west", invert: true, distance: 17pt, label-distance: 15pt))
 })
@@ -70,7 +70,7 @@ You can add labels for current, voltage, or generic flow to components using the
 
     // simple voltage
     vsource("v1", (1, 0), (4, 0), u: $u_1$)
-    
+
     // custom voltage (only "content" key is required)
     vsource("v1", (5, 0), (8, 0), u: (content: $u_1$, anchor: "south-west", label-distance: 8pt, distance: 17pt))
 })
@@ -86,7 +86,7 @@ You can add labels for current, voltage, or generic flow to components using the
 
     // simple flow
     vsource("v1", (1, 0), (4, 0), f: $f_1$)
-    
+
     // custom flow (only "content" key is required)
     vsource("v1", (5, 0), (8, 0), f: (content: $f_1$, anchor: "south-west", label-distance: -20pt, distance: 17pt))
 })

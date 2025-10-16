@@ -14,20 +14,20 @@ All you have to do is define a `draw` function and call the `component` function
 #import "@preview/zap:0.4.0": component, interface
 
 #let square(name, node, ..params) = {
-    
+
     // Custom styling properties
     let custom-style = (
         width: 1,
 		height: 1
     )
-    
+
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-custom-style.width / 2, -custom-style.height / 2), (custom-style.width / 2, custom-style.height / 2), io: position.len() < 2)
-        
+
         rect((-custom-style.width / 2, -custom-style.height / 2), (custom-style.width / 2, custom-style.height / 2), fill: white, ..style)
     }
-   
+
     // Component call
     component("square", name, node, draw: draw, ..params)
 }
