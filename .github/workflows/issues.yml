@@ -2,6 +2,8 @@ name: Close stale issues
 on:
   schedule:
     - cron: '0 0 * * *'
+permissions:
+  issues: write
 jobs:
   stale:
     runs-on: macos-latest
