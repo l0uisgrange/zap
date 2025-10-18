@@ -32,6 +32,7 @@ import npn from './images/components/31.svg';
 import pmos from './images/components/32.svg';
 import pnp from './images/components/33.svg';
 import nmos from './images/components/34.svg';
+import antenna from './images/components/35.svg';
 
 export interface Component {
 	name: string;
@@ -199,6 +200,14 @@ export const components: Component[] = [
 		full_name: 'transformer',
 		image: transformer,
 		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'antenna',
+		full_name: 'antenna',
+		image: antenna,
+		quick: false,
 		release: '0.4.0',
 		contributors: ['l0uisgrange']
 	},

@@ -241,3 +241,10 @@
         wire("r1.c", (rel: (-5, 0)))
     })
 })
+
+// Image 35
+#image({
+    import lib: *
+    wire((-3, 0), (3, 0))
+    antenna("a1", (0, 0))
+})
