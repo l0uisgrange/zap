@@ -39,5 +39,5 @@
 
 #let voltmeter(name, node, ..params) = round-meter(name, node, measurand: "V", ..params)
 #let ammeter(name, node, ..params) = round-meter(name, node, measurand: "A", ..params)
-#let ohmmeter(name, node, ..params) = round-meter(name, node, measurand: [$Omega$], ..params)
+#let ohmmeter(name, node, ..params) = round-meter(name, node, measurand: $Omega$, ..params)
 #let wattmeter(name, node, ..params) = round-meter(name, node, measurand: "W", ..params)
