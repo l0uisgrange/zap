@@ -496,6 +496,7 @@
                 dash: auto,
             ),
             fill: none,
+            number: 3,
             distance: 0.8,
             spacing: 0.35,
             length: 0.5,

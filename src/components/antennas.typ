@@ -7,28 +7,31 @@
 #let antenna(name, node, closed: false, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
+        assert(style.number > 1, message: "number must be at least 2")
+
         wire((0, 0), (0, style.distance))
-        let width = 2 * style.spacing
+        let width = style.spacing * (style.number - 1)
+        let left = -(style.number - 1) / 2
 
         merge-path(
             close: true,
-            stroke: style.stroke,
             fill: style.fill,
+            stroke: if closed { style.stroke } else { none },
             {
-                for i in (0, 2) {
-                    line((0, style.distance), (rel: (style.spacing * (i - 1), style.length)))
-                }
-                if closed {
-                    line((0, style.distance + style.length), (rel: (style.spacing, 0)))
-                    line((0, style.distance + style.length), (rel: (-style.spacing, 0)))
-                }
+                line((0, style.distance), (rel: (style.spacing * left, style.length)))
+                line((rel: (width, 0)), (0, style.distance))
             }
         )
-        line((0, style.distance), (rel: (0, style.length)), stroke: style.stroke)
-        interface((-width / 2, style.distance + style.spacing * 2), (width / 2, style.distance))
+        if not closed {
+            for i in range(style.number) {
+                line((0, style.distance), (rel: (style.spacing * (i + left), style.length)), stroke: style.stroke)
+            }
+        }
+        interface((-width / 2, style.distance), (rel: (width, style.length)))
         anchor("default", (0, 0))
     }
 
     // Component call
     component("antenna", name, node, draw: draw, ..params)
+
 }
