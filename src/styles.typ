@@ -241,6 +241,12 @@
             padding: 0.2,
             spacing: 0.4,
         ),
+        round-meter: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            radius: .47,
+        ),
     ),
     params: (
         debug: false,

@@ -248,3 +248,27 @@
     wire((-3, 0), (3, 0))
     antenna("a1", (0, 0))
 })
+
+// Image 36
+#image({
+    import lib: *
+    voltmeter("m1", (-3, 0), (3, 0))
+})
+
+// Image 37
+#image({
+    import lib: *
+    ammeter("m2", (-3, 0), (3, 0))
+})
+
+// Image 38
+#image({
+    import lib: *
+    ohmmeter("m3", (-3, 0), (3, 0))
+})
+
+// Image 39
+#image({
+    import lib: *
+    wattmeter("m4", (-3, 0), (3, 0))
+})

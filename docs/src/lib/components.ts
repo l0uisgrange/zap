@@ -33,6 +33,10 @@ import pmos from './images/components/32.svg';
 import pnp from './images/components/33.svg';
 import nmos from './images/components/34.svg';
 import antenna from './images/components/35.svg';
+import voltmeter from './images/components/36.svg';
+import ammeter from './images/components/37.svg';
+import ohmmeter from './images/components/38.svg';
+import wattmeter from './images/components/39.svg';
 
 export interface Component {
 	name: string;
@@ -428,6 +432,48 @@ export const components: Component[] = [
 		release: '0.4.0',
 		origin: 'converter',
 		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'voltmeter',
+		full_name: 'voltage meter',
+		image: voltmeter,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['anarendiran'],
+		options: [
+			{
+				name: 'measurand',
+				type: 'content',
+				default: 'V'
+			}
+		]
+	},
+	{
+		name: 'ohmmeter',
+		full_name: 'ohm meter',
+		image: ohmmeter,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['anarendiran'],
+		origin: "voltmeter"
+	},
+	{
+		name: 'ammeter',
+		full_name: 'ampere meter',
+		image: ammeter,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['anarendiran'],
+		origin: "voltmeter"
+	},
+	{
+		name: 'wattmeter',
+		full_name: 'watt meter',
+		image: wattmeter,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['anarendiran'],
+		origin: "voltmeter"
 	},
 	{
 		name: 'mcu',
