@@ -57,12 +57,44 @@
     return (number / cetz.util.resolve-number(ctx, 1pt)) * 1pt
 }
 
+#let resolve(dict) = {
+    // Special dictionaries
+    let hold = ("stroke", "scale", "position")
+
+    let resolve-recursive(dict, defs) = {
+        let dict-defs = (:)
+        for (k, v) in dict {
+            if type(v) != dictionary {
+                if v == auto and k in defs.keys() {
+                    dict.at(k) = defs.at(k)
+                }
+                dict-defs.insert(k, dict.at(k))
+            } else if k in hold {
+                for key in v.keys() {
+                    if v.at(key) == auto and key in defs.at(k).keys() {
+                        dict.at(k).at(key) = defs.at(k).at(key)
+                    }
+                }
+                dict-defs.insert(k, dict.at(k))
+            }
+        }
+        for (k, v) in dict {
+            if type(v) == dictionary and k not in hold {
+                dict.at(k) = resolve-recursive(dict.at(k), defs + dict-defs)
+            }
+        }
+        return dict
+    }
+
+    return resolve-recursive(dict, (:))
+}
+
 #let set-style(..style) = {
     cetz.draw.set-ctx(ctx => {
         let new-style = style.named()
         for root in new-style.keys() {
             let style-dict = ((root): (new-style.at(root)))
-            if ctx.zap.style.at(root, default: none) == none {
+            if ctx.zap.style.at(root, default: (:)) == (:) {
                 ctx.style = cetz.styles.merge(ctx.style, style-dict)
             } else {
                 ctx.zap.style = cetz.styles.merge(ctx.zap.style, style-dict)
@@ -75,8 +107,32 @@
 #let get-style(ctx) = {
     let zap-style = ctx.zap.style
 
-    //TODO Definition of auto
+    // Override auto
+    if zap-style.arrow.stroke.paint == auto {
+        zap-style.arrow.stroke.paint = zap-style.foreground
+    }
+    if zap-style.stroke.paint == auto {
+        zap-style.stroke.paint = zap-style.foreground
+    }
+    if zap-style.decoration.stroke.paint == auto {
+        zap-style.decoration.stroke.paint = zap-style.foreground
+    }
+    if zap-style.background == auto {
+        zap-style.background = ctx.background
+    }
+    if zap-style.fill == auto {
+        zap-style.fill = zap-style.background
+    }
+    if zap-style.node.fill == auto {
+        zap-style.node.fill = zap-style.foreground
+    }
+    if zap-style.node.nofill == auto {
+        zap-style.node.nofill = zap-style.fill
+    }
+    if zap-style.inductor.fill == auto {
+        zap-style.inductor.fill = zap-style.inductor.stroke.paint
+    }
+    zap-style = resolve(zap-style)
 
-    zap-style = cetz.styles.resolve(zap-style)
     return zap-style
 }

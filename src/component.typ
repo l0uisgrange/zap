@@ -3,7 +3,7 @@
 #import "components/nodes.typ": node
 #import "components/wires.typ": wire
 #import "utils.typ": get-label-anchor, get-style, opposite-anchor
-#import cetz.util: merge-dictionary
+#import cetz.styles: merge
 
 #let component(
     draw: none,
@@ -15,7 +15,7 @@
     position: 50%,
     scale: 1.0,
     rotate: 0deg,
-    debug: false,
+    debug: none,
     ..params,
 ) = {
     let p-position = position
@@ -44,9 +44,20 @@
         let keep-stroke = ctx.style.stroke
         cetz.draw.set-style(stroke: zap-style.stroke)
 
+        // Identify default style
         let style = zap-style.at(uid)
-        style = merge-dictionary(style, params.named())
-        style = merge-dictionary(style, style.at(style.variant, default: (:)))
+        
+        // Identify variant
+        let params-variant = params.named().at("variant", default: none)
+        let variant = if params-variant != none { params-variant }
+                                            else { style.variant }
+        style.at("variant") = variant
+
+        // Identify predefined variant style
+        style = merge(style, style.at(style.variant, default: (:)))
+
+        // Override style by user params
+        style = merge(style, params.named())
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -80,21 +91,17 @@
         on-layer(0, {
             if label != none {
                 let label-style = zap-style.label
-                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
-                label-style = merge-dictionary(label-style, params.named().at("label-defaults", default: (:)))
+                label-style = merge(label-style, style.at("label", default: (:)))
+                label-style = merge(label-style, params.named().at("label-defaults", default: (:)))
+                label-style = merge(label-style, if type(label) == dictionary {label} else {(content: label)})
 
-                let l = if type(label) == dictionary {
-                    merge-dictionary(label, label-style, overwrite: false)
-                } else {
-                    merge-dictionary(label-style, (content: label))
-                }
                 let anchor = get-label-anchor(p-rotate)
-                let resolved-anchor = if type(l.anchor) == str and "south" in l.anchor { opposite-anchor(anchor) } else { anchor }
+                let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
                 content(
-                    if type(l.anchor) == str { "component." + l.anchor } else { l.anchor },
-                    anchor: l.at("align", default: resolved-anchor),
-                    l.content,
-                    padding: l.distance,
+                    if type(label-style.anchor) == str { "component." + label-style.anchor } else { label-style.anchor },
+                    anchor: label-style.at("align", default: resolved-anchor),
+                    label-style.content,
+                    padding: label-style.distance,
                 )
             }
         })
@@ -133,15 +140,18 @@
         }
     })
 
-    if (debug) {
-        on-layer(1, ctx => {
-            let style = ctx.zap.style.debug
-            for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
-                circle((), radius: style.radius, stroke: style.stroke)
-                content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
+    cetz.draw.get-ctx(ctx => {
+        let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
+        if (debug) {
+            on-layer(1, ctx => {
+                let style = ctx.zap.style.debug
+                for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
+                    circle((), radius: style.radius, stroke: style.stroke)
+                    content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
+                })
             })
-        })
-    }
+        }
+    })
 }
 
 #let interface(node1, node2, ..params, io: false) = {
