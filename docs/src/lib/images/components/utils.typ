@@ -3,7 +3,7 @@
 #import "/src/lib.typ" as lib
 
 #let image(body) = {
-    set page(margin: 0pt, width: auto, height: auto)
+    set page(margin: -1pt, width: auto, height: auto)
 
     pagebreak(weak: true)
 
