@@ -1,6 +1,7 @@
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": get-style, opposite-anchor
+#import "/src/utils.typ": get-style, opposite-anchor, resolve-style
 #import cetz.draw: anchor, circle, content, group, hide, line, mark, set-style
+#import cetz.styles: merge
 
 #let ra = ratio
 
@@ -45,22 +46,27 @@
 
         // Current decoration
         if i != none {
-            let default-params = (position: 50%, distance: 7pt, anchor: "north")
-            let current = if type(i) == dictionary {
-                cetz.styles.merge(default-params, i)
-            } else {
-                (content: i, ..default-params)
-            }
+            let zap-style = ctx.zap.style
+            zap-style.decoration.current.wire = merge(zap-style.decoration.current.wire,
+                if type(i) == dictionary { i } else { (content: i) })
+
+            let dec = resolve-style(zap-style).decoration.current.wire
             mark(
-                (name: "line", anchor: current.position),
-                (name: "line", anchor: current.position + if type(current.position) == ra { 1% } else { 0.1 }),
-                symbol: ">",
+                (name: "line", anchor: dec.position),
+                (name: "line", anchor: dec.position + if type(dec.position) == ra { 1% } else { 0.1 }),
+                symbol: dec.variant,
+                reverse: dec.invert,
                 anchor: "center",
-                fill: black,
-                stroke: black + 0pt,
-                scale: 1,
+                fill: dec.stroke.paint,
+                stroke: 0pt,
+                scale: dec.scale * get-style(ctx).decoration.scale,
             )
-            content((name: "line", anchor: current.position), anchor: opposite-anchor(current.anchor), current.content, padding: current.distance)
+            content(
+                (name: "line", anchor: dec.position),
+                anchor: opposite-anchor(dec.anchor),
+                dec.content,
+                padding: dec.distance,
+            )
         }
     })
 }
