@@ -247,6 +247,15 @@
             stroke: auto,
             radius: .47,
         ),
+        button: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            width: .8,
+            angle: 25deg,
+            overlap: .1,
+            distance: .7
+        )
     ),
     params: (
         debug: false,

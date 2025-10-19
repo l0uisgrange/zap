@@ -272,3 +272,33 @@
     import lib: *
     wattmeter("m4", (-3, 0), (3, 0))
 })
+
+// Image 40
+#image({
+    import lib: *
+    nobutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 41
+#image({
+    import lib: *
+    noibutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 42
+#image({
+    import lib: *
+    ncbutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 43
+#image({
+    import lib: *
+    ncibutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 44
+#image({
+    import lib: *
+    pcapacitor("r1", (-3, 0), (3, 0))
+})

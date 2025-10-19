@@ -37,6 +37,11 @@ import voltmeter from './images/components/36.svg';
 import ammeter from './images/components/37.svg';
 import ohmmeter from './images/components/38.svg';
 import wattmeter from './images/components/39.svg';
+import nobutton from './images/components/40.svg';
+import noibutton from './images/components/41.svg';
+import ncbutton from './images/components/42.svg';
+import ncibutton from './images/components/43.svg';
+import pcapacitor from './images/components/44.svg';
 
 export interface Component {
 	name: string;
@@ -395,6 +400,14 @@ export const components: Component[] = [
 		image: capacitor,
 		quick: true,
 		release: '0.1.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'pcapacitor',
+		full_name: 'polarized capacitor',
+		image: pcapacitor,
+		quick: true,
+		release: '0.4.0',
 		contributors: ['l0uisgrange']
 	},
 	{
