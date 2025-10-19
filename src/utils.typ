@@ -129,6 +129,11 @@
     if zap-style.node.nofill == auto {
         zap-style.node.nofill = zap-style.fill
     }
+    if zap-style.node.stroke.paint == auto {
+        zap-style = resolve(zap-style)
+        zap-style.node.stroke.paint = zap-style.node.fill
+        return zap-style
+    }
     if zap-style.inductor.fill == auto {
         zap-style = resolve(zap-style)
         zap-style.inductor.fill = zap-style.inductor.stroke.paint
