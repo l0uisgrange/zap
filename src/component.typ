@@ -40,17 +40,19 @@
     group(name: name, ctx => {
         let zap-style = get-style(ctx)
 
-        // Keep Cetz default stroke
-        let keep-stroke = ctx.style.stroke
-        cetz.draw.set-style(stroke: zap-style.stroke)
+        // Keep Cetz style
+        let keep-style = ctx.style
 
-        // Identify default style
+        // Cetz style to default
+        cetz.draw.set-style(..cetz.styles.default)
+
+        // Identify default component style by uid
         let style = zap-style.at(uid)
         
         // Identify variant
         let params-variant = params.named().at("variant", default: none)
         let variant = if params-variant != none { params-variant }
-                                            else { style.variant }
+                                           else { style.variant }
         style.at("variant") = variant
 
         // Identify predefined variant style
@@ -106,9 +108,6 @@
             }
         })
 
-        // Bringing back the Cetz default stroke
-        cetz.draw.set-style(stroke: keep-stroke)
-
         // Decorations
         if position.len() == 2 {
             wire("in", "component.west")
@@ -138,6 +137,9 @@
                 }
             }
         }
+
+        // Bringing back the Cetz style
+        cetz.draw.set-style(..keep-style)
     })
 
     cetz.draw.get-ctx(ctx => {
