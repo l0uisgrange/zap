@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/nodes.typ": node
 #import "components/wires.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
 #import cetz.styles: merge
 
 #let component(
@@ -29,7 +29,7 @@
     assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
-    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "pretty"), message: "variant must be 'iec', 'ieee' or 'pretty'")
+    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "pretty", auto), message: "variant must be 'iec', 'ieee', 'pretty' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"))
 
     let p-rotate = rotate
@@ -38,28 +38,21 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let zap-style = get-style(ctx)
-
-        // Keep Cetz style
+        // Keep Cetz style and set to default
         let keep-style = ctx.style
-
-        // Cetz style to default
         cetz.draw.set-style(..cetz.styles.default)
 
-        // Identify default component style by uid
-        let style = zap-style.at(uid)
-        
-        // Identify variant
-        let params-variant = params.named().at("variant", default: none)
-        let variant = if params-variant != none { params-variant }
-                                           else { style.variant }
-        style.at("variant") = variant
-
-        // Identify predefined variant style
-        style = merge(style, style.at(style.variant, default: (:)))
+        let zap-style = ctx.zap.style
 
         // Override style by user params
-        style = merge(style, params.named())
+        zap-style.at(uid) = merge(zap-style.at(uid), params.named())
+
+        // Override style by variant
+        let variant = resolve-style(zap-style).at(uid).variant
+        zap-style.at(uid) = merge(zap-style.at(uid).at(variant, default: (:)), zap-style.at(uid))
+
+        // Resolve style
+        let style = resolve-style(zap-style).at(uid)
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)

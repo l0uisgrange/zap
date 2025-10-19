@@ -53,10 +53,6 @@
 
 #import "/src/dependencies.typ": cetz
 
-#let to-points(ctx, number) = {
-    return (number / cetz.util.resolve-number(ctx, 1pt)) * 1pt
-}
-
 #let resolve(dict) = {
     // Special dictionaries
     let hold = ("stroke", "scale", "position")
@@ -104,42 +100,41 @@
     })
 }
 
+#let resolve-style(style) = {
+    if style.arrow.stroke.paint == auto {
+        style.arrow.stroke.paint = style.foreground
+    }
+    if style.stroke.paint == auto {
+        style.stroke.paint = style.foreground
+    }
+    if style.decoration.stroke.paint == auto {
+        style.decoration.stroke.paint = style.foreground
+    }
+    if style.background == auto {
+        style.background = ctx.background
+    }
+    if style.fill == auto {
+        style.fill = style.background
+    }
+    if style.node.fill == auto {
+        style.node.fill = style.foreground
+    }
+    if style.node.nofill == auto {
+        style.node.nofill = style.fill
+    }
+    if style.node.stroke.paint == auto {
+        style = resolve(style)
+        style.node.stroke.paint = style.node.fill
+        return style
+    }
+    if style.inductor.fill == auto {
+        style = resolve(style)
+        style.inductor.fill = style.inductor.stroke.paint
+        return style
+    }
+    return resolve(style)
+}
+
 #let get-style(ctx) = {
-    let zap-style = ctx.zap.style
-
-    // Override auto
-    if zap-style.arrow.stroke.paint == auto {
-        zap-style.arrow.stroke.paint = zap-style.foreground
-    }
-    if zap-style.stroke.paint == auto {
-        zap-style.stroke.paint = zap-style.foreground
-    }
-    if zap-style.decoration.stroke.paint == auto {
-        zap-style.decoration.stroke.paint = zap-style.foreground
-    }
-    if zap-style.background == auto {
-        zap-style.background = ctx.background
-    }
-    if zap-style.fill == auto {
-        zap-style.fill = zap-style.background
-    }
-    if zap-style.node.fill == auto {
-        zap-style.node.fill = zap-style.foreground
-    }
-    if zap-style.node.nofill == auto {
-        zap-style.node.nofill = zap-style.fill
-    }
-    if zap-style.node.stroke.paint == auto {
-        zap-style = resolve(zap-style)
-        zap-style.node.stroke.paint = zap-style.node.fill
-        return zap-style
-    }
-    if zap-style.inductor.fill == auto {
-        zap-style = resolve(zap-style)
-        zap-style.inductor.fill = zap-style.inductor.stroke.paint
-        return zap-style
-    }
-    zap-style = resolve(zap-style)
-
-    return zap-style
+    return resolve-style(ctx.zap.style)
 }

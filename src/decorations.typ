@@ -1,7 +1,7 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
 #import cetz.styles: merge
-#import "/src/utils.typ": get-style
+#import "/src/utils.typ": get-style, resolve-style
 
 #let resolve-directions(direction) = {
     let vertical = "north"
@@ -15,10 +15,13 @@
     return (x: horizontal, y: vertical)
 }
 
-#let resolve-decoration(ctx, dec, ..style) = {
+#let resolve-decoration(ctx, dec, decor-type) = {
     if type(dec) == dictionary and dec.at("content", default: none) == none { panic("Decoration dictionary needs at least the 'content' key") }
 
-    let dec = merge(style.named(), if type(dec) == dictionary {dec} else {(content: dec)})
+    let zap-style = ctx.zap.style
+    zap-style.decoration.at(decor-type) = merge(zap-style.decoration.at(decor-type), if type(dec) == dictionary {dec} else {(content: dec)})
+
+    let dec = resolve-style(zap-style).decoration.at(decor-type)
     dec.size = cetz.util.measure(ctx, dec.content)
     dec.position = resolve-directions(dec.anchor)
     dec.side = if dec.position.y == "north" { 1 } else { -1 }
@@ -28,9 +31,8 @@
 }
 
 #let current(ctx, label) = {
-    let decor-style = get-style(ctx).decoration
-    let style = resolve-decoration(ctx, label, ..decor-style.current)
-    style.scale *= decor-style.scale
+    let style = resolve-decoration(ctx, label, "current")
+    style.scale *= get-style(ctx).decoration.scale
 
     let mark-position = if style.position.x == "west" {
         (("in", style.distance, "component.west"), "in")
@@ -50,9 +52,8 @@
 }
 
 #let flow(ctx, label) = {
-    let decor-style = get-style(ctx).decoration
-    let style = resolve-decoration(ctx, label, ..decor-style.flow)
-    style.scale *= decor-style.scale
+    let style = resolve-decoration(ctx, label, "flow")
+    style.scale *= get-style(ctx).decoration.scale
 
     let west = style.position.x == "west"
     let a-start = (to: ("component." + style.position.x, style.distance, if west { "in" } else { "out" }),
@@ -72,9 +73,8 @@
 }
 
 #let voltage(ctx, label, p-rotate) = {
-    let decor-style = get-style(ctx).decoration
-    let style = resolve-decoration(ctx, label, ..decor-style.voltage)
-    style.scale *= decor-style.scale
+    let style = resolve-decoration(ctx, label, "voltage")
+    style.scale *= get-style(ctx).decoration.scale
 
     let r-distance = cetz.util.resolve-number(ctx, style.distance)
     let a-start = (rel: (style.start.at(0), (r-distance + style.start.at(1)) * style.side),
