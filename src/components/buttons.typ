@@ -4,7 +4,7 @@
 #import "/src/components/wires.typ": wire
 #import "/src/mini.typ": lamp
 
-#let button(name, node, nc: false, illuminated: false, head: "standard", ..params) = {
+#let button(name, node, nc: false, illuminated: false, head: "standard", latching: false, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -0.2), (style.width / 2, 0.2), io: position.len() < 2)
@@ -15,7 +15,11 @@
         if nc {
             line((-style.width / 2, 0), (rel: (0, -style.overlap - style.width * calc.tan(style.angle))), stroke: style.stroke)
         }
-        line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
+        if latching {
+          line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
+        } else {
+          line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
+        }
 
         merge-path(stroke: style.stroke, close: head == "mushroom", {
           if head == "mushroom" {

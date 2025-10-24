@@ -254,10 +254,10 @@
             width: .8,
             angle: 25deg,
             overlap: .1,
-            distance: .7,
-            lamp-distance: .1,
+            distance: .6,
+            lamp-distance: .12,
             button-width: .35,
-            button-height: .19,
+            button-height: .2,
             button-omega: 0.5,
         )
     ),
