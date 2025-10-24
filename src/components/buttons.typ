@@ -16,7 +16,7 @@
             line((-style.width / 2, 0), (rel: (0, -style.overlap - style.width * calc.tan(style.angle))), stroke: style.stroke)
         }
         if latching {
-            line("support.50%", (rel: (0, -style.latch-padding - 2 * style.latch-size), to: (0, style.distance - style.button-height)), stroke: (dash: (array: (6.5pt, 3pt)), ..style.stroke))
+            line("support.50%", (rel: (0, -style.latch-padding - 2 * style.latch-size), to: (0, style.distance - style.button-height)), stroke: (dash: (array: (6.5pt, 3pt))))
             line(
                 (),
                 (rel: (0, style.latch-padding / 2)),
