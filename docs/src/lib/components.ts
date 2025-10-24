@@ -37,6 +37,11 @@ import voltmeter from './images/components/36.svg';
 import ammeter from './images/components/37.svg';
 import ohmmeter from './images/components/38.svg';
 import wattmeter from './images/components/39.svg';
+import nobutton from './images/components/40.svg';
+import noibutton from './images/components/41.svg';
+import ncbutton from './images/components/42.svg';
+import ncibutton from './images/components/43.svg';
+import pcapacitor from './images/components/44.svg';
 
 export interface Component {
 	name: string;
@@ -315,7 +320,7 @@ export const components: Component[] = [
 		image: pnp,
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
-		origin: "npn"
+		origin: 'npn'
 	},
 	{
 		name: 'nmos',
@@ -323,7 +328,7 @@ export const components: Component[] = [
 		image: nmos,
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
-		origin: "pmos"
+		origin: 'pmos'
 	},
 	{
 		name: 'pmos',
@@ -398,6 +403,14 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
+		name: 'pcapacitor',
+		full_name: 'polarized capacitor',
+		image: pcapacitor,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
+	},
+	{
 		name: 'rheostat',
 		full_name: 'rheostat resistor',
 		image: rheostat,
@@ -455,7 +468,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.1',
 		contributors: ['anarendiran'],
-		origin: "voltmeter"
+		origin: 'voltmeter'
 	},
 	{
 		name: 'ammeter',
@@ -464,7 +477,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.1',
 		contributors: ['anarendiran'],
-		origin: "voltmeter"
+		origin: 'voltmeter'
 	},
 	{
 		name: 'wattmeter',
@@ -473,7 +486,7 @@ export const components: Component[] = [
 		quick: true,
 		release: '0.4.1',
 		contributors: ['anarendiran'],
-		origin: "voltmeter"
+		origin: 'voltmeter'
 	},
 	{
 		name: 'mcu',
@@ -492,6 +505,52 @@ export const components: Component[] = [
 					'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
 			}
 		]
+	},
+	{
+		name: 'nobutton',
+		full_name: 'normally open push button',
+		image: nobutton,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['l0uisgrange'],
+		options: [
+			{
+				name: 'illuminated',
+				type: 'boolean',
+				default: 'false',
+				description: 'Adds a lamp at the top of the symbol.'
+			},
+			{
+				name: 'latching',
+				type: 'boolean',
+				default: 'false',
+				description: 'Adds a latch symbol on the connection line.'
+			},
+			{
+				name: 'head',
+				type: ['"mushroom"', '"standard"'],
+				default: '"standard"',
+				description: 'Changes the button shape.'
+			}
+		]
+	},
+	{
+		name: 'noibutton',
+		full_name: 'normally open illuminated push button',
+		image: noibutton,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['l0uisgrange'],
+		origin: 'nobutton'
+	},
+	{
+		name: 'ncbutton',
+		full_name: 'normally closed illuminated push button',
+		image: ncbutton,
+		quick: true,
+		release: '0.4.1',
+		contributors: ['l0uisgrange'],
+		origin: 'nobutton'
 	}
 ];
 
