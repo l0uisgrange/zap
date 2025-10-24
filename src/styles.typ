@@ -252,13 +252,15 @@
             scale: auto,
             stroke: auto,
             width: .8,
-            angle: 25deg,
+            angle: 23deg,
             overlap: .1,
-            distance: .6,
+            distance: .7,
             lamp-distance: .12,
-            button-width: .35,
-            button-height: .2,
+            button-width: .33,
+            button-height: .16,
             button-omega: 0.5,
+            latch-size: 0.1,
+            latch-padding: 0.38
         )
     ),
     params: (

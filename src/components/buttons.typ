@@ -4,7 +4,7 @@
 #import "/src/components/wires.typ": wire
 #import "/src/mini.typ": lamp
 
-#let button(name, node, nc: false, illuminated: false, head: "standard", latching: false, ..params) = {
+#let button(name, node, nc: false, illuminated: false, head: "standard", latching: true, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -0.2), (style.width / 2, 0.2), io: position.len() < 2)
@@ -16,7 +16,8 @@
             line((-style.width / 2, 0), (rel: (0, -style.overlap - style.width * calc.tan(style.angle))), stroke: style.stroke)
         }
         if latching {
-          line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
+          line("support.50%", (rel: (0, -style.latch-padding - 2*style.latch-size), to: (0, style.distance)), stroke: (dash: (array: (6.5pt, 3pt)), ..style.stroke))
+          line((), (rel: (0, style.latch-padding/2)), (rel: (1.5*style.latch-size, style.latch-size)), (rel: (-1.5*style.latch-size, style.latch-size)), (rel: (0, style.latch-padding/2)), stroke: style.stroke)
         } else {
           line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
         }
