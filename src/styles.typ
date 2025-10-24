@@ -260,8 +260,8 @@
             button-height: .16,
             button-omega: 0.5,
             latch-size: 0.1,
-            latch-padding: 0.38
-        )
+            latch-padding: 0.38,
+        ),
     ),
     params: (
         debug: false,

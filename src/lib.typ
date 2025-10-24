@@ -28,4 +28,4 @@
 #import "components/integrated/mcus.typ": mcu
 #import "components/integrated/converters.typ": adc, dac
 #import "components/instruments/round-meters.typ": ammeter, ohmmeter, round-meter, voltmeter, wattmeter
-#import "components/buttons.typ": button, nobutton, noibutton, ncbutton, ncibutton
+#import "components/buttons.typ": button, ncbutton, ncibutton, nobutton, noibutton
