@@ -4,7 +4,7 @@
 #import "/src/components/wires.typ": wire
 #import "/src/mini.typ": lamp
 
-#let button(name, node, nc: false, illuminated: false, head: "standard", latching: true, ..params) = {
+#let button(name, node, nc: false, illuminated: false, head: "standard", latching: false, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -0.2), (style.width / 2, 0.2), io: position.len() < 2)
