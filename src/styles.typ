@@ -257,8 +257,8 @@
             distance: .7,
             lamp-distance: .1,
             button-width: .35,
-            button-height: .19
-            button-omega: 0.5
+            button-height: .19,
+            button-omega: 0.5,
         )
     ),
     params: (

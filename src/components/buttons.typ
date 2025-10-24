@@ -17,18 +17,19 @@
         }
         line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
 
-        if illuminated {
-          line((0, style.distance), (rel: (0, style.lamp-distance)), stroke: style.stroke)
-          lamp((0, style.distance + style.lamp-distance + style.button-width/2), radius: style.button-width/2, stroke: style.stroke)
-        }
-        merge-path(stroke: style.stroke, close: true, {
+        merge-path(stroke: style.stroke, close: head == "mushroom", {
           if head == "mushroom" {
             line((-style.button-width / 2, style.distance), (rel: (style.button-width, 0)))
-            hobby((), (rel: (-style.button-width/2, style.button-height)), (rel: (-style.button-width/2, -style.button-height)), omega: style.button-omega)
+            hobby((), (rel: (-style.button-width/2, style.button-height)), (rel: (-style.button-width/2, -style.button-height)), omega: style.button-omega, name: "top")
           } else if head == "standard" {
-            line((-style.button-width / 2, style.distance - style.button-height), (rel: (0, style.button-height)), (rel: (style.button-width, 0)), (rel: (0, -style.button-height)))
+            line((-style.button-width / 2, style.distance - style.button-height), (rel: (0, style.button-height)), (rel: (style.button-width, 0)), (rel: (0, -style.button-height)), name: "top")
           }
         })
+
+        if illuminated {
+          line("top.50%", (rel: (0, style.lamp-distance), to: "top.50%"), stroke: style.stroke)
+          lamp((rel: (0, style.button-width/2 + style.lamp-distance), to: "top.50%"), radius: style.button-width/2, stroke: style.stroke)
+        }
     }
 
     // Component call
