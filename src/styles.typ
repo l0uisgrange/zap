@@ -258,9 +258,9 @@
             lamp-distance: .12,
             button-width: .33,
             button-height: .16,
-            button-omega: 0.5,
+            button-omega: 1,
             latch-size: 0.1,
-            latch-padding: 0.38,
+            latch-padding: 0.15,
         ),
     ),
     params: (
