@@ -254,7 +254,11 @@
             width: .8,
             angle: 25deg,
             overlap: .1,
-            distance: .7
+            distance: .7,
+            lamp-distance: .1,
+            button-width: .35,
+            button-height: .19
+            button-omega: 0.5
         )
     ),
     params: (

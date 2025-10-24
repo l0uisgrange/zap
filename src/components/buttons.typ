@@ -1,9 +1,10 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, hide, line, mark, rect
+#import cetz.draw: anchor, circle, hide, line, mark, rect, hobby, merge-path
 #import "/src/components/wires.typ": wire
+#import "/src/mini.typ": lamp
 
-#let button(name, node, nc: false, illuminated: false, ..params) = {
+#let button(name, node, nc: false, illuminated: false, head: "standard", ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -0.2), (style.width / 2, 0.2), io: position.len() < 2)
@@ -16,9 +17,18 @@
         }
         line("support.50%", (0, style.distance), stroke: (dash: (array: (6.5pt, 3pt))))
 
-        let width = .25
-        let height = .15
-        line((-width / 2, style.distance - height), (rel: (0, height)), (rel: (width, 0)), (rel: (0, -height)))
+        if illuminated {
+          line((0, style.distance), (rel: (0, style.lamp-distance)), stroke: style.stroke)
+          lamp((0, style.distance + style.lamp-distance + style.button-width/2), radius: style.button-width/2, stroke: style.stroke)
+        }
+        merge-path(stroke: style.stroke, close: true, {
+          if head == "mushroom" {
+            line((-style.button-width / 2, style.distance), (rel: (style.button-width, 0)))
+            hobby((), (rel: (-style.button-width/2, style.button-height)), (rel: (-style.button-width/2, -style.button-height)), omega: style.button-omega)
+          } else if head == "standard" {
+            line((-style.button-width / 2, style.distance - style.button-height), (rel: (0, style.button-height)), (rel: (style.button-width, 0)), (rel: (0, -style.button-height)))
+          }
+        })
     }
 
     // Component call

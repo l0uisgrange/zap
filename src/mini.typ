@@ -9,8 +9,8 @@
 
 #let lamp(pos, radius: .5, ..params) = {
     circle(pos, radius: radius, ..params)
-    line((radius, 45deg), (-radius, 45deg), ..params)
-    line((radius, -45deg), (-radius, -45deg), ..params)
+    line((rel: (radius: radius, angle: 45deg), to: pos), (rel: (radius: -radius, angle: 45deg), to: pos), ..params)
+    line((rel: (radius: radius, angle: -45deg), to: pos), (rel: (radius: -radius, angle: -45deg), to: pos), ..params)
 }
 
 #let variable-arrow(..params) = {
