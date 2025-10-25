@@ -1,10 +1,16 @@
 #import "dependencies.typ": cetz
-#import cetz.draw: anchor, hobby, line, rotate, scope, set-origin, set-style
+#import cetz.draw: anchor, circle, hobby, line, rotate, scope, set-origin, set-style
 #import cetz.styles: merge
 #import "utils.typ": get-style
 
 #let center-mark(symbol: ">") = {
     (end: ((pos: 50%, symbol: symbol, fill: black, anchor: "center"), (pos: 0%, symbol: ">", scale: 0)))
+}
+
+#let lamp(pos, radius: .5, ..params) = {
+    circle(pos, radius: radius, ..params)
+    line((rel: (radius: radius, angle: 45deg), to: pos), (rel: (radius: -radius, angle: 45deg), to: pos), ..params)
+    line((rel: (radius: radius, angle: -45deg), to: pos), (rel: (radius: -radius, angle: -45deg), to: pos), ..params)
 }
 
 #let variable-arrow(..params) = {

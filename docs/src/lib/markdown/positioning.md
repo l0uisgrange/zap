@@ -23,6 +23,8 @@ To position components within your circuit, you can choose to either attach them
 
 Note that **some components can only be placed using one node**, like operational amplifiers, grounds and transistors.
 
+### Position
+
 You can also customize the position of the component alongside the wire using the `position` parameter like below.
 
 ![dede](/docs/position.svg)
@@ -36,6 +38,21 @@ You can also customize the position of the component alongside the wire using th
 ```
 
 The `position` parameter also accepts a distance, which is always relative to the `in` anchor.
+
+### Mirroring
+
+If you would like to display your component upside-down (vertically and/or horizontally), it is possible to mirror it using the `scale` parameter. The second value of the `scale` array represents the axis perpendicular to the wires.
+
+![dede](/docs/mirroring.svg)
+
+```typst
+#zap.circuit({
+    import zap: *
+
+    nobutton("b1", (0, 0), (3, 0))
+    nobutton("b2", (3, 0), (6, 0), scale: (1, -1)) // mirrored one
+})
+```
 
 ## Named anchors
 

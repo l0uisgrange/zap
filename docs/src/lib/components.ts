@@ -32,6 +32,19 @@ import npn from './images/components/31.svg';
 import pmos from './images/components/32.svg';
 import pnp from './images/components/33.svg';
 import nmos from './images/components/34.svg';
+import antenna from './images/components/35.svg';
+import voltmeter from './images/components/36.svg';
+import ammeter from './images/components/37.svg';
+import ohmmeter from './images/components/38.svg';
+import wattmeter from './images/components/39.svg';
+import nobutton from './images/components/40.svg';
+import noibutton from './images/components/41.svg';
+import ncbutton from './images/components/42.svg';
+import pcapacitor from './images/components/43.svg';
+import circulator from './images/components/44.svg';
+import land from './images/components/45.svg';
+import lor from './images/components/46.svg';
+import lxor from './images/components/47.svg';
 
 export interface Component {
 	name: string;
@@ -203,6 +216,14 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
+		name: 'antenna',
+		full_name: 'antenna',
+		image: antenna,
+		quick: false,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
+	},
+	{
 		name: 'fuse',
 		full_name: 'fuse',
 		image: fuse,
@@ -302,7 +323,28 @@ export const components: Component[] = [
 		image: pnp,
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
-		origin: "npn"
+		origin: 'npn'
+	},
+	{
+		name: 'land',
+		full_name: 'digital logic AND',
+		image: land,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'lxor',
+		full_name: 'digital logic XOR',
+		image: lxor,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'lor',
+		full_name: 'digital logic OR',
+		image: lor,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'nmos',
@@ -310,7 +352,7 @@ export const components: Component[] = [
 		image: nmos,
 		release: '0.2.0',
 		contributors: ['l0uisgrange'],
-		origin: "pmos"
+		origin: 'pmos'
 	},
 	{
 		name: 'pmos',
@@ -385,6 +427,14 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
+		name: 'pcapacitor',
+		full_name: 'polarized capacitor',
+		image: pcapacitor,
+		quick: true,
+		release: '0.4.0',
+		contributors: ['l0uisgrange']
+	},
+	{
 		name: 'rheostat',
 		full_name: 'rheostat resistor',
 		image: rheostat,
@@ -421,6 +471,48 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
+		name: 'voltmeter',
+		full_name: 'voltage meter',
+		image: voltmeter,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['anarendiran'],
+		options: [
+			{
+				name: 'measurand',
+				type: 'content',
+				default: 'V'
+			}
+		]
+	},
+	{
+		name: 'ohmmeter',
+		full_name: 'ohm meter',
+		image: ohmmeter,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['anarendiran'],
+		origin: 'voltmeter'
+	},
+	{
+		name: 'ammeter',
+		full_name: 'ampere meter',
+		image: ammeter,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['anarendiran'],
+		origin: 'voltmeter'
+	},
+	{
+		name: 'wattmeter',
+		full_name: 'watt meter',
+		image: wattmeter,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['anarendiran'],
+		origin: 'voltmeter'
+	},
+	{
 		name: 'mcu',
 		full_name: 'microcontroller unit',
 		image: mcu,
@@ -437,6 +529,60 @@ export const components: Component[] = [
 					'Defines the output/input pins shown. If a number is specified, the pins will be spread between left and right. The pins have an anchor named "pinX" with X being the pin number.'
 			}
 		]
+	},
+	{
+		name: 'nobutton',
+		full_name: 'normally open push button',
+		image: nobutton,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['l0uisgrange'],
+		options: [
+			{
+				name: 'illuminated',
+				type: 'boolean',
+				default: 'false',
+				description: 'Adds a lamp at the top of the symbol.'
+			},
+			{
+				name: 'latching',
+				type: 'boolean',
+				default: 'false',
+				description: 'Adds a latch symbol on the connection line.'
+			},
+			{
+				name: 'head',
+				type: ['"mushroom"', '"standard"'],
+				default: '"standard"',
+				description: 'Changes the button shape.'
+			}
+		]
+	},
+	{
+		name: 'noibutton',
+		full_name: 'normally open illuminated push button',
+		image: noibutton,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['l0uisgrange'],
+		origin: 'nobutton'
+	},
+	{
+		name: 'ncbutton',
+		full_name: 'normally closed illuminated push button',
+		image: ncbutton,
+		quick: true,
+		release: '0.5.0',
+		contributors: ['l0uisgrange'],
+		origin: 'nobutton'
+	},
+	{
+		name: 'circulator',
+		full_name: 'circulator',
+		image: circulator,
+		quick: false,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
 	}
 ];
 

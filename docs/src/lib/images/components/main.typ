@@ -241,3 +241,102 @@
         wire("r1.c", (rel: (-5, 0)))
     })
 })
+
+// Image 35
+#image({
+    import lib: *
+    wire((-3, 0), (3, 0))
+    antenna("a1", (0, 0))
+})
+
+// Image 36
+#image({
+    import lib: *
+    voltmeter("m1", (-3, 0), (3, 0))
+})
+
+// Image 37
+#image({
+    import lib: *
+    ammeter("m2", (-3, 0), (3, 0))
+})
+
+// Image 38
+#image({
+    import lib: *
+    ohmmeter("m3", (-3, 0), (3, 0))
+})
+
+// Image 39
+#image({
+    import lib: *
+    wattmeter("m4", (-3, 0), (3, 0))
+})
+
+// Image 40
+#image({
+    import lib: *
+    nobutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 41
+#image({
+    import lib: *
+    noibutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 42
+#image({
+    import lib: *
+    ncbutton("m4", (-3, 0), (3, 0))
+})
+
+// Image 43
+#image({
+    import lib: *
+    pcapacitor("r1", (-3, 0), (3, 0))
+})
+
+// Image 44
+#image({
+    import lib: *
+    circulator("c1", (0, 0))
+    draw.floating({
+        wire("c1.port1", (rel: (-5, 0)))
+        wire("c1.port2", (rel: (5, 0)))
+        wire("c1.port3", (rel: (0, 5)))
+    })
+})
+
+// Image 45
+#image({
+    import lib: *
+    land("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
+
+// Image 46
+#image({
+    import lib: *
+    lor("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
+
+// Image 47
+#image({
+    import lib: *
+    lxor("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
