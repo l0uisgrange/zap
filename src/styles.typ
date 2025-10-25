@@ -70,7 +70,7 @@
             ),
             radiation: (
                 variant: auto,
-                scale: 0.8,
+                scale: 1,
                 stroke: (
                     thickness: 0.55pt,
                     paint: auto,
@@ -102,7 +102,7 @@
             variant: ">",
             scale: 1.0,
             stroke: (
-                thickness: 1pt,
+                thickness: .8pt,
                 paint: auto,
                 join: auto,
                 cap: auto,

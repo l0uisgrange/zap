@@ -15,7 +15,7 @@
 
         merge-path(
             close: true,
-            fill: style.fill,
+            fill: if closed { style.fill } else { none },
             stroke: if closed { style.stroke } else { none },
             {
                 line((0, style.distance), (rel: (style.spacing * left, style.length)))

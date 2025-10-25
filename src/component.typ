@@ -29,8 +29,8 @@
     assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
-    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "pretty", auto), message: "variant must be 'iec', 'ieee', 'pretty' or auto")
-    assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"))
+    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
+    assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     let p-rotate = rotate
     let p-scale = scale
@@ -38,7 +38,7 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        // Keep Cetz style and set to default
+        // Save the current style
         let keep-style = ctx.style
         cetz.draw.set-style(..cetz.styles.default)
 
@@ -47,7 +47,7 @@
         // Override style by user params
         zap-style.at(uid) = merge(zap-style.at(uid), params.named())
 
-        // Override style by variant
+        // Override style by variant TODO remove if no necessity
         let variant = resolve-style(zap-style).at(uid).variant
         zap-style.at(uid) = merge(zap-style.at(uid).at(variant, default: (:)), zap-style.at(uid))
 
@@ -101,7 +101,7 @@
             }
         })
 
-        // Decorations
+        // Symbol decorations
         if position.len() == 2 {
             wire("in", "component.west")
             wire("component.east", "out")
@@ -118,23 +118,22 @@
             if n != none {
                 if "*-" in n {
                     node("", "in")
+                } else if "o-" in n {
+                    node("", "in", fill: false)
                 }
                 if "-*" in n {
                     node("", "out")
-                }
-                if "o-" in n {
-                    node("", "in", fill: false)
-                }
-                if "-o" in n {
+                } else if "-o" in n {
                     node("", "out", fill: false)
                 }
             }
         }
 
-        // Bringing back the Cetz style
+        // Bringing back the current style
         cetz.draw.set-style(..keep-style)
     })
 
+    // Show symbol anchors in debug mode
     cetz.draw.get-ctx(ctx => {
         let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
         if (debug) {
@@ -149,6 +148,7 @@
     })
 }
 
+// TODO: update this to more modern and resilient function (with "wirein" and "wireout" anchors)
 #let interface(node1, node2, ..params, io: false) = {
     import cetz.draw: *
 

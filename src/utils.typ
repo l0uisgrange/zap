@@ -88,9 +88,9 @@
 #let set-style(..style) = {
     cetz.draw.set-ctx(ctx => {
         let new-style = style.named()
-        for root in new-style.keys() {
-            let style-dict = ((root): (new-style.at(root)))
-            if ctx.zap.style.at(root, default: (:)) == (:) {
+        for key in new-style.keys() {
+            let style-dict = ((key): (new-style.at(key)))
+            if ctx.zap.style.at(key, default: (:)) == (:) {
                 ctx.style = cetz.styles.merge(ctx.style, style-dict)
             } else {
                 ctx.zap.style = cetz.styles.merge(ctx.zap.style, style-dict)

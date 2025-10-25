@@ -10,14 +10,11 @@
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
-        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), stroke: none, fill: style.fill)
+        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), stroke: style.stroke, fill: style.fill)
         wire((-style.width / 2, 0), (style.width / 2, 0))
 
-        set-style(stroke: style.stroke)
-        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2))
-
         if (asymmetric) {
-            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), fill: style.stroke.paint)
+            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), stroke: none, fill: style.stroke.paint)
         }
     }
 
