@@ -294,11 +294,16 @@
 // Image 43
 #image({
     import lib: *
-    ncibutton("m4", (-3, 0), (3, 0))
+    pcapacitor("r1", (-3, 0), (3, 0))
 })
 
 // Image 44
 #image({
     import lib: *
-    pcapacitor("r1", (-3, 0), (3, 0))
+    circulator("c1", (0, 0))
+    draw.floating({
+        wire("c1.port1", (rel: (-5, 0)))
+        wire("c1.port2", (rel: (5, 0)))
+        wire("c1.port3", (rel: (0, 5)))
+    })
 })

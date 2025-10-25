@@ -12,6 +12,7 @@
 #import "components/antennas.typ": antenna
 #import "components/transformers.typ": transformer
 #import "components/wires.typ": swire, wire, zwire
+#import "components/circulator.typ": circulator
 #import "components/nodes.typ": node
 #import "components/capacitors.typ": capacitor, pcapacitor
 #import "components/diodes.typ": diode, led, photodiode, schottky, tunnel, zener
