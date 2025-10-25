@@ -27,7 +27,7 @@
                 stroke: style.stroke,
             )
         } else {
-          line("support.50%", (0, style.distance - if head == "mushroom" { style.button-height } else { 0 }), stroke: (dash: (array: (6.5pt, 3pt))))
+            line("support.50%", (0, style.distance - if head == "mushroom" { style.button-height } else { 0 }), stroke: (dash: (array: (6.5pt, 3pt))))
         }
 
         merge-path(stroke: style.stroke, close: head == "mushroom", {
