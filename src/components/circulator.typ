@@ -1,79 +1,28 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, polygon, rect
+#import cetz.draw: anchor, circle, arc-through, rotate
 #import "/src/utils.typ": get-style
 
-#let isource(name, node, dependent: false, current: "dc", ..params) = {
-    assert(type(dependent) == bool, message: "dependent must be boolean")
-    assert(current in ("dc", "ac"), message: "current must be ac or dc")
-
+#let circulator(name, node, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
-        let factor = if dependent { 1.1 } else { 1 }
-        interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
+        interface((-style.radius, -style.radius), (style.radius, style.radius), io: false)
 
-        if dependent {
-            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
-        } else {
-            circle((0, 0), radius: style.radius, fill: white, ..style)
-        }
-        if style.variant == "iec" {
-            line((0, -style.radius * factor), (rel: (0, 2 * style.radius * factor)), ..style, fill: none)
-        } else {
-            line(
-                (-style.radius + style.padding, 0),
-                (rel: (2 * style.radius - 1.85 * style.padding, 0)),
-                mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.scale.at("x", default: 1.0))),
-                fill: black,
-                stroke: get-style(ctx).arrow.stroke,
-            )
-        }
+        circle((0, 0), radius: style.radius, fill: white, ..style, name: "circle")
+        anchor("port1", "circle.west")
+        anchor("port2", "circle.east")
+        anchor("port3", "circle.north")
+        /*
+         * Waiting on https://github.com/cetz-package/cetz/issues/981 to be fixed
+        arc((0, 0), radius: style.arrow-radius, start: 45deg, delta: 90deg, anchor: "origin", ..style, stroke: red, fill: red)
+         * in the meantime the arc-through is used below
+         */
+
+        rotate(53deg)
+        arc-through((0, -style.arrow-radius), (0, style.arrow-radius), (-style.arrow-radius, 0), mark: (end: ">", fill: black, anchor: "tip", inset: -.04))
     }
 
     // Component call
-    component("isource", name, node, draw: draw, ..params)
+    component("circulator", name, node, draw: draw, ..params)
 }
-
-#let disource(name, node, ..params) = isource(name, node, dependent: true, ..params)
-#let acisource(name, node, ..params) = isource(name, node, current: "ac", ..params)
-
-#let vsource(name, node, dependent: false, current: "dc", ..params) = {
-    assert(current in ("dc", "ac"), message: "current must be ac or dc")
-
-    // Drawing function
-    let draw(ctx, position, style) = {
-        let factor = if dependent { 1.1 } else { 1 }
-        interface((-style.radius * factor, -style.radius * factor), (style.radius * factor, style.radius * factor), io: position.len() < 2)
-
-        if dependent {
-            polygon((0, 0), 4, fill: white, ..style, radius: style.radius * factor)
-        } else {
-            circle((0, 0), fill: white, ..style)
-        }
-        if style.variant == "iec" {
-            if current == "ac" {
-                content((0, 0), [#cetz.canvas({ ac-sign(size: 2) })])
-            } else {
-                line((-style.radius * factor, 0), (rel: (2 * style.radius * factor, 0)), ..style)
-            }
-        } else {
-            line((rel: (-style.radius + style.padding, -style.sign-size)), (rel: (0, 2 * style.sign-size)), stroke: style.sign-stroke)
-            line(
-                (
-                    style.radius - style.padding - style.sign-delta,
-                    -style.sign-size,
-                ),
-                (rel: (0, 2 * style.sign-size)),
-                stroke: style.sign-stroke,
-            )
-            line((rel: (style.sign-size, -style.sign-size)), (rel: (-2 * style.sign-size, 0)), stroke: style.sign-stroke)
-        }
-    }
-
-    // Component call
-    component("vsource", name, node, draw: draw, ..params)
-}
-
-#let dvsource(name, node, ..params) = vsource(name, node, dependent: true, ..params)
-#let acvsource(name, node, ..params) = vsource(name, node, current: "ac", ..params)
