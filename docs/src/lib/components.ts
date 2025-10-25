@@ -40,8 +40,8 @@ import wattmeter from './images/components/39.svg';
 import nobutton from './images/components/40.svg';
 import noibutton from './images/components/41.svg';
 import ncbutton from './images/components/42.svg';
-import ncibutton from './images/components/43.svg';
-import pcapacitor from './images/components/44.svg';
+import pcapacitor from './images/components/43.svg';
+import circulator from './images/components/44.svg';
 
 export interface Component {
 	name: string;
@@ -551,7 +551,15 @@ export const components: Component[] = [
 		release: '0.4.1',
 		contributors: ['l0uisgrange'],
 		origin: 'nobutton'
-	}
+	},
+	{
+		name: 'circulator',
+		full_name: 'circulator',
+		image: circulator,
+		quick: false,
+		release: '0.4.1',
+		contributors: ['l0uisgrange']
+	},
 ];
 
 type ContributorCount = {

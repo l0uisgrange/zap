@@ -262,6 +262,13 @@
             latch-size: 0.1,
             latch-padding: 0.15,
         ),
+        circulator: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            radius: 0.53,
+            arrow-radius: 0.35,
+        )
     ),
     params: (
         debug: false,
