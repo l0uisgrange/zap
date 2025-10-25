@@ -123,12 +123,14 @@
         style.node.nofill = style.fill
     }
     if style.node.stroke.paint == auto {
-        style = resolve(style)
+        style.node.stroke.paint = none
+        style = resolve-style(style)
         style.node.stroke.paint = style.node.fill
         return style
     }
     if style.inductor.fill == auto {
-        style = resolve(style)
+        style.inductor.fill = none
+        style = resolve-style(style)
         style.inductor.fill = style.inductor.stroke.paint
         return style
     }
