@@ -268,7 +268,17 @@
             stroke: auto,
             radius: 0.53,
             arrow-radius: 0.35,
-        )
+        ),
+        logic: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            width: 1.3,
+            height: 1.2,
+            padding: 0.1,
+            invert-width: 0.3,
+            invert-height: 0.2,
+        ),
     ),
     params: (
         debug: false,
