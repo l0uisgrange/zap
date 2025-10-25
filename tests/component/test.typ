@@ -51,7 +51,7 @@
 // Test voltage
 #test({
     import lib: *
-    resistor("r1", (0, 0), (3, 3), u: (content: $u_1$, distance: 1, label-distance: -.3, invert: false, anchor: "south"))
+    resistor("r1", (0, 0), (3, 3), u: (content: $u_1$, distance: 1, label-distance: -.3, invert: true, anchor: "south"))
 })
 
 // Test flow
