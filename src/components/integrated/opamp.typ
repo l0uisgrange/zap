@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, content, line, polygon, rect, scope, translate,set-style
+#import cetz.draw: anchor, content, line, polygon, rect, scope, set-style, translate
 
 #let opamp(name, node, invert: false, label: none, ..params) = {
     assert(params.pos().len() == 0, message: "opamp supports only one node")

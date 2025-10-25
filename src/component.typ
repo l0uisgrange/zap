@@ -88,7 +88,7 @@
                 let label-style = zap-style.label
                 label-style = merge(label-style, style.at("label", default: (:)))
                 label-style = merge(label-style, params.named().at("label-defaults", default: (:)))
-                label-style = merge(label-style, if type(label) == dictionary {label} else {(content: label)})
+                label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
 
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }

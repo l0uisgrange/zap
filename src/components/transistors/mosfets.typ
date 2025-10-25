@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, translate, set-style
+#import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, set-style, translate
 #import "/src/components/wires.typ": wire
 
 #let mosfet(

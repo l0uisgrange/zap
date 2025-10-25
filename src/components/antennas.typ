@@ -20,7 +20,7 @@
             {
                 line((0, style.distance), (rel: (style.spacing * left, style.length)))
                 line((rel: (width, 0)), (0, style.distance))
-            }
+            },
         )
         if not closed {
             for i in range(style.number) {
@@ -33,5 +33,4 @@
 
     // Component call
     component("antenna", name, node, draw: draw, ..params)
-
 }

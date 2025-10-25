@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, arc, line, rect, merge-path, set-style
+#import cetz.draw: anchor, arc, line, merge-path, rect, set-style
 
 #let inductor(name, node, ..params) = {
     // Drawing function

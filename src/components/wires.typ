@@ -47,8 +47,7 @@
         // Current decoration
         if i != none {
             let zap-style = ctx.zap.style
-            zap-style.decoration.current.wire = merge(zap-style.decoration.current.wire,
-                if type(i) == dictionary { i } else { (content: i) })
+            zap-style.decoration.current.wire = merge(zap-style.decoration.current.wire, if type(i) == dictionary { i } else { (content: i) })
 
             let dec = resolve-style(zap-style).decoration.current.wire
             mark(

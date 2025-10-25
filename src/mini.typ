@@ -27,16 +27,13 @@
 
         set-origin(origin)
         rotate(style.angle)
-        line((0, 0), (style.length, 0),
-            stroke: style.stroke,
-            mark: (
-                stroke: (thickness: 0pt),
-                end: style.variant,
-                scale: style.scale,
-                fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
-            ),
-        )
+        line((0, 0), (style.length, 0), stroke: style.stroke, mark: (
+            stroke: (thickness: 0pt),
+            end: style.variant,
+            scale: style.scale,
+            fill: style.stroke.paint,
+            ..arrow-style.at(style.variant, default: (:)),
+        ))
     })
 }
 
@@ -77,16 +74,13 @@
         anchor("a", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node,
-            stroke: style.stroke,
-            mark: (
-                stroke: (thickness: 0pt),
-                end: style.variant,
-                scale: style.scale,
-                fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
-            ),
-        )
+        line("a", node, stroke: style.stroke, mark: (
+            stroke: (thickness: 0pt),
+            end: style.variant,
+            scale: style.scale,
+            fill: style.stroke.paint,
+            ..arrow-style.at(style.variant, default: (:)),
+        ))
     })
     anchor("tip", "tip")
     anchor("a", "a")

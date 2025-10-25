@@ -33,7 +33,7 @@
         for i in (0, 1, 2) {
             line((-style.width / 2 + (1 - i) * .01 + i * delta, -style.distance), (rel: (angle: -style.angle - 90deg, radius: style.depth)))
         }
-        
+
         interface((-style.width / 2, style.distance), (style.width / 2, -style.distance))
         anchor("default", (0, 0))
     }

@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, hide, line, mark, rect, set-style, merge-path
+#import cetz.draw: anchor, circle, hide, line, mark, merge-path, rect, set-style
 
 #let transformer(name, node, closed: false, ..params) = {
     // Drawing function
@@ -15,7 +15,7 @@
             {
                 circle((-style.distance / 2, 0))
                 circle((style.distance / 2, 0))
-            }
+            },
         )
 
         set-style(stroke: style.stroke)

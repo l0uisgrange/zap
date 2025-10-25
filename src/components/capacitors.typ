@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, arc, line, rect, merge-path, set-style
+#import cetz.draw: anchor, arc, line, merge-path, rect, set-style
 #import "/src/mini.typ": variable-arrow
 
 #let capacitor(name, node, variable: false, polarized: false, ..params) = {
@@ -28,7 +28,7 @@
             merge-path(
                 stroke: none,
                 fill: style.fill,
-                plates()
+                plates(),
             )
         }
 
