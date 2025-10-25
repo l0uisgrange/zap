@@ -42,6 +42,9 @@ import noibutton from './images/components/41.svg';
 import ncbutton from './images/components/42.svg';
 import pcapacitor from './images/components/43.svg';
 import circulator from './images/components/44.svg';
+import land from './images/components/45.svg';
+import lor from './images/components/46.svg';
+import lxor from './images/components/47.svg';
 
 export interface Component {
 	name: string;
@@ -323,6 +326,27 @@ export const components: Component[] = [
 		origin: 'npn'
 	},
 	{
+		name: 'land',
+		full_name: 'digital logic AND',
+		image: land,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'lxor',
+		full_name: 'digital logic XOR',
+		image: lxor,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
+	},
+	{
+		name: 'lor',
+		full_name: 'digital logic OR',
+		image: lor,
+		release: '0.5.0',
+		contributors: ['l0uisgrange']
+	},
+	{
 		name: 'nmos',
 		full_name: 'field-effect transistor',
 		image: nmos,
@@ -559,7 +583,7 @@ export const components: Component[] = [
 		quick: false,
 		release: '0.4.1',
 		contributors: ['l0uisgrange']
-	},
+	}
 ];
 
 type ContributorCount = {

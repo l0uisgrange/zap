@@ -9,15 +9,16 @@
     let draw(ctx, position, style) = {
         interface((-style.width, -style.height), (style.width, style.height), io: false)
 
-        rect((-style.width / 2, -style.height / 2), (rel: (style.width, style.height)), fill: white, name: "circle")
-        anchor("out", "circle.north")
+        rect((-style.width / 2, -style.height / 2), (rel: (style.width, style.height)), fill: white, stroke: style.stroke)
         content((0, style.height / 2 - style.padding), text, anchor: "north")
+        anchor("in1", (-style.width / 2, style.spacing / 2))
+        anchor("in2", (-style.width / 2, -style.spacing / 2))
         if invert {
             line((style.width / 2, style.invert-height), (rel: (style.invert-width, -style.invert-height)))
             line((style.width / 2, 0), (rel: (style.invert-width, 0)))
             anchor("out", ())
         } else {
-            anchor("out", (style.width, 0))
+            anchor("out", (style.width / 2, 0))
         }
     }
 

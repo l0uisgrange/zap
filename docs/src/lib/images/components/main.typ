@@ -307,3 +307,36 @@
         wire("c1.port3", (rel: (0, 5)))
     })
 })
+
+// Image 45
+#image({
+    import lib: *
+    land("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
+
+// Image 46
+#image({
+    import lib: *
+    lor("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
+
+// Image 47
+#image({
+    import lib: *
+    lxor("c1", (0, 0))
+    draw.floating({
+        wire("c1.out", (rel: (5, 0)))
+        wire("c1.in1", (rel: (-5, 0)))
+        wire("c1.in2", (rel: (-5, 0)))
+    })
+})
