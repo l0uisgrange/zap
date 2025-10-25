@@ -475,7 +475,7 @@ export const components: Component[] = [
 		full_name: 'voltage meter',
 		image: voltmeter,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['anarendiran'],
 		options: [
 			{
@@ -490,7 +490,7 @@ export const components: Component[] = [
 		full_name: 'ohm meter',
 		image: ohmmeter,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['anarendiran'],
 		origin: 'voltmeter'
 	},
@@ -499,7 +499,7 @@ export const components: Component[] = [
 		full_name: 'ampere meter',
 		image: ammeter,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['anarendiran'],
 		origin: 'voltmeter'
 	},
@@ -508,7 +508,7 @@ export const components: Component[] = [
 		full_name: 'watt meter',
 		image: wattmeter,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['anarendiran'],
 		origin: 'voltmeter'
 	},
@@ -535,7 +535,7 @@ export const components: Component[] = [
 		full_name: 'normally open push button',
 		image: nobutton,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['l0uisgrange'],
 		options: [
 			{
@@ -563,7 +563,7 @@ export const components: Component[] = [
 		full_name: 'normally open illuminated push button',
 		image: noibutton,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['l0uisgrange'],
 		origin: 'nobutton'
 	},
@@ -572,7 +572,7 @@ export const components: Component[] = [
 		full_name: 'normally closed illuminated push button',
 		image: ncbutton,
 		quick: true,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['l0uisgrange'],
 		origin: 'nobutton'
 	},
@@ -581,7 +581,7 @@ export const components: Component[] = [
 		full_name: 'circulator',
 		image: circulator,
 		quick: false,
-		release: '0.4.1',
+		release: '0.5.0',
 		contributors: ['l0uisgrange']
 	}
 ];
