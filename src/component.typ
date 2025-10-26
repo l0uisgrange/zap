@@ -4,6 +4,7 @@
 #import "components/wires.typ": wire
 #import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
 #import cetz.styles: merge
+#import cetz.util: merge-dictionary
 
 #let component(
     draw: none,
@@ -43,9 +44,12 @@
         cetz.draw.set-style(..cetz.styles.default)
 
         let zap-style = ctx.zap.style
+        let user-style = params.named()
+        let user-stroke = user-style.remove("stroke", default: (:))
+        let label-defaults = user-style.remove("label-defaults", default: (:))
 
-        // Override style by user params
-        zap-style.at(uid) = merge(zap-style.at(uid), params.named())
+        // Override style by user style
+        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
 
         // Override style by variant TODO remove if no necessity
         let variant = resolve-style(zap-style).at(uid).variant
@@ -53,6 +57,9 @@
 
         // Resolve style
         let style = resolve-style(zap-style).at(uid)
+
+        // Override stroke by user stroke
+        style = merge(style, (stroke: user-stroke))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -87,7 +94,7 @@
             if label != none {
                 let label-style = zap-style.label
                 label-style = merge(label-style, style.at("label", default: (:)))
-                label-style = merge(label-style, params.named().at("label-defaults", default: (:)))
+                label-style = merge(label-style, label-defaults)
                 label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
 
                 let anchor = get-label-anchor(p-rotate)
