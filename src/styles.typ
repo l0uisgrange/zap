@@ -23,10 +23,6 @@
             stroke: (
                 thickness: .4pt,
                 paint: auto,
-                join: auto,
-                cap: auto,
-                miter-limit: auto,
-                dash: auto,
             ),
             fill: auto,
             nofill: auto,
@@ -35,11 +31,6 @@
         wire: (
             stroke: (
                 thickness: .5pt,
-                paint: auto,
-                join: auto,
-                cap: auto,
-                miter-limit: auto,
-                dash: auto,
             ),
         ),
         arrow: (
@@ -48,10 +39,6 @@
             stroke: (
                 thickness: 1pt,
                 paint: auto,
-                join: auto,
-                cap: auto,
-                miter-limit: auto,
-                dash: auto,
             ),
             variable: (
                 variant: auto,
@@ -66,11 +53,6 @@
                 scale: 1,
                 stroke: (
                     thickness: 0.55pt,
-                    paint: auto,
-                    join: auto,
-                    cap: auto,
-                    miter-limit: auto,
-                    dash: auto,
                 ),
                 distance: 3pt,
                 length: 12pt,
@@ -90,10 +72,6 @@
             stroke: (
                 thickness: .8pt,
                 paint: auto,
-                join: auto,
-                cap: auto,
-                miter-limit: auto,
-                dash: auto,
             ),
             content: none,
             distance: 9pt,
@@ -106,7 +84,7 @@
                 stroke: auto,
                 content: auto,
                 distance: auto,
-                position: (x: auto, y: auto),
+                position: auto,
                 anchor: auto,
                 invert: auto,
                 wire: (
@@ -125,15 +103,13 @@
                 scale: 1.0,
                 stroke: (
                     thickness: 0.55pt,
-                    paint: auto,
-                    join: auto,
                     cap: auto,
                     miter-limit: auto,
                     dash: auto,
                 ),
                 content: auto,
                 distance: auto,
-                position: (x: auto, y: auto),
+                position: auto,
                 anchor: auto,
                 invert: auto,
                 length: 0.7,
@@ -146,7 +122,7 @@
                 stroke: auto,
                 content: auto,
                 distance: 2pt,
-                position: (x: auto, y: auto),
+                position: auto,
                 anchor: auto,
                 invert: auto,
                 start: (-.4, .1),
@@ -158,10 +134,6 @@
             stroke: (
                 thickness: .2pt,
                 paint: red,
-                join: auto,
-                cap: auto,
-                miter-limit: auto,
-                dash: auto,
             ),
             enabled: false,
             radius: .7pt,

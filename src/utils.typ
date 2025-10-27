@@ -66,9 +66,9 @@
                 }
                 dict-defs.insert(k, dict.at(k))
             } else if k in hold {
-                for key in v.keys() {
-                    if v.at(key) == auto and key in defs.at(k).keys() {
-                        dict.at(k).at(key) = defs.at(k).at(key)
+                for key in defs.at(k, default: (:)).keys() {
+                    if key in v.keys() and v.at(key) == auto or key not in v.keys() {
+                        dict.at(k).insert(key, defs.at(k).at(key))
                     }
                 }
                 dict-defs.insert(k, dict.at(k))
