@@ -241,7 +241,28 @@
             fill: auto,
             width: 1.41,
             height: 1.41 / 3,
-            bumps: 3,
+            bumps: 4,
+            fall: auto,
+            ieee: (
+                arrow: (
+                    ratio: (0.55, 0.35),
+                    length: 25pt,
+                    angle: 50deg,
+                ),
+            ),
+            pretty: (
+                height: 0.6,
+                width: 1.3,
+                bumps: 5,
+                stroke: (
+                    thickness: 1pt,
+                ),
+                arrow: (
+                    ratio: (0.55, 0.38),
+                    length: 30pt,
+                    angle: 60deg,
+                ),
+            ),
         ),
         resistor: (
             variant: auto,

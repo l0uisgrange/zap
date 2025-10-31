@@ -134,6 +134,12 @@
         style.inductor.fill = style.inductor.stroke.paint
         return style
     }
+    if style.inductor.fall == auto {
+        style.inductor.fall = none
+        style = resolve-style(style)
+        style.inductor.fall = style.wire.stroke.thickness / 2
+        return style
+    }
     return resolve(style)
 }
 
