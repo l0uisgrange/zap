@@ -2,6 +2,7 @@
 #import "dependencies.typ": cetz
 #import cetz: draw
 
+// Export circuit
 #import "circuit.typ": circuit
 #import "utils.typ": set-style
 

@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, translate
+#import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, set-style, translate
 #import "/src/components/wires.typ": wire
 
 #let mosfet(
@@ -30,25 +30,26 @@
             anchor("bulk", (0, 0))
         }
 
+        set-style(stroke: style.stroke)
+        if envelope {
+            circle(center, radius: radius, fill: style.fill, name: "c")
+        } else {
+            hide(circle((0, 0), radius: radius, fill: style.fill, name: "c"))
+        }
+
         if mode == "enhancement" {
             let bar-length = (base-width - 2 * base-spacing) / 3
             for i in range(3) {
-                line((-height, -base-width / 2 + i * (bar-length + base-spacing)), (rel: (0, bar-length)), ..style)
+                line((-height, -base-width / 2 + i * (bar-length + base-spacing)), (rel: (0, bar-length)))
             }
         } else {
-            line((-height, -base-width / 2), (rel: (0, base-width)), ..style)
+            line((-height, -base-width / 2), (rel: (0, base-width)))
         }
         if bulk == "internal" {
             wire((0, 0), (0, -width / 2))
         }
         wire("d", (rel: (0, 0)), (rel: (-height, 0)))
         wire("s", (rel: (0, 0)), (rel: (-height, 0)))
-
-        if envelope {
-            circle(center, radius: radius, ..style, name: "c")
-        } else {
-            hide(circle((0, 0), radius: radius, ..style, name: "c"))
-        }
 
         anchor("gl", (rel: (-3 * height / 4, width / 2), to: center))
 

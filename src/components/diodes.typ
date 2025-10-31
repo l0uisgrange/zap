@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, line, polygon, scope, translate
+#import cetz.draw: anchor, circle, line, merge-path, polygon, scope, set-style, translate
 #import "/src/mini.typ": radiation-arrows
 #import "/src/components/wires.typ": wire
 #import "/src/utils.typ": get-style
@@ -13,13 +13,14 @@
         translate((-style.radius / 4, 0))
         interface((-style.radius / 2, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
-        polygon((0, 0), 3, radius: style.radius, fill: white, ..style)
+        set-style(stroke: style.stroke)
+        polygon((0, 0), 3, radius: style.radius, fill: style.fill)
         wire((0deg, style.radius), (180deg, style.radius / 2))
 
         // Diode specific lines - horizontal lines orthogonal to cathode
         if (type in ("tunnel", "zener", "schottky")) {
             // Calculate extension to account for cathode line thickness
-            cetz.draw.merge-path(..style, {
+            merge-path({
                 // Shottky specific line
                 if (type == "schottky") {
                     line((style.radius + style.tunnel-length, style.width), (style.radius + style.tunnel-length, style.width - style.tunnel-length))
@@ -43,7 +44,7 @@
             })
         } else {
             // Main cathode line (vertical)
-            line((style.radius, style.width), (style.radius, -style.width), ..style)
+            line((style.radius, style.width), (style.radius, -style.width))
         }
 
         if (type in ("emitting", "receiving")) {

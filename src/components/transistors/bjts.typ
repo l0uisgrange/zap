@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, content, hide, line, mark, translate
+#import cetz.draw: anchor, circle, content, hide, line, mark, set-style, translate
 #import "/src/mini.typ": center-mark
 #import "/src/components/wires.typ": wire
 #import "/src/utils.typ": get-style
@@ -22,14 +22,15 @@
         anchor("c", (style.aperture * sgn, style.radius))
         anchor("b", if envelope { (-style.radius, 0) } else { "base" })
 
+        set-style(stroke: style.stroke)
         if envelope {
-            circle((0, 0), radius: style.radius, ..style, name: "circle")
+            circle((0, 0), radius: style.radius, fill: style.fill, name: "circle")
             wire("base", (-style.radius, 0))
         } else {
-            hide(circle((0, 0), radius: style.radius, ..style, name: "circle"))
+            hide(circle((0, 0), radius: style.radius, name: "circle"))
         }
 
-        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), ..style)
+        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)))
         line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: get-style(ctx).wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
         wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 

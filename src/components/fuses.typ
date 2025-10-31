@@ -1,6 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, floating, line, rect
+#import cetz.draw: anchor, circle, floating, line, rect, set-style
 #import "/src/components/wires.typ": wire
 
 #let fuse(name, node, asymmetric: false, ..params) = {
@@ -10,10 +10,11 @@
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
-        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: white, ..style)
+        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), stroke: style.stroke, fill: style.fill)
         wire((-style.width / 2, 0), (style.width / 2, 0))
+
         if (asymmetric) {
-            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), fill: black, ..style)
+            rect((-style.width / 2, -style.height / 2), (-style.width / 2 + float(style.asymmetry * style.width), style.height / 2), stroke: none, fill: style.stroke.paint)
         }
     }
 

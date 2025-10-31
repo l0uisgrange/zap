@@ -13,9 +13,9 @@
         interface((-style.radius, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
         if (magnet) {
-            rect((-style.magnet-width / 2, -style.magnet-height / 2), (style.magnet-width / 2, style.magnet-height / 2), fill: black)
+            rect((-style.magnet-width / 2, -style.magnet-height / 2), (style.magnet-width / 2, style.magnet-height / 2), fill: style.stroke.paint)
         }
-        circle((0, 0), radius: style.radius, fill: white, ..style)
+        circle((0, 0), radius: style.radius, fill: style.fill, stroke: style.stroke)
         content((0, 0), anchor: "south", "M", padding: .03)
         let symbol = if current == "dc" { dc-sign } else { ac-sign }
         content((0, 0), [#cetz.canvas({ symbol() })], anchor: "north", padding: .13)
