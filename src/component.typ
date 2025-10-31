@@ -30,7 +30,7 @@
     assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
-    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
+    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "pretty", auto), message: "variant must be 'iec', 'ieee' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     let p-rotate = rotate
@@ -48,12 +48,17 @@
         let user-stroke = user-style.remove("stroke", default: (:))
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
+        // Find out variant
+        if user-style.at("variant", default: none) != none {
+            zap-style.at(uid).variant = user-style.variant
+        }
+        let variant = resolve-style(zap-style).at(uid).variant
+
+        // Override style by variant
+        zap-style.at(uid) = merge(zap-style.at(uid), zap-style.at(uid).at(variant, default: (:)))
+
         // Override style by user style
         zap-style.at(uid) = merge(zap-style.at(uid), user-style)
-
-        // Override style by variant TODO remove if no necessity
-        let variant = resolve-style(zap-style).at(uid).variant
-        zap-style.at(uid) = merge(zap-style.at(uid).at(variant, default: (:)), zap-style.at(uid))
 
         // Resolve style
         let style = resolve-style(zap-style).at(uid)
