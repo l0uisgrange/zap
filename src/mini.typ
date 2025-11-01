@@ -86,6 +86,8 @@
         )
     })
     anchor("wiper", "wiper")
+    anchor("a", "wiper")
+    anchor("adjust", "wiper")
     anchor("tip", "tip")
 }
 
