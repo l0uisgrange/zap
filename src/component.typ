@@ -54,14 +54,19 @@
         }
         let variant = resolve-style(zap-style).at(uid).variant
 
-        // Override style by variant
-        zap-style.at(uid) = merge(zap-style.at(uid), zap-style.at(uid).at(variant, default: (:)))
-
-        // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
-
-        // Resolve style
-        let style = resolve-style(zap-style).at(uid)
+        // Resolve style with user style
+        let style = if variant in zap-style.at(uid).keys() {
+            zap-style.at(uid).at(variant) = merge(zap-style.at(uid).at(variant), user-style)
+            zap-style.at(uid).at(variant).insert("variant", variant)
+            resolve-style(zap-style).at(uid).at(variant)
+        } else {
+            // Remove unnecessary nested options
+            for v in ("iec", "ieee", "pretty") {
+                let _ = zap-style.at(uid).remove(v, default: none)
+            }
+            zap-style.at(uid) = merge(zap-style.at(uid), user-style)
+            resolve-style(zap-style).at(uid)
+        }
 
         // Override stroke by user stroke
         style = merge(style, (stroke: user-stroke))

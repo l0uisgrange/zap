@@ -136,9 +136,10 @@
     }
     if style.inductor.fall == auto {
         style.inductor.fall = none
-        style = resolve-style(style)
-        style.inductor.fall = style.wire.stroke.thickness / 2
-        return style
+        let pre-style = resolve-style(style)
+        pre-style.inductor.fall = pre-style.wire.stroke.thickness / 2
+        style.inductor.fall = pre-style.inductor.fall
+        return resolve-style(style)
     }
     return resolve(style)
 }

@@ -244,6 +244,13 @@
             bumps: 4,
             fall: auto,
             ieee: (
+                scale: auto,
+                stroke: auto,
+                fill: auto,
+                width: auto,
+                height: auto,
+                bumps: auto,
+                fall: auto,
                 arrow: (
                     variable: (
                         ratio: (0.55, 0.35),
@@ -253,16 +260,17 @@
                 ),
             ),
             pretty: (
-                height: 0.6,
+                scale: auto,
+                stroke: ( thickness: 1pt ),
+                fill: auto,
+                fall: auto,
                 width: 1.3,
+                height: 0.6,
                 bumps: 5,
                 bump-ratio: 0.6,
                 bottom-ratio: 0.25,
                 k1: (0.30, 0.24),
                 k2: (0.25, 0.65),
-                stroke: (
-                    thickness: 1pt,
-                ),
                 arrow: (
                     variable: (
                         ratio: (0.55, 0.38),
