@@ -34,22 +34,43 @@
             ),
         ),
         arrow: (
-            variant: ">",
+            symbol: ">",
             scale: 1.0,
+            angle: 55deg,
+            length: 40pt,
+            ratio: (0.5, 0.5),
             stroke: (
                 thickness: 1pt,
                 paint: auto,
             ),
             variable: (
-                variant: auto,
+                symbol: auto,
                 scale: 1.0,
                 stroke: auto,
-                length: 40pt,
-                angle: 55deg,
-                ratio: (0.5, 0.5),
+                length: auto,
+                angle: auto,
+                ratio: auto,
+            ),
+            preset: (
+                symbol: "|",
+                scale: 1.0,
+                stroke: auto,
+                length: auto,
+                angle: auto,
+                ratio: auto,
+                width: 10pt,
+            ),
+            sensor: (
+                symbol: none,
+                scale: 1.0,
+                stroke: auto,
+                length: auto,
+                sensor-length: 12pt,
+                angle: auto,
+                ratio: auto,
             ),
             radiation: (
-                variant: auto,
+                symbol: auto,
                 scale: 1,
                 stroke: (
                     thickness: 0.55pt,
@@ -60,14 +81,14 @@
                 reversed: false,
             ),
             adjustable: (
-                variant: auto,
+                symbol: auto,
                 scale: 1.0,
                 stroke: auto,
                 length: 0.8,
             ),
         ),
         decoration: (
-            variant: ">",
+            symbol: ">",
             scale: 1.0,
             stroke: (
                 thickness: .6pt,
@@ -79,7 +100,7 @@
             anchor: "north-east",
             invert: false,
             current: (
-                variant: auto,
+                symbol: auto,
                 scale: 1.0,
                 stroke: auto,
                 content: auto,
@@ -88,7 +109,7 @@
                 anchor: auto,
                 invert: auto,
                 wire: (
-                    variant: auto,
+                    symbol: auto,
                     scale: auto,
                     stroke: auto,
                     content: auto,
@@ -99,7 +120,7 @@
                 ),
             ),
             flow: (
-                variant: auto,
+                symbol: auto,
                 scale: 1.0,
                 stroke: (
                     thickness: 0.55pt,
@@ -117,7 +138,7 @@
                 label-ratio: 50%,
             ),
             voltage: (
-                variant: auto,
+                symbol: auto,
                 scale: 1.0,
                 stroke: auto,
                 content: auto,

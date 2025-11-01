@@ -51,10 +51,6 @@
         // Override style by user style
         zap-style.at(uid) = merge(zap-style.at(uid), user-style)
 
-        // Override style by variant TODO remove if no necessity
-        let variant = resolve-style(zap-style).at(uid).variant
-        zap-style.at(uid) = merge(zap-style.at(uid).at(variant, default: (:)), zap-style.at(uid))
-
         // Resolve style
         let style = resolve-style(zap-style).at(uid)
 

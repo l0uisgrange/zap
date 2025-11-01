@@ -1,9 +1,9 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
-#import "/src/mini.typ": variable-arrow
+#import "/src/mini.typ": adjust-arrow
 
-#let capacitor(name, node, variable: false, polarized: false, ..params) = {
+#let capacitor(name, node, variable: false, preset: false, sensor: false, polarized: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
 
     // Drawing function
@@ -35,8 +35,12 @@
         set-style(stroke: style.stroke)
         plates()
 
-        if (variable) {
-            variable-arrow()
+        if variable {
+            adjust-arrow("variable")
+        } else if preset {
+            adjust-arrow("preset")
+        } else if sensor {
+            adjust-arrow("sensor")
         }
     }
 

@@ -40,7 +40,7 @@
         (("component.east", style.distance, "out"), "out")
     }
 
-    mark(..mark-position, symbol: style.variant, reverse: style.invert, anchor: "center", fill: style.stroke.paint, stroke: 0pt, scale: style.scale)
+    mark(..mark-position, symbol: style.symbol, reverse: style.invert, anchor: "center", fill: style.stroke.paint, stroke: 0pt, scale: style.scale)
     content((rel: (0, style.label-distance), to: mark-position.at(0)), style.content)
 }
 
@@ -56,7 +56,7 @@
         a-start,
         a-end,
         mark: (
-            (if style.invert { "start" } else { "end" }): style.variant,
+            (if style.invert { "start" } else { "end" }): style.symbol,
             stroke: 0pt,
             fill: style.stroke.paint,
             scale: style.scale,
@@ -82,7 +82,7 @@
         a-center,
         a-end,
         mark: (
-            (if style.invert { "start" } else { "end" }): style.variant,
+            (if style.invert { "start" } else { "end" }): style.symbol,
             stroke: 0pt,
             fill: style.stroke.paint,
             scale: style.scale,

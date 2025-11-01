@@ -53,7 +53,7 @@
             mark(
                 (name: "line", anchor: dec.position),
                 (name: "line", anchor: dec.position + if type(dec.position) == ra { 1% } else { 0.1 }),
-                symbol: dec.variant,
+                symbol: dec.symbol,
                 reverse: dec.invert,
                 anchor: "center",
                 fill: dec.stroke.paint,
