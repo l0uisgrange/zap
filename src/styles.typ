@@ -241,7 +241,7 @@
             fill: auto,
             width: 1.41,
             height: 1.41 / 3,
-            bumps: 4,
+            bumps: 3,
             fall: auto,
             ieee: (
                 scale: auto,
