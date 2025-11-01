@@ -264,7 +264,7 @@
                 stroke: ( thickness: 1pt ),
                 fill: auto,
                 fall: auto,
-                width: 1.3,
+                width: auto,
                 height: 0.6,
                 bumps: 5,
                 bump-ratio: 0.6,
