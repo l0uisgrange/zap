@@ -23,10 +23,13 @@
             -style.ratio.at(0) * calc.cos(style.angle) * style.length,
             -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
-        anchor("adjust", origin)
 
         set-origin(origin)
         rotate(style.angle)
+
+        anchor("wiper", (0,0))
+        anchor("tip", (style.length, 0))
+
         line((0, 0), (style.length, 0),
             stroke: style.stroke,
             mark: (
@@ -37,6 +40,8 @@
             )
         )
     })
+    anchor("wiper", "wiper")
+    anchor("tip", "tip")
 }
 
 #let radiation-arrows(origin, ..params) = {
@@ -68,10 +73,10 @@
         let style = merge(arrow-style.adjustable, params.named())
         style.scale *= arrow-style.scale
 
-        anchor("a", (to: node, rel: (0, style.length)))
+        anchor("adjust", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node,
+        line("adjust", "tip",
             stroke: style.stroke,
             mark: (
                 stroke: (thickness: 0pt),
@@ -81,8 +86,9 @@
             )
         )
     })
+    anchor("adjust", "adjust")
+    anchor("a", "adjust")
     anchor("tip", "tip")
-    anchor("a", "a")
 }
 
 #let dc-sign() = {
