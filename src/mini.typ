@@ -27,13 +27,15 @@
 
         set-origin(origin)
         rotate(style.angle)
-        line((0, 0), (style.length, 0), stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+        line((0, 0), (style.length, 0),
+            stroke: style.stroke,
+            mark: (
+                stroke: (thickness: 0pt),
+                end: style.symbol,
+                scale: style.scale,
+                fill: style.stroke.paint,
+            )
+        )
     })
 }
 
@@ -51,17 +53,12 @@
                 stroke: (thickness: 0pt),
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
 
-        if (style.reversed) {
-            line((style.length, -style.distance), (0, -style.distance), mark: (start: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (start: style.variant))
-        } else {
-            line((style.length, -style.distance), (0, -style.distance), mark: (end: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (end: style.variant))
-        }
+        let pos = if style.reversed { "start" } else { "end" }
+        line((style.length, -style.distance), (0, -style.distance), mark: ((pos): style.symbol))
+        line((style.length, +style.distance), (0, +style.distance), mark: ((pos): style.symbol))
     })
 }
 
@@ -74,13 +71,15 @@
         anchor("a", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node, stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+        line("a", node,
+            stroke: style.stroke,
+            mark: (
+                stroke: (thickness: 0pt),
+                end: style.symbol,
+                scale: style.scale,
+                fill: style.stroke.paint,
+            )
+        )
     })
     anchor("tip", "tip")
     anchor("a", "a")
