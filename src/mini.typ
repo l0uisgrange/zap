@@ -13,10 +13,10 @@
     line((rel: (radius: radius, angle: -45deg), to: pos), (rel: (radius: -radius, angle: -45deg), to: pos), ..params)
 }
 
-#let variable-arrow(..params) = {
+#let adjust-arrow(type, ..params) = {
     scope(ctx => {
         let arrow-style = get-style(ctx).arrow
-        let style = merge(arrow-style.variable, params.named())
+        let style = merge(arrow-style.at(type), params.named())
         style.scale *= arrow-style.scale
 
         let origin = (
@@ -24,22 +24,50 @@
             -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
 
+        if type == "sensor" {
+            anchor("label", origin)
+            anchor("wiper", (to: origin, rel: (-style.sensor-length, 0)))
+        } else {
+            anchor("wiper", origin)
+        }
+
         set-origin(origin)
         rotate(style.angle)
 
-        anchor("wiper", (0,0))
         anchor("tip", (style.length, 0))
 
-        line((0, 0), (style.length, 0),
+        set-style(
             stroke: style.stroke,
             mark: (
-                stroke: (thickness: 0pt),
                 end: style.symbol,
                 scale: style.scale,
-                fill: style.stroke.paint,
             )
         )
+        if type == "variable" {
+            line("wiper", "tip",
+                mark: (
+                    stroke: (thickness: 0pt),
+                    fill: style.stroke.paint
+                )
+            )
+        } else if type == "preset" {
+            line("wiper", "tip",
+                mark: (
+                    stroke: style.stroke,
+                    width: style.width,
+                )
+            )
+        } else if type == "sensor" {
+            line("wiper", "label", "tip",
+                mark: (
+                    stroke: style.stroke,
+                )
+            )
+        }
     })
+    if type == "sensor" {
+        anchor("label", "label")
+    }
     anchor("wiper", "wiper")
     anchor("tip", "tip")
 }

@@ -1,9 +1,9 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, rect, set-style
-#import "/src/mini.typ": adjustable-arrow, variable-arrow
+#import "/src/mini.typ": adjustable-arrow, adjust-arrow
 
-#let resistor(name, node, variable: false, heatable: false, adjustable: false, ..params) = {
+#let resistor(name, node, variable: false, heatable: false, adjustable: false, preset: false, sensor: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")
     assert(type(adjustable) == bool, message: "adjustable must be of type bool")
 
@@ -36,7 +36,11 @@
             )
         }
         if variable {
-            variable-arrow()
+            adjust-arrow("variable")
+        } else if preset {
+            adjust-arrow("preset")
+        } else if sensor {
+            adjust-arrow("sensor")
         } else if adjustable {
             adjustable-arrow((0, style.height / 2))
         }

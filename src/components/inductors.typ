@@ -1,9 +1,9 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import "/src/mini.typ": variable-arrow
+#import "/src/mini.typ": adjust-arrow
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
 
-#let inductor(name, node, variable: false, ..params) = {
+#let inductor(name, node, variable: false, preset: false, sensor: false, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
@@ -27,7 +27,11 @@
         }
 
         if variable {
-            variable-arrow()
+            adjust-arrow("variable")
+        } else if preset {
+            adjust-arrow("preset")
+        } else if sensor {
+            adjust-arrow("sensor")
         }
     }
 
