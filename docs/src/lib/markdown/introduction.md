@@ -9,11 +9,11 @@ I initiated Zap in 2025 during my microengineering studies at [EPFL](https://epf
 
 ## Philosophy
 
-Instead of simply porting the popular `circuitikz` library to Typst, this project establishes **a new foundation**. Zap is built around two core principles:
+Instead of simply porting the popular `circuitikz` library to Typst, this project tries to establish **a new foundation**. Zap is built around two core principles:
 1. **Keep functions clean and intuitive**. This ensures the library is easy to use, requiring minimal code while remaining highly customizable. Users can take advantage of Typst's modernity, avoiding the need to input overly complex symbols or lengthy commands.
 2. **Always rely on standard-inspired symbols when possible**. This is the most significant departure from `circuitikz`, which prioritized extensive customization. With Zap, you get direct access to symbols inspired by international standards used in industry. 
 
-    We therefore exclude purely aesthetic symbol variations, focusing on legibility and making the standard symbols visually excellent. This ensures your circuits will be understandable by anyone, anywhere. Of course, we know this might be a constraint, so Zap will always give you the freedom to create your own [custom symbols](/docs/custom).
+    Purely aesthetic symbol variations are therefore excluded, as this project is focusing on making the standard symbols visually excellent. This ensures your circuits will be understandable by anyone, anywhere. Of course, we know this might be a constraint, so Zap will always give you the freedom to create your own [custom symbols](/docs/custom).
 
 ## Contributors
 
