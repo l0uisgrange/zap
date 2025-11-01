@@ -36,7 +36,7 @@
             )
         }
         if variable {
-            variable-arrow()
+            variable-arrow(..style.at("arrow", default: (:)).at("variable", default: (:)))
         } else if adjustable {
             adjustable-arrow((0, style.height / 2))
         }

@@ -33,10 +33,9 @@
             stroke: style.stroke,
             mark: (
                 stroke: (thickness: 0pt),
-                end: style.variant,
+                end: style.symbol,
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
             )
         )
     })
@@ -58,13 +57,12 @@
                 stroke: (thickness: 0pt),
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
 
         let pos = if style.reversed { "start" } else { "end" }
-        line((style.length, -style.distance), (0, -style.distance), mark: ((pos): style.variant))
-        line((style.length, +style.distance), (0, +style.distance), mark: ((pos): style.variant))
+        line((style.length, -style.distance), (0, -style.distance), mark: ((pos): style.symbol))
+        line((style.length, +style.distance), (0, +style.distance), mark: ((pos): style.symbol))
     })
 }
 
@@ -81,10 +79,9 @@
             stroke: style.stroke,
             mark: (
                 stroke: (thickness: 0pt),
-                end: style.variant,
+                end: style.symbol,
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
             )
         )
     })
