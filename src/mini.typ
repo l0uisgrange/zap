@@ -23,18 +23,25 @@
             -style.ratio.at(0) * calc.cos(style.angle) * style.length,
             -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
-        anchor("adjust", origin)
-
         set-origin(origin)
         rotate(style.angle)
-        line((0, 0), (style.length, 0), stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+
+        anchor("wiper", (0,0))
+        anchor("tip", (style.length, 0))
+
+        line((0, 0), (style.length, 0),
+            stroke: style.stroke,
+            mark: (
+                stroke: (thickness: 0pt),
+                end: style.variant,
+                scale: style.scale,
+                fill: style.stroke.paint,
+                ..arrow-style.at(style.variant, default: (:)),
+            )
+        )
     })
+    anchor("wiper", "wiper")
+    anchor("tip", "tip")
 }
 
 #let radiation-arrows(origin, ..params) = {
@@ -55,13 +62,9 @@
             ),
         )
 
-        if (style.reversed) {
-            line((style.length, -style.distance), (0, -style.distance), mark: (start: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (start: style.variant))
-        } else {
-            line((style.length, -style.distance), (0, -style.distance), mark: (end: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (end: style.variant))
-        }
+        let pos = if style.reversed { "start" } else { "end" }
+        line((style.length, -style.distance), (0, -style.distance), mark: ((pos): style.variant))
+        line((style.length, +style.distance), (0, +style.distance), mark: ((pos): style.variant))
     })
 }
 
@@ -71,19 +74,22 @@
         let style = merge(arrow-style.adjustable, params.named())
         style.scale *= arrow-style.scale
 
-        anchor("a", (to: node, rel: (0, style.length)))
+        anchor("wiper", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node, stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+        line("wiper", "tip",
+            stroke: style.stroke,
+            mark: (
+                stroke: (thickness: 0pt),
+                end: style.variant,
+                scale: style.scale,
+                fill: style.stroke.paint,
+                ..arrow-style.at(style.variant, default: (:)),
+            )
+        )
     })
+    anchor("wiper", "wiper")
     anchor("tip", "tip")
-    anchor("a", "a")
 }
 
 #let dc-sign() = {
