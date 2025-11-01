@@ -35,12 +35,13 @@
         } else {
             cetz.draw.translate(x: 0., y: -style.fall)
 
-            let ratio = 0.6
-            let loop-bottom = style.height * 0.25
-            let loop-width = style.width / (ratio * (style.bumps - 1) + 1)
-            let step = loop-width * ratio
-            let k1 = (0.30, 0.24)
-            let k2 = (0.25, 0.65)
+            let bump-ratio = style.bump-ratio
+            let bottom-ratio = style.bottom-ratio
+            let loop-bottom = style.height * bottom-ratio
+            let loop-width = style.width / (bump-ratio * (style.bumps - 1) + 1)
+            let step = loop-width * bump-ratio
+            let k1 = style.k1
+            let k2 = style.k2
             let start = -style.width / 2
 
             let top-draw(begin) = {
@@ -54,17 +55,17 @@
                 for i in range(style.bumps - 1) {
                     top-draw(start + step * i)
                     let c = (start + step * i + loop-width, 0)
-                    let a = (c.at(0) - loop-width * (1. - ratio), 0)
+                    let a = (c.at(0) - loop-width * (1. - bump-ratio), 0)
                     let b = ((a.at(0) + c.at(0)) / 2, -loop-bottom)
-                    bezier(c, b, (to: c, rel: (0, -loop-bottom * k2.at(1))), (to: b, rel: (loop-width * (1. - ratio) * k2.at(0), 0)))
-                    bezier(b, a, (to: b, rel: (-loop-width * (1. - ratio) * k2.at(0), 0)), (to: a, rel: (0, -loop-bottom * k2.at(1))))
+                    bezier(c, b, (to: c, rel: (0, -loop-bottom * k2.at(1))), (to: b, rel: (loop-width * (1. - bump-ratio) * k2.at(0), 0)))
+                    bezier(b, a, (to: b, rel: (-loop-width * (1. - bump-ratio) * k2.at(0), 0)), (to: a, rel: (0, -loop-bottom * k2.at(1))))
                 }
                 top-draw(start + step * (style.bumps - 1))
             })
         }
 
         if variable {
-            variable-arrow(..style.at("arrow", default: (:)))
+            variable-arrow(..style.at("arrow", default: (:)).at("variable", default: (:)))
         }
     }
 

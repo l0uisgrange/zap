@@ -245,22 +245,30 @@
             fall: auto,
             ieee: (
                 arrow: (
-                    ratio: (0.55, 0.35),
-                    length: 25pt,
-                    angle: 50deg,
+                    variable: (
+                        ratio: (0.55, 0.35),
+                        length: 25pt,
+                        angle: 50deg,
+                    ),
                 ),
             ),
             pretty: (
                 height: 0.6,
                 width: 1.3,
                 bumps: 5,
+                bump-ratio: 0.6,
+                bottom-ratio: 0.25,
+                k1: (0.30, 0.24),
+                k2: (0.25, 0.65),
                 stroke: (
                     thickness: 1pt,
                 ),
                 arrow: (
-                    ratio: (0.55, 0.38),
-                    length: 30pt,
-                    angle: 60deg,
+                    variable: (
+                        ratio: (0.55, 0.38),
+                        length: 30pt,
+                        angle: 60deg,
+                    ),
                 ),
             ),
         ),
