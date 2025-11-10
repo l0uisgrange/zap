@@ -22,7 +22,7 @@
 #import "components/supplies.typ": earth, frame, ground, vcc, vee
 #import "components/inductors.typ": inductor
 #import "components/logic.typ": land, lnand, lnor, lor, lxnor, lxor
-#import "components/resistors.typ": heater, potentiometer, resistor, rheostat
+#import "components/resistors.typ": heater, potentiometer, resistor, rheostat, thermistor
 #import "components/sources.typ": acvsource, disource, dvsource, isource, vsource
 #import "components/motors.typ": acmotor, dcmotor
 #import "components/transistors/bjts.typ": bjt, npn, pnp

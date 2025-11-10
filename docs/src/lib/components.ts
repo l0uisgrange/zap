@@ -45,6 +45,11 @@ import circulator from './images/components/44.svg';
 import land from './images/components/45.svg';
 import lor from './images/components/46.svg';
 import lxor from './images/components/47.svg';
+import thermistor from './images/components/48.svg';
+import presistor from './images/components/49.svg';
+import sinductor from './images/components/50.svg';
+import pinductor from './images/components/51.svg';
+import iopamp from './images/components/52.svg';
 
 export interface Component {
 	name: string;
@@ -52,7 +57,16 @@ export interface Component {
 	image: string;
 	quick?: boolean;
 	release: string;
-	options?: { name: string; alias?: string; default: string; description?: string; type?: string | string[] }[];
+	options?: {
+		full_name: string;
+		release: string;
+		image: string;
+		name: string;
+		alias?: string;
+		default: string;
+		description?: string;
+		type?: string | string[];
+	}[];
 	origin?: string;
 	contributors?: string[];
 }
@@ -68,40 +82,47 @@ export const components: Component[] = [
 		options: [
 			{
 				name: 'variable',
+				full_name: 'variable resistor',
+				release: '0.1.0',
+				type: 'boolean',
+				default: 'false',
 				alias: 'rheostat',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws an arrow accross the resistor'
+				image: rheostat
 			},
 			{
 				name: 'adjustable',
+				full_name: 'adjustable resistor',
+				release: '0.1.0',
+				type: 'boolean',
+				default: 'false',
 				alias: 'potentiometer',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws an arrow perpendicular to the resistor'
-			}
-		]
-	},
-	{
-		name: 'heater',
-		full_name: 'heating resistor',
-		image: heater,
-		quick: true,
-		release: '0.3.0',
-		origin: 'resistor',
-		contributors: ['l0uisgrange'],
-		options: [
-			{
-				name: 'variable',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws an arrow accross the heater'
+				image: potentiometer
 			},
 			{
-				name: 'adjustable',
+				name: 'heatable',
+				full_name: 'heating resistor',
+				release: '0.4.0',
 				type: 'boolean',
 				default: 'false',
-				description: 'Draws an arrow perpendicular to the heater'
+				alias: 'heater',
+				image: heater
+			},
+			{
+				name: 'sensor',
+				full_name: 'sensing resistor',
+				release: '0.5.0',
+				alias: 'thermistor',
+				type: 'boolean',
+				default: 'false',
+				image: thermistor
+			},
+			{
+				name: 'preset',
+				full_name: 'preset resistor',
+				release: '0.5.0',
+				type: 'boolean',
+				default: 'false',
+				image: presistor
 			}
 		]
 	},
@@ -119,15 +140,18 @@ export const components: Component[] = [
 		image: isource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange']
-	},
-	{
-		name: 'acvsource',
-		full_name: 'alternative voltage source',
-		image: acvsource,
-		quick: true,
-		release: '0.3.0',
-		contributors: ['l0uisgrange', 'LionelKarlen']
+		contributors: ['l0uisgrange'],
+		options: [
+			{
+				name: 'dependent',
+				full_name: 'dependent current source',
+				release: '0.4.0',
+				type: 'boolean',
+				default: 'false',
+				alias: 'disource',
+				image: disource
+			}
+		]
 	},
 	{
 		name: 'vsource',
@@ -135,25 +159,80 @@ export const components: Component[] = [
 		image: vsource,
 		quick: true,
 		release: '0.1.0',
-		contributors: ['l0uisgrange', 'LionelKarlen']
+		contributors: ['l0uisgrange', 'LionelKarlen'],
+		options: [
+			{
+				name: 'voltage',
+				full_name: 'alternative voltage source',
+				release: '0.3.0',
+				type: ['"ac"', '"dc"'],
+				default: '"ac"',
+				alias: 'acvsource',
+				image: acvsource
+			},
+			{
+				name: 'dependent',
+				full_name: 'dependent voltage source',
+				release: '0.4.0',
+				type: 'boolean',
+				default: 'false',
+				alias: 'dvsource',
+				image: dvsource
+			}
+		]
 	},
 	{
-		name: 'dvsource',
-		full_name: 'dependent voltage source',
-		image: dvsource,
+		name: 'diode',
+		full_name: 'diode',
+		image: diode,
 		quick: true,
-		release: '0.4.0',
-		contributors: ['l0uisgrange'],
-		origin: 'vsource'
-	},
-	{
-		name: 'disource',
-		full_name: 'dependent current source',
-		image: disource,
-		quick: true,
-		release: '0.4.0',
-		contributors: ['l0uisgrange'],
-		origin: 'isource'
+		release: '0.1.0',
+		contributors: ['l0uisgrange', 'Pariatorn'],
+		options: [
+			{
+				name: 'type',
+				alias: 'led',
+				type: ['"emitting"', '"receiving"', '"tunnel"', '"zener"', '"schottky"'],
+				default: '',
+				values: [
+					{
+						value: '"emitting"',
+						full_name: 'light-emitting diode',
+						alias: 'led',
+						image: led,
+						release: '0.2.0'
+					},
+					{
+						value: '"receiving"',
+						full_name: 'photodiode',
+						alias: 'photodiode',
+						image: photodiode,
+						release: '0.2.0'
+					},
+					{
+						value: '"tunnel"',
+						full_name: 'tunnel diode',
+						alias: 'tunnel',
+						image: tunnel,
+						release: '0.3.0'
+					},
+					{
+						value: '"zener"',
+						full_name: 'zener diode',
+						alias: 'zener',
+						image: zener,
+						release: '0.3.0'
+					},
+					{
+						value: '"schottky"',
+						full_name: 'schottky diode',
+						alias: 'schottky',
+						image: schottky,
+						release: '0.3.0'
+					}
+				]
+			}
+		]
 	},
 	{
 		name: 'vcc',
@@ -170,42 +249,6 @@ export const components: Component[] = [
 		quick: false,
 		release: '0.3.0',
 		contributors: ['ThomasPDye']
-	},
-	{
-		name: 'zener',
-		full_name: 'zener diode',
-		image: zener,
-		quick: true,
-		release: '0.3.0',
-		origin: 'diode',
-		contributors: ['Pariatorn']
-	},
-	{
-		name: 'tunnel',
-		full_name: 'tunnel diode',
-		image: tunnel,
-		quick: true,
-		release: '0.3.0',
-		origin: 'diode',
-		contributors: ['Pariatorn']
-	},
-	{
-		name: 'schottky',
-		full_name: 'schottky diode',
-		image: schottky,
-		quick: true,
-		release: '0.3.0',
-		origin: 'diode',
-		contributors: ['Pariatorn']
-	},
-	{
-		name: 'afuse',
-		full_name: 'asymmetric fuse',
-		image: afuse,
-		quick: true,
-		release: '0.1.0',
-		origin: 'fuse',
-		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'transformer',
@@ -233,44 +276,14 @@ export const components: Component[] = [
 		options: [
 			{
 				name: 'asymmetric',
+				full_name: 'asymmetric fuse',
+				release: '0.1.0',
 				alias: 'afuse',
 				type: 'boolean',
 				default: 'false',
-				description: 'Draws a black rectangle on one side'
+				image: afuse
 			}
 		]
-	},
-	{
-		name: 'diode',
-		full_name: 'diode',
-		image: diode,
-		quick: true,
-		release: '0.1.0',
-		contributors: ['l0uisgrange', 'Pariatorn'],
-		options: [
-			{
-				name: 'emitting',
-				alias: 'led',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws arrows coming from the diode'
-			},
-			{
-				name: 'receiving',
-				alias: 'photodiode',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws arrows coming to the diode'
-			}
-		]
-	},
-	{
-		name: 'led',
-		full_name: 'light-emitting diode',
-		image: led,
-		quick: true,
-		release: '0.1.0',
-		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'dcmotor',
@@ -282,9 +295,20 @@ export const components: Component[] = [
 		options: [
 			{
 				name: 'magnet',
+				full_name: 'magnet motor',
+				release: '0.1.0',
+				image: mmotor,
 				type: 'boolean',
-				default: 'false',
-				description: 'Shows the magnets as black rectangles'
+				default: 'false'
+			},
+			{
+				name: 'current',
+				full_name: 'alternative current motor',
+				release: '0.2.0',
+				alias: 'acmotor',
+				image: acmotor,
+				type: ['"ac"', '"dc"'],
+				default: '"dc"'
 			}
 		]
 	},
@@ -303,27 +327,35 @@ export const components: Component[] = [
 		contributors: ['l0uisgrange']
 	},
 	{
-		name: 'npn',
+		name: 'bjt',
 		full_name: 'bipolar junction transistor',
 		image: npn,
 		release: '0.1.0',
 		contributors: ['l0uisgrange'],
 		options: [
 			{
-				name: 'envelope',
-				type: 'boolean',
-				default: 'false',
-				description: 'Draws a circle around the transistor'
+				name: 'polarisation',
+				type: ['"npn"', '"pnp"'],
+				default: 'npn',
+				release: '0.1.0',
+				values: [
+					{
+						value: '"npn"',
+						full_name: 'NPN transistor',
+						alias: 'npn',
+						image: npn,
+						release: '0.1.0'
+					},
+					{
+						value: '"pnp"',
+						full_name: 'PNP transistor',
+						alias: 'pnp',
+						image: pnp,
+						release: '0.1.0'
+					}
+				]
 			}
 		]
-	},
-	{
-		name: 'pnp',
-		full_name: 'bipolar junction transistor',
-		image: pnp,
-		release: '0.1.0',
-		contributors: ['l0uisgrange'],
-		origin: 'npn'
 	},
 	{
 		name: 'land',
@@ -398,18 +430,13 @@ export const components: Component[] = [
 		options: [
 			{
 				name: 'invert',
+				full_name: 'inverter operational amplifier',
 				type: 'boolean',
-				default: 'false'
+				default: 'false',
+				release: '0.2.0',
+				image: iopamp
 			}
 		]
-	},
-	{
-		name: 'acmotor',
-		full_name: 'alternative current motor',
-		image: acmotor,
-		quick: true,
-		release: '0.2.0',
-		contributors: ['l0uisgrange']
 	},
 	{
 		name: 'frame',
@@ -531,7 +558,7 @@ export const components: Component[] = [
 		]
 	},
 	{
-		name: 'nobutton',
+		name: 'button',
 		full_name: 'normally open push button',
 		image: nobutton,
 		quick: true,
@@ -587,6 +614,7 @@ export const components: Component[] = [
 ];
 
 type ContributorCount = {
+	[key: string]: number;
 	[key: string]: number;
 };
 

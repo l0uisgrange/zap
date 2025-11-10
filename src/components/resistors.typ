@@ -59,3 +59,4 @@
 #let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)
 #let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)
 #let heater(name, node, ..params) = resistor(name, node, heatable: true, ..params)
+#let thermistor(name, node, ..params) = resistor(name, node, sensor: true, ..params)

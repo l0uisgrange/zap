@@ -340,3 +340,38 @@
         wire("c1.in2", (rel: (-5, 0)))
     })
 })
+
+// Image 48
+#image({
+    import lib: *
+    thermistor("t1", (-3, 0), (3, 0))
+})
+
+// Image 49
+#image({
+    import lib: *
+    resistor("t1", (-3, 0), (3, 0), preset: true)
+})
+
+// Image 50
+#image({
+    import lib: *
+    inductor("t1", (-3, 0), (3, 0), sensor: true)
+})
+
+// Image 51
+#image({
+    import lib: *
+    inductor("t1", (-3, 0), (3, 0), preset: true)
+})
+
+// Image 52
+#image({
+    import lib: *
+    opamp("r1", (0, 0), invert: true)
+        draw.floating({
+            wire("r1.plus", (rel: (-5, 0)))
+            wire("r1.minus", (rel: (-5, 0)))
+            wire("r1.out", (rel: (5, 0)))
+        })
+})
