@@ -5,19 +5,24 @@
 
 #let ra = ratio
 
-#let wire(bits: 0, shape: "direct", ratio: 50%, axis: "x", i: none, ..params) = {
+#let wire(bits: 0, shape: "direct", ratio: 50%, axis: "x", i: none, name: none, ..params) = {
     assert(type(bits) == int, message: "bits must be an int")
     assert(params.pos().len() >= 2, message: "wires need at least two points")
     assert(type(ratio) in (ra, int, float, length), message: "ratio must be a ratio, a number or a length")
     assert(shape in ("direct", "zigzag", "dodge"), message: "shape must be direct, zigzag or dodge")
 
-    group(ctx => {
+    group(name: name, ctx => {
         let style = get-style(ctx).wire
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
         set-style(stroke: style.stroke)
 
         // Drawing the wire using the shape parameter
+        anchor("in", points.first())
+        anchor("out", points.last())
+        for (index, point) in points.enumerate() {
+            anchor("p" + str(index), point)
+        }
         if shape == "direct" {
             line(..points, name: "line")
         } else if shape == "zigzag" {
@@ -31,6 +36,11 @@
 
                 let p-mid1 = if axis == "x" { (p-mid.at(0), p1.at(1)) } else { (p1.at(0), p-mid.at(1)) }
                 let p-mid2 = if axis == "x" { (p-mid.at(0), p2.at(1)) } else { (p2.at(0), p-mid.at(1)) }
+
+                group(name: "p" + str(i) + "-p" + str(i + 1), {
+                    anchor("a", p-mid1)
+                    anchor("b", p-mid2)
+                })
 
                 generated-points = (..generated-points, p1, p-mid1, p-mid2)
             }

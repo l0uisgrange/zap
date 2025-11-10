@@ -34,3 +34,10 @@ The position and axis of the wire can also be altered using the `axis` and `rati
     swire((5, 2), (6, -1), stroke: red, axis: "y")
 })
 ```
+
+### Anchors
+- `in`: the first point
+- `out`: the last point
+- `p<i>`: an anchor for each given point of the wire (by index i)
+- `p<i>-p<i+1>.a`: the first zigzag corner between the points i and i+1 (only for zigzag)
+- `p<i>-p<i+1>.b`: the second zigzag corner between the points i and i+1 (only for zigzag)
