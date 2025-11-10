@@ -13,28 +13,63 @@
     line((rel: (radius: radius, angle: -45deg), to: pos), (rel: (radius: -radius, angle: -45deg), to: pos), ..params)
 }
 
-#let variable-arrow(..params) = {
+#let adjust-arrow(type, ..params) = {
     scope(ctx => {
         let arrow-style = get-style(ctx).arrow
-        let style = merge(arrow-style.variable, params.named())
+        let style = merge(arrow-style.at(type), params.named())
         style.scale *= arrow-style.scale
 
         let origin = (
             -style.ratio.at(0) * calc.cos(style.angle) * style.length,
             -style.ratio.at(1) * calc.sin(style.angle) * style.length,
         )
-        anchor("adjust", origin)
+
+        if type == "sensor" {
+            anchor("label", origin)
+            anchor("wiper", (to: origin, rel: (-style.sensor-length, 0)))
+        } else {
+            anchor("wiper", origin)
+        }
 
         set-origin(origin)
         rotate(style.angle)
-        line((0, 0), (style.length, 0), stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+
+        anchor("tip", (style.length, 0))
+
+        set-style(
+            stroke: style.stroke,
+            mark: (
+                end: style.symbol,
+                scale: style.scale,
+            )
+        )
+        if type == "variable" {
+            line("wiper", "tip",
+                mark: (
+                    stroke: (thickness: 0pt),
+                    fill: style.stroke.paint
+                )
+            )
+        } else if type == "preset" {
+            line("wiper", "tip",
+                mark: (
+                    stroke: style.stroke,
+                    width: style.width,
+                )
+            )
+        } else if type == "sensor" {
+            line("wiper", "label", "tip",
+                mark: (
+                    stroke: style.stroke,
+                )
+            )
+        }
     })
+    if type == "sensor" {
+        anchor("label", "label")
+    }
+    anchor("wiper", "wiper")
+    anchor("tip", "tip")
 }
 
 #let radiation-arrows(origin, ..params) = {
@@ -51,17 +86,12 @@
                 stroke: (thickness: 0pt),
                 scale: style.scale,
                 fill: style.stroke.paint,
-                ..arrow-style.at(style.variant, default: (:)),
             ),
         )
 
-        if (style.reversed) {
-            line((style.length, -style.distance), (0, -style.distance), mark: (start: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (start: style.variant))
-        } else {
-            line((style.length, -style.distance), (0, -style.distance), mark: (end: style.variant))
-            line((style.length, +style.distance), (0, +style.distance), mark: (end: style.variant))
-        }
+        let pos = if style.reversed { "start" } else { "end" }
+        line((style.length, -style.distance), (0, -style.distance), mark: ((pos): style.symbol))
+        line((style.length, +style.distance), (0, +style.distance), mark: ((pos): style.symbol))
     })
 }
 
@@ -71,19 +101,22 @@
         let style = merge(arrow-style.adjustable, params.named())
         style.scale *= arrow-style.scale
 
-        anchor("a", (to: node, rel: (0, style.length)))
+        anchor("adjust", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("a", node, stroke: style.stroke, mark: (
-            stroke: (thickness: 0pt),
-            end: style.variant,
-            scale: style.scale,
-            fill: style.stroke.paint,
-            ..arrow-style.at(style.variant, default: (:)),
-        ))
+        line("adjust", "tip",
+            stroke: style.stroke,
+            mark: (
+                stroke: (thickness: 0pt),
+                end: style.symbol,
+                scale: style.scale,
+                fill: style.stroke.paint,
+            )
+        )
     })
+    anchor("adjust", "adjust")
+    anchor("a", "adjust")
     anchor("tip", "tip")
-    anchor("a", "a")
 }
 
 #let dc-sign() = {
