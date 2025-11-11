@@ -1,5 +1,5 @@
 #import "dependencies.typ": cetz
-#import cetz.draw: anchor, circle, hobby, line, rotate, scope, set-origin, set-style
+#import cetz.draw: anchor, circle, hobby, line, merge-path, rotate, scope, set-origin, set-style
 #import cetz.styles: merge
 #import "utils.typ": get-style
 
@@ -41,28 +41,22 @@
             mark: (
                 end: style.symbol,
                 scale: style.scale,
-            )
+            ),
         )
         if type == "variable" {
-            line("wiper", "tip",
-                mark: (
-                    stroke: (thickness: 0pt),
-                    fill: style.stroke.paint
-                )
-            )
+            line("wiper", "tip", mark: (
+                stroke: (thickness: 0pt),
+                fill: style.stroke.paint,
+            ))
         } else if type == "preset" {
-            line("wiper", "tip",
-                mark: (
-                    stroke: style.stroke,
-                    width: style.width,
-                )
-            )
+            line("wiper", "tip", mark: (
+                stroke: style.stroke,
+                width: style.width,
+            ))
         } else if type == "sensor" {
-            line("wiper", "label", "tip",
-                mark: (
-                    stroke: style.stroke,
-                )
-            )
+            line("wiper", "label", "tip", mark: (
+                stroke: style.stroke,
+            ))
         }
     })
     if type == "sensor" {
@@ -104,15 +98,12 @@
         anchor("adjust", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("adjust", "tip",
-            stroke: style.stroke,
-            mark: (
-                stroke: (thickness: 0pt),
-                end: style.symbol,
-                scale: style.scale,
-                fill: style.stroke.paint,
-            )
-        )
+        line("adjust", "tip", stroke: style.stroke, mark: (
+            stroke: (thickness: 0pt),
+            end: style.symbol,
+            scale: style.scale,
+            fill: style.stroke.paint,
+        ))
     })
     anchor("adjust", "adjust")
     anchor("a", "adjust")
@@ -142,4 +133,17 @@
     set-style(stroke: symbol-stroke)
 
     hobby((-width / 2, 0), (-width / 4, height / 2), (width / 4, -height / 2), (width / 2, 0))
+}
+
+#let clock-wedge(size: 1) = {
+    let width = 5pt * size
+    let height = 10pt * size
+    let symbol-stroke = 0.55pt
+
+    set-style(stroke: symbol-stroke)
+
+    merge-path({
+        line((0, height / 2), (width, 0))
+        line((0, -height / 2), (width, 0))
+    })
 }
