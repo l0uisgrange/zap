@@ -4,6 +4,8 @@
 #import cetz.draw: anchor, arc-through, circle, content, line, rect, rotate
 
 #let logic(name, node, text: $"&"$, invert: false, inputs: 2, ..params) = {
+    assert(inputs.len() >= 2, message: "logic supports minimum two inputs")
+
     // Drawing function
     let draw(ctx, position, style) = {
         let height = calc.max(style.min-height, inputs * style.spacing + 2 * style.padding)
@@ -12,8 +14,8 @@
         rect((-style.width / 2, -height / 2), (rel: (style.width, height)), fill: style.fill, stroke: style.stroke)
         content((0, height / 2 - style.padding), text, anchor: "north")
 
-        for input in range(1, inputs+1) {
-          anchor("in" + str(input),(-style.width / 2, height / 2 - input * style.spacing))
+        for input in range(1, inputs + 1) {
+            anchor("in" + str(input), (-style.width / 2, height / 2 - input * style.spacing))
         }
 
         if invert {
