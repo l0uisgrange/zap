@@ -3,7 +3,7 @@
 #import "/src/mini.typ": clock-wedge
 #import cetz.draw: anchor, content, line, polygon, rect, scope, translate
 
-#let flipflop(name, node, pins: (), ..params) = {
+#let flipflop(name, node, pins: (:), ..params) = {
     assert(params.pos().len() == 0, message: "flipflop supports only one node")
     assert(type(pins) == dictionary, message: "pins should be a dictionnary")
     assert(
