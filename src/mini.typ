@@ -41,28 +41,22 @@
             mark: (
                 end: style.symbol,
                 scale: style.scale,
-            )
+            ),
         )
         if type == "variable" {
-            line("wiper", "tip",
-                mark: (
-                    stroke: (thickness: 0pt),
-                    fill: style.stroke.paint
-                )
-            )
+            line("wiper", "tip", mark: (
+                stroke: (thickness: 0pt),
+                fill: style.stroke.paint,
+            ))
         } else if type == "preset" {
-            line("wiper", "tip",
-                mark: (
-                    stroke: style.stroke,
-                    width: style.width,
-                )
-            )
+            line("wiper", "tip", mark: (
+                stroke: style.stroke,
+                width: style.width,
+            ))
         } else if type == "sensor" {
-            line("wiper", "label", "tip",
-                mark: (
-                    stroke: style.stroke,
-                )
-            )
+            line("wiper", "label", "tip", mark: (
+                stroke: style.stroke,
+            ))
         }
     })
     if type == "sensor" {
@@ -104,15 +98,12 @@
         anchor("adjust", (to: node, rel: (0, style.length)))
         anchor("tip", node)
 
-        line("adjust", "tip",
-            stroke: style.stroke,
-            mark: (
-                stroke: (thickness: 0pt),
-                end: style.symbol,
-                scale: style.scale,
-                fill: style.stroke.paint,
-            )
-        )
+        line("adjust", "tip", stroke: style.stroke, mark: (
+            stroke: (thickness: 0pt),
+            end: style.symbol,
+            scale: style.scale,
+            fill: style.stroke.paint,
+        ))
     })
     anchor("adjust", "adjust")
     anchor("a", "adjust")
