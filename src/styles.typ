@@ -415,5 +415,15 @@
             invert-height: 0.2,
             spacing: .4,
         ),
+        flipflop: (
+            variant: auto,
+            scale: auto,
+            stroke: auto,
+            fill: auto,
+            width: 1.8,
+            height: 2.4,
+            padding: 0.24,
+            spacing: .6,
+        ),
     ),
 )

@@ -1,10 +1,9 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import "/src/mini.typ": ac-sign
 #import cetz.draw: anchor, arc-through, circle, content, line, rect, rotate
 
 #let logic(name, node, text: $"&"$, invert: false, inputs: 2, ..params) = {
-    assert(inputs.len() >= 2, message: "logic supports minimum two inputs")
+    assert(inputs >= 2, message: "logic supports minimum two inputs")
 
     // Drawing function
     let draw(ctx, position, style) = {
