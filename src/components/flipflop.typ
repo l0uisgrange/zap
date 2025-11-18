@@ -66,7 +66,7 @@
     component("flipflop", name, node, draw: draw, ..params)
 }
 
-#let sr-latch(name, node, ..params) = flipflop(
+#let srlatch(name, node, ..params) = flipflop(
     name,
     node,
     pins: (
@@ -78,7 +78,7 @@
     ..params,
 )
 
-#let d-flipflop(name, node, ..params) = flipflop(
+#let dflipflop(name, node, ..params) = flipflop(
     name,
     node,
     pins: (
@@ -90,7 +90,7 @@
     ..params,
 )
 
-#let jk-flipflop(name, node, ..params) = flipflop(
+#let jkflipflop(name, node, ..params) = flipflop(
     name,
     node,
     pins: (
