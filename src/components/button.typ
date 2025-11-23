@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, hobby, line, mark, merge-path, rect
-#import "/src/components/wires.typ": wire
+#import "/src/components/wire.typ": wire
 #import "/src/mini.typ": lamp
 
 #let button(name, node, nc: false, illuminated: false, head: "standard", latching: false, ..params) = {

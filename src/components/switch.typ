@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
+#import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, circle, hide, line, mark, rect
-#import "/src/components/wires.typ": wire
 
 #let switch(name, node, closed: false, ..params) = {
     // Drawing function

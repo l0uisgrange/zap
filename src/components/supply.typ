@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
+#import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, line, polygon, scale, scope, set-style
-#import "/src/components/wires.typ": wire
 
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")

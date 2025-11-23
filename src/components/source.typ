@@ -1,8 +1,8 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 #import "/src/utils.typ": get-style
+#import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {
     assert(type(dependent) == bool, message: "dependent must be boolean")

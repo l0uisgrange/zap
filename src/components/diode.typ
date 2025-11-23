@@ -1,9 +1,9 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, circle, line, merge-path, polygon, scope, set-style, translate
 #import "/src/mini.typ": radiation-arrows
-#import "/src/components/wires.typ": wire
+#import "/src/components/wire.typ": wire
 #import "/src/utils.typ": get-style
+#import cetz.draw: anchor, circle, line, merge-path, polygon, scope, set-style, translate
 
 #let diode(name, node, type: none, ..params) = {
     assert((type in ("emitting", "receiving", "tunnel", "zener", "schottky") or type == none), message: "type must be tunnel, zener, schottky, ...")

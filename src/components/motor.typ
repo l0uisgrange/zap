@@ -1,7 +1,7 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
-#import cetz.draw: anchor, arc, circle, content, rect
 #import "/src/mini.typ": ac-sign, dc-sign
+#import cetz.draw: anchor, arc, circle, content, rect
 
 #let motor(uid, name, node, current: "dc", magnet: false, ..params) = {
     assert(current in ("dc", "ac"), message: "current must be ac or dc")

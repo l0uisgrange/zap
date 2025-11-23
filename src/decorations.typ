@@ -1,7 +1,7 @@
 #import "/src/dependencies.typ": cetz
+#import "/src/utils.typ": get-style, resolve-style
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
 #import cetz.styles: merge
-#import "/src/utils.typ": get-style, resolve-style
 
 #let resolve-directions(direction) = {
     let vertical = "north"

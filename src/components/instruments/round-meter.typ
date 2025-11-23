@@ -1,8 +1,8 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, circle, content, line, mark, polygon, rect
 #import "/src/utils.typ": get-style
+#import cetz.draw: anchor, circle, content, line, mark, polygon, rect
 
 #let round-meter(name, node, measurand: str, ..params) = {
     // Drawing function
