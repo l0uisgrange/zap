@@ -351,6 +351,13 @@
             radius: 0.35,
             distance: 0.45,
         ),
+        air-core-transformer: (
+            variant: auto,
+            scale: auto,
+            fill: auto,
+            radius: 0.2,
+            distance: 0.2,
+        ),
         converter: (
             variant: auto,
             scale: auto,

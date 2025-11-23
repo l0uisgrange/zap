@@ -11,7 +11,7 @@
 
 // Export components
 #import "components/antennas.typ": antenna
-#import "components/transformers.typ": transformer
+#import "components/transformers.typ": air-core-transformer, transformer
 #import "components/wires.typ": swire, wire, zwire
 #import "components/circulator.typ": circulator
 #import "components/nodes.typ": node
