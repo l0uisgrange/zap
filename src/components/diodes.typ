@@ -57,8 +57,8 @@
     component("diode", name, node, draw: draw, ..params)
 }
 
-#let led(name, node, ..params) = diode(name, node, type: "emitting", ..params)
-#let photodiode(name, node, ..params) = diode(name, node, type: "receiving", ..params)
-#let tunnel(name, node, ..params) = diode(name, node, type: "tunnel", ..params)
-#let zener(name, node, ..params) = diode(name, node, type: "zener", ..params)
-#let schottky(name, node, ..params) = diode(name, node, type: "schottky", ..params)
+#let led(name, node, ..params) = diode(name, node, ..params, type: "emitting")
+#let photodiode(name, node, ..params) = diode(name, node, ..params, type: "receiving")
+#let tunnel(name, node, ..params) = diode(name, node, ..params, type: "tunnel")
+#let zener(name, node, ..params) = diode(name, node, ..params, type: "zener")
+#let schottky(name, node, ..params) = diode(name, node, ..params, type: "schottky")

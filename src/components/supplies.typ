@@ -60,7 +60,7 @@
     component("earth", name, node, draw: draw, ..params)
 }
 
-#let vcc(name, node, invert: false, ..params) = {
+#let vsupply(uid, name, node, invert: false, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         let direction = if invert { -1 } else { 1 }
@@ -77,7 +77,7 @@
 
     // Component call
     component(
-        "vcc",
+        uid,
         name,
         node,
         draw: draw,
@@ -86,4 +86,5 @@
     )
 }
 
-#let vee(name, node, ..params) = vcc(name, node, invert: true, ..params)
+#let vcc(name, node, ..params) = vsupply("vcc", name, node, ..params)
+#let vee(name, node, ..params) = vsupply("vee", name, node, ..params, invert: true)

@@ -56,6 +56,6 @@
     component("resistor", name, node, draw: draw, ..params)
 }
 
-#let rheostat(name, node, ..params) = resistor(name, node, variable: true, ..params)
-#let potentiometer(name, node, ..params) = resistor(name, node, adjustable: true, ..params)
-#let heater(name, node, ..params) = resistor(name, node, heatable: true, ..params)
+#let rheostat(name, node, ..params) = resistor(name, node, ..params, variable: true)
+#let potentiometer(name, node, ..params) = resistor(name, node, ..params, adjustable: true)
+#let heater(name, node, ..params) = resistor(name, node, ..params, heatable: true)

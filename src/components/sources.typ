@@ -77,5 +77,5 @@
     component("vsource", name, node, draw: draw, ..params)
 }
 
-#let dvsource(name, node, ..params) = vsource(name, node, dependent: true, ..params)
-#let acvsource(name, node, ..params) = vsource(name, node, current: "ac", ..params)
+#let dvsource(name, node, ..params) = vsource(name, node, ..params, dependent: true)
+#let acvsource(name, node, ..params) = vsource(name, node, ..params, current: "ac")

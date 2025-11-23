@@ -22,4 +22,4 @@
     component("fuse", name, node, draw: draw, ..params)
 }
 
-#let afuse(name, node, ..params) = fuse(name, node, asymmetric: true, ..params)
+#let afuse(name, node, ..params) = fuse(name, node, ..params, asymmetric: true)

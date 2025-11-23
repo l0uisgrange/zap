@@ -25,5 +25,5 @@
     component(uid, name, node, draw: draw, ..params)
 }
 
-#let dcmotor(name, node, ..params) = motor("dcmotor", name, node, current: "dc", ..params)
-#let acmotor(name, node, ..params) = motor("acmotor", name, node, current: "ac", ..params)
+#let dcmotor(name, node, ..params) = motor("dcmotor", name, node, ..params, current: "dc")
+#let acmotor(name, node, ..params) = motor("acmotor", name, node, ..params, current: "ac")

@@ -56,6 +56,6 @@
 }
 
 #let nobutton(name, node, ..params) = button(name, node, ..params)
-#let noibutton(name, node, ..params) = button(name, node, illuminated: true, ..params)
-#let ncbutton(name, node, ..params) = button(name, node, nc: true, ..params)
-#let ncibutton(name, node, ..params) = button(name, node, nc: true, illuminated: true, ..params)
+#let noibutton(name, node, ..params) = button(name, node, ..params, illuminated: true)
+#let ncbutton(name, node, ..params) = button(name, node, ..params, nc: true)
+#let ncibutton(name, node, ..params) = button(name, node, ..params, nc: true, illuminated: true)

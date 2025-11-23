@@ -30,9 +30,9 @@
     component("logic", name, node, draw: draw, ..params)
 }
 
-#let land(name, node, ..params) = logic(name, node, text: $"&"$, ..params)
-#let lnand(name, node, ..params) = logic(name, node, text: $"&"$, invert: true, ..params)
-#let lor(name, node, ..params) = logic(name, node, text: $>=1$, ..params)
-#let lnor(name, node, ..params) = logic(name, node, text: $>=1$, invert: true, ..params)
-#let lxor(name, node, ..params) = logic(name, node, text: $=1$, ..params)
-#let lxnor(name, node, ..params) = logic(name, node, text: $=1$, invert: true, ..params)
+#let land(name, node, ..params) = logic(name, node, ..params, text: $"&"$)
+#let lnand(name, node, ..params) = logic(name, node, ..params, text: $"&"$, invert: true)
+#let lor(name, node, ..params) = logic(name, node, ..params, text: $>=1$)
+#let lnor(name, node, ..params) = logic(name, node, ..params, text: $>=1$, invert: true)
+#let lxor(name, node, ..params) = logic(name, node, ..params, text: $=1$)
+#let lxnor(name, node, ..params) = logic(name, node, ..params, text: $=1$, invert: true)
