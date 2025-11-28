@@ -5,6 +5,7 @@ on:
             - main
         paths:
             - 'src/**'
+            - 'docs/**'
     pull_request:
 jobs:
     test:
@@ -38,15 +39,7 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v5
-            -   name: Setup Node.js
-                uses: actions/setup-node@v4
-                with:
-                    node-version: 20
-            -   name: Install dependencies
-                run: |
-                    cd ./docs
-                    npm install
-            -   name: Check Svelte app
-                run: |
-                    cd ./docs
-                    npm run build
+            -   name: Install Typst
+                run: sudo snap install typst
+            -   name: Build using Typst HTML
+                run: typst compile docs/index.typ --format html --features html --root .
