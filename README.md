@@ -10,16 +10,20 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 
 ### Operational amplifier
 
-![Mini example](https://github.com/l0uisgrange/zap/blob/main/examples/example1.svg?raw=true)
+![Operational amplifier example](https://github.com/l0uisgrange/zap/blob/main/examples/example1.svg?raw=true)
 
 ### MicroController Unit
  
-![Mini example](https://github.com/l0uisgrange/zap/blob/main/examples/example2.svg?raw=true)
+![MicroController Unit example](https://github.com/l0uisgrange/zap/blob/main/examples/example2.svg?raw=true)
+
+### Logic circuit
+
+![Logic circuit example](https://github.com/l0uisgrange/zap/blob/main/examples/example3.svg?raw=true)
 
 ## Quick usage
 
 ```typst
-#import "@preview/zap:0.4.0"
+#import "@preview/zap:0.5.0"
 
 #zap.circuit({
     import zap: *
