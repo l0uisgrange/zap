@@ -69,30 +69,31 @@
 #let srlatch(name, node, ..params) = flipflop(
     name,
     node,
+    ..params,
     pins: (
         pin1: (content: "S"),
         pin3: (content: "R"),
         pin4: (content: overline("Q")),
         pin6: (content: "Q"),
     ),
-    ..params,
 )
 
 #let dflipflop(name, node, ..params) = flipflop(
     name,
     node,
+    ..params,
     pins: (
         pin1: (content: "D"),
         pin3: (clock: true),
         pin4: (content: overline("Q")),
         pin6: (content: "Q"),
     ),
-    ..params,
 )
 
 #let jkflipflop(name, node, ..params) = flipflop(
     name,
     node,
+    ..params,
     pins: (
         pin1: (content: "J"),
         pin2: (clock: true),
@@ -100,5 +101,4 @@
         pin4: (content: overline("Q")),
         pin6: (content: "Q"),
     ),
-    ..params,
 )

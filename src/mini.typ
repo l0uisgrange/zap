@@ -1,7 +1,7 @@
 #import "dependencies.typ": cetz
+#import "utils.typ": get-style
 #import cetz.draw: anchor, circle, hobby, line, merge-path, rotate, scope, set-origin, set-style
 #import cetz.styles: merge
-#import "utils.typ": get-style
 
 #let center-mark(symbol: ">") = {
     (end: ((pos: 50%, symbol: symbol, fill: black, anchor: "center"), (pos: 0%, symbol: ">", scale: 0)))

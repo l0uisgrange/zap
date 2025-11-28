@@ -1,7 +1,6 @@
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": opposite-anchor
+#import "/src/utils.typ": opposite-anchor, get-style
 #import cetz.draw: circle, content, get-ctx, on-layer
-#import "/src/utils.typ": get-style
 
 #let node(name, position, fill: true, label: none, ..params) = {
     assert(type(name) == str, message: "node name must be a string")

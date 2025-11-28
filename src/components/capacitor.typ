@@ -48,4 +48,4 @@
     component("capacitor", name, node, draw: draw, ..params)
 }
 
-#let pcapacitor(name, node, ..params) = capacitor(name, node, polarized: true, ..params)
+#let pcapacitor(name, node, ..params) = capacitor(name, node, ..params, polarized: true)

@@ -1,8 +1,8 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import cetz.draw: anchor, arc-through, circle, rotate
 #import "/src/utils.typ": get-style
+#import cetz.draw: anchor, arc-through, circle, rotate
 
 #let circulator(name, node, ..params) = {
     // Drawing function
