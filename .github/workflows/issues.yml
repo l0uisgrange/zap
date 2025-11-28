@@ -1,16 +1,16 @@
 name: Close stale issues
 on:
-  schedule:
-    - cron: '0 0 * * *'
+    schedule:
+        -   cron: '0 0 * * *'
 permissions:
-  issues: write
+    issues: write
 jobs:
-  stale:
-    runs-on: macos-latest
-    steps:
-    - name: Close Stale Issues
-      uses: actions/stale@v10.0.0
-      with:
-        stale-issue-message: 'This issue has been automatically marked as stale due to inactivity. It will be closed in 7 days.'
-        exempt-issue-labels: 'keepopen'
-        stale-issue-label: 'stale'
+    stale:
+        runs-on: macos-latest
+        steps:
+            -   name: Close Stale Issues
+                uses: actions/stale@v10.0.0
+                with:
+                    stale-issue-message: 'This issue has been automatically marked as stale due to inactivity. It will be closed in 7 days.'
+                    exempt-issue-labels: 'keepopen'
+                    stale-issue-label: 'stale'

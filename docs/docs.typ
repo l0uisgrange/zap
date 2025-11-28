@@ -284,13 +284,13 @@ If you wish to change the default appearance of *all symbols of a specific type*
 
         set-style(zap: (
             resistors: (
-                stroke: red
+                stroke: red,
             ),
             heaters: (
                 stroke: blue,
                 fill: blue.lighten(90%),
-                scale: 1.4
-            )
+                scale: 1.4,
+            ),
         ))
 
         resistor("r1", (0, 0), (3, 0))
@@ -379,13 +379,14 @@ The `mcu` is the most complex component, hence this dedicated page.
     #zap.circuit({
         import zap: *
 
-        mcu("mcu",
+        mcu(
+            "mcu",
             (3, 0),
             pins: pins, // you can also provide a number instead of a list
             label: "ESP32",
             width: 4,
             fill: purple.lighten(80%),
-            stroke: none
+            stroke: none,
         )
     })
 ]
