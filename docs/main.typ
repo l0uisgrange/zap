@@ -1,6 +1,9 @@
-#import "./zap.typ"
-#import "./utils.typ": circ
-#set text(font: "Inter")
+#import "./template/zap.typ"
+#import "./template/utils.typ": circ, template
+
+#set document(title: [Zap – The circuitikz Typst alternative], description: [])
+
+#show: template
 
 = Introduction
 

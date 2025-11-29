@@ -20,7 +20,7 @@ jobs:
             -   name: Install Typst
                 run: sudo snap install typst
             -   name: Build using Typst HTML
-                run: typst compile docs/index.typ --format html --features html --root .
+                run: typst watch docs/main.typ --format html --features html --root .
             -   name: Setup Pages
                 uses: actions/configure-pages@v5
             -   name: Upload artifact
