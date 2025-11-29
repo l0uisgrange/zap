@@ -4,7 +4,12 @@
 
 // Export circuit
 #import "circuit.typ": circuit
+
+// Export utils
 #import "utils.typ": set-style
+
+// Export styles
+#import "styles.typ"
 
 // Export core
 #import "component.typ": component, interface
