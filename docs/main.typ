@@ -457,45 +457,6 @@ The position and axis of the wire can also be altered using the `axis` and `rati
 - `p<i>-p<i+1>.a`: the first zigzag corner between the points i and i+1 (only for zigzag)
 - `p<i>-p<i+1>.b`: the second zigzag corner between the points i and i+1 (only for zigzag)
 
-= Microcontroller Unit
-
-The `mcu` is the most complex component, hence this dedicated page.
-
-#circ(
-    ```typst
-    #import "./zap.typ"
-
-    #let pins = (
-        (content: "VCC", side: "west"),
-        (content: "UVCC", side: "west"),
-        (content: "AVCC", side: "west"),
-        (side: "west"),
-        (content: "PD0", side: "west"),
-        (content: "PD1", side: "west"),
-        // ...
-    )
-
-    #zap.circuit({
-        import zap: *
-
-        mcu(
-            "mcu",
-            (3, 0),
-            pins: pins, // you can also provide a number instead of a list
-            label: "ESP32",
-            width: 4,
-            fill: purple.lighten(80%),
-            stroke: none,
-        )
-    })
-    ```,
-)
-
-You have to provide either a number of pins or a complete list of dictionaries. Each pin can have these keys:
-
-- `content` is the label of the pin displayed on the controller. If not provided, the pin is considered as a gap instead of an actual pin.
-- `side` represents the position of the pin on the microcontroller
-
 = Debug <debug>
 
 If you want to know all the anchors available in a symbol, you can either activate the `debug` mode on a single symbol...
@@ -1001,7 +962,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     ),
 )
 
-== Microcontrolling unit <mcu>
+== Operational amplifier <opamp>
 
 #circ(
     ```typst
@@ -1010,7 +971,8 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     #zap.circuit({
         import zap: *
 
-        fuse("f1", (0, 0), (3, 0))
+        opamp("o1", (0, 0))
+        opamp("o2", (3, 0), variant: "ieee")
     })
     ```,
 )
@@ -1022,16 +984,208 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     align: left + top,
     table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
     // dependent
-    `asymmetric`,
+    `invert`,
     `false`,
-    `afuse`,
+    `iopamp`,
     html.frame(
         zap.circuit({
             import zap: *
 
-            fuse("b1", (0, 0), (3, 0), asymmetric: true)
+            opamp("o1", (0, 0), invert: true)
         }),
     ),
+)
+
+== Converter <converter>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        adc("c1", (0, 0), (3, 0))
+        dac("c2", (4, 0), (7, 0))
+    })
+    ```,
+)
+
+== BJT transistors <bjt>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        bjt("t1", (0, 0))
+    })
+    ```,
+)
+
+== MOSFET transistors <mosfet>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        mosfet("t1", (0, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Type*], [*Alias*], [*Image*]),
+    // dependent
+    `channel`,
+    `"n"`,
+    [`"n"` / `"p"`],
+    [`pmos` / `nmos`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), channel: "p")
+        }),
+    ),
+    // envelope
+    `envelope`,
+    `false`,
+    [`bool`],
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), envelope: true)
+        }),
+    ),
+    // mode
+    `mode`,
+    `"enhancement"`,
+    [`"enhancement"` / `"depletion"`],
+    [`nmosd` / `pmosd`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), mode: "depletion")
+        }),
+    ),
+    // bulk
+    `bulk`,
+    `"internal"`,
+    [`"internal"` / `"external"` / `none`],
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), bulk: none)
+        }),
+    ),
+)
+
+== Transformer <transformer>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        transformer("t1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+== Instruments <instruments>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        voltmeter("i1", (0, 0), (3, 0))
+        ammeter("i2", (4, 0), (7, 0))
+        ohmmeter("i3", (8, 0), (11, 0))
+        wattmeter("i4", (12, 0), (15, 0))
+    })
+    ```,
+)
+
+== Switch <switch>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        switch("s1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // closed
+    `closed`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            switch("s1", (0, 0), (3, 0), closed: true)
+        }),
+    ),
+)
+
+== Antenna <antenna>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        wire((0, 0), (2, 0))
+        antenna("a1", (1, 0))
+    })
+    ```,
+)
+
+== Circulator <circulator>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        circulator("c1", (0, 0), (3, 0))
+    })
+    ```,
 )
 
 == Logic <logic>
@@ -1067,8 +1221,49 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             land("b1", (0, 0), invert: true)
         }),
     ),
+    // inputs
+    `inputs`,
+    `2`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            land("b1", (0, 0), inputs: 5)
+        }),
+    ),
 )
 
-#info(title: [American variant])[
-    The american `ieee` variant of logic symbols has not been implemented yet, but is definitely planned.
-]
+#info(
+    title: [Inputs],
+)[When setting a number of inputs, each input will be available at `inX` anchor. For example, for three inputs you will have access to `l1.in1`, `l1.in2` and `l1.in3`.]
+
+== Microcontrolling unit <mcu>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #let pins = (
+        (content: "VCC", side: "west"),
+        (content: "UVCC", side: "west"),
+        (content: "AVCC", side: "west"),
+        (side: "west"),
+        (content: "PD0", side: "west"),
+        (content: "PD1", side: "west"),
+        // ...
+    )
+
+    #zap.circuit({
+        import zap: *
+
+        mcu("mcu", (3, 0), pins: pins)
+    })
+    ```,
+)
+
+You have to provide either a number of pins or a complete list of dictionaries. Each pin can have these keys:
+
+- `content` is the label of the pin displayed on the controller. If not provided, the pin is considered as a gap instead of an actual pin.
+- `side` represents the position of the pin on the microcontroller. It is only possible to represent `west` and `east` labels for now, but support for more positions is planned.
+
