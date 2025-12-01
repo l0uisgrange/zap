@@ -1,17 +1,17 @@
 #import "./template/zap.typ"
-#import "./template/utils.typ": circ, template
+#import "./template/utils.typ": circ, info, template, warning
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
 #show: template
 
-= Introduction
+= Introduction <introduction>
 
-== About the project
+== About the project <about>
 
 I initiated Zap in 2025 during my microengineering studies at #link("https://epfl.ch/en")[EPFL] (Federal Institute of Technology, Lausanne) in Switzerland 🇨🇭. I aim to leverage my engineering background to create a tool that is both powerful and a pleasure to use.
 
-== Philosophy
+== Philosophy <philosophy>
 
 Instead of simply porting the popular `circuitikz` library to Typst, this project tries to establish *a new foundation*. Zap is built around two core principles:
 1. *Keep functions clean and intuitive*. This ensures the library is easy to use, requiring minimal code while remaining highly customizable. Users can take advantage of Typst's modernity, avoiding the need to input overly complex symbols or lengthy commands.
@@ -19,24 +19,17 @@ Instead of simply porting the popular `circuitikz` library to Typst, this projec
 
     Purely aesthetic symbol variations are therefore excluded, as this project is focusing on making the standard symbols visually excellent. This ensures your circuits will be understandable by anyone, anywhere. Of course, I know this might be a constraint, so Zap will always give you the freedom to create your own #link("#")[custom symbols].
 
-== Contributors
+== Contributors <contributors>
 
 Special thanks to all the #link("https://github.com/l0uisgrange/zap/graphs/contributors")[contributors] who bring amazing features and bug fixes.
 
-=== How to contribute
+#info(
+    title: "How to contribute?",
+)[Contributions are very welcome, and it's very easy to set up. You can find more information on how to start on the dedicated #link("https://github.com/l0uisgrange/zap?tab=contributing-ov-file#contributions")[contributing guidelines].]
 
-Contributions are very welcome, and it's very easy to set up. You have a lot more information on the dedicated #link("https://github.com/l0uisgrange/zap?tab=contributing-ov-file#contributions")[contributing guidelines].
+= Getting started <getting-started>
 
-#circ[
-    #zap.circuit({
-        import zap: *
-        zap.resistor("r1", (0, 0), (5, 0))
-    })
-]
-
-= Getting started
-
-You can start using Zap simply by adding the following import at the top of your Typst file. It will automatically install the library from Typst Universe.
+After this quick introduction, let's get started! You can start using Zap simply by adding the following import at the top of your Typst file. It will automatically install the library from Typst Universe.
 
 ```typst
 #import "@preview/zap:0.4.0"
@@ -48,11 +41,16 @@ You can start using Zap simply by adding the following import at the top of your
 })
 ```
 
-= Positioning
+= Positioning <positioning>
 
-To position components within your circuit, you can choose to either attach them to a single node, or place them between two nodes. If you choose the latest option, wires will be automatically placed between the nodes.
+The most important part of this library is to know how to position your symbols within your circuit, as it can make your experience a lot more pleasant.
 
-#circ[
+You can choose to either attach your symbols to a single node, or place them between two nodes. If you choose the latest option, wires will be automatically placed between the nodes, like below.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -62,84 +60,110 @@ To position components within your circuit, you can choose to either attach them
         // ... or using two nodes
         resistor("r2", (1, 0), (4, 0))
     })
-]
+    ```,
+)
 
-Note that *some components can only be placed using one node*, like operational amplifiers, grounds and transistors. You can also customize the position of the component alongside the wire using the `position` parameter like below.
+#warning[Note that *some symbols can only be placed using one node*, like operational amplifiers, grounds and transistors.]
+
+You can also customize the position of the symbol alongside the wire using the `position` parameter like below.
 
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         resistor("r1", (0, 0), (3, 0), position: 70%)
     })
-]
+    ```,
+)
 
 The `position` parameter also accepts a distance, which is always relative to the `in` anchor.
 
-=== Mirroring
+=== Mirroring <mirroring>
 
 If you would like to display your component upside-down (vertically and/or horizontally), it is possible to mirror it using the `scale` parameter. The second value of the `scale` array represents the axis perpendicular to the wires.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         nobutton("b1", (0, 0), (3, 0))
         nobutton("b2", (3, 0), (6, 0), scale: (1, -1))
     })
-]
+    ```,
+)
 
-=== Named anchors
+=== Named anchors <named-anchors>
 
-Sometimes, you just want to connect a component to another without worrying about coordinates or doing mental math. That's where named anchors come in.
+Sometimes, you just want to connect one symbol to another without worrying about coordinates or doing mental math. That's where named anchors come in.
 
-The name provided as the first argument acts as an identifier for the component. If we draw a `resistor` identified as `r1`, we can attach a voltage source to its `out` anchor like below.
+The name provided as the first argument acts as an identifier for the symbol. If we draw a `resistor` identified as `r1`, we can attach a voltage source to its `out` anchor like below.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         resistor("r1", (0, 0), (3, 0))
         vsource("v1", "r1.out", (3, 3))
     })
-]
+    ```,
+)
 
-A list of available named anchors for each component is available on the [component page](/docs/components/resistor). You can also activate [debugging](/docs/debug) to display the available anchors directly on your circuit.
+A list of available named anchors is available on each #link(<resistor>)[symbols]. You can also activate #link(<debug>)[debugging] to display the available anchors directly on your circuit.
 
-=== Nodes
+=== Nodes <nodes>
 
-You can also use the `node` component instead of anchors. They work pretty much the same, but nodes are visible on the circuit.
+You can also use the `node` symbol instead of anchors. They work pretty much the same, but nodes are visible on the circuit.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
-        node("n1", (2, 0), label: "MyNode")
+        node("n1", (0, 0), label: "MyNode")
     })
-]
+    ```,
+)
 
-It's also possible to display nodes directly when calling your components, and they will represent the `in` and `out` anchors.
+It's also possible to display nodes directly when calling your symbol, and they will represent the `in` and `out` anchors.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         resistor("r1", (1, 0), (4, 0), n: "*-*")
     })
-]
+    ```,
+)
 
 You can either have circles using `o` or a filled one using `*`. For example, `o-*` will have a circle on the `in` anchor and a filled circle on the `out` anchor.
 
-=== Coordinates
+== Coordinates <coordinates>
 
 Coordinates are fully managed by CeTZ, and you'll find a very extensive list of features on their #link("https://cetz-package.github.io/docs/basics/coordinate-systems")[online documentation], like relative, perpendicular and polar coordinates. Let's just have a quick look at the main features you'll use in your circuits.
 
-=== Perpendicular
+=== Perpendicular <perpendicular-coordinates>
 
 You can easily define a new coordinate with the perpendicular position between 2 other coordinates.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -148,15 +172,19 @@ You can easily define a new coordinate with the perpendicular position between 2
         // using either (A, "-|", B) or (A, "|-", B) is possible
         node("n2", ((0, 0), "-|", "n1"), label: "P")
     })
-]
+    ```,
+)
 
-=== Relative coordinates
+=== Relative coordinates <relative-coordinates>
 
 You can also define the new coordinate using a previously defined anchor.
 
 In the example below, we want to point `r2` to the `out` anchor of `r1`, but a little bit on the right.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -166,46 +194,62 @@ In the example below, we want to point `r2` to the `out` anchor of `r1`, but a l
         // relative to a specific coordinate
         resistor("r2", (5, -3), (rel: (1, 0), to: "r1.out"))
     })
-]
+    ```,
+)
 
-= Labels
+= Labels <labels>
 
-You can name your components by giving them a label using the `label` parameter.
+You can name your symbols by giving them a label using the `label` parameter.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         heater("h1", (1, 0), (4, 0), label: $R$)
     })
-]
+    ```,
+)
 
-Sometimes, the label is not displayed where you want (like in the middle of another component). In that case, you can just give a dictionary to customize this behavior.
+Sometimes, the label is not displayed where you want (like in the middle of another symbol). In that case, you can just give a dictionary to customize this behavior.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         heater("h1", (1, 0), (4, 0), label: $R$)
         heater("h2", (5, 0), (8, 0), label: (content: $R$, anchor: "south", distance: 0pt))
     })
-]
+    ```,
+)
 
-= Decorations
+= Decorations <decorations>
 
-You can add labels for current, voltage, or generic flow to components using the `i` (current), `u` (voltage), or `f` (flow) parameters. These parameters accept either a string for a simple label or a dictionary for more detailed customization.
+You can add labels for current, voltage, or generic flow to your symbols using the `i` (current), `u` (voltage), or `f` (flow) parameters, which accept either a string for a simple label or a dictionary for more detailed customization.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         vsource("v1", (1, 0), (5, 0), u: $u_1$, i: $i_1$)
     })
-]
+    ```,
+)
 
-== Current
+== Current <current>
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -215,11 +259,15 @@ You can add labels for current, voltage, or generic flow to components using the
         // custom current (only "content" key is required)
         vsource("v1", (5, 0), (8, 0), i: (content: $i_1$, anchor: "west", invert: true, distance: 17pt, label-distance: 15pt))
     })
-]
+    ```,
+)
 
-== Voltage
+== Voltage <voltage>
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -229,11 +277,15 @@ You can add labels for current, voltage, or generic flow to components using the
         // custom voltage (only "content" key is required)
         vsource("v1", (5, 0), (8, 0), u: (content: $u_1$, anchor: "south-west", label-distance: 8pt, distance: 17pt))
     })
-]
+    ```,
+)
 
-== Flow
+== Flow <flow>
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -243,13 +295,17 @@ You can add labels for current, voltage, or generic flow to components using the
         // custom flow (only "content" key is required)
         vsource("v1", (5, 0), (8, 0), f: (content: $f_1$, anchor: "south-west", label-distance: -20pt, distance: 17pt))
     })
-]
+    ```,
+)
 
-= Annotations
+= Annotations <annotations>
 
 As the `circuit` is just a boosted version of CeTZ' `canvas`, you can also directly draw shapes on it.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -262,26 +318,50 @@ As the `circuit` is just a boosted version of CeTZ' `canvas`, you can also direc
         draw.content("rect.north", text(fill: red)[This is a rectangle], anchor: "south")
         draw.line((2, 2), (4, 0), mark: (end: ">", fill: purple), stroke: purple + .8pt)
     })
-]
+    ```,
+)
+
+== Stubs <stubs>
+
+Sometimes, you'll just want to add a small wire with a label to show an entry point.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        mcu("m1", (0, 0), pins: 10, label: "ESP32", fill: green.lighten(80%), stroke: none)
+    })
+    ```,
+)
 
 = Styling <styling>
 
 If you want to customize the appearance of a *single symbol* instance, rather than all, simply use the various `params` optional arguments.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
         resistor("r1", (0, 0), (3, 0))
         resistor("r2", (3, 0), (6, 0), variant: "ieee", stroke: 1pt + red)
     })
-]
+    ```,
+)
 
-== Global
+== Global <styling-global>
 
 If you wish to change the default appearance of *all symbols of a specific type* throughout the same circuit, Zap supports the `set-style` method from CeTZ.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -299,9 +379,10 @@ If you wish to change the default appearance of *all symbols of a specific type*
         resistor("r1", (0, 0), (3, 0))
         heater("r2", (3, 0), (6, 0))
     })
-]
+    ```,
+)
 
-== Standards
+== Standards <standards>
 
 As industries have become more interconnected through globalization, numerous standards have emerged. Many of these have since been replaced by a smaller set of conventions that have gained wider global acceptance.
 
@@ -312,7 +393,10 @@ As industries have become more interconnected through globalization, numerous st
 
 Zap currently supports either `iec` (default) or `ieee` in the `variant` styling parameter.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -322,17 +406,21 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
         resistor("r1", (0, 0), (3, 0))
         resistor("r2", (3, 0), (6, 0), variant: "ieee")
     })
-]
+    ```,
+)
 
-== Available options
+== Available options <styling-options>
 
 The `style.typ` file #link("https://github.com/l0uisgrange/zap/blob/main/src/styles.typ")[available on GitHub] is used in the background and represents all the available customization option for each symbol.
 
-= Wiring
+= Wiring <wiring>
 
 You can choose between squared, zigzag or straight wires using `swire`, `zwire` or `wire`.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -340,13 +428,17 @@ You can choose between squared, zigzag or straight wires using `swire`, `zwire` 
         zwire((2, 0), (4, 2), stroke: blue)
         swire((5, 2), (6, -1), stroke: red)
     })
-]
+    ```,
+)
 
 == Customization
 
 The position and axis of the wire can also be altered using the `axis` and `ratio` parameters.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #zap.circuit({
         import zap: *
 
@@ -354,7 +446,8 @@ The position and axis of the wire can also be altered using the `axis` and `rati
         zwire((2, 0), (4, 2), stroke: blue, axis: "y", ratio: 80%)
         swire((5, 2), (6, -1), stroke: red, axis: "y")
     })
-]
+    ```,
+)
 
 == Anchors
 
@@ -368,7 +461,10 @@ The position and axis of the wire can also be altered using the `axis` and `rati
 
 The `mcu` is the most complex component, hence this dedicated page.
 
-#circ[
+#circ(
+    ```typst
+    #import "./zap.typ"
+
     #let pins = (
         (content: "VCC", side: "west"),
         (content: "UVCC", side: "west"),
@@ -392,10 +488,587 @@ The `mcu` is the most complex component, hence this dedicated page.
             stroke: none,
         )
     })
-]
+    ```,
+)
 
 You have to provide either a number of pins or a complete list of dictionaries. Each pin can have these keys:
 
 - `content` is the label of the pin displayed on the controller. If not provided, the pin is considered as a gap instead of an actual pin.
 - `side` represents the position of the pin on the microcontroller
 
+= Debug <debug>
+
+If you want to know all the anchors available in a symbol, you can either activate the `debug` mode on a single symbol...
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        resistor("r1", (0, 0), (3, 0), debug: true)
+    })
+    ```,
+)
+
+...or on the whole circuit.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit(debug: true, {
+        import zap: *
+
+        resistor("r1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+= Available symbols <symbols>
+
+As there is a lot of symbols available in Zap, they have been grouped by their original version. If you're not finding yours here, and think it should be included in the library, please #link("https://github.com/l0uisgrange/zap/issues/new?template=feature_request.yml")[open an issue].
+
+== Resistor <resistor>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        resistor("r1", (0, 0), (3, 0))
+        resistor("r2", (4, 0), (7, 0), variant: "ieee")
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // heatable
+    `heatable`,
+    `false`,
+    `heater`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            resistor("r1", (0, 0), (3, 0), heatable: true)
+        }),
+    ),
+    // adjustable
+    `adjustable`,
+    `false`,
+    `potentiometer`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            resistor("r1", (0, 0), (3, 0), adjustable: true)
+        }),
+    ),
+    // variable
+    `variable`,
+    `false`,
+    `rheostat`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            resistor("r1", (0, 0), (3, 0), variable: true)
+        }),
+    ),
+    // sensor
+    `sensor`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            resistor("r1", (0, 0), (3, 0), sensor: true)
+        }),
+    ),
+    // preset
+    `preset`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            resistor("r1", (0, 0), (3, 0), preset: true)
+        }),
+    ),
+)
+
+== Inductor <inductor>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        inductor("i1", (0, 0), (3, 0))
+        inductor("i2", (4, 0), (7, 0), variant: "ieee")
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // variable
+    `variable`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            inductor("i1", (0, 0), (3, 0), variable: true)
+        }),
+    ),
+    // preset
+    `preset`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            inductor("i1", (0, 0), (3, 0), preset: true)
+        }),
+    ),
+    // sensor
+    `sensor`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            inductor("i1", (0, 0), (3, 0), sensor: true)
+        }),
+    ),
+)
+
+== Capacitor <capacitor>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        capacitor("c1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // variable
+    `variable`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            capacitor("c1", (0, 0), (3, 0), variable: true)
+        }),
+    ),
+    // preset
+    `preset`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            capacitor("c1", (0, 0), (3, 0), preset: true)
+        }),
+    ),
+    // sensor
+    `sensor`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            capacitor("c1", (0, 0), (3, 0), sensor: true)
+        }),
+    ),
+    // polarized
+    `polarized`,
+    `false`,
+    `pcapacitor`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            capacitor("c1", (0, 0), (3, 0), polarized: true)
+        }),
+    ),
+)
+
+== Button <button>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        button("b1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // nc
+    `nc`,
+    `false`,
+    `ncbutton`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            button("b1", (0, 0), (3, 0), nc: true)
+        }),
+    ),
+    // illuminated
+    `illuminated`,
+    `false`,
+    `noibutton`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            button("b1", (0, 0), (3, 0), illuminated: true)
+        }),
+    ),
+    // head
+    `head`,
+    `"standard"`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            button("b1", (0, 0), (3, 0), head: "mushroom")
+        }),
+    ),
+    // latching
+    `latching`,
+    `false`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            button("b1", (0, 0), (3, 0), latching: true)
+        }),
+    ),
+)
+
+== Voltage source <vsource>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        vsource("b1", (0, 0), (3, 0))
+        vsource("b2", (4, 0), (7, 0), variant: "ieee")
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // dependent
+    `dependent`,
+    `false`,
+    `dvsource`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            vsource("b1", (0, 0), (3, 0), dependent: true)
+        }),
+    ),
+    // current
+    `current`,
+    `"dc"`,
+    `acvsource`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            vsource("b1", (0, 0), (3, 0), current: "ac")
+        }),
+    ),
+)
+
+== Current source <isource>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        isource("b1", (0, 0), (3, 0))
+        isource("b2", (4, 0), (7, 0), variant: "ieee")
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // dependent
+    `dependent`,
+    `false`,
+    `disource`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            isource("b1", (0, 0), (3, 0), dependent: true)
+        }),
+    ),
+)
+
+== Diode <diode>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        diode("b1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Types
+
+The `diode` symbol accepts only one parameter, called `type`, and its appearance changes a lot depending on the value.
+
+#table(
+    columns: (auto, auto, auto),
+    align: left + top,
+    table.header([*Value*], [*Alias*], [*Image*]),
+    // zener
+    `zener`,
+    `zener`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            zener("b1", (0, 0), (3, 0))
+        }),
+    ),
+    // tunnel
+    `tunnel`,
+    `tunnel`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            tunnel("b1", (0, 0), (3, 0))
+        }),
+    ),
+    // schottky
+    `schottky`,
+    `schottky`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            schottky("b1", (0, 0), (3, 0))
+        }),
+    ),
+    // led
+    `emitting`,
+    `led`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            led("b1", (0, 0), (3, 0))
+        }),
+    ),
+    // recieving
+    `recieving`,
+    `photodiode`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            photodiode("b1", (0, 0), (3, 0))
+        }),
+    ),
+)
+
+== Supply <supply>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        wire((0, 0), (8, 0))
+        vcc("s1", (0, 0))
+        vee("s2", (2, 0))
+        earth("s3", (4, 0))
+        frame("s4", (6, 0))
+        ground("s5", (8, 0))
+    })
+    ```,
+)
+
+== Fuse <fuse>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        fuse("f1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // dependent
+    `asymmetric`,
+    `false`,
+    `afuse`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            fuse("b1", (0, 0), (3, 0), asymmetric: true)
+        }),
+    ),
+)
+
+== Microcontrolling unit <mcu>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        fuse("f1", (0, 0), (3, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // dependent
+    `asymmetric`,
+    `false`,
+    `afuse`,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            fuse("b1", (0, 0), (3, 0), asymmetric: true)
+        }),
+    ),
+)
+
+== Logic <logic>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        land("l1", (0, 0))
+        lor("l3", (2, 0))
+        lxor("l5", (4, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    // dependent
+    `invert`,
+    `false`,
+    [`lnand` / `lnor` / `lxnor`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            land("b1", (0, 0), invert: true)
+        }),
+    ),
+)
+
+#info(title: [American variant])[
+    The american `ieee` variant of logic symbols has not been implemented yet, but is definitely planned.
+]
