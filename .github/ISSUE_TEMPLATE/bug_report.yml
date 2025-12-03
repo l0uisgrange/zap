@@ -50,7 +50,8 @@ body:
       description: Select the Typst version you are using.
       options:
         - Development
-        - 0.14.0 (default)
+        - 0.14.1 (default)
+        - 0.14.0
         - 0.13.1
         - 0.13.0
         - 0.12.0
