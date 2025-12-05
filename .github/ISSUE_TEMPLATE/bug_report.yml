@@ -1,8 +1,8 @@
 name: 🐞 Bug Report
 description: Report a problem or error
-labels: ["bug"]
+labels: [ "bug" ]
 assignees:
-  - l0uisgrange
+    - l0uisgrange
 body:
   - type: textarea
     id: description

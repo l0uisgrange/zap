@@ -2,7 +2,7 @@
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, line, mark, merge-path, rect, set-style
 
-#let transformer(name, node, closed: false, ..params) = {
+#let transformer(name, node, ..params) = {
     // Drawing function
     let draw(ctx, position, style) = {
         interface((-style.distance / 2 - style.radius, -style.radius), (style.distance / 2 + style.radius, style.radius), io: position.len() < 2)

@@ -30,6 +30,7 @@
     component("logic", name, node, draw: draw, ..params)
 }
 
+#let lnot(name, node, ..params) = logic(name, node, ..params, text: $1$, invert: true)
 #let land(name, node, ..params) = logic(name, node, ..params, text: $"&"$)
 #let lnand(name, node, ..params) = logic(name, node, ..params, text: $"&"$, invert: true)
 #let lor(name, node, ..params) = logic(name, node, ..params, text: $>=1$)

@@ -35,3 +35,5 @@
     // Component call
     component("opamp", name, node, draw: draw, ..params, label: none)
 }
+
+#let iopamp(name, node, ..params) = opamp(name, node, ..params, invert: true)

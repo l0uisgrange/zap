@@ -1,5 +1,4 @@
 #import "/src/lib.typ"
-#set page(width: auto, height: auto, margin: 5pt, fill: white)
 
 #let pins = (
     (content: "VCC", side: "west"),

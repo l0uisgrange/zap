@@ -5,3 +5,4 @@
 /main.svg
 tests/**/diff
 tests/**/out
+/docs/build/

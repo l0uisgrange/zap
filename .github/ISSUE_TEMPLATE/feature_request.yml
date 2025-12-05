@@ -1,30 +1,30 @@
 name: 🧩 Component or feature request
 description: Propose a new component or feature
-labels: ["enhancement"]
+labels: [ "enhancement" ]
 assignees:
-  - l0uisgrange
+    - l0uisgrange
 body:
-  - type: textarea
-    id: description
-    attributes:
-      label: Description
-      description: Clearly explain the feature/component you are requesting.
-      placeholder: Describe what the feature/component is and how it would improve the package.
-    validations:
-      required: true
-  - type: textarea
-    id: references
-    attributes:
-      label: References or images
-      description: If you're requesting a new component or variant, please include an image of it.
-      placeholder: Schema, links, datasheets, sketches, etc.
-    validations:
-      required: true
-  - type: checkboxes
-    id: implementation
-    attributes:
-      label: Contribute
-      description: Are you willing to help implement this feature?
-      options:
-        - label: I am willing to submit a pull request for this feature
-        - label: I can help with testing this feature
+    -   type: textarea
+        id: description
+        attributes:
+            label: Description
+            description: Clearly explain the feature/component you are requesting.
+            placeholder: Describe what the feature/component is and how it would improve the package.
+        validations:
+            required: true
+    -   type: textarea
+        id: references
+        attributes:
+            label: References or images
+            description: If you're requesting a new component or variant, please include an image of it.
+            placeholder: Schema, links, datasheets, sketches, etc.
+        validations:
+            required: true
+    -   type: checkboxes
+        id: implementation
+        attributes:
+            label: Contribute
+            description: Are you willing to help implement this feature?
+            options:
+                -   label: I am willing to submit a pull request for this feature
+                -   label: I can help with testing this feature

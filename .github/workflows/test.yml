@@ -4,7 +4,8 @@ on:
     branches:
       - main
     paths:
-      - 'src/**'
+      - "src/**"
+      - "docs/**"
   pull_request:
 jobs:
   test:
@@ -36,17 +37,9 @@ jobs:
     name: Test documentation
     runs-on: ubuntu-latest
     steps:
-      -   name: Checkout
-          uses: actions/checkout@v5
-      -   name: Setup Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: 20
-      -   name: Install dependencies
-          run: |
-            cd ./docs
-            npm install
-      -   name: Check Svelte app
-          run: |
-            cd ./docs
-            npm run build
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Install Typst
+        run: sudo snap install typst
+      - name: Build using Typst HTML
+        run: typst compile docs/main.typ --format html --features html --root .

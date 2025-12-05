@@ -16,7 +16,11 @@
             line((-style.width / 2, 0), (rel: (0, -style.overlap - style.width * calc.tan(style.angle))), stroke: style.stroke)
         }
         if latching {
-            line("support.50%", (rel: (0, -style.latch-padding - 2 * style.latch-size), to: (0, style.distance - style.button-height)), stroke: (..style.stroke, dash: (array: (6.5pt, 3pt))))
+            line(
+                "support.50%",
+                (rel: (0, -style.latch-padding - 2 * style.latch-size), to: (0, style.distance - style.button-height)),
+                stroke: (..style.stroke, dash: (array: (6.5pt, 3pt))),
+            )
             line(
                 (),
                 (rel: (0, style.latch-padding / 2)),
@@ -30,20 +34,25 @@
             line("support.50%", (0, style.distance - if head == "mushroom" { style.button-height } else { 0 }), stroke: (..style.stroke, dash: (array: (6.5pt, 3pt))))
         }
 
-        merge-path(stroke: style.stroke, fill: if head == "mushroom" { style.fill } else { none }, close: head == "mushroom", {
-            if head == "mushroom" {
-                line((-style.button-width / 2, style.distance - style.button-height), (rel: (style.button-width, 0)))
-                hobby((), (rel: (-style.button-width / 2, style.button-height)), (rel: (-style.button-width / 2, -style.button-height)), omega: style.button-omega, name: "top")
-            } else if head == "standard" {
-                line(
-                    (-style.button-width / 2, style.distance - style.button-height),
-                    (rel: (0, style.button-height)),
-                    (rel: (style.button-width, 0)),
-                    (rel: (0, -style.button-height)),
-                    name: "top",
-                )
-            }
-        })
+        merge-path(
+            stroke: style.stroke,
+            fill: if head == "mushroom" { style.fill } else { none },
+            close: head == "mushroom",
+            {
+                if head == "mushroom" {
+                    line((-style.button-width / 2, style.distance - style.button-height), (rel: (style.button-width, 0)))
+                    hobby((), (rel: (-style.button-width / 2, style.button-height)), (rel: (-style.button-width / 2, -style.button-height)), omega: style.button-omega, name: "top")
+                } else if head == "standard" {
+                    line(
+                        (-style.button-width / 2, style.distance - style.button-height),
+                        (rel: (0, style.button-height)),
+                        (rel: (style.button-width, 0)),
+                        (rel: (0, -style.button-height)),
+                        name: "top",
+                    )
+                }
+            },
+        )
 
         if illuminated {
             line("top.50%", (rel: (0, style.lamp-distance), to: "top.50%"), stroke: style.stroke)
