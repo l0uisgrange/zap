@@ -1,6 +1,6 @@
 #let default = (
     variant: "iec",
-    scale: (x: 1.0, y: 1.0),
+    scale: (1.0, 1.0),
     stroke: (
         thickness: .8pt,
         paint: auto,

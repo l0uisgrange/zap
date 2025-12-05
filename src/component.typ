@@ -74,9 +74,9 @@
             group(name: "component", {
                 // Scaling
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
+                    scale(x: p-scale * style.scale.at(0), y: p-scale * style.scale.at(1))
                 } else {
-                    scale(x: p-scale.at(0, default: 1.0) * style.scale.x, y: p-scale.at(1, default: 1.0) * style.scale.y)
+                    scale(x: p-scale.at(0, default: 1.0) * style.scale.at(0), y: p-scale.at(1, default: 1.0) * style.scale.at(1))
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
