@@ -38,4 +38,4 @@
 #import "components/integrated/converter.typ": adc, dac
 #import "components/instruments/round-meter.typ": ammeter, ohmmeter, round-meter, voltmeter, wattmeter
 #import "components/button.typ": button, ncbutton, ncibutton, nobutton, noibutton
-#import "components/flipflop.typ": dflipflop, flipflop, jkflipflop, srlatch
+#import "components/integrated/flipflop.typ": dflipflop, flipflop, jkflipflop, srlatch

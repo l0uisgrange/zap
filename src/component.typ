@@ -72,7 +72,7 @@
         // Component
         on-layer(1, {
             group(name: "component", {
-                //Scaling
+                // Scaling
                 if (type(p-scale) == float) {
                     scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
                 } else {

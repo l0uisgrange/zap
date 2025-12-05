@@ -424,8 +424,8 @@
         stroke: auto,
         fill: auto,
         width: 1.8,
-        height: 2.4,
-        padding: 0.24,
-        spacing: .6,
+        height: 2,
+        padding: 0.2,
+        spacing: 0.5,
     ),
 )
