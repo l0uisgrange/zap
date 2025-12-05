@@ -51,6 +51,25 @@
     }
 }
 
+#let stroke-to-dict(style) = {
+    let style = stroke(style)
+    let raw-dict = (
+        thickness: style.thickness,
+        paint: style.paint,
+        join: style.join,
+        cap: style.cap,
+        miter-limit: style.miter-limit,
+        dash: style.dash,
+    )
+    let dict = (:)
+    for (k, v) in raw-dict {
+        if v != auto {
+          dict.insert(k, v)
+        }
+    }
+    return dict
+}
+
 #import "/src/dependencies.typ": cetz
 
 #let resolve(dict) = {
@@ -81,8 +100,21 @@
         }
         return dict
     }
-
     return resolve-recursive(dict, (:))
+}
+
+#let expand-stroke(dict) = {
+    let expand-stroke-recursive(dict) = {
+        for (k, v) in dict {
+            if type(v) == dictionary {
+                dict.at(k) = expand-stroke-recursive(dict.at(k))
+            } else if k == "stroke" and v != auto {
+                dict.at(k) = stroke-to-dict(v)
+            }
+        }
+        return dict
+    }
+    return expand-stroke-recursive(dict)
 }
 
 #let set-style(..style) = {
@@ -93,7 +125,7 @@
             if ctx.zap.style.at(key, default: (:)) == (:) {
                 ctx.style = cetz.styles.merge(ctx.style, style-dict)
             } else {
-                ctx.zap.style = cetz.styles.merge(ctx.zap.style, style-dict)
+                ctx.zap.style = cetz.styles.merge(ctx.zap.style, expand-stroke(style-dict))
             }
         }
         return ctx
