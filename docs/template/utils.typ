@@ -1,43 +1,87 @@
 #import "@preview/t4t:0.4.2": get
+#import "./zap.typ"
 
-#let circ(drawing) = html.elem("div", attrs: (class: "mb-7  rounded-md border overflow-hidden flex-col flex *:m-0 *:block *:w-full *:even:rounded-t-none"), {
-    html.elem("div", attrs: (class: "p-2.5 bg-white rounded-t-md"))[
+#let circ(drawing) = html.elem("div", attrs: (class: "mb-7  rounded-md border dark:border-zinc-800 overflow-hidden flex-col flex *:m-0 *:block *:w-full *:even:rounded-t-none"), {
+    html.elem("div", attrs: (class: "p-7 bg-white rounded-t-md dark:invert dark:hue-rotate-180"))[
         #html.frame[
             #eval(drawing.text, mode: "markup")
         ]
     ]
-    html.elem("div", attrs: (class: "*:rounded-t-none border-t *:border-none overflow-x-scroll"), raw(drawing.text.split("\n").slice(2).join("\n"), block: true, lang: "typst"))
+    html.elem("div", attrs: (class: "*:rounded-t-none *:border-none border-t dark:border-zinc-800 *:border-none overflow-x-scroll"), raw(drawing.text.split("\n").slice(2).join("\n"), block: true, lang: "typst"))
 })
 
 #let template(doc) = [
+  // Configuration
     #set heading(numbering: none)
+    // Raw blocks styling
     #show raw.where(block: false): it => {
-        html.elem("span", attrs: (class: "border-t px-1 py-0.5 border-none rounded  bg-zinc-200/60 text-xs  *:not-prose not-prose font-mono"), it)
+        html.elem("span", attrs: (class: "border-t px-1 py-0.5 border-none rounded dark:bg-zinc-800 bg-zinc-200/60 text-xs *:not-prose not-prose font-mono"), it)
     }
     #show raw.where(block: true): it => {
-        html.elem("div", attrs: (class: "p-4 border bg-zinc-100/30 not-prose text-[.85rem] m-px rounded-md"), it)
+        html.elem("div", attrs: (class: "p-4 border bg-zinc-100/30 dark:bg-zinc-900/20 dark:border-zinc-800 not-prose text-[.85rem] rounded-md"), it)
     }
+    // Styling sources
     #html.elem("script", attrs: (src: "https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"))
+    #html.elem("link", attrs: (rel: "preconnect", href: "https://fonts.googleapis.com"))
+    #html.elem("link", attrs: (rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous"))
+    #html.elem("link", attrs: (rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"))
+    // Hero section
+    #html.elem("div", attrs: (class: "p-3 md:p-5 w-full flex flex-col min-h-screen"), [
+        #html.elem("div", attrs: (class: "bg-white dark:border-zinc-800 dark:bg-black flex-auto dark:*:invert dark:*:hue-rotate-180 flex items-center justify-center border border-b-0 rounded-t-3xl"), html.frame[
+            #include "../../examples/example2.typ"
+        ])
+        #html.elem("div", attrs: (class: "md:p-7 justify-center flex flex-col p-5 my-auto min-h-full block rounded-b-3xl bg-sky-200/80 dark:bg-sky-900/80 dark:text-white"), [
+            #html.elem("h1", attrs: (class: "text-6xl font-medium mt-auto italic text-sky-500 !font-stretch-ultra-expanded"), "Zap")
+            #html.elem("p", attrs: (class: "text-2xl my-5"), "Your Typst circuit drawing companion")
+            #link("https://github.com/l0uisgrange/zap?tab=contributing-ov-file#contributions")[
+                #html.elem("span", attrs: (class: "rounded-full border border-sky-900/20 p-3 *:inline transition hover:border-sky-900/30 flex items-center gap-3 max-w-max"), [
+                    #html.elem("svg", attrs: (class: "size-7 group", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1024 1024", fill: "none"), html.elem(
+                        "path",
+                        attrs: (
+                            class: "fill-current",
+                            transform: "scale(64)",
+                            d: "M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z",
+                        ),
+                    ))
+                ])
+            ]
+            #html.elem("span", attrs: (class: "text-sky-900/50 block dark:text-sky-50/50"), [Version 0.5.0 •
+                #link("https://github.com/l0uisgrange/zap")[
+                    #html.elem("span", attrs: (class: "underline underline-offset-2"), "Edit this file")
+                ]
+            ])
+        ])
+    ])
+    // Article
     #html.elem(
-        "div",
-        attrs: (class: "grid grid-cols-[max-content_auto]  gap-5 p-5 !antialised"),
+        "article",
+        attrs: (class: "grid md:grid-cols-[max-content_auto] relative gap-5 p-5 !antialised"),
     )[
-        #html.elem("div", attrs: (class: "w-60 relative prose overflow-visible "))[
+      // Navigation
+        #html.elem("div", attrs: (class: "w-60 prose overflow-visible "))[
             #html.elem("div", attrs: (class: "sticky top-5"))[#include "nav.typ"]
         ]
         #html.elem("article", attrs: (
-            class: "flex-auto !max-w-4xl prose overflow-hidden prose-zinc prose-td:align-middle prose-headings:scroll-my-7 prose-headings:font-medium prose-strong:font-medium",
+            class: "flex-auto !max-w-4xl prose dark:prose-invert overflow-hidden prose-zinc prose-a:underline-offset-2 prose-td:align-middle prose-headings:scroll-my-7 prose-headings:font-medium prose-strong:font-medium",
         ))[
             #doc
             #html.elem("div", attrs: (class: "text-xs pb-5 pt-10 text-zinc-400"), [A project initiated by Louis Grange, under LGPL-3.0 license])
         ]
     ]
 
-    #html.elem("style")[
-        svg.typst-frame { margin: 1rem; }
+    #html.elem(
+        "style",
+        "
         html { scroll-behavior: smooth; }
         html, body { background: oklch(98.5% 0 0); }
-    ]
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: oklch(14.1% 0.005 285.823);
+          }
+        }
+        body { font-family: \"Mona Sans\", sans-serif !important;  }
+    ",
+    )
 ]
 
 #let warning(content, title: "Warning", ..params) = block(

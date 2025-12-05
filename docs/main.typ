@@ -1,6 +1,7 @@
 #import "./template/zap.typ"
 #import "./template/utils.typ": circ, info, template, warning
 
+#set text(font: "Al Bayan PUA", lang: "en")
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
 #show: template
@@ -1266,4 +1267,3 @@ You have to provide either a number of pins or a complete list of dictionaries. 
 
 - `content` is the label of the pin displayed on the controller. If not provided, the pin is considered as a gap instead of an actual pin.
 - `side` represents the position of the pin on the microcontroller. It is only possible to represent `west` and `east` labels for now, but support for more positions is planned.
-
