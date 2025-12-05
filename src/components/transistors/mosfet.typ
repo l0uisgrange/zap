@@ -60,7 +60,7 @@
             anchor("g", ())
         } else {
             wire("gl", (rel: (0, -width / 2)), (rel: (0, -width / 2)))
-            wire((rel: (0, width / 2)), (rel: (-height / 2, 0)))
+            wire((rel: (0, -width / 2)), (rel: (-height / 2, 0)))
             anchor("g", ())
 
             mark(
