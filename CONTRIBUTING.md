@@ -12,8 +12,9 @@ Here are some important resources:
 
 Contributing to this project is straightforward:
 1. Fork the repository on your own profile and start coding
-2. Push your commits to your own repository
-3. Open a Pull Request to the main `zap` repository branch
+2. When you're finished, update the documentation under the `docs` folder if necessary
+3. Push your commits to your own repository
+4. Open a Pull Request to the `main` repository branch
 
 And you're done!
 
