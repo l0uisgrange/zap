@@ -1,5 +1,5 @@
 #import "@preview/t4t:0.4.2": get
-#import "./zap.typ"
+#import "/docs/template/zap.typ"
 
 #let circ(drawing) = html.elem("div", attrs: (class: "mb-7  rounded-md border dark:border-zinc-800 overflow-hidden flex-col flex *:m-0 *:block *:w-full *:even:rounded-t-none"), {
     html.elem("div", attrs: (class: "p-7 bg-white rounded-t-md dark:invert dark:hue-rotate-180"))[
@@ -31,13 +31,13 @@
     #html.elem("link", attrs: (rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"))
     // Hero section
     #html.elem("div", attrs: (class: "p-3 md:p-5 w-full flex flex-col min-h-screen"), [
-      #html.elem(
+        #html.elem(
             "div",
             attrs: (
                 class: "bg-white dark:border-zinc-800 overflow-hidden dark:bg-black flex-auto dark:*:invert dark:*:hue-rotate-180 flex items-center justify-center border border-b-0 rounded-t-3xl",
             ),
             html.frame[
-                #include "../../examples/example2.typ"
+                #include "/examples/example2.typ"
             ],
         )
         #html.elem("div", attrs: (class: "md:p-7 justify-center flex flex-col p-5 my-auto min-h-full block rounded-b-3xl bg-sky-200/80 dark:bg-sky-900/80 dark:text-white"), [
@@ -55,7 +55,7 @@
                     ))
                 ])
             ]
-            #html.elem("span", attrs: (class: "text-sky-900/50 block dark:text-sky-50/50"), [Version 0.5.0 •
+            #html.elem("span", attrs: (class: "text-sky-900/50 block dark:text-sky-50/50"), [Version #toml("/typst.toml").package.version •
                 #link("https://github.com/l0uisgrange/zap")[
                     #html.elem("span", attrs: (class: "underline underline-offset-2"), "Edit this file")
                 ]

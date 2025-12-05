@@ -14,5 +14,5 @@
     zwire("l2.out", "l3.in2")
     zwire("l3.out", "d1.pin1")
 
-
+    sstub((-3, 0), label: "dede", length: 10, debug: true)
 })
