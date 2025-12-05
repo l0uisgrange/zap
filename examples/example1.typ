@@ -14,8 +14,7 @@
     pnp("n1", (8, 2), envelope: true)
     wire("r1.out", "n1.b")
     capacitor("c1", "n1.e", (rel: (2, 0)), label: $C_1$)
-    swire("n1.c", "r4.out")
-    swire("c1.out", (8, -2))
+    swire(name: "dede", "n1.c", "r4.out", axis: "y")
 
     node("A", (4, 2))
     node("B", (4, -2))
@@ -23,8 +22,8 @@
     wire("o1.minus", "c1.out")
     zwire("o1.out", (rel: (1, 0)))
     rheostat("r2", (rel: (1, 0), to: "o1.out"), (rel: (0, -4.05)), label: $R_"eq"$)
-    swire("r2.out", (rel: (-6, 0)))
+    swire("r2.out", "dede.p1")
 
     earth("g1", (11, 1))
-    swire("o1.plus", "g1", axis: "x")
+    swire("o1.plus", "g1")
 })
