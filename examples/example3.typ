@@ -4,11 +4,15 @@
 #lib.circuit({
     import lib: *
 
-    vsource("v1", (0, -2), (0, 2), u: $u_1$, i: (content: $i_1$, anchor: "south"), label: (content: "5V", anchor: "south"))
-    resistor("r1", (0, 2), (2, 2), label: (content: "R1", anchor: "south"))
-    voltmeter("am1", (2, 2), (4, 2), i: (content: $i_1$, anchor: "south"))
-    voltmeter("vm1", (4, -2), (4, 2), label: (content: "v2", anchor: "north"))
-    resistor("r2", (6, 2), (6, -2), label: (content: "R2", anchor: "south"))
-    wire("am1.out", "r2.in")
-    wire("r2.out", "v1.in")
+    land("l1", (0, 0))
+    lnand("l2", (0, -2))
+    lxnor("l3", (3, -1))
+
+    dflipflop("d1", (6, -1.6), stroke: none, fill: rgb("#F2FA95"))
+
+    zwire("l1.out", "l3.in1")
+    zwire("l2.out", "l3.in2")
+    zwire("l3.out", "d1.pin1")
+
+
 })
