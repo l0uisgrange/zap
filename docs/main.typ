@@ -1,7 +1,6 @@
 #import "./template/zap.typ"
 #import "./template/utils.typ": circ, info, template, warning
 
-#set text(font: "Al Bayan PUA", lang: "en")
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
 #show: template
