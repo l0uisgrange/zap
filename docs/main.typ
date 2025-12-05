@@ -360,6 +360,8 @@ If you want to customize the appearance of a *single symbol* instance, rather th
     ```,
 )
 
+#info[As the list of available styles for each component is too long, it is only available in the #link("https://github.com/l0uisgrange/zap/blob/main/src/styles.typ")[source code].]
+
 == Global <styling-global>
 
 If you wish to change the default appearance of *all symbols of a specific type* throughout the same circuit, Zap supports the `set-style` method from CeTZ.
@@ -378,8 +380,6 @@ If you wish to change the default appearance of *all symbols of a specific type*
     })
     ```,
 )
-
-#info[As the list of available styles for each component is too long, it is only available in the #link("https://github.com/l0uisgrange/zap/blob/main/src/styles.typ")[source code].]
 
 == Standards <standards>
 
@@ -400,17 +400,13 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
         import zap: *
 
         // remember you can use global styling
-        // set-style(zap: (variant: "ieee"))
+        // set-style(variant: "ieee")
 
         resistor("r1", (0, 0), (3, 0))
         resistor("r2", (3, 0), (6, 0), variant: "ieee")
     })
     ```,
 )
-
-== Available options <styling-options>
-
-The `style.typ` file #link("https://github.com/l0uisgrange/zap/blob/main/src/styles.typ")[available on GitHub] is used in the background and represents all the available customization option for each symbol.
 
 = Wiring <wiring>
 
