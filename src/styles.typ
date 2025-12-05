@@ -164,6 +164,10 @@
         fill: red,
     ),
     // Components
+    stub: (
+        scale: auto,
+        length: .8,
+    ),
     capacitor: (
         variant: auto,
         scale: auto,

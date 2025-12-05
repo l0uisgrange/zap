@@ -1,5 +1,5 @@
-#import "./template/zap.typ"
-#import "./template/utils.typ": circ, info, template, warning
+#import "/docs/template/zap.typ"
+#import "/docs/template/utils.typ": circ, info, template, warning
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
@@ -32,7 +32,7 @@ Special thanks to all the #link("https://github.com/l0uisgrange/zap/graphs/contr
 After this quick introduction, let's get started! You can start using Zap simply by adding the following import at the top of your Typst file. It will automatically install the library from Typst Universe.
 
 ```typst
-#import "@preview/zap:0.4.0"
+#import "@preview/zap:0.5.0"
 
 #zap.circuit({
     import zap: *
@@ -82,7 +82,7 @@ You can also customize the position of the symbol alongside the wire using the `
 
 The `position` parameter also accepts a distance, which is always relative to the `in` anchor.
 
-=== Mirroring <mirroring>
+=== Mirroring or flipping <mirroring>
 
 If you would like to display your component upside-down (vertically and/or horizontally), it is possible to mirror it using the `scale` parameter. The second value of the `scale` array represents the axis perpendicular to the wires.
 
@@ -167,6 +167,7 @@ You can easily define a new coordinate with the perpendicular position between 2
     #zap.circuit({
         import zap: *
 
+        node("n0", (0, 0), label: "O")
         node("n1", (3, -1), label: "A")
 
         // using either (A, "-|", B) or (A, "|-", B) is possible
@@ -323,7 +324,7 @@ As the `circuit` is just a boosted version of CeTZ' `canvas`, you can also direc
 
 == Stubs <stubs>
 
-Sometimes, you'll just want to add a small wire with a label to show an entry point.
+Sometimes, you'll just want to add a small wire with a label to show an entry point. Stubs do just that, in any *vertical or horizontal* direction you want.
 
 #circ(
     ```typst
@@ -333,9 +334,14 @@ Sometimes, you'll just want to add a small wire with a label to show an entry po
         import zap: *
 
         mcu("m1", (0, 0), pins: 10, label: "ESP32", fill: green.lighten(80%), stroke: none)
+        wstub("m1.pin2", label: "PORTB2") // or stub(..., dir: "west")
+        estub("m1.pin6", label: "PORTC2")
+        estub("m1.pin9", label: "PORTD5", length: 0.5)
     })
     ```,
 )
+
+To simplify your code, you can use `nstub`, `sstub`, `estub`, and `wstub` for quick directions.
 
 = Styling <styling>
 

@@ -64,7 +64,7 @@
     let dict = (:)
     for (k, v) in raw-dict {
         if v != auto {
-          dict.insert(k, v)
+            dict.insert(k, v)
         }
     }
     return dict
