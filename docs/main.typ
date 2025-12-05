@@ -371,22 +371,15 @@ If you wish to change the default appearance of *all symbols of a specific type*
     #zap.circuit({
         import zap: *
 
-        set-style(zap: (
-            resistors: (
-                stroke: red,
-            ),
-            heaters: (
-                stroke: blue,
-                fill: blue.lighten(90%),
-                scale: 1.4,
-            ),
-        ))
+        set-style(resistor: (stroke: red, scale: (0.5, 1.5)))
 
         resistor("r1", (0, 0), (3, 0))
         heater("r2", (3, 0), (6, 0))
     })
     ```,
 )
+
+#info[As the list of available styles for each component is too long, it is only available in the #link("https://github.com/l0uisgrange/zap/blob/main/src/styles.typ")[source code].]
 
 == Standards <standards>
 

@@ -13,13 +13,13 @@
         if type(args.label) == dictionary {
             args = args + (label: args.label + (anchor: dir))
         } else {
-          args = args + (label: (content: args.label, anchor: dir, align: opposite-anchor(dir)))
+            args = args + (label: (content: args.label, anchor: dir, align: opposite-anchor(dir)))
         }
     }
 
     // Drawing function
     let draw(ctx, position, style) = {
-      let diff = {
+        let diff = {
             if dir == "north" {
                 (0.001, style.length)
             } else if dir == "south" {
