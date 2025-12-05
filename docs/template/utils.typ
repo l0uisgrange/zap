@@ -7,11 +7,15 @@
             #eval(drawing.text, mode: "markup")
         ]
     ]
-    html.elem("div", attrs: (class: "*:rounded-t-none *:border-none border-t dark:border-zinc-800 *:border-none overflow-x-scroll"), raw(drawing.text.split("\n").slice(2).join("\n"), block: true, lang: "typst"))
+    html.elem("div", attrs: (class: "*:rounded-t-none *:border-none border-t dark:border-zinc-800 *:border-none overflow-x-scroll"), raw(
+        drawing.text.split("\n").slice(2).join("\n"),
+        block: true,
+        lang: "typst",
+    ))
 })
 
 #let template(doc) = [
-  // Configuration
+    // Configuration
     #set heading(numbering: none)
     // Raw blocks styling
     #show raw.where(block: false): it => {
@@ -27,9 +31,15 @@
     #html.elem("link", attrs: (rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"))
     // Hero section
     #html.elem("div", attrs: (class: "p-3 md:p-5 w-full flex flex-col min-h-screen"), [
-        #html.elem("div", attrs: (class: "bg-white dark:border-zinc-800 dark:bg-black flex-auto dark:*:invert dark:*:hue-rotate-180 flex items-center justify-center border border-b-0 rounded-t-3xl"), html.frame[
-            #include "../../examples/example2.typ"
-        ])
+      #html.elem(
+            "div",
+            attrs: (
+                class: "bg-white dark:border-zinc-800 overflow-hidden dark:bg-black flex-auto dark:*:invert dark:*:hue-rotate-180 flex items-center justify-center border border-b-0 rounded-t-3xl",
+            ),
+            html.frame[
+                #include "../../examples/example2.typ"
+            ],
+        )
         #html.elem("div", attrs: (class: "md:p-7 justify-center flex flex-col p-5 my-auto min-h-full block rounded-b-3xl bg-sky-200/80 dark:bg-sky-900/80 dark:text-white"), [
             #html.elem("h1", attrs: (class: "text-6xl font-medium mt-auto italic text-sky-500 !font-stretch-ultra-expanded"), "Zap")
             #html.elem("p", attrs: (class: "text-2xl my-5"), "Your Typst circuit drawing companion")
@@ -57,7 +67,7 @@
         "article",
         attrs: (class: "grid md:grid-cols-[max-content_auto] relative gap-5 p-5 !antialised"),
     )[
-      // Navigation
+        // Navigation
         #html.elem("div", attrs: (class: "w-60 prose overflow-visible "))[
             #html.elem("div", attrs: (class: "sticky top-5"))[#include "nav.typ"]
         ]
