@@ -334,8 +334,9 @@ Sometimes, you'll just want to add a small wire with a label to show an entry po
         import zap: *
 
         mcu("m1", (0, 0), pins: 10, label: "ESP32", fill: green.lighten(80%), stroke: none)
-        nstub("m1.pin2", label: "GPIO2") // or stub(..., dir: "west")
-        estub("m1.pin6", label: "GPIO2") // or stub(..., dir: "east")
+        wstub("m1.pin2", label: "PORTB2") // or stub(..., dir: "west")
+        estub("m1.pin6", label: "PORTC2")
+        estub("m1.pin9", label: "PORTD5", length: 0.5)
     })
     ```,
 )

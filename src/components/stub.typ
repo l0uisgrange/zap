@@ -8,13 +8,12 @@
 #let stub(node, dir: "north", ..params) = {
     assert(params.pos().len() == 0, message: "stub must have exactly one node")
 
-    dir = opposite-anchor(dir)
     let args = params.named()
     if "label" in args and args.label != none {
         if type(args.label) == dictionary {
             args = args + (label: args.label + (anchor: dir))
         } else {
-            args = args + (label: (content: args.label, anchor: dir))
+          args = args + (label: (content: args.label, anchor: dir, align: opposite-anchor(dir)))
         }
     }
 
@@ -22,17 +21,17 @@
     let draw(ctx, position, style) = {
       let diff = {
             if dir == "north" {
-                (0, style.length)
+                (0.001, style.length)
             } else if dir == "south" {
-                (0, -style.length)
+                (0.0001, -style.length)
             } else if dir == "east" {
-                (style.length, 0)
+                (style.length, 0.001)
             } else if dir == "west" {
-                (-style.length, 0)
+                (-style.length, 0.001)
             }
         }
 
-        interface((0, 0), (rel: diff), io: false)
+        interface((0, 0), diff, io: false)
 
         wire((0, 0), (rel: diff))
     }
