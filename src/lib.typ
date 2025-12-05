@@ -21,7 +21,7 @@
 #import "components/fuse.typ": afuse, fuse
 #import "components/supply.typ": earth, frame, ground, vcc, vee
 #import "components/inductor.typ": inductor
-#import "components/logic.typ": land, lnand, lnor, lor, lxnor, lxor
+#import "components/logic.typ": lnot, land, lnand, lnor, lor, lxnor, lxor
 #import "components/resistor.typ": heater, potentiometer, resistor, rheostat
 #import "components/source.typ": acvsource, disource, dvsource, isource, vsource
 #import "components/motor.typ": acmotor, dcmotor

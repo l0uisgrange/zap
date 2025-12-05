@@ -1198,9 +1198,10 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     #zap.circuit({
         import zap: *
 
-        land("l1", (0, 0))
-        lor("l3", (2, 0))
-        lxor("l5", (4, 0))
+        lnot("l1", (0, 0))
+        land("l2", (2, 0))
+        lor("l3", (4, 0))
+        lxor("l4", (6, 0))
     })
     ```,
 )
@@ -1267,3 +1268,17 @@ You have to provide either a number of pins or a complete list of dictionaries. 
 
 - `content` is the label of the pin displayed on the controller. If not provided, the pin is considered as a gap instead of an actual pin.
 - `side` represents the position of the pin on the microcontroller. It is only possible to represent `west` and `east` labels for now, but support for more positions is planned.
+
+== Flipflop <flipflop>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        flipflop("f1", (3, 0))
+    })
+    ```,
+)
