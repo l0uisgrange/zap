@@ -1020,6 +1020,38 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     ```,
 )
 
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Type*], [*Alias*], [*Image*]),
+    // polarisation
+    `polarisation`,
+    `"npn"`,
+    [`"npn"` / `"pnp"`],
+    [`npn` / `pnp`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            bjt("t1", (0, 0), polarisation: "pnp")
+        }),
+    ),
+    // envelope
+    `envelope`,
+    `false`,
+    `bool`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            bjt("t1", (0, 0), envelope: true)
+        }),
+    ),
+)
+
 == MOSFET transistors <mosfet>
 
 #circ(
