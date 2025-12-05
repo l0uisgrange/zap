@@ -27,7 +27,7 @@
     assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
     assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
     assert(type(name) == str, message: "component name must be a string")
-    assert(type(scale) == float or (type(scale) == array and scale.len() == 2), message: "scale must be a float or an array of two floats")
+    assert(type(scale) == float or (type(scale) == dictionary), message: "scale must be a dictionary or a float")
     assert(type(rotate) == angle, message: "rotate must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
     assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
@@ -74,9 +74,9 @@
             group(name: "component", {
                 // Scaling
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.at(0), y: p-scale * style.scale.at(1))
+                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
                 } else {
-                    scale(x: p-scale.at(0, default: 1.0) * style.scale.at(0), y: p-scale.at(1, default: 1.0) * style.scale.at(1))
+                    scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")

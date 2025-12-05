@@ -84,7 +84,7 @@ The `position` parameter also accepts a distance, which is always relative to th
 
 === Mirroring or flipping <mirroring>
 
-If you would like to display your component upside-down (vertically and/or horizontally), it is possible to mirror it using the `scale` parameter. The second value of the `scale` array represents the axis perpendicular to the wires.
+If you would like to display your component upside-down (vertically and/or horizontally), it is possible to mirror it using the `scale` parameter.
 
 #circ(
     ```typst
@@ -94,7 +94,7 @@ If you would like to display your component upside-down (vertically and/or horiz
         import zap: *
 
         nobutton("b1", (0, 0), (3, 0))
-        nobutton("b2", (3, 0), (6, 0), scale: (1, -1))
+        nobutton("b2", (3, 0), (6, 0), scale: (y: -1))
     })
     ```,
 )
