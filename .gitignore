@@ -6,3 +6,4 @@
 tests/**/diff
 tests/**/out
 /docs/build/
+**/.DS_Store
