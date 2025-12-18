@@ -49,7 +49,7 @@
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
+        zap-style.insert(uid, merge(zap-style.at(uid, default: (:)), user-style))
 
         // Resolve style
         let style = resolve-style(zap-style).at(uid)
@@ -73,10 +73,12 @@
         on-layer(1, {
             group(name: "component", {
                 // Scaling
+                let style-scale = style.at("scale", default: (x: 1.0, y: 1.0))
+
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
+                    scale(x: p-scale * style-scale.x, y: p-scale * style-scale.y)
                 } else {
-                    scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
+                    scale(x: p-scale.at("x", default: 1.0) * style-scale.x, y: p-scale.at("y", default: 1.0) * style-scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
