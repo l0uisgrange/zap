@@ -1,5 +1,5 @@
 #import "/tests/utils.typ": test
-#import "/src/lib.typ" as lib: component, interface, cetz, set-style
+#import "/src/lib.typ": component, interface, cetz, set-style
 
 #let custom(name, ..params) = {
   let const = (w:2, h:1)
@@ -20,8 +20,14 @@
 
 // Test symbols
 #test({
-    import lib: resistor
+    custom("custom", (0, 0), (5, 0))
+})
+
+#test({
     set-style(my-custom-component: (stroke: red))
     custom("custom", (0, 0), (5, 0))
-    custom("custom", (0, -2), (5, -2), stroke: black)
+})
+
+#test({
+    custom("custom", (0, 0), (5, 0), stroke: blue)
 })
