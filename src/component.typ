@@ -74,6 +74,9 @@
             group(name: "component", {
                 // Scaling
                 let style-scale = style.at("scale", default: (x: 1.0, y: 1.0))
+                if type(style-scale) == float {
+                    style-scale = (x: style-scale, y: style-scale)
+                }
 
                 if (type(p-scale) == float) {
                     scale(x: p-scale * style-scale.x, y: p-scale * style-scale.y)
