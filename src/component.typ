@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style, expand-stroke
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
@@ -51,8 +51,9 @@
         // Override style by user style
         zap-style.insert(uid, merge(zap-style.at(uid, default: (:)), user-style))
 
-        // Resolve style
+        // Resolve style: cetz-style < zap-style < user-style
         let style = resolve-style(zap-style).at(uid)
+        style = expand-stroke(merge(keep-style.at(uid, default: (:)), style))
 
         // Override stroke by user stroke
         style = merge(style, (stroke: user-stroke))
