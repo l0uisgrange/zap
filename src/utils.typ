@@ -122,7 +122,7 @@
         let new-style = style.named()
         for key in new-style.keys() {
             let style-dict = ((key): (new-style.at(key)))
-            if key in ctx.style {
+            if ctx.zap.style.at(key, default: (:)) == (:) {
                 ctx.style = cetz.styles.merge(ctx.style, style-dict)
             } else {
                 ctx.zap.style = cetz.styles.merge(ctx.zap.style, expand-stroke(style-dict))
