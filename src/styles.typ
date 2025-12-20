@@ -1,6 +1,8 @@
 #let default = (
     variant: "iec",
     scale: (x: 1.0, y: 1.0),
+    background: white,
+    foreground: black,
     stroke: (
         thickness: .8pt,
         paint: auto,
@@ -9,9 +11,6 @@
         miter-limit: 4,
         dash: none,
     ),
-    fill: auto,
-    background: white,
-    foreground: black,
     label: (
         scale: auto,
         content: none,
