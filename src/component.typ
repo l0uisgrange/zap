@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style, stroke-to-dict
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
@@ -41,17 +41,16 @@
     group(name: name, ctx => {
         let cetz-style = ctx.style
         let user-style = params.named()
-        let user-stroke = user-style.remove("stroke", default: (:))
         let label-defaults = user-style.remove("label-defaults", default: (:))
+        user-style.stroke = stroke-to-dict(user-style.at("stroke", default: (:)))
 
         // Override style by user style
-        cetz-style.insert(uid, merge(cetz-style.at(uid, default: (:)), user-style))
+        if uid not in cetz-style.keys() { cetz-style.insert(uid, (:)) }
+        cetz-style.at(uid).stroke = stroke-to-dict(cetz-style.at(uid).at("stroke", default: (:)))
+        cetz-style.at(uid) = merge(cetz-style.at(uid), user-style)
 
         // Resolve style
         let style = resolve-style(cetz-style).at(uid)
-
-        // Override stroke by user stroke
-        style = merge(style, (stroke: user-stroke))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)

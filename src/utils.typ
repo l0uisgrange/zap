@@ -51,7 +51,17 @@
     }
 }
 
-#let stroke-to-dict(style) = {
+#let stroke-to-dict(style, full: false) = {
+    if style == auto {
+        return (
+            thickness: auto,
+            paint: auto,
+            join: auto,
+            cap: auto,
+            miter-limit: auto,
+            dash: auto,
+        )
+    }
     let style = stroke(style)
     let raw-dict = (
         thickness: style.thickness,
@@ -61,6 +71,9 @@
         miter-limit: style.miter-limit,
         dash: style.dash,
     )
+    if full {
+      return raw-dict
+    }
     let dict = (:)
     for (k, v) in raw-dict {
         if v != auto {

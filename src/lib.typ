@@ -1,12 +1,16 @@
 // Export dependencies
 #import "dependencies.typ": cetz
-#import cetz: draw
 
 // Export circuit
 #import "circuit.typ": circuit
 
+// Export utils
+#import "utils.typ": get-style
+
 // Export styles
 #import "styles.typ"
+#import cetz: draw
+#import draw: set-style
 
 // Export core
 #import "component.typ": component, interface
