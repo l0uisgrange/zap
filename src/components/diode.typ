@@ -13,9 +13,10 @@
         translate((-style.radius / 4, 0))
         interface((-style.radius / 2, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
+        let wire-thickness = get-style(ctx).wire.stroke.thickness
         set-style(stroke: style.stroke)
         polygon((0, 0), 3, radius: style.radius, fill: style.fill)
-        wire((0deg, style.radius), (180deg, style.radius / 2))
+        line((0deg, style.radius), (180deg, style.radius / 2), stroke: (thickness: wire-thickness))
 
         // Diode specific lines - horizontal lines orthogonal to cathode
         if (type in ("tunnel", "zener", "schottky")) {
