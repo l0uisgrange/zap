@@ -51,7 +51,17 @@
     }
 }
 
-#let stroke-to-dict(style) = {
+#let stroke-to-dict(style, full: false) = {
+    if style == auto {
+        return (
+            thickness: auto,
+            paint: auto,
+            join: auto,
+            cap: auto,
+            miter-limit: auto,
+            dash: auto,
+        )
+    }
     let style = stroke(style)
     let raw-dict = (
         thickness: style.thickness,
@@ -61,6 +71,9 @@
         miter-limit: style.miter-limit,
         dash: style.dash,
     )
+    if full {
+      return raw-dict
+    }
     let dict = (:)
     for (k, v) in raw-dict {
         if v != auto {
@@ -117,21 +130,6 @@
     return expand-stroke-recursive(dict)
 }
 
-#let set-style(..style) = {
-    cetz.draw.set-ctx(ctx => {
-        let new-style = style.named()
-        for key in new-style.keys() {
-            let style-dict = ((key): (new-style.at(key)))
-            if ctx.zap.style.at(key, default: (:)) == (:) {
-                ctx.style = cetz.styles.merge(ctx.style, style-dict)
-            } else {
-                ctx.zap.style = cetz.styles.merge(ctx.zap.style, expand-stroke(style-dict))
-            }
-        }
-        return ctx
-    })
-}
-
 #let resolve-style(style) = {
     if style.arrow.stroke.paint == auto {
         style.arrow.stroke.paint = style.foreground
@@ -145,14 +143,11 @@
     if style.background == auto {
         style.background = ctx.background
     }
-    if style.fill == auto {
-        style.fill = style.background
-    }
     if style.node.fill == auto {
         style.node.fill = style.foreground
     }
     if style.node.nofill == auto {
-        style.node.nofill = style.fill
+        style.node.nofill = style.background
     }
     if style.node.stroke.paint == auto {
         style.node.stroke.paint = none
@@ -170,5 +165,5 @@
 }
 
 #let get-style(ctx) = {
-    return resolve-style(ctx.zap.style)
+    return resolve-style(ctx.style)
 }

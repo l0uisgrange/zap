@@ -22,20 +22,33 @@
         anchor("c", (style.aperture * sgn, style.radius))
         anchor("b", if envelope { (-style.radius, 0) } else { "base" })
 
+        let wire-thickness = get-style(ctx).wire.stroke.thickness
         set-style(stroke: style.stroke)
         if envelope {
             circle((0, 0), radius: style.radius, fill: style.fill, name: "circle")
-            wire("base", (-style.radius, 0))
+            line("base", (-style.radius, 0), stroke: (thickness: wire-thickness))
         } else {
             hide(circle((0, 0), radius: style.radius, name: "circle"))
         }
 
-        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)))
-        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: get-style(ctx).wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
-        wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
+        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)),
+            stroke: (thickness: wire-thickness))
+        line((to: "base", rel: (0, -style.base-distance * sgn)), "e",
+            stroke: (thickness: wire-thickness))
+        line((to: "base", rel: (0, style.base-distance * sgn)), "c",
+            stroke: (thickness: wire-thickness))
+        mark(((to: "base", rel: (0, -style.base-distance * sgn)), 50%, "e"), "e",
+            symbol: if sgn == -1 { "<" } else { ">" },
+            anchor: "center",
+            fill: style.stroke.paint
+        )
 
         if params.named().at("label", default: none) != none {
-            content((style.radius, 0), params.named().at("label"), anchor: "west", padding: if envelope { 0.2 } else { -0.1 })
+            content(
+                (style.radius, 0), params.named().at("label"),
+                anchor: "west",
+                padding: if envelope { 0.2 } else { -0.1 }
+            )
         }
     }
 

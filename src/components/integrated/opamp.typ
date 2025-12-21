@@ -22,7 +22,7 @@
             })
         }
 
-        set-style(stroke: style.sign-stroke)
+        set-style(stroke: (thickness: style.sign-stroke, paint: black))
         line((rel: (style.padding - style.sign-size, 0), to: "minus"), (rel: (2 * style.sign-size, 0)))
         line((rel: (style.padding - style.sign-size, 0), to: "plus"), (rel: (2 * style.sign-size, 0)))
         line((rel: (style.padding, -style.sign-size), to: "plus"), (rel: (0, 2 * style.sign-size)))
