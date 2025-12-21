@@ -147,7 +147,7 @@
         style.node.fill = style.foreground
     }
     if style.node.nofill == auto {
-        style.node.nofill = style.fill
+        style.node.nofill = style.background
     }
     if style.node.stroke.paint == auto {
         style.node.stroke.paint = none
