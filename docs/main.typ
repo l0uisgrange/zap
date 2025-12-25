@@ -1323,15 +1323,15 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
 
         let draw(ctx, position, style) = {
             interface(
-                (-const.w / 2, -const.h / 2), 
-                (const.w / 2, const.h / 2), 
+                (-const.w / 2, -const.h / 2),
+                (const.w / 2, const.h / 2),
                 io: position.len() < 2
             )
 
             // draw your symbol here with cetz and zap...
 
             // pass style to entire scope: `cetz.draw.set-style(..style)`
-            // or just a single item: 
+            // or just a single item:
             cetz.draw.rect("bounds.north-east", "bounds.south-west", ..style)
         }
         component("my-custom-component", name, draw: draw, ..params)
@@ -1340,5 +1340,5 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
     #zap.circuit({
         custom("c1", (0, 0), (5, 0))
     })
-    ```
+    ```,
 )
