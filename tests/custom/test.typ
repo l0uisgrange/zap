@@ -1,20 +1,20 @@
 #import "/tests/utils.typ": test
-#import "/src/lib.typ": component, interface, cetz, set-style
+#import "/src/lib.typ": cetz, component, interface, set-style
 
 #let custom(name, ..params) = {
-  let const = (w:2, h:1)
+    let const = (w: 2, h: 1)
 
-  let draw(ctx, position, style) = {
-    interface(
-      (-const.w / 2, -const.h / 2), 
-      (const.w / 2, const.h / 2), 
-      io: position.len() < 2
-    )
+    let draw(ctx, position, style) = {
+        interface(
+            (-const.w / 2, -const.h / 2),
+            (const.w / 2, const.h / 2),
+            io: position.len() < 2,
+        )
 
-    // cetz.draw.set-style(..style)
-    cetz.draw.rect("bounds.north-east", "bounds.south-west", ..style)
-  }
-  component("my-custom-component", name, draw: draw, ..params)
+        // cetz.draw.set-style(..style)
+        cetz.draw.rect("bounds.north-east", "bounds.south-west", ..style)
+    }
+    component("my-custom-component", name, draw: draw, ..params)
 }
 
 
