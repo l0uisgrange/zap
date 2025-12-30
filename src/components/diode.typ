@@ -1,7 +1,6 @@
 #import "/src/component.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": radiation-arrows
-#import "/src/components/wire.typ": wire
 #import "/src/utils.typ": get-style
 #import cetz.draw: anchor, circle, line, merge-path, polygon, scope, set-style, translate
 
