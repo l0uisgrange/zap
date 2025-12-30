@@ -40,7 +40,9 @@
         mark(((to: "base", rel: (0, -style.base-distance * sgn)), 50%, "e"), "e",
             symbol: if sgn == -1 { "<" } else { ">" },
             anchor: "center",
-            fill: style.stroke.paint
+            stroke: 0pt,
+            fill: style.stroke.paint,
+            scale: style.mark-scale,
         )
 
         if params.named().at("label", default: none) != none {

@@ -322,6 +322,7 @@
         base-height: .6,
         base-distance: .12,
         aperture: 50deg,
+        mark-scale: 1.15,
     ),
     mosfet: (
         variant: auto,
