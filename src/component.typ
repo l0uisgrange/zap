@@ -61,6 +61,7 @@
             p-rotate = cetz.vector.angle2(..position)
             p-origin = (position.first(), p-position, position.last())
         }
+        set-style(..cetz.styles.default)
         set-origin(p-origin)
         rotate(p-rotate)
 

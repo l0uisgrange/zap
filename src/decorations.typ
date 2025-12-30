@@ -62,7 +62,6 @@
             scale: style.scale,
         ),
         stroke: style.stroke,
-        fill: none,
     )
     content((rel: (0, style.label-distance), to: (a-start, style.label-ratio, a-end)), style.content)
 }
@@ -89,6 +88,5 @@
             scale: style.scale,
         ),
         stroke: style.stroke,
-        fill: none,
     )
 }

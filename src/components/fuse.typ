@@ -11,7 +11,8 @@
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
         let wire-thickness = get-style(ctx).wire.stroke.thickness
-        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), stroke: style.stroke, fill: style.fill)
+        set-style(stroke: style.stroke)
+        rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.fill)
         line((-style.width / 2, 0), (style.width / 2, 0), stroke: (thickness: wire-thickness))
 
         if (asymmetric) {
