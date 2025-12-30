@@ -39,7 +39,7 @@
         ratio: (0.5, 0.5),
         stroke: (
             thickness: 1pt,
-            paint: auto,
+            paint: black,
         ),
         variable: (
             symbol: auto,
@@ -90,7 +90,7 @@
         scale: 1.0,
         stroke: (
             thickness: .6pt,
-            paint: auto,
+            paint: black,
         ),
         content: none,
         distance: 9pt,

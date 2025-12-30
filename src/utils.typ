@@ -131,14 +131,8 @@
 }
 
 #let resolve-style(style) = {
-    if style.arrow.stroke.paint == auto {
-        style.arrow.stroke.paint = style.foreground
-    }
     if style.stroke.paint == auto {
         style.stroke.paint = style.foreground
-    }
-    if style.decoration.stroke.paint == auto {
-        style.decoration.stroke.paint = style.foreground
     }
     if style.background == auto {
         style.background = ctx.background
