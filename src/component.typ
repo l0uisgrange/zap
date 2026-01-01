@@ -48,7 +48,11 @@
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // Override style by user style
-        let style = merge(zap-style.at(uid, default: (:)), expand-stroke(user-style))
+        let base-style = merge(
+            expand-stroke(keep-style.at(uid, default: (:))),
+            zap-style.at(uid, default: (:)),
+        ) 
+        let style = merge(base-style, expand-stroke(user-style))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -70,11 +74,12 @@
                 if type(s) == float {
                     s = (x: s, y: s)
                 }
+                let p-scale = p-scale
                 if type(p-scale) == float {
-                    scale(x: s.x * p-scale, y: s.y * p-scale)
-                } else {
-                    scale(x: s.x * p-scale.x, y: s.y * p-scale.y)
+                    p-scale = (x: p-scale, y: p-scale)
                 }
+                scale(..s)
+                scale(..p-scale)
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })

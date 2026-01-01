@@ -52,7 +52,7 @@
 }
 
 #let stroke-to-dict(style) = {
-    let style = stroke(style)
+    let style = if style == none { stroke(1pt) } else { stroke(style) }
     let raw-dict = (
         thickness: style.thickness,
         paint: style.paint,
