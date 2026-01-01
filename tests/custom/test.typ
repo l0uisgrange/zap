@@ -36,3 +36,9 @@
     set-style(my-custom-component: (stroke: green))
     custom("custom", (0, 0), (5, 0), stroke: (dash: "dotted"))
 })
+
+#test({
+    set-style(label: (anchor: "center"))
+    set-style(my-custom-component: (label: (align: "center")))
+    custom("custom", (0, 0), (5, 0), label: [Label], u: $u$, i: $i$)
+})
