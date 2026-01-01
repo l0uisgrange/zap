@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style, expand-stroke
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
@@ -43,19 +43,12 @@
         let keep-style = ctx.style
         cetz.draw.set-style(..cetz.styles.default)
 
-        let zap-style = ctx.zap.style
+        let zap-style = get-style(ctx)
         let user-style = params.named()
-        let user-stroke = user-style.remove("stroke", default: (:))
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
-
-        // Resolve style
-        let style = resolve-style(zap-style).at(uid)
-
-        // Override stroke by user stroke
-        style = merge(style, (stroke: user-stroke))
+        let style = merge(zap-style.at(uid, default: (:)), expand-stroke(user-style))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -73,10 +66,14 @@
         on-layer(1, {
             group(name: "component", {
                 // Scaling
-                if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
+                let s = style.at("scale", default: (x: 1, y: 1))
+                if type(s) == float {
+                    s = (x: s, y: s)
+                }
+                if type(p-scale) == float {
+                    scale(x: s.x * p-scale, y: s.y * p-scale)
                 } else {
-                    scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
+                    scale(x: s.x * p-scale.x, y: s.y * p-scale.y)
                 }
                 draw(ctx, position, style)
                 copy-anchors("bounds")
