@@ -34,5 +34,5 @@
 
 #test({
     set-style(my-custom-component: (stroke: green))
-    custom("custom", (0, 0), (5, 0), stroke: (paint: auto, dash: "dotted"))
+    custom("custom", (0, 0), (5, 0), stroke: (dash: "dotted"))
 })

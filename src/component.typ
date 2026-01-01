@@ -48,7 +48,11 @@
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // Override style by user style
-        let style = merge(zap-style.at(uid, default: (:)), expand-stroke(user-style))
+        let base-style = merge(
+            expand-stroke(keep-style.at(uid, default: (:))),
+            zap-style.at(uid, default: (:)),
+        ) 
+        let style = merge(base-style, expand-stroke(user-style))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
