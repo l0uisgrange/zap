@@ -70,11 +70,12 @@
                 if type(s) == float {
                     s = (x: s, y: s)
                 }
+                let p-scale = p-scale
                 if type(p-scale) == float {
-                    scale(x: s.x * p-scale, y: s.y * p-scale)
-                } else {
-                    scale(x: s.x * p-scale.x, y: s.y * p-scale.y)
+                    p-scale = (x: p-scale, y: p-scale)
                 }
+                scale(..s)
+                scale(..p-scale)
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
