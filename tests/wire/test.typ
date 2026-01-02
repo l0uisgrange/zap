@@ -22,3 +22,10 @@
     wire((0, 0), (3, 2), i: (content: $i_1$))
     resistor("r1", (0, 0), (4, 0))
 })
+
+// test last used coordinate
+#test({
+    import lib: *
+    wire((), (1, 0))
+    wire((), (1, 1))
+})
