@@ -38,108 +38,112 @@
     let p-draw = draw
     import cetz.draw: *
 
-    group(name: name, ctx => {
-        // Save the current style
-        let keep-style = ctx.style
-        cetz.draw.set-style(..cetz.styles.default)
-
-        let zap-style = get-style(ctx)
-        let user-style = params.named()
-        let label-defaults = user-style.remove("label-defaults", default: (:))
-
-        // Override style by user style
-        let base-style = merge(
-            expand-stroke(keep-style.at(uid, default: (:))),
-            zap-style.at(uid, default: (:)),
-        )
-        let style = merge(base-style, expand-stroke(user-style))
-
-        let p-rotate = p-rotate
+    get-ctx(ctx => {
+        // resolve passed coordinates before entering the component drawing scope
+        // this way cetz properly recognizes the last used coordinate "()"
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
-        let p-origin = position.first()
-        if position.len() == 2 {
-            anchor("in", position.first())
-            anchor("out", position.last())
-            p-rotate = cetz.vector.angle2(..position)
-            p-origin = (position.first(), p-position, position.last())
-        }
-        set-origin(p-origin)
-        rotate(p-rotate)
+        set-ctx(_ => { ctx })
 
-        // Component
-        on-layer(1, {
-            group(name: "component", {
-                // Scaling
-                let s = style.at("scale", default: (x: 1, y: 1))
-                if type(s) == float {
-                    s = (x: s, y: s)
-                }
-                let p-scale = p-scale
-                if type(p-scale) == float {
-                    p-scale = (x: p-scale, y: p-scale)
-                }
-                scale(..s)
-                scale(..p-scale)
-                draw(ctx, position, style)
-                copy-anchors("bounds")
+        // create the component
+        group(name: name, ctx => {
+            cetz.draw.set-style(..cetz.styles.default)
+
+            let cetz-style = ctx.style
+            let zap-style = get-style(ctx)
+            let user-style = params.named()
+            let label-defaults = user-style.remove("label-defaults", default: (:))
+
+            // Override style by user style
+            let base-style = merge(
+                expand-stroke(cetz-style.at(uid, default: (:))),
+                zap-style.at(uid, default: (:)),
+            )
+            let style = merge(base-style, expand-stroke(user-style))
+
+            // resolve transformation
+            let p-rotate = p-rotate
+            let p-origin = position.first()
+            if position.len() == 2 {
+                anchor("in", position.first())
+                anchor("out", position.last())
+                p-rotate = cetz.vector.angle2(..position)
+                p-origin = (position.first(), p-position, position.last())
+            }
+            set-origin(p-origin)
+            rotate(p-rotate)
+
+            // Component
+            on-layer(1, {
+                group(name: "component", {
+                    // Scaling
+                    let s = style.at("scale", default: (x: 1, y: 1))
+                    if type(s) == float {
+                        s = (x: s, y: s)
+                    }
+                    let p-scale = p-scale
+                    if type(p-scale) == float {
+                        p-scale = (x: p-scale, y: p-scale)
+                    }
+                    scale(..s)
+                    scale(..p-scale)
+                    draw(ctx, position, style)
+                    copy-anchors("bounds")
+                })
             })
-        })
 
-        copy-anchors("component")
+            copy-anchors("component")
 
-        // Label
-        on-layer(0, {
-            if label != none {
-                let label-style = zap-style.label
-                label-style = merge(label-style, style.at("label", default: (:)))
-                label-style = merge(label-style, label-defaults)
-                label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
+            // Label
+            on-layer(0, {
+                if label != none {
+                    let label-style = zap-style.label
+                    label-style = merge(label-style, style.at("label", default: (:)))
+                    label-style = merge(label-style, label-defaults)
+                    label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
 
-                let anchor = get-label-anchor(p-rotate)
-                let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
-                content(
-                    if type(label-style.anchor) == str { "component." + label-style.anchor } else { label-style.anchor },
-                    anchor: label-style.at("align", default: resolved-anchor),
-                    label-style.content,
-                    padding: label-style.distance,
-                )
-            }
-        })
-
-        // Symbol decorations
-        if position.len() == 2 {
-            wire("in", "component.west")
-            wire("component.east", "out")
-
-            if i != none {
-                current(ctx, i)
-            }
-            if f != none {
-                flow(ctx, f)
-            }
-            if u != none {
-                voltage(ctx, u, p-rotate)
-            }
-            if n != none {
-                if "*-" in n {
-                    node("", "in")
-                } else if "o-" in n {
-                    node("", "in", fill: false)
+                    let anchor = get-label-anchor(p-rotate)
+                    let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
+                    content(
+                        if type(label-style.anchor) == str { "component." + label-style.anchor } else { label-style.anchor },
+                        anchor: label-style.at("align", default: resolved-anchor),
+                        label-style.content,
+                        padding: label-style.distance,
+                    )
                 }
-                if "-*" in n {
-                    node("", "out")
-                } else if "-o" in n {
-                    node("", "out", fill: false)
+            })
+
+            // Symbol decorations
+            if position.len() == 2 {
+                wire("in", "component.west")
+                wire("component.east", "out")
+
+                if i != none {
+                    current(ctx, i)
+                }
+                if f != none {
+                    flow(ctx, f)
+                }
+                if u != none {
+                    voltage(ctx, u, p-rotate)
+                }
+                if n != none {
+                    if "*-" in n {
+                        node("", "in")
+                    } else if "o-" in n {
+                        node("", "in", fill: false)
+                    }
+                    if "-*" in n {
+                        node("", "out")
+                    } else if "-o" in n {
+                        node("", "out", fill: false)
+                    }
                 }
             }
-        }
-
-        // Bringing back the current style
-        cetz.draw.set-style(..keep-style)
+        })
     })
 
     // Show symbol anchors in debug mode
-    cetz.draw.get-ctx(ctx => {
+    cetz.draw.scope(ctx => {
         let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
         if (debug) {
             on-layer(1, ctx => {
