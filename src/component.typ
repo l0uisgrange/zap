@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style, expand-stroke
+#import "utils.typ": expand-stroke, get-label-anchor, get-style, opposite-anchor, resolve-style
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
@@ -51,7 +51,7 @@
         let base-style = merge(
             expand-stroke(keep-style.at(uid, default: (:))),
             zap-style.at(uid, default: (:)),
-        ) 
+        )
         let style = merge(base-style, expand-stroke(user-style))
 
         let p-rotate = p-rotate
