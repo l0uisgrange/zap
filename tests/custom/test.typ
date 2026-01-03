@@ -42,3 +42,9 @@
     set-style(my-custom-component: (label: (align: "center")))
     custom("custom", (0, 0), (5, 0), label: [Label], u: $u$, i: $i$)
 })
+
+#test({
+    set-style(my-custom-component: (stroke: green))
+    custom("custom", (0, 0), (3, 0), stroke: auto)
+    custom("custom", (3, 0), (6, 0), stroke: (paint: auto))    
+})
