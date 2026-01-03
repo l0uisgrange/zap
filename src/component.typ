@@ -43,16 +43,18 @@
         let keep-style = ctx.style
         cetz.draw.set-style(..cetz.styles.default)
 
-        let zap-style = get-style(ctx)
+        let zap-style = ctx.zap.style
         let user-style = params.named()
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
-        // Override style by user style
+        // Override styles
         let base-style = merge(
             expand-stroke(keep-style.at(uid, default: (:))),
             zap-style.at(uid, default: (:)),
         )
-        let style = merge(base-style, expand-stroke(user-style))
+        base-style = merge(base-style, expand-stroke(user-style))
+        zap-style.insert(uid, base-style)
+        let style = resolve-style(zap-style).at(uid)
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
