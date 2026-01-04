@@ -68,8 +68,9 @@
         on-layer(1, {
             group(name: "component", {
                 // Scaling
+                let style-scale = style.at("scale", default: (x: 1, y: 1))
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
+                    scale(x: p-scale * style-scale.x, y: p-scale * style-scale.y)
                 } else {
                     scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
                 }
