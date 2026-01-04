@@ -17,6 +17,7 @@
     scale: 1.0,
     rotate: 0deg,
     debug: none,
+    include-to-style: (:),
     ..params,
 ) = {
     let p-position = position
@@ -44,7 +45,7 @@
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // If there is no component style, then create
-        if uid not in cetz-style.keys() { cetz-style.insert(uid, (:)) }
+        if uid not in cetz-style.keys() { cetz-style.insert(uid, include-to-style) }
 
         // Override style by user style
         cetz-style.at(uid) = merge(cetz-style.at(uid), user-style)
