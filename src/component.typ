@@ -2,7 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
+#import "utils.typ": expand-stroke, get-label-anchor, get-style, opposite-anchor, resolve-style
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
@@ -45,17 +45,16 @@
 
         let zap-style = ctx.zap.style
         let user-style = params.named()
-        let user-stroke = user-style.remove("stroke", default: (:))
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
-        // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
-
-        // Resolve style
+        // Override styles
+        let base-style = merge(
+            expand-stroke(keep-style.at(uid, default: (:))),
+            zap-style.at(uid, default: (:)),
+        )
+        base-style = merge(base-style, expand-stroke(user-style))
+        zap-style.insert(uid, base-style)
         let style = resolve-style(zap-style).at(uid)
-
-        // Override stroke by user stroke
-        style = merge(style, (stroke: user-stroke))
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -73,11 +72,16 @@
         on-layer(1, {
             group(name: "component", {
                 // Scaling
-                if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
-                } else {
-                    scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
+                let s = style.at("scale", default: (x: 1, y: 1))
+                if type(s) == float {
+                    s = (x: s, y: s)
                 }
+                let p-scale = p-scale
+                if type(p-scale) == float {
+                    p-scale = (x: p-scale, y: p-scale)
+                }
+                scale(..s)
+                scale(..p-scale)
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
