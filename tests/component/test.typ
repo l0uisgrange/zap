@@ -59,3 +59,18 @@
     import lib: *
     resistor("r1", (0, 0), (3, 3), f: (content: $f_1$, distance: 1, label-distance: -1, invert: true, anchor: "south"))
 })
+
+// test last used coordinate
+#test({
+    import lib: *
+    let point = (2, 0)
+    cetz.draw.hide({
+        resistor("r1", (0, 0), point, debug: false)
+        resistor("r2", (), (rel: (2, 0), update: false), debug: true, label: [Label], i: $i$)
+    })
+
+    cetz.draw.get-ctx(ctx => {
+        let (ctx, last-used) = cetz.coordinate.resolve(ctx, ())
+        assert(cetz.vector.dist(point, last-used) < 1e-6)
+    })
+})

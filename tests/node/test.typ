@@ -22,3 +22,10 @@
     import lib: *
     node("n", (0, 0), radius: .1)
 })
+
+// test last used coordinate
+#test({
+    import lib: *
+    node("n1", (1, 0))
+    node("n2", ())
+})
