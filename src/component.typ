@@ -42,11 +42,12 @@
         let user-style = params.named()
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
-        // Stroke is a dictionary
-        user-style.stroke = stroke-to-dict(user-style.at("stroke", default: (:)))
-
         // If there is no component style, then create
         if uid not in cetz-style.keys() { cetz-style.insert(uid, (:)) }
+
+        // Stroke is a dictionary
+        user-style.stroke = stroke-to-dict(user-style.at("stroke", default: none))
+        cetz-style.at(uid).stroke = stroke-to-dict(cetz-style.at(uid).at("stroke", default: none))
 
         // Override style by user style
         cetz-style.at(uid) = merge-dictionary(cetz-style.at(uid), user-style)
@@ -63,7 +64,6 @@
             p-rotate = cetz.vector.angle2(..position)
             p-origin = (position.first(), p-position, position.last())
         }
-        set-style(..cetz.styles.default)
         set-origin(p-origin)
         rotate(p-rotate)
 
@@ -76,11 +76,11 @@
                 } else {
                     scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
                 }
+                set-style(..cetz.styles.default)
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
         })
-
         copy-anchors("component")
 
         // Label
@@ -102,11 +102,12 @@
             }
         })
 
-        // Symbol decorations
+        // Decorations
         if position.len() == 2 {
             wire("in", "component.west")
             wire("component.east", "out")
 
+            set-style(..cetz.styles.default)
             if i != none {
                 current(ctx, i)
             }
