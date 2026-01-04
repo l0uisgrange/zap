@@ -4,6 +4,7 @@
 #import "components/wire.typ": wire
 #import "utils.typ": get-label-anchor, get-style, opposite-anchor, stroke-to-dict, resolve-style
 #import cetz.util: merge-dictionary
+#import cetz.styles: merge
 
 #let component(
     draw: none,
@@ -45,12 +46,8 @@
         // If there is no component style, then create
         if uid not in cetz-style.keys() { cetz-style.insert(uid, (:)) }
 
-        // Stroke is a dictionary
-        user-style.stroke = stroke-to-dict(user-style.at("stroke", default: none))
-        cetz-style.at(uid).stroke = stroke-to-dict(cetz-style.at(uid).at("stroke", default: none))
-
         // Override style by user style
-        cetz-style.at(uid) = merge-dictionary(cetz-style.at(uid), user-style)
+        cetz-style.at(uid) = merge(cetz-style.at(uid), user-style)
 
         // Resolve style
         let style = resolve-style(cetz-style).at(uid)
