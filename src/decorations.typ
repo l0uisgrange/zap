@@ -1,7 +1,7 @@
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": get-style, resolve-style
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
-#import cetz.styles: merge
+#import cetz.util: merge-dictionary
 
 #let resolve-directions(direction) = {
     let vertical = "north"
@@ -18,10 +18,10 @@
 #let resolve-decoration(ctx, dec, decor-type) = {
     if type(dec) == dictionary and dec.at("content", default: none) == none { panic("Decoration dictionary needs at least the 'content' key") }
 
-    let zap-style = ctx.zap.style
-    zap-style.decoration.at(decor-type) = merge(zap-style.decoration.at(decor-type), if type(dec) == dictionary { dec } else { (content: dec) })
+    let cetz-style = ctx.style
+    cetz-style.decoration.at(decor-type) = merge-dictionary(cetz-style.decoration.at(decor-type), if type(dec) == dictionary { dec } else { (content: dec) })
 
-    let dec = resolve-style(zap-style).decoration.at(decor-type)
+    let dec = resolve-style(cetz-style).decoration.at(decor-type)
     dec.size = cetz.util.measure(ctx, dec.content)
     dec.position = resolve-directions(dec.anchor)
     dec.side = if dec.position.y == "north" { 1 } else { -1 }

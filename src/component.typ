@@ -2,8 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
-#import cetz.styles: merge
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, stroke-to-dict, resolve-style
 #import cetz.util: merge-dictionary
 
 #let component(
@@ -39,23 +38,21 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        // Save the current style
-        let keep-style = ctx.style
-        cetz.draw.set-style(..cetz.styles.default)
-
-        let zap-style = ctx.zap.style
+        let cetz-style = ctx.style
         let user-style = params.named()
-        let user-stroke = user-style.remove("stroke", default: (:))
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
+        // Stroke is a dictionary
+        user-style.stroke = stroke-to-dict(user-style.at("stroke", default: (:)))
+
+        // If there is no component style, then create
+        if uid not in cetz-style.keys() { cetz-style.insert(uid, (:)) }
+
         // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
+        cetz-style.at(uid) = merge-dictionary(cetz-style.at(uid), user-style)
 
         // Resolve style
-        let style = resolve-style(zap-style).at(uid)
-
-        // Override stroke by user stroke
-        style = merge(style, (stroke: user-stroke))
+        let style = resolve-style(cetz-style).at(uid)
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -66,6 +63,7 @@
             p-rotate = cetz.vector.angle2(..position)
             p-origin = (position.first(), p-position, position.last())
         }
+        set-style(..cetz.styles.default)
         set-origin(p-origin)
         rotate(p-rotate)
 
@@ -88,10 +86,10 @@
         // Label
         on-layer(0, {
             if label != none {
-                let label-style = zap-style.label
-                label-style = merge(label-style, style.at("label", default: (:)))
-                label-style = merge(label-style, label-defaults)
-                label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
+                let label-style = cetz-style.label
+                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
+                label-style = merge-dictionary(label-style, label-defaults)
+                label-style = merge-dictionary(label-style, if type(label) == dictionary { label } else { (content: label) })
 
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
@@ -131,9 +129,6 @@
                 }
             }
         }
-
-        // Bringing back the current style
-        cetz.draw.set-style(..keep-style)
     })
 
     // Show symbol anchors in debug mode
