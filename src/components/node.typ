@@ -7,7 +7,14 @@
 
     on-layer(1, ctx => {
         let node-style = get-style(ctx).node
-        circle(position, radius: node-style.radius, fill: if fill { node-style.fill } else { node-style.nofill }, name: name, stroke: node-style.stroke, ..params)
+        circle(
+            name: name,
+            position,
+            radius: node-style.radius,
+            stroke: if fill { node-style.fill } else { node-style.stroke },
+            fill: if fill { node-style.fill } else { node-style.nofill },
+            ..params,
+        )
     })
 
     // Label
