@@ -104,18 +104,20 @@
     return resolve-recursive(dict, (:))
 }
 
-#let expand-stroke(dict) = {
-    let expand-stroke-recursive(dict) = {
+#let expand(dict) = {
+    let expand-recursive(dict) = {
         for (k, v) in dict {
             if type(v) == dictionary {
-                dict.at(k) = expand-stroke-recursive(dict.at(k))
+                dict.at(k) = expand-recursive(dict.at(k))
             } else if k == "stroke" and v != auto {
                 dict.at(k) = stroke-to-dict(v)
+            } else if k == "scale" and v != auto {
+                dict.at(k) = (x: v, y: v)
             }
         }
         return dict
     }
-    return expand-stroke-recursive(dict)
+    return expand-recursive(dict)
 }
 
 #let resolve-style(style) = {

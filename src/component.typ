@@ -2,9 +2,8 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, stroke-to-dict, resolve-style, expand-stroke
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, stroke-to-dict, resolve-style, expand
 #import cetz.util: merge-dictionary
-#import cetz.styles: merge
 
 #let component(
     draw: none,
@@ -40,8 +39,8 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        let cetz-style = expand-stroke(ctx.style)
-        let user-style = expand-stroke(params.named())
+        let cetz-style = expand(ctx.style)
+        let user-style = expand(params.named())
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // If there is no component style, then create
