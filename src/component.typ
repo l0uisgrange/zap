@@ -40,9 +40,7 @@
 
     // Create if there is no component style
     set-ctx(ctx => {
-        if uid not in ctx.style.keys() {
-            ctx.style.insert(uid, include-to-style)
-        }
+        ctx.style.insert(uid, merge-dictionary(include-to-style, ctx.style.at(uid, default: (:))))
         ctx
     })
 
