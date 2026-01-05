@@ -13,9 +13,9 @@
         translate((-style.radius / 4, 0))
         interface((-style.radius / 2, -style.radius), (style.radius, style.radius), io: position.len() < 2)
 
-        set-style(stroke: style.stroke)
-        polygon((0, 0), 3, radius: style.radius, fill: style.fill)
+        polygon((0, 0), 3, radius: style.radius, fill: style.fill, stroke: style.stroke)
         wire((0deg, style.radius), (180deg, style.radius / 2))
+        set-style(stroke: style.stroke)
 
         // Diode specific lines - horizontal lines orthogonal to cathode
         if (type in ("tunnel", "zener", "schottky")) {
