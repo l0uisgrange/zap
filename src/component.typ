@@ -38,13 +38,18 @@
     let p-draw = draw
     import cetz.draw: *
 
+    // Create if there is no component style
+    set-ctx(ctx => {
+        if uid not in ctx.style.keys() {
+            ctx.style.insert(uid, include-to-style)
+        }
+        ctx
+    })
+
     group(name: name, ctx => {
         let cetz-style = expand(ctx.style)
         let user-style = expand(params.named())
         let label-defaults = user-style.remove("label-defaults", default: (:))
-
-        // If there is no component style, then create
-        if uid not in cetz-style.keys() { cetz-style.insert(uid, include-to-style) }
 
         // Override style by user style
         cetz-style.at(uid) = merge-dictionary(cetz-style.at(uid), user-style)
