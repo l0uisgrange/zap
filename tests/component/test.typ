@@ -32,8 +32,8 @@
 #test({
     import lib: *
     resistor("r1", (0, 0), (2, 2))
-    cetz.draw.circle("r1.out", radius: 2pt, stroke: red)
-    cetz.draw.circle("r1.in", radius: 2pt, stroke: green)
+    cetz.draw.circle("r1.out", radius: 2pt, stroke: red + 1pt, fill: none)
+    cetz.draw.circle("r1.in", radius: 2pt, stroke: green + 1pt, fill: none)
 })
 
 // Test label

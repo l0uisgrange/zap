@@ -1,7 +1,7 @@
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": get-style, opposite-anchor, resolve-style
 #import cetz.draw: anchor, circle, content, group, hide, line, mark, set-style
-#import cetz.styles: merge
+#import cetz.util: merge-dictionary
 
 #let ra = ratio
 
@@ -15,6 +15,7 @@
         let style = get-style(ctx).wire
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
+        set-style(..cetz.styles.default)
         set-style(stroke: style.stroke)
 
         // Drawing the wire using the shape parameter
@@ -56,10 +57,10 @@
 
         // Current decoration
         if i != none {
-            let zap-style = ctx.zap.style
-            zap-style.decoration.current.wire = merge(zap-style.decoration.current.wire, if type(i) == dictionary { i } else { (content: i) })
+            let cetz-style = ctx.style
+            cetz-style.decoration.current.wire = merge-dictionary(cetz-style.decoration.current.wire, if type(i) == dictionary { i } else { (content: i) })
 
-            let dec = resolve-style(zap-style).decoration.current.wire
+            let dec = resolve-style(cetz-style).decoration.current.wire
             mark(
                 (name: "line", anchor: dec.position),
                 (name: "line", anchor: dec.position + if type(dec.position) == ra { 1% } else { 0.1 }),

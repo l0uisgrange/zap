@@ -22,15 +22,13 @@
         anchor("c", (style.aperture * sgn, style.radius))
         anchor("b", if envelope { (-style.radius, 0) } else { "base" })
 
-        set-style(stroke: style.stroke)
         if envelope {
-            circle((0, 0), radius: style.radius, fill: style.fill, name: "circle")
+            circle((0, 0), radius: style.radius, fill: style.fill, stroke: style.stroke, name: "circle")
             wire("base", (-style.radius, 0))
         } else {
-            hide(circle((0, 0), radius: style.radius, name: "circle"))
+            hide(circle((0, 0), radius: style.radius, stroke: style.stroke, name: "circle"))
         }
-
-        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)))
+        line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)), stroke: style.stroke)
         line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: get-style(ctx).wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
         wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 

@@ -2,8 +2,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "components/node.typ": node
 #import "components/wire.typ": wire
-#import "utils.typ": get-label-anchor, get-style, opposite-anchor, resolve-style
-#import cetz.styles: merge
+#import "utils.typ": get-label-anchor, get-style, opposite-anchor, stroke-to-dict, resolve-style, expand
 #import cetz.util: merge-dictionary
 
 #let component(
@@ -17,6 +16,7 @@
     scale: 1.0,
     rotate: 0deg,
     debug: none,
+    include-to-style: (:),
     ..params,
 ) = {
     let p-position = position
@@ -38,24 +38,22 @@
     let p-draw = draw
     import cetz.draw: *
 
-    group(name: name, ctx => {
-        // Save the current style
-        let keep-style = ctx.style
-        cetz.draw.set-style(..cetz.styles.default)
+    // Create if there is no component style
+    set-ctx(ctx => {
+        ctx.style.insert(uid, merge-dictionary(include-to-style, ctx.style.at(uid, default: (:))))
+        ctx
+    })
 
-        let zap-style = ctx.zap.style
-        let user-style = params.named()
-        let user-stroke = user-style.remove("stroke", default: (:))
+    group(name: name, ctx => {
+        let cetz-style = expand(ctx.style)
+        let user-style = expand(params.named())
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
         // Override style by user style
-        zap-style.at(uid) = merge(zap-style.at(uid), user-style)
+        cetz-style.at(uid) = merge-dictionary(cetz-style.at(uid), user-style)
 
         // Resolve style
-        let style = resolve-style(zap-style).at(uid)
-
-        // Override stroke by user stroke
-        style = merge(style, (stroke: user-stroke))
+        let style = resolve-style(cetz-style).at(uid)
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -73,25 +71,26 @@
         on-layer(1, {
             group(name: "component", {
                 // Scaling
+                let style-scale = style.at("scale", default: (x: 1, y: 1))
                 if (type(p-scale) == float) {
-                    scale(x: p-scale * style.scale.x, y: p-scale * style.scale.y)
+                    scale(x: p-scale * style-scale.x, y: p-scale * style-scale.y)
                 } else {
                     scale(x: p-scale.at("x", default: 1.0) * style.scale.x, y: p-scale.at("y", default: 1.0) * style.scale.y)
                 }
+                set-style(..cetz.styles.default)
                 draw(ctx, position, style)
                 copy-anchors("bounds")
             })
         })
-
         copy-anchors("component")
 
         // Label
         on-layer(0, {
             if label != none {
-                let label-style = zap-style.label
-                label-style = merge(label-style, style.at("label", default: (:)))
-                label-style = merge(label-style, label-defaults)
-                label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
+                let label-style = cetz-style.label
+                label-style = merge-dictionary(label-style, style.at("label", default: (:)))
+                label-style = merge-dictionary(label-style, label-defaults)
+                label-style = merge-dictionary(label-style, if type(label) == dictionary { label } else { (content: label) })
 
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
@@ -104,11 +103,12 @@
             }
         })
 
-        // Symbol decorations
+        // Decorations
         if position.len() == 2 {
             wire("in", "component.west")
             wire("component.east", "out")
 
+            set-style(..cetz.styles.default)
             if i != none {
                 current(ctx, i)
             }
@@ -131,17 +131,14 @@
                 }
             }
         }
-
-        // Bringing back the current style
-        cetz.draw.set-style(..keep-style)
     })
 
     // Show symbol anchors in debug mode
-    cetz.draw.get-ctx(ctx => {
-        let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
-        if (debug) {
+    get-ctx(ctx => {
+        let zap-style = get-style(ctx)
+        if debug == none and zap-style.debug.enabled or debug != none {
             on-layer(1, ctx => {
-                let style = ctx.zap.style.debug
+                let style = zap-style.debug
                 for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
                     circle((), radius: style.radius, stroke: style.stroke)
                     content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)

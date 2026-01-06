@@ -9,7 +9,7 @@
         miter-limit: 4,
         dash: none,
     ),
-    fill: auto,
+    fill: white,
     background: white,
     foreground: black,
     label: (
@@ -21,7 +21,6 @@
     node: (
         stroke: (
             thickness: .4pt,
-            paint: auto,
         ),
         fill: auto,
         nofill: auto,
