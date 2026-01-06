@@ -134,11 +134,11 @@
     })
 
     // Show symbol anchors in debug mode
-    cetz.draw.get-ctx(ctx => {
-        let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
-        if (debug) {
+    get-ctx(ctx => {
+        let zap-style = get-style(ctx)
+        if debug == none and zap-style.debug.enabled or debug != none {
             on-layer(1, ctx => {
-                let style = ctx.zap.style.debug
+                let style = zap-style.debug
                 for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
                     circle((), radius: style.radius, stroke: style.stroke)
                     content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
