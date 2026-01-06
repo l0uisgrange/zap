@@ -15,6 +15,7 @@
         let style = get-style(ctx).wire
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
+        set-style(..cetz.styles.default)
         set-style(stroke: style.stroke)
 
         // Drawing the wire using the shape parameter
