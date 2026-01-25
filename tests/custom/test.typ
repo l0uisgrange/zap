@@ -1,0 +1,50 @@
+#import "/tests/utils.typ": test
+#import "/src/lib.typ": cetz, component, interface, set-style
+
+#let custom(name, ..params) = {
+    let const = (w: 2, h: 1)
+
+    let draw(ctx, position, style) = {
+        interface(
+            (-const.w / 2, -const.h / 2),
+            (const.w / 2, const.h / 2),
+            io: position.len() < 2,
+        )
+
+        // cetz.draw.set-style(..style)
+        cetz.draw.rect("bounds.north-east", "bounds.south-west", ..style)
+    }
+    component("my-custom-component", name, draw: draw, ..params)
+}
+
+
+// Test symbols
+#test({
+    custom("custom", (0, 0), (5, 0))
+})
+
+#test({
+    set-style(my-custom-component: (stroke: red))
+    custom("custom", (0, 0), (5, 0))
+})
+
+#test({
+    custom("custom", (0, 0), (5, 0), stroke: blue)
+})
+
+#test({
+    set-style(my-custom-component: (stroke: green))
+    custom("custom", (0, 0), (5, 0), stroke: (dash: "dotted"))
+})
+
+#test({
+    set-style(label: (anchor: "center"))
+    set-style(my-custom-component: (label: (align: "center")))
+    custom("custom", (0, 0), (5, 0), label: [Label], u: $u$, i: $i$)
+})
+
+#test({
+    set-style(my-custom-component: (stroke: green))
+    custom("custom", (0, 0), (3, 0), stroke: auto)
+    custom("custom", (3, 0), (6, 0), stroke: (paint: auto))    
+})

@@ -52,7 +52,10 @@
 }
 
 #let stroke-to-dict(style) = {
-    let style = stroke(style)
+    if style == auto {
+        return (:)
+    }
+    let style = if style == none { stroke(0pt) } else { stroke(style) }
     let raw-dict = (
         thickness: style.thickness,
         paint: style.paint,
@@ -106,10 +109,10 @@
 #let expand-stroke(dict) = {
     let expand-stroke-recursive(dict) = {
         for (k, v) in dict {
-            if type(v) == dictionary {
-                dict.at(k) = expand-stroke-recursive(dict.at(k))
-            } else if k == "stroke" and v != auto {
+            if k == "stroke" {
                 dict.at(k) = stroke-to-dict(v)
+            } else if type(v) == dictionary {
+                dict.at(k) = expand-stroke-recursive(dict.at(k))
             }
         }
         return dict
