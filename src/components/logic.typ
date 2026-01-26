@@ -7,14 +7,14 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
-        let height = calc.max(style.min-height, inputs * style.spacing + 2 * style.padding)
+        let height = calc.max(style.min-height, (inputs - 1) * style.spacing + 2 * style.padding)
         interface((-style.width / 2, -height / 2), (style.width / 2, height / 2), io: false)
 
         rect((-style.width / 2, -height / 2), (rel: (style.width, height)), fill: style.fill, stroke: style.stroke)
         content((0, height / 2 - style.padding), text, anchor: "north")
 
         for input in range(1, inputs + 1) {
-            anchor("in" + str(input), (-style.width / 2, height / 2 - input * style.spacing))
+            anchor("in" + str(input), (-style.width / 2, height / 2 - style.padding - (input - 1) * style.spacing))
         }
 
         if invert {
