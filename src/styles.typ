@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #let default = (
     variant: "iec",
     scale: (x: 1.0, y: 1.0),
