@@ -1,10 +1,22 @@
-/.idea/
-/main.typ
-*.pdf
-/doc/**/*.svg
-/main.svg
+# outputs
+/*.pdf
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# system
+.DS_Store
+Thumbs.db
+
+# development
+*.html
+/*.typ
+/*.svg
+/*.pdf
+
+# tests
 tests/**/diff
 tests/**/out
-/docs/build/
-**/.DS_Store
-.vscode

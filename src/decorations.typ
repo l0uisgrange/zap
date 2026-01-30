@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": get-style, resolve-style
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
