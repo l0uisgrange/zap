@@ -8,8 +8,11 @@
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
+#import cetz.draw: set-origin, scope, copy-anchors, get-ctx
 
-/// Core symbol function
+/// Core function for creating circuit symbols. Used internally for all built-in symbols and can also be used to create custom ones.
+///
+/// https://zap.grangelouis.ch/#custom
 ///
 /// - draw (func): Drawing function
 /// - label (content | dict): Label content
@@ -49,11 +52,6 @@
     assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
-    let p-rotate = rotate
-    let p-scale = scale
-    let p-draw = draw
-    import cetz.draw: *
-
     group(name: name, ctx => {
         let user-style = params.named()
         let label-defaults = user-style.remove("label-defaults", default: (:))
@@ -70,23 +68,23 @@
             p-origin = (position.first(), p-position, position.last())
         }
         set-origin(p-origin)
-        rotate(p-rotate)
+        cetz.draw.rotate(p-rotate)
 
         // Symbol
         on-layer(1, {
             group(name: "symbol", {
                 // Scaling
                 let s = style.at("scale", default: (x: 1, y: 1))
-                if type(s) == float {
-                    s = (x: s, y: s)
-                }
+                if type(s) == float { s = (x: s, y: s) }
                 let p-scale = p-scale
                 if type(p-scale) == float {
                     p-scale = (x: p-scale, y: p-scale)
                 }
-                scale(..s)
-                scale(..p-scale)
-                draw(ctx, position, style)
+                cetz.draw.scale(..s)
+                cetz.draw.scale(..p-scale)
+                scope({
+                    draw(ctx, position, style)
+                })
                 copy-anchors("bounds")
             })
         })
@@ -96,6 +94,7 @@
         // Label
         on-layer(0, {
             if label != none {
+                let style = cetz.styles.resolve(ctx.style, root: "zap.label")
                 let label-style = zap-style.label
                 label-style = merge(label-style, style.at("label", default: (:)))
                 label-style = merge(label-style, label-defaults)
@@ -117,15 +116,9 @@
             wire("in", "symbol.west")
             wire("symbol.east", "out")
 
-            if i != none {
-                current(ctx, i)
-            }
-            if f != none {
-                flow(ctx, f)
-            }
-            if u != none {
-                voltage(ctx, u, p-rotate)
-            }
+            if i != none { current(ctx, i) }
+            if f != none { flow(ctx, f) }
+            if u != none { voltage(ctx, u, p-rotate) }
             if n != none {
                 if "*-" in n {
                     node("", "in")
@@ -145,7 +138,7 @@
     })
 
     // Show symbol anchors in debug mode
-    cetz.draw.get-ctx(ctx => {
+    get-ctx(ctx => {
         let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
         if (debug) {
             on-layer(1, ctx => {

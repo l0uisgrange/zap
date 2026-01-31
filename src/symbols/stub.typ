@@ -1,8 +1,11 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import "/src/utils.typ": get-style, opposite-anchor
-#import "/src/components/wire.typ": wire
+#import "/src/utils.typ": opposite-anchor
+#import "/src/symbols/wire.typ": wire
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
 #let stub(node, dir: "north", ..params) = {

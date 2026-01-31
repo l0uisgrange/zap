@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#import "/src/symbol.typ": component, interface
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
-#import "/src/components/wire.typ": wire
+#import "/src/symbols/wire.typ": wire
 #import cetz.draw: anchor, line, polygon, scale, scope, set-style
 
 /// Ground symbol to use on a canvas
@@ -25,8 +25,8 @@
         anchor("default", (0, 0))
     }
 
-    // Component call
-    component("ground", name, node, draw: draw, ..params)
+    // Constructor call
+    sy("ground", name, node, draw: draw, ..params)
 }
 
 #let frame(name, node, ..params) = {
@@ -47,8 +47,8 @@
         anchor("default", (0, 0))
     }
 
-    // Component call
-    component("frame", name, node, draw: draw, ..params)
+    // Constructor call
+    symbols("frame", name, node, draw: draw, ..params)
 }
 
 #let earth(name, node, ..params) = {
@@ -65,8 +65,8 @@
         anchor("default", (0, 0))
     }
 
-    // Component call
-    component("earth", name, node, draw: draw, ..params)
+    // Constructor call
+    symbols("earth", name, node, draw: draw, ..params)
 }
 
 #let vsupply(uid, name, node, invert: false, ..params) = {
@@ -84,8 +84,8 @@
         anchor("default", (0, 0))
     }
 
-    // Component call
-    component(
+    // Constructor call
+    symbols(
         uid,
         name,
         node,

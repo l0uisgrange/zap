@@ -1,7 +1,10 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, merge-path
-#import "/src/components/wire.typ": wire
+#import "/src/symbols/wire.typ": wire
 
 #let antenna(name, node, closed: false, ..params) = {
     // Drawing function

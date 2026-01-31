@@ -1,4 +1,7 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
 #import "/src/mini.typ": adjust-arrow
@@ -45,7 +48,7 @@
     }
 
     // Component call
-    component("capacitor", name, node, draw: draw, ..params)
+    symbol("capacitor", name, node, draw: draw, ..params)
 }
 
 #let pcapacitor(name, node, ..params) = capacitor(name, node, ..params, polarized: true)

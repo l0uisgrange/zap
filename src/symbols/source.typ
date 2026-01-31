@@ -1,7 +1,9 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import "/src/utils.typ": get-style
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {
@@ -32,8 +34,8 @@
         }
     }
 
-    // Component call
-    component("isource", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("isource", name, node, draw: draw, ..params)
 }
 
 #let disource(name, node, ..params) = isource(name, node, dependent: true, ..params)
@@ -73,8 +75,8 @@
         }
     }
 
-    // Component call
-    component("vsource", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("vsource", name, node, draw: draw, ..params)
 }
 
 #let dvsource(name, node, ..params) = vsource(name, node, ..params, dependent: true)

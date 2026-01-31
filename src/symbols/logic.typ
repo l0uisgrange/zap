@@ -1,4 +1,7 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, arc-through, circle, content, line, rect, rotate
 
@@ -26,8 +29,8 @@
         }
     }
 
-    // Component call
-    component("logic", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("logic", name, node, draw: draw, ..params)
 }
 
 #let lnot(name, node, ..params) = logic(name, node, ..params, text: $1$, invert: true)

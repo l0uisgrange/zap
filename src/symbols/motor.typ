@@ -1,4 +1,7 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign, dc-sign
 #import cetz.draw: anchor, arc, circle, content, rect
@@ -21,8 +24,8 @@
         content((0, 0), [#cetz.canvas({ symbol() })], anchor: "north", padding: .13)
     }
 
-    // Component call
-    component(uid, name, node, draw: draw, ..params)
+    // Constructor call
+    symbol(uid, name, node, draw: draw, ..params)
 }
 
 #let dcmotor(name, node, ..params) = motor("dcmotor", name, node, ..params, current: "dc")

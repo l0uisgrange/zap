@@ -1,4 +1,7 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": adjust-arrow
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
@@ -35,6 +38,6 @@
         }
     }
 
-    // Component call
-    component("inductor", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("inductor", name, node, draw: draw, ..params)
 }
