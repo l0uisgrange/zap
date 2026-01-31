@@ -1,4 +1,4 @@
-#import "/src/component.typ": component, interface
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
 #import "/src/utils.typ": get-style, opposite-anchor

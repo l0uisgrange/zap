@@ -1,4 +1,4 @@
-#import "/src/component.typ": component, interface
+#import "/src/symbol.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, hobby, line, mark, merge-path, rect
 #import "/src/components/wire.typ": wire

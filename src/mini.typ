@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #import "dependencies.typ": cetz
-#import "utils.typ": get-style
 #import cetz.draw: anchor, circle, hobby, line, merge-path, rotate, scope, set-origin, set-style
 #import cetz.styles: merge
 

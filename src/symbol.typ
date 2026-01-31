@@ -1,12 +1,28 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #import "dependencies.typ": cetz
 #import "decorations.typ": current, flow, voltage
-#import "components/node.typ": node
-#import "components/wire.typ": wire
-#import "utils.typ": expand-stroke, get-label-anchor, get-style, opposite-anchor, resolve-style
+#import "symbols/node.typ": node
+#import "symbols/wire.typ": wire
+#import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
 
-#let component(
+/// Core symbol function
+///
+/// - draw (func): Drawing function
+/// - label (content | dict): Label content
+/// - i (content | dict): Current decoration
+/// - f (content | dict): Flow decoration
+/// - u (content | dict): Voltage decoration
+/// - n (str): Ends nodes types
+/// - position (ratio): Position of the symbol
+/// - scale (float): Scaling factor
+/// - rotate (angle): Rotation angle
+/// - debug (bool): Debug mode (displays anchors)
+/// -> content
+#let symbol(
     draw: none,
     label: none,
     i: none,
@@ -39,22 +55,10 @@
     import cetz.draw: *
 
     group(name: name, ctx => {
-        // Save the current style
-        let keep-style = ctx.style
-        cetz.draw.set-style(..cetz.styles.default)
-
-        let zap-style = ctx.zap.style
         let user-style = params.named()
         let label-defaults = user-style.remove("label-defaults", default: (:))
 
-        // Override styles
-        let base-style = merge(
-            expand-stroke(keep-style.at(uid, default: (:))),
-            zap-style.at(uid, default: (:)),
-        )
-        base-style = merge(base-style, expand-stroke(user-style))
-        zap-style.insert(uid, base-style)
-        let style = resolve-style(zap-style).at(uid)
+
 
         let p-rotate = p-rotate
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
@@ -68,9 +72,9 @@
         set-origin(p-origin)
         rotate(p-rotate)
 
-        // Component
+        // Symbol
         on-layer(1, {
-            group(name: "component", {
+            group(name: "symbol", {
                 // Scaling
                 let s = style.at("scale", default: (x: 1, y: 1))
                 if type(s) == float {
@@ -87,7 +91,7 @@
             })
         })
 
-        copy-anchors("component")
+        copy-anchors("symbol")
 
         // Label
         on-layer(0, {
@@ -100,7 +104,7 @@
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
                 content(
-                    if type(label-style.anchor) == str { "component." + label-style.anchor } else { label-style.anchor },
+                    if type(label-style.anchor) == str { "symbol." + label-style.anchor } else { label-style.anchor },
                     anchor: label-style.at("align", default: resolved-anchor),
                     label-style.content,
                     padding: label-style.distance,
@@ -110,8 +114,8 @@
 
         // Symbol decorations
         if position.len() == 2 {
-            wire("in", "component.west")
-            wire("component.east", "out")
+            wire("in", "symbol.west")
+            wire("symbol.east", "out")
 
             if i != none {
                 current(ctx, i)
@@ -146,7 +150,7 @@
         if (debug) {
             on-layer(1, ctx => {
                 let style = ctx.zap.style.debug
-                for-each-anchor(name, exclude: ("start", "end", "mid", "component", "line", "bounds", "gl", "0", "1"), name => {
+                for-each-anchor(name, exclude: ("start", "end", "mid", "symbol", "line", "bounds", "gl", "0", "1"), name => {
                     circle((), radius: style.radius, stroke: style.stroke)
                     content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
                 })

@@ -1,12 +1,20 @@
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": get-style, opposite-anchor
+#import "/src/utils.typ": opposite-anchor
 #import cetz.draw: circle, content, get-ctx, on-layer
 
+/// Node symbol to use on a canvas
+///
+/// - name (str | none): Symbol identifier
+/// - position (coordinate): Center of the symbol
+/// - fill (bool): Switch state
+/// - label (bool): Switch state
+/// - dede (bool): Switch state
+/// -> content
 #let node(name, position, fill: true, label: none, ..params) = {
     assert(type(name) == str, message: "node name must be a string")
 
     on-layer(1, ctx => {
-        let node-style = get-style(ctx).node
+        let node-style = cetz.styles.resolve(ctx.style, root: "node")
         circle(position, radius: node-style.radius, fill: if fill { node-style.fill } else { node-style.nofill }, name: name, stroke: node-style.stroke, ..params)
     })
 

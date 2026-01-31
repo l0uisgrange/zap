@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": get-style, resolve-style
 #import cetz.draw: bezier-through, catmull, circle, content, hobby, line, mark
 #import cetz.styles: merge
 

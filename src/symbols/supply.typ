@@ -1,8 +1,17 @@
-#import "/src/component.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": component, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, line, polygon, scale, scope, set-style
 
+/// Ground symbol to use on a canvas
+///
+/// - name (str | none): Symbol identifier
+/// - node (coordinate): Center of the symbol
+/// - closed (bool): Switch state
+/// -> content
 #let ground(name, node, ..params) = {
     assert(params.pos().len() == 0, message: "ground supports only one node")
 

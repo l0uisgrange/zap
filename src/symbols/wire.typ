@@ -1,10 +1,22 @@
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
 #import "/src/dependencies.typ": cetz
-#import "/src/utils.typ": get-style, opposite-anchor, resolve-style
 #import cetz.draw: anchor, circle, content, group, hide, line, mark, set-style
 #import cetz.styles: merge
 
+// Save native function
 #let ra = ratio
 
+/// Electrical wire symbol to use on a canvas
+///
+/// - bits (int): Number of bit marks
+/// - shape (str): Wire routing style
+/// - ratio (ratio): Position of wire segments
+/// - axis (str): Axis of the shape
+/// - i (str | dict): Current decoration
+/// - name (str): Symbol identifier
+/// -> content
 #let wire(bits: 0, shape: "direct", ratio: 50%, axis: "x", i: none, name: none, ..params) = {
     assert(type(bits) == int, message: "bits must be an int")
     assert(params.pos().len() >= 2, message: "wires need at least two points")
