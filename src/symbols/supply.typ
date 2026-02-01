@@ -26,7 +26,7 @@
     }
 
     // Constructor call
-    sy("ground", name, node, draw: draw, ..params)
+    symbol("ground", name, node, draw: draw, ..params)
 }
 
 #let frame(name, node, ..params) = {
@@ -48,7 +48,7 @@
     }
 
     // Constructor call
-    symbols("frame", name, node, draw: draw, ..params)
+    symbol("frame", name, node, draw: draw, ..params)
 }
 
 #let earth(name, node, ..params) = {
@@ -66,7 +66,7 @@
     }
 
     // Constructor call
-    symbols("earth", name, node, draw: draw, ..params)
+    symbol("earth", name, node, draw: draw, ..params)
 }
 
 #let vsupply(uid, name, node, invert: false, ..params) = {
@@ -85,7 +85,7 @@
     }
 
     // Constructor call
-    symbols(
+    symbol(
         uid,
         name,
         node,

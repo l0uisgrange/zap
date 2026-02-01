@@ -1,8 +1,10 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": center-mark
-#import "/src/components/wire.typ": wire
-#import "/src/utils.typ": get-style
+#import "/src/symbols/wire.typ": wire
 #import cetz.draw: anchor, circle, content, hide, line, mark, set-style, translate
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {
@@ -39,8 +41,8 @@
         }
     }
 
-    // Component call
-    component("bjt", name, node, draw: draw, ..params, label: none)
+    // Constructor call
+    symbol("bjt", name, node, draw: draw, ..params, label: none)
 }
 
 #let pnp(name, node, ..params) = bjt(name, node, polarisation: "pnp", ..params)

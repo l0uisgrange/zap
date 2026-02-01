@@ -8,7 +8,7 @@
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
-#import cetz.draw: set-origin, scope, copy-anchors, get-ctx
+#import cetz.draw: set-origin, scope, copy-anchors, get-ctx, group
 
 /// Core function for creating circuit symbols. Used internally for all built-in symbols and can also be used to create custom ones.
 ///

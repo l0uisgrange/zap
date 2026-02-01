@@ -1,7 +1,9 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import "/src/mini.typ": ac-sign
-#import "/src/utils.typ": get-style
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect
 
 #let round-meter(name, node, measurand: str, ..params) = {
@@ -12,8 +14,8 @@
         content((0, 0), measurand)
     }
 
-    // Component call
-    component("round-meter", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("round-meter", name, node, draw: draw, ..params)
 }
 
 #let voltmeter(name, node, ..params) = round-meter(name, node, measurand: "V", ..params)

@@ -1,4 +1,7 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, content, line, polygon, rect, scope, set-style, translate
 
@@ -32,8 +35,8 @@
         }
     }
 
-    // Component call
-    component("opamp", name, node, draw: draw, ..params, label: none)
+    // Constructor call
+    symbol("opamp", name, node, draw: draw, ..params, label: none)
 }
 
 #let iopamp(name, node, ..params) = opamp(name, node, ..params, invert: true)

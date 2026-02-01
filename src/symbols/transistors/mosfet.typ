@@ -1,6 +1,9 @@
-#import "/src/symbol.typ": component, interface
+// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+
+#import "/src/symbol.typ": symbol, interface
 #import "/src/dependencies.typ": cetz
-#import "/src/components/wire.typ": wire
+#import "/src/symbols/wire.typ": wire
 #import cetz.draw: anchor, circle, content, floating, hide, line, mark, scale, set-origin, set-style, translate
 
 #let mosfet(
@@ -76,8 +79,8 @@
         }
     }
 
-    // Component call
-    component("mosfet", name, node, draw: draw, ..params)
+    // Constructor call
+    symbol("mosfet", name, node, draw: draw, ..params)
 }
 
 #let pmos(name, node, ..params) = mosfet(name, node, channel: "p", ..params)
