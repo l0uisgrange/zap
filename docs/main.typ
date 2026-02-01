@@ -31,7 +31,7 @@ Special thanks to all the #link("https://github.com/l0uisgrange/zap/graphs/contr
 After this quick introduction, let's get started! You can start using Zap simply by adding the following import at the top of your Typst file. It will automatically install the library from Typst Universe.
 
 ```typst
-#import "@preview/zap:0.5.0"
+#import "@preview/zap:0.6.0"
 
 #zap.circuit({
     import zap: *
@@ -48,7 +48,7 @@ You can choose to either attach your symbols to a single node, or place them bet
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -69,7 +69,7 @@ You can also customize the position of the symbol alongside the wire using the `
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -87,7 +87,7 @@ If you would like to display your component upside-down (vertically and/or horiz
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -106,7 +106,7 @@ The name provided as the first argument acts as an identifier for the symbol. If
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -125,7 +125,7 @@ You can also use the `node` symbol instead of anchors. They work pretty much the
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -139,7 +139,7 @@ It's also possible to display nodes directly when calling your symbol, and they 
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -161,7 +161,7 @@ You can easily define a new coordinate with the perpendicular position between 2
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -183,7 +183,7 @@ In the example below, we want to point `r2` to the `out` anchor of `r1`, but a l
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -203,7 +203,7 @@ You can name your symbols by giving them a label using the `label` parameter.
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -217,7 +217,7 @@ Sometimes, the label is not displayed where you want (like in the middle of anot
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -234,7 +234,7 @@ You can add labels for current, voltage, or generic flow to your symbols using t
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -248,7 +248,7 @@ You can add labels for current, voltage, or generic flow to your symbols using t
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -266,7 +266,7 @@ You can add labels for current, voltage, or generic flow to your symbols using t
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -284,7 +284,7 @@ You can add labels for current, voltage, or generic flow to your symbols using t
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -304,7 +304,7 @@ As the `circuit` is just a boosted version of CeTZ' `canvas`, you can also direc
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -327,7 +327,7 @@ Sometimes, you'll just want to add a small wire with a label to show an entry po
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -348,7 +348,7 @@ If you want to customize the appearance of a *single symbol* instance, rather th
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -367,7 +367,7 @@ If you wish to change the default appearance of *all symbols of a specific type*
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -393,7 +393,7 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -413,7 +413,7 @@ You can choose between squared, zigzag or straight wires using `swire`, `zwire` 
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -431,7 +431,7 @@ The position and axis of the wire can also be altered using the `axis` and `rati
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -457,7 +457,7 @@ If you want to know all the anchors available in a symbol, you can either activa
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -471,7 +471,7 @@ If you want to know all the anchors available in a symbol, you can either activa
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit(debug: true, {
         import zap: *
@@ -489,7 +489,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -567,7 +567,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -623,7 +623,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -689,7 +689,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -755,7 +755,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -800,7 +800,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -834,7 +834,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -908,7 +908,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -927,7 +927,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -960,7 +960,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -994,7 +994,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1009,7 +1009,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1055,7 +1055,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1125,7 +1125,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1139,7 +1139,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1156,7 +1156,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1189,7 +1189,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1204,7 +1204,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1218,7 +1218,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1269,7 +1269,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #let pins = (
         (content: "VCC", side: "west"),
@@ -1298,7 +1298,7 @@ You have to provide either a number of pins or a complete list of dictionaries. 
 
 #circ(
     ```typst
-    #import "./zap.typ"
+    #import "/src/lib.typ" as zap
 
     #zap.circuit({
         import zap: *
@@ -1315,7 +1315,7 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
 
 #circ(
     ```typst
-    #import "./zap.typ" as zap: component, interface, cetz, set-style
+    #import "/src/lib.typ" as zap as zap: component, interface, cetz, set-style
 
     #let custom(name, ..params) = {
         let const = (w:2, h:1)

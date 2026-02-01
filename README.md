@@ -23,7 +23,7 @@ You can find the full list of examples [here](https://zap.grangelouis.ch/example
 ## Quick usage
 
 ```typst
-#import "@preview/zap:0.5.0"
+#import "@preview/zap:0.6.0"
 
 #zap.circuit({
     import zap: *
@@ -41,5 +41,3 @@ You can find the full documentation 📚 [available online](https://zap.grangelo
 ## Contributing
 
 I highly welcome contributions 🌱! Creating and maintaining Zap takes time and love. If you'd like to help, check out the [contribution procedure](https://github.com/l0uisgrange/zap/blob/main/CONTRIBUTING.md) and join the journey 🤩!
-
-
