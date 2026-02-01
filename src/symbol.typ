@@ -5,6 +5,7 @@
 #import "decorations.typ": current, flow, voltage
 #import "symbols/node.typ": node
 #import "symbols/wire.typ": wire
+#import "styles.typ": default
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
@@ -22,10 +23,12 @@
 /// - n (str): Ends nodes types
 /// - position (ratio): Position of the symbol
 /// - scale (float): Scaling factor
-/// - rotate (angle): Rotation angle
+/// - angle (angle): Rotation angle
 /// - debug (bool): Debug mode (displays anchors)
 /// -> content
 #let symbol(
+    uid,
+    name,
     draw: none,
     label: none,
     i: none,
@@ -34,31 +37,22 @@
     n: none,
     position: 50%,
     scale: 1.0,
-    rotate: 0deg,
+    angle: 0deg,
     debug: none,
     ..params,
 ) = {
-    let p-position = position
-    let (uid, name, ..position) = params.pos()
-    if position.at(1, default: none) == none {
-        position = (position.first(),)
-    }
-    assert(position.len() in (1, 2), message: "accepts only 2 or 3 (for 2 nodes components only) positional arguments")
-    assert(position.at(1, default: none) == none or rotate == 0deg, message: "cannot use rotate argument with 2 nodes")
-    assert(type(name) == str, message: "component name must be a string")
+    let nodes = params.pos()
+    assert(nodes.len() in (1, 2), message: "only 1 or 2 nodes are accepted")
+    assert(nodes.len() == 1 or angle == 0deg, message: "cannot use rotate argument with 2 nodes")
+    assert(type(name) == str, message: "identifier must be a string")
     assert(type(scale) == float or (type(scale) == dictionary), message: "scale must be a dictionary or a float")
-    assert(type(rotate) == angle, message: "rotate must an angle")
+    assert(type(angle) == c, message: "rotation must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
     assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     group(name: name, ctx => {
-        let user-style = params.named()
-        let label-defaults = user-style.remove("label-defaults", default: (:))
-
-
-
-        let p-rotate = p-rotate
+        let style = cetz.styles.resolve(default, merge: params.named(), root: "zap."+uid)
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
         let p-origin = position.first()
         if position.len() == 2 {
