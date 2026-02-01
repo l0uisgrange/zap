@@ -1,9 +1,8 @@
-#import "/docs/template/zap.typ"
-#import "/docs/template/utils.typ": circ, info, template, warning
+#import "@preview/manifesto:0.1.0": template
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
-#show: template
+#show: it => template(it, title: "Zap", toml: "/src/typst.toml")
 
 = Introduction <introduction>
 
