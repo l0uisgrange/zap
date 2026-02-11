@@ -255,10 +255,10 @@ You can add labels for current, voltage, or generic flow to your symbols using t
         import zap: *
 
         // simple current
-        vsource("v1", (1, 0), (4, 0), i: $i_1$)
+        isource("v1", (1, 0), (4, 0), i: $i_1$)
 
         // custom current (only "content" key is required)
-        vsource("v1", (5, 0), (8, 0), i: (content: $i_1$, anchor: "west", invert: true, distance: 17pt, label-distance: 15pt))
+        isource("v1", (5, 0), (8, 0), i: (content: $i_1$, anchor: "west", invert: true, distance: 17pt, label-distance: 15pt))
     })
     ```,
 )
