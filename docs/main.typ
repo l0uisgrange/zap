@@ -1122,6 +1122,52 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     ),
 )
 
+== JFET transistors <jfet>
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+
+    #zap.circuit({
+        import zap: *
+
+        jfet("t1", (0, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Type*], [*Alias*], [*Image*]),
+    // dependent
+    `channel`,
+    `"n"`,
+    [`"n"` / `"p"`],
+    [`pjfet` / `njfet`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            jfet("t1", (0, 0), channel: "p")
+        }),
+    ),
+    // envelope
+    `envelope`,
+    `false`,
+    [`bool`],
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            jfet("t1", (0, 0), envelope: true)
+        }),
+    ),
+)
+
 == Transformer <transformer>
 
 #circ(

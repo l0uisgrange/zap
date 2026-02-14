@@ -33,6 +33,7 @@
 #import "components/motor.typ": acmotor, dcmotor
 #import "components/transistors/bjt.typ": bjt, npn, pnp
 #import "components/transistors/mosfet.typ": mosfet, nmos, nmosd, pmos, pmosd
+#import "components/transistors/jfet.typ": jfet, njfet, pjfet
 #import "components/integrated/opamp.typ": opamp
 #import "components/integrated/mcu.typ": mcu
 #import "components/integrated/converter.typ": adc, dac
