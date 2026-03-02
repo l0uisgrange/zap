@@ -17,3 +17,9 @@
     import lib: *
     diode("d1", (0, 0), (2, 0), fill: red.lighten(50%), stroke: red + 1.3pt)
 })
+
+// Test iee variant
+#test({
+    import lib: *
+    diode("d1", (0, 0), (2, 0), variant: "ieee")
+})
