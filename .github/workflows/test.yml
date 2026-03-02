@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - name: Install Typst
-        run: sudo snap install typst
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
       - name: Install Tytanic
         uses: taiki-e/cache-cargo-install-action@v2
         with:
