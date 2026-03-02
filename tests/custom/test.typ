@@ -1,5 +1,5 @@
 #import "/tests/utils.typ": test
-#import "../lib.typ": cetz, component, interface, set-style
+#import "/src/lib.typ": cetz, component, interface, set-style
 
 #let custom(name, ..params) = {
     let const = (w: 2, h: 1)

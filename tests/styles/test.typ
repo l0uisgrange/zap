@@ -1,6 +1,6 @@
 #import "/tests/utils.typ": test
-#import "../lib.typ"
-#import "../dependencies.typ": cetz
+#import "/src/lib.typ"
+#import "/src/dependencies.typ": cetz
 
 // Test CeTZ components styling
 #test({
