@@ -841,6 +841,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
         import zap: *
 
         diode("b1", (0, 0), (3, 0))
+        diode("b2", (4, 0), (7, 0), variant: "ieee")
     })
     ```,
 )
