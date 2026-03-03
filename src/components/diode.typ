@@ -15,7 +15,9 @@
 
         set-style(stroke: style.stroke)
         polygon((0, 0), 3, radius: style.radius, fill: style.fill)
-        wire((0deg, style.radius), (180deg, style.radius / 2))
+        if style.variant == "iec" {
+            wire((0deg, style.radius), (180deg, style.radius / 2))
+        }
 
         // Diode specific lines - horizontal lines orthogonal to cathode
         if (type in ("tunnel", "zener", "schottky")) {

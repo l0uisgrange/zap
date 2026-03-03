@@ -163,6 +163,12 @@
         style.node.stroke.paint = style.node.fill
         return style
     }
+    if style.diode.fill == auto {
+        style.diode.fill = none
+        style = resolve-style(style)
+        style.diode.fill = if style.diode.variant == "ieee" { style.foreground } else { style.fill }
+        return style
+    }
     if style.inductor.fill == auto {
         style.inductor.fill = none
         style = resolve-style(style)
