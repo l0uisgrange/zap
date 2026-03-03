@@ -336,6 +336,18 @@
         base-distance: 0.16,
         radius: 0.85,
     ),
+    jfet: (
+        variant: auto,
+        scale: auto,
+        stroke: auto,
+        fill: auto,
+        height: 0.7,
+        width: 1,
+        base-width: 1.2,
+        base-spacing: 0.16,
+        base-distance: 0.16,
+        radius: 0.85,
+    ),
     antenna: (
         variant: auto,
         scale: auto,
