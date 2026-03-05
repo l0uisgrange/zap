@@ -1,5 +1,5 @@
-#import "/docs/template/zap.typ"
-#import "/docs/template/utils.typ": circ, info, template, warning
+#import "template/zap.typ"
+#import "template/utils.typ": circ, info, template, warning
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
@@ -209,7 +209,7 @@ You can name your symbols by giving them a label using the `label` parameter.
     #zap.circuit({
         import zap: *
 
-        heater("h1", (1, 0), (4, 0), label: $R$)
+        heater("h1", (1, 0), (4, 0), label: "R")
     })
     ```,
 )
@@ -223,7 +223,7 @@ Sometimes, the label is not displayed where you want (like in the middle of anot
     #zap.circuit({
         import zap: *
 
-        heater("h1", (1, 0), (4, 0), label: $R$)
+        heater("h1", (1, 0), (4, 0), label: "R")
         heater("h2", (5, 0), (8, 0), label: (content: $R$, anchor: "south", distance: 0pt))
     })
     ```,
@@ -411,6 +411,7 @@ Zap currently supports either `iec` (default) or `ieee` in the `variant` styling
 = Wiring <wiring>
 
 You can choose between squared, zigzag or straight wires using `swire`, `zwire` or `wire`.
+The bits parameter supports both integers and strings. Zap will automatically find a suitable segment for the marker.
 
 #circ(
     ```typst
@@ -422,6 +423,9 @@ You can choose between squared, zigzag or straight wires using `swire`, `zwire` 
         wire((0, 0), (1, 0))
         zwire((2, 0), (4, 2), stroke: blue)
         swire((5, 2), (6, -1), stroke: red)
+        //Multibit wiring
+        zwire((7, 0), (9, 2), bits: "N")
+        zwire((10, 0), (11, 2), bits: 2)
     })
     ```,
 )
@@ -1121,6 +1125,18 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             mosfet("t1", (0, 0), bulk: none)
         }),
     ),
+    `variant`,
+    `"iec"`,
+    [`"iec"` / `"ieee"`],
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), variant: "ieee", mode: "depletion")
+            mosfet("t2", (2, 0), variant: "iec")
+        }),
+    ),
 )
 
 == Transformer <transformer>
@@ -1229,6 +1245,11 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
         land("l2", (2, 0))
         lor("l3", (4, 0))
         lxor("l4", (6, 0))
+
+        anot("l1", (0, 3))
+        aand("l2", (2, 3))
+        aor("l3", (4, 3))
+        axor("l4", (6, 3))
     })
     ```,
 )
@@ -1261,11 +1282,42 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             land("b1", (0, 0), inputs: 5)
         }),
     ),
+    `variant`,
+    `"iec"`,
+    [`"iec"` / `"milstd" / "american"`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+            land("b1", (0, 0), variant: "iec")
+            aand("b2", (2, 0), variant: "american")
+        })
+    )
 )
 
 #info(
     title: [Inputs],
 )[When setting a number of inputs, each input will be available at `inX` anchor. For example, for three inputs you will have access to `l1.in1`, `l1.in2` and `l1.in3`.]
+
+== CMOS Logic <cmos>
+
+With the simplified MOSFET symbols, you can represent CMOS structures very compactly. These symbols are optimized for logic diagrams where the bulk connection is usually implied.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+        
+        pmos_simple("p1", (2, 0), label: "PMOS")
+        nmos_simple("n1", (0, 0), label: "NMOS")
+        
+    })
+    ```,
+)
+
+
+
+#info[The `pmos_simple` component automatically includes the negation circle at the gate, distinguishing it from the `nmos_simple` component.]
 
 == Microcontrolling unit <mcu>
 
@@ -1308,9 +1360,264 @@ You have to provide either a number of pins or a complete list of dictionaries. 
         flipflop("f1", (0, 0))
         dflipflop("f2", (3, 0))
         jkflipflop("f3", (6, 0))
+        flipflop_top("f4", (0, -3))
+        dflipflop_top("f5", (3, -3))
+        dlatch_top("f6", (6, -3))
+        dff_enable("f7", (0, -6))
+        dff_reset("f9", (3, -6))
     })
     ```,
 )
+
+#info(title: "Flipflop")[The flipflip_top with enable and reset pin can also be inverted by adding a `_inv` to the name.]
+
+== Sequential Logic <sequential>
+
+Sequential components like registers are essential for storing state. Zap's register component features dynamic bit-sizing and integrated clock/reset markers.
+
+=== Register <register>
+
+The `register` component represents an n-bit storage unit. It includes a clock input (marked with a standard wedge) and a reset input. The component automatically scales its height and labels based on the number of bits.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        // A standard 4-bit register
+        register("reg1", (0, 0), bits: 4)
+        //helpers for registers with 2 to 8 bit
+        reg2bit("reg2", (2,0))
+        
+    })
+    ```,
+)
+
+
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `bits`, `2`, [The number of bits. Adjusts height and creates S/S' pairs.],
+    html.frame(zap.circuit({ import zap: *; register("r", (0,0), bits: 2) })),
+)
+
+#info(title: "Anchors")[
+    - *Clock:* The `clk` anchor is at the top center, marked by a wedge.
+    - *Reset:* The `rst` anchor is at the bottom center.
+    - *Data:* Inputs are labeled `s{n}_in` (left) and outputs `s{n}_out` (right), where `{n}` is the bit index starting from 0.
+]
+
+#info[For quick layouts, use the predefined aliases for common sizes: `reg2bit` through `reg8bit`.]
+
+== Arithmetic <arithmetic>
+
+Zap provides specialized components for digital arithmetic, such as ALU-style adders. These blocks follow the standard rectangular representation with clearly defined ports for operands and carries.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        // A Full Adder and a Half Adder
+        full_adder("fa1", (0, 0))
+        half_adder("ha1", (4, 0))
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `mode`, `"full"`, [Choose between `"full"` (with `C_(i n)`) or `"half"`.],
+    html.frame(zap.circuit({ import zap: *; half_adder("h", (0,0)) })),
+    `description`, `true`, [Shows or hides the internal pin labels (A, B, S, etc.).],
+    html.frame(zap.circuit({ import zap: *; full_adder("f", (0,0), description: false) })),
+)
+
+#info(title: "Anchors")[Adders feature dedicated anchors for easy routing: `a`, `b` (top inputs), `s` (bottom sum), `cin` (right carry-in), and `cout` (left carry-out).]
+
+== Shifting <shifting>
+
+The `shifter` block represents a hardware shifter, commonly used for bitwise operations (LSL, LSR, ASR). It includes dedicated ports for the data input, shift amount, and the resulting output.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        shifter("sh1", (0, 0), label: ">>>")
+
+        shiftll("sh2", (2,0))
+        shiftla("sh3", (4,0))
+
+        shiftrl("sh4", (2,-2))
+        shiftra("sh5", (4,-2))
+        
+    })
+    ```,
+)
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `description`, `true`, [Displays internal port labels (`in`, `sh`, `out`).],
+    html.frame(zap.circuit({ import zap: *; shifter("s", (0,0), description: false) })),
+)
+
+#info(title: "Anchors")[The shifter provides three main anchors: `in` (left), `amount` (top), and `out` (right).]
+
+== Data Extension <extension>
+
+The `zero_extend` component is used to illustrate the expansion of a data signal (e.g., from 16-bit to 32-bit) by padding it with leading zeros.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        zero_extend("ze1", (0, 0))
+
+    })
+    ```,
+)
+
+
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Alias*], [*Image*]),
+    `label`, `none`, [Adds a custom label, such as "Sign-Extend".],
+    html.frame(zap.circuit({ import zap: *; zero_extend("ze", (0,0), label: "SE") })),
+)
+
+#info[You can use the `label` parameter to turn this into a *Sign-Extend* block by simply passing `label: "Sign-Extend"` or `label: Sigma`.]
+
+== Decoding <decoding>
+
+The `decoder` component takes a binary input and activates a specific output line. Like the multiplexer, it dynamically generates its output anchors.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        decoder("d1", (0, 0), outputs: 4)
+        dec1to2("d2", (3.5, 0))
+        dec2to4("d3", (7, 0))
+        dec3to8("d4", (10.5, 0))
+    })
+    ```,
+)
+
+
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `outputs`, `4`, [The number of output ports (creates anchors `out1`, `out2`, etc.).],
+    html.frame(zap.circuit({ import zap: *; decoder("d", (0,0), outputs: 2) })),
+    `enable`, `false`, [Adds an enable (`EN`) input anchor on the side.],
+    html.frame(zap.circuit({ import zap: *; decoder("d", (0,0), enable: true) })),
+)
+
+#info[If you enable the `enable` parameter, the anchor is accessible at `d1.en` (usually on the bottom or left side depending on your orientation).]
+
+= Data Routing <routing>
+
+Zap provides flexible components for signal routing, including Multiplexers and Demultiplexers with dynamic scaling and binary labeling.
+
+== Multiplexer <mux>
+
+The `mux` component is a trapezoidal block used to select one of n inputs. It automatically calculates the required number of selection lines (S_0, S_1, dots) based on the input count and labels the inputs with their binary equivalents.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        // A 4-to-1 Multiplexer
+        mux("m1", (0, 0), inputs: 4)
+        
+        // You can also use specific helpers
+        mux2("m2", (4, 0))
+    })
+    ```,
+)
+
+
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `inputs`, `2`, [The number of data inputs. Adjusts height and binary labels.],
+    html.frame(zap.circuit({ import zap: *; mux("m", (0,0), inputs: 2) })),
+)
+
+#info(title: "Anchors")[
+    - *Inputs:* Accessible via index (`in0`, `in1`, ...) or binary string (`in00`, `in01`, ...).
+    - *Selectors:* Accessible via `sel0`, `sel1`, etc., located on the top sloped edge.
+    - *Output:* A single `out` anchor on the right.
+]
+
+---
+
+== Demultiplexer <dmux>
+
+The `dmux` (Demultiplexer) performs the inverse operation of a MUX, routing a single input to one of n outputs based on selection lines.
+
+#circ(
+    ```typst
+    #import "./zap.typ"
+    #zap.circuit({
+        import zap: *
+
+        dmux("d1", (0, 0), outputs: 4)
+        //same halpers as for mux
+        dmux2("d2", (0,3))
+        
+    })
+    ```,
+)
+
+
+
+==== Options
+
+#table(
+    columns: (auto, auto, auto, auto),
+    align: left + top,
+    table.header([*Name*], [*Default value*], [*Description*], [*Image*]),
+    `outputs`, `2`, [The number of data outputs. Adjusts height and binary labels.],
+    html.frame(zap.circuit({ import zap: *; dmux("d", (0,0), outputs: 2) })),
+)
+
+#info[For common sizes, use the shorthand aliases: `mux2`, `mux4`, `mux8`, or `dmux2`, `dmux4`, `dmux8`.]
+
 
 = Custom Symbols <custom-symbols>
 Zap will take care of styles, positioning and anchors for you. All you need to do is draw the symbol. The symbol in the example below is just a rectangle, you can use it as a starting point to draw your own symbols.

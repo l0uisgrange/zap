@@ -73,7 +73,7 @@
     return dict
 }
 
-#import "/src/dependencies.typ": cetz
+#import "dependencies.typ": cetz
 
 #let resolve(dict) = {
     // Special dictionaries

@@ -1,5 +1,5 @@
 #import "@preview/t4t:0.4.2": get
-#import "/docs/template/zap.typ"
+#import "zap.typ"
 
 #let circ(drawing) = html.elem("div", attrs: (class: "mb-7  rounded-md border dark:border-zinc-800 overflow-hidden flex-col flex *:m-0 *:block *:w-full *:even:rounded-t-none"), {
     html.elem("div", attrs: (class: "p-7 bg-white rounded-t-md dark:invert dark:hue-rotate-180"))[

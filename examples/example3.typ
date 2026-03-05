@@ -21,3 +21,24 @@
     wstub("l2.in1", label: "C")
     wstub("l2.in2", label: "D")
 })
+
+#lib.circuit({
+    import lib: *
+    aand("l1", (0, 0))
+    anand("l2", (0, -2))
+    axnor("l3", (3, -1))
+
+    dflipflop_top("d1", (6, -1.5),  stroke: none, fill: rgb("#F2FA95"))
+
+    zwire("l1.out", "l3.in1")
+    zwire("l2.out", "l3.in2")
+    zwire("l3.out", "d1.d")
+
+    estub("d1.q", label: "OUT")
+    nstub("d1.clk", label: "Clock")
+    wstub("l1.in1", label: "A")
+    wstub("l1.in2", label: "B")
+    wstub("l2.in1", label: "C")
+    wstub("l2.in2", label: "D")
+
+})
