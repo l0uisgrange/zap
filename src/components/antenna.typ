@@ -1,7 +1,7 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, line, merge-path
-#import "../components/wire.typ": wire
+#import "/src/components/wire.typ": wire
 
 #let antenna(name, node, closed: false, ..params) = {
     // Drawing function

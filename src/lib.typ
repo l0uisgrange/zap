@@ -32,7 +32,7 @@
 #import "components/source.typ": acvsource, disource, dvsource, isource, vsource
 #import "components/motor.typ": acmotor, dcmotor
 #import "components/transistors/bjt.typ": bjt, npn, pnp
-#import "components/transistors/mosfet.typ": mosfet, nmos, nmosd, pmos, pmosd
+#import "components/transistors/mosfet.typ": mosfet, nmos, nmos_simple, nmosd, pmos, pmos_simple, pmosd
 #import "components/integrated/opamp.typ": opamp
 #import "components/integrated/mcu.typ": mcu
 #import "components/integrated/converter.typ": adc, dac
@@ -41,7 +41,6 @@
 #import "components/integrated/flipflop.typ": dflipflop, flipflop, jkflipflop, srlatch
 
 //new
-#import "components/transistors/simple.typ": mosfet_simple, nmos_simple, pmos_simple
 #import "components/integrated/multiplexer.typ": dmux, dmux2, dmux4, dmux8, mux, mux2, mux4, mux8
 #import "components/integrated/decoder.typ": dec1to2, dec2to4, dec3to8, decoder
 #import "components/integrated/flipflop_top.typ": dff_enable, dff_enable_inv, dff_reset, dff_reset_inv, dflipflop_top, dlatch_top, flipflop_top

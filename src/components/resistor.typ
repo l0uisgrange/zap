@@ -1,6 +1,6 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
-#import "../mini.typ": adjust-arrow, adjustable-arrow
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": adjust-arrow, adjustable-arrow
 #import cetz.draw: anchor, line, rect, set-style
 
 #let resistor(name, node, variable: false, heatable: false, adjustable: false, preset: false, sensor: false, ..params) = {

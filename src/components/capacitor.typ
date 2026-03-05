@@ -1,7 +1,7 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
-#import "../mini.typ": adjust-arrow
+#import "/src/mini.typ": adjust-arrow
 
 #let capacitor(name, node, variable: false, preset: false, sensor: false, polarized: false, ..params) = {
     assert(type(variable) == bool, message: "variable must be of type bool")

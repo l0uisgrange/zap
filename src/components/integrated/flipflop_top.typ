@@ -1,6 +1,6 @@
-#import "../../component.typ": component, interface
-#import "../../dependencies.typ": cetz
-#import "../../mini.typ": clock-wedge
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": clock-wedge
 #import cetz.draw: anchor, content, line, polygon, rect, scope, set-style, translate
 
 /// Generic Flip-Flop/Latch base component.
@@ -39,7 +39,7 @@
             if label == "CLK" or pin.at("clock", default: false) { anchor("clk", key) }
         }
 
-        set-style(stroke: ctx.style.stroke)
+        set-style(stroke: style.stroke)
         rect((-w / 2, -h / 2), (w / 2, h / 2), fill: style.at("fill", default: style.fill))
 
         let r-str = repr(rotate)

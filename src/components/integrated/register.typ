@@ -1,6 +1,6 @@
-#import "../../component.typ": component, interface
-#import "../../dependencies.typ": cetz
-#import "../../mini.typ": clock-wedge
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": clock-wedge
 #import cetz.draw: anchor, content, line, polygon, rect, scope, translate
 
 /// A flexible n-bit Register component with clock and reset support.

@@ -1,7 +1,7 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
-#import "../mini.typ": ac-sign
-#import "../utils.typ": get-style
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": ac-sign
+#import "/src/utils.typ": get-style
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
 #let isource(name, node, dependent: false, current: "dc", ..params) = {

@@ -1125,6 +1125,18 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             mosfet("t1", (0, 0), bulk: none)
         }),
     ),
+    `variant`,
+    `"iec"`,
+    [`"iec"` / `"ieee"`],
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            mosfet("t1", (0, 0), variant: "ieee", mode: "depletion")
+            mosfet("t2", (2, 0), variant: "iec")
+        }),
+    ),
 )
 
 == Transformer <transformer>
@@ -1270,6 +1282,16 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             land("b1", (0, 0), inputs: 5)
         }),
     ),
+    `variant`,
+    `"iec"`,
+    [`"iec"` / `"milstd" / "american"`],
+    html.frame(
+        zap.circuit({
+            import zap: *
+            land("b1", (0, 0), variant: "iec")
+            aand("b2", (2, 0), variant: "american")
+        })
+    )
 )
 
 #info(

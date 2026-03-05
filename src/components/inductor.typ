@@ -1,6 +1,6 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
-#import "../mini.typ": adjust-arrow
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": adjust-arrow
 #import cetz.draw: anchor, arc, line, merge-path, rect, set-style
 
 #let inductor(name, node, variable: false, preset: false, sensor: false, ..params) = {

@@ -1,5 +1,5 @@
-#import "../dependencies.typ": cetz
-#import "../utils.typ": get-style, opposite-anchor
+#import "/src/dependencies.typ": cetz
+#import "/src/utils.typ": get-style, opposite-anchor
 #import cetz.draw: circle, content, get-ctx, on-layer
 
 #let node(name, position, fill: true, label: none, ..params) = {

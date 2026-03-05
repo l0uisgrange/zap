@@ -1,5 +1,5 @@
-#import "../../component.typ": component, interface
-#import "../../dependencies.typ": cetz
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, content, group, line, polygon, rect, scope, set-style, translate
 
 /// Zero-Extend component for bit-width expansion with rotation support.

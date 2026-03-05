@@ -1,4 +1,4 @@
-#import "../src/lib.typ"
+#import "/src/lib.typ"
 
 #let pins = (
     (content: "VCC", side: "west"),

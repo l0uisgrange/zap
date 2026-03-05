@@ -1,8 +1,8 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, circle, hide, hobby, line, mark, merge-path, rect
-#import "../components/wire.typ": wire
-#import "../mini.typ": lamp
+#import "/src/components/wire.typ": wire
+#import "/src/mini.typ": lamp
 
 #let button(name, node, nc: false, illuminated: false, head: "standard", latching: false, ..params) = {
     // Drawing function

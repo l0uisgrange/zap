@@ -1,6 +1,6 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
-#import "../components/wire.typ": wire
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, line, polygon, scale, scope, set-style
 
 #let ground(name, node, ..params) = {

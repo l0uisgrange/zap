@@ -1,8 +1,8 @@
-#import "../../component.typ": component, interface
-#import "../../dependencies.typ": cetz
-#import "../../mini.typ": center-mark
-#import "../../components/wire.typ": wire
-#import "../../utils.typ": get-style
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": center-mark
+#import "/src/components/wire.typ": wire
+#import "/src/utils.typ": get-style
 #import cetz.draw: anchor, circle, content, hide, line, mark, set-style, translate
 
 #let bjt(name, node, polarisation: "npn", envelope: false, ..params) = {

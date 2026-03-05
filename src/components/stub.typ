@@ -1,8 +1,8 @@
-#import "../component.typ": component, interface
-#import "../dependencies.typ": cetz
-#import "../mini.typ": ac-sign
-#import "../utils.typ": get-style, opposite-anchor
-#import "../components/wire.typ": wire
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
+#import "/src/mini.typ": ac-sign
+#import "/src/utils.typ": get-style, opposite-anchor
+#import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
 #let stub(name: "l", node, dir: "north", ..params) = {

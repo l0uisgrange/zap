@@ -1,5 +1,5 @@
-#import "../../component.typ": component, interface
-#import "../../dependencies.typ": cetz
+#import "/src/component.typ": component, interface
+#import "/src/dependencies.typ": cetz
 #import cetz.draw: anchor, content, line, merge-path, on-layer, polygon, rect, scale, scope, translate
 
 #let adc(name, node, input: "a", label: "ADC", ..params) = {

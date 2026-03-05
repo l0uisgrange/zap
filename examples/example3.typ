@@ -1,4 +1,4 @@
-#import "../src/lib.typ"
+#import "/src/lib.typ"
 #set page(width: auto, height: auto, margin: 5pt, fill: white)
 
 #lib.circuit({
@@ -28,7 +28,7 @@
     anand("l2", (0, -2))
     axnor("l3", (3, -1))
 
-    dflipflop_top("d1", (6, -1.5))
+    dflipflop_top("d1", (6, -1.5),  stroke: none, fill: rgb("#F2FA95"))
 
     zwire("l1.out", "l3.in1")
     zwire("l2.out", "l3.in2")
