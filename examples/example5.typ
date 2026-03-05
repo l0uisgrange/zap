@@ -4,7 +4,7 @@
 #lib.circuit({
     import lib: *
     pmos_simple("p1", (0, 2))
-    nmos_simple("n1", (0, 0))
+    nmos_simple("n1", (0, 0), bulk: "internal")
     nstub("p1.d", label: [$V_(D D)$])
     sstub("n1.s", label:[GND])
     wire("p1.g", "n1.g")
