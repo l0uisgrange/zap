@@ -41,7 +41,7 @@
 
 
     // Component call
-    component("stub", "l", node, draw: draw, ..args)
+    symbol("stub", "l", node, draw: draw, ..args)
 }
 
 #let nstub(node, ..params) = stub(node, ..params, dir: "north")

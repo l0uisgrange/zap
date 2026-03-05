@@ -26,5 +26,5 @@
     }
 
     // Component call
-    component("circulator", name, node, draw: draw, ..params)
+    symbol("circulator", name, node, draw: draw, ..params)
 }

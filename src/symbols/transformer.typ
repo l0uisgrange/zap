@@ -32,5 +32,5 @@
     }
 
     // Component call
-    component("transformer", name, node, draw: draw, ..params)
+    symbol("transformer", name, node, draw: draw, ..params)
 }

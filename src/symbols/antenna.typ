@@ -34,5 +34,5 @@
     }
 
     // Component call
-    component("antenna", name, node, draw: draw, ..params)
+    symbol("antenna", name, node, draw: draw, ..params)
 }
