@@ -267,9 +267,9 @@
         scale: auto,
         stroke: auto,
         fill: auto,
-        width: 1.41,
-        height: 1.41 / 3,
-        bumps: 3,
+        width: 1.65,
+        height: 1.65 / 4,
+        bumps: 4,
     ),
     resistor: (
         variant: auto,

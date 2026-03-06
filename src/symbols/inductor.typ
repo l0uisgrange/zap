@@ -12,7 +12,7 @@
         interface((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), io: position.len() < 2)
 
         set-style(stroke: style.stroke)
-        if (style.variant == "iec") {
+        if (style.variant == "iec-alt") {
             rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.fill)
         } else {
             let bump-radius = style.width / style.bumps / 2

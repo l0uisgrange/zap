@@ -1,8 +1,8 @@
-#import "/src/lib.typ"
+#import "/src/lib.typ" as zap
 #set page(width: auto, height: auto, margin: 5pt, fill: white)
 
-#lib.circuit({
-    import lib: *
+#let canvas = zap.circuit({
+    import zap: *
 
     land("l1", (0, 0))
     lnand("l2", (0, -2))
@@ -21,3 +21,5 @@
     wstub("l2.in1", label: "C")
     wstub("l2.in2", label: "D")
 })
+
+#canvas

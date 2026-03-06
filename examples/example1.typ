@@ -1,8 +1,8 @@
-#import "/src/lib.typ"
+#import "/src/lib.typ" as zap
 #set page(width: auto, height: auto, margin: 5pt, fill: white)
 
-#lib.circuit({
-    import lib: *
+#let canvas = zap.circuit({
+    import zap: *
 
     resistor("r1", (2, 0), (4, 2))
     resistor("r2", (6, 0), (4, 2))
@@ -27,3 +27,5 @@
     earth("g1", (11, 1))
     swire("o1.plus", "g1")
 })
+
+#canvas

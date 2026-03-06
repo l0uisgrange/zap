@@ -1,4 +1,5 @@
-#import "/src/lib.typ"
+#import "/src/lib.typ" as zap
+#set page(width: auto, height: auto, margin: 5pt, fill: white)
 
 #let pins = (
     (content: "VCC", side: "west"),
@@ -27,8 +28,8 @@
     (content: "PC3", side: "east"),
 )
 
-#lib.circuit({
-    import lib: *
+#let canvas = zap.circuit({
+    import zap: *
 
     mcu("esp33", (0, 0), pins: pins, fill: rgb("#FBBEDF"), stroke: rgb("#FBBEDF"), width: 4, label: "ESP33")
     mcu("esp32", (-6, -3), pins: ((content: "IN", side: "west"), (content: "OUT", side: "east")), fill: rgb("#F2FA95"), stroke: rgb("#F2FA95"), width: 2.5, label: "ESP34")
@@ -51,3 +52,5 @@
     zwire("esp34.pin2", (rel: (8, 0), to: "esp33.pin21"), axis: "x", ratio: -3)
     zener("zener", (rel: (8, 0), to: "esp33.pin21"), "esp33.pin21", position: 1, label: (content: $Z_1$, anchor: "south"))
 })
+
+#canvas
