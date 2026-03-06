@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Louis Grange and contributors
+// SPDX-License-Identifier: LGPL-3.0-or-later
+//
 #import "/src/dependencies.typ": cetz
 #import "/src/utils.typ": opposite-anchor
 #import cetz.draw: circle, content, get-ctx, on-layer

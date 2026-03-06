@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-FileCopyrightText: 2026 Louis Grange and contributors
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #import "dependencies.typ": cetz
@@ -9,7 +9,7 @@
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
-#import cetz.draw: set-origin, scope, copy-anchors, get-ctx, group, anchor, on-layer
+#import cetz.draw: anchor, copy-anchors, get-ctx, group, on-layer, scope, set-origin
 
 #let c = angle
 
@@ -54,7 +54,7 @@
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     group(name: name, ctx => {
-        let style = cetz.styles.resolve(default, merge: params.named(), root: "zap."+uid)
+        let style = cetz.styles.resolve(default, merge: params.named(), root: "zap." + uid)
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..nodes)
         let p-origin = position.first()
         let p-rotate = angle

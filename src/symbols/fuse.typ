@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-FileCopyrightText: 2026 Louis Grange and contributors
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
-#import "/src/symbol.typ": symbol, interface
+#import "/src/symbol.typ": interface, symbol
 #import "/src/dependencies.typ": cetz
 #import "/src/symbols/wire.typ": wire
 #import cetz.draw: anchor, circle, floating, line, rect, set-style

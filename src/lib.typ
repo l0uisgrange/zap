@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025-2026 Louis Grange and contributors
+// SPDX-FileCopyrightText: 2026 Louis Grange and contributors
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 // Export dependencies
@@ -12,7 +12,7 @@
 #import "styles.typ"
 
 // Export core
-#import "symbol.typ": symbol, interface
+#import "symbol.typ": interface, symbol
 
 // Export symbols
 #import "symbols/antenna.typ": antenna
