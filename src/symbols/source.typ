@@ -28,8 +28,8 @@
                 (-style.radius + style.padding, 0),
                 (rel: (2 * style.radius - 1.85 * style.padding, 0)),
                 mark: (end: ">", scale: style.arrow-scale * params.at("scale", default: style.scale.at("x", default: 1.0))),
-                fill: get-style(ctx).arrow.stroke.paint,
-                stroke: get-style(ctx).arrow.stroke,
+                fill: ctx.style.zap.arrow.stroke.paint,
+                stroke: ctx.style.zap.arrow.stroke,
             )
         }
     }

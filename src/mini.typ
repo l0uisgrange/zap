@@ -17,7 +17,7 @@
 
 #let adjust-arrow(type, ..params) = {
     scope(ctx => {
-        let arrow-style = get-style(ctx).arrow
+        let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.at(type), params.named())
         style.scale *= arrow-style.scale
 
@@ -70,7 +70,7 @@
 
 #let radiation-arrows(origin, ..params) = {
     scope(ctx => {
-        let arrow-style = get-style(ctx).arrow
+        let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.radiation, params.named())
         style.scale *= arrow-style.scale
 
@@ -93,7 +93,7 @@
 
 #let adjustable-arrow(node, ..params) = {
     scope(ctx => {
-        let arrow-style = get-style(ctx).arrow
+        let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.adjustable, params.named())
         style.scale *= arrow-style.scale
 

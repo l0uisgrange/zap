@@ -34,7 +34,7 @@
 
 #let current(ctx, label) = {
     let style = resolve-decoration(ctx, label, "current")
-    style.scale *= get-style(ctx).decoration.scale
+    style.scale *= ctx.style.zap.decoration.scale
 
     let mark-position = if style.position.x == "west" {
         (("in", style.distance, "component.west"), "in")
@@ -48,7 +48,7 @@
 
 #let flow(ctx, label) = {
     let style = resolve-decoration(ctx, label, "flow")
-    style.scale *= get-style(ctx).decoration.scale
+    style.scale *= ctx.style.zap.decoration.scale
 
     let west = style.position.x == "west"
     let a-start = (to: ("component." + style.position.x, style.distance, if west { "in" } else { "out" }), rel: (0, style.indent * style.side))
