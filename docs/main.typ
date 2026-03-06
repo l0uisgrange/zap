@@ -4,7 +4,8 @@
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
-#show: it => template(it, title: "Zap", toml: "/typst.toml")
+#let package = toml("/typst.toml").package
+#show: it => template(it, title: "Zap", ..package, universe: "zap", notices: (qa: "https://github.com/l0uisgrange/zap/discussions", bug: "https://github.com/l0uisgrange/zap/issues/new?template=bug_report.yml"))
 
 = Introduction <introduction>
 
