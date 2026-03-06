@@ -41,6 +41,7 @@
     scale: 1.0,
     angle: 0deg,
     debug: none,
+    label-defaults: (:),
     ..params,
 ) = {
     let nodes = params.pos()
@@ -54,7 +55,7 @@
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     group(name: name, ctx => {
-        let style = cetz.styles.resolve(default, merge: params.named(), root: "zap." + uid)
+        let style = cetz.styles.resolve(ctx.style.zap, merge: params.named(), root: uid)
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..nodes)
         let p-origin = position.first()
         let p-rotate = angle
@@ -94,14 +95,14 @@
         on-layer(0, {
             if label != none {
                 let style = cetz.styles.resolve(ctx.style, root: "zap.label")
-                let label-style = zap-style.label
+                let label-style = ctx.style.zap.label
                 label-style = merge(label-style, style.at("label", default: (:)))
                 label-style = merge(label-style, label-defaults)
                 label-style = merge(label-style, if type(label) == dictionary { label } else { (content: label) })
 
                 let anchor = get-label-anchor(p-rotate)
                 let resolved-anchor = if type(label-style.anchor) == str and "south" in label-style.anchor { opposite-anchor(anchor) } else { anchor }
-                content(
+                cetz.draw.content(
                     if type(label-style.anchor) == str { "symbol." + label-style.anchor } else { label-style.anchor },
                     anchor: label-style.at("align", default: resolved-anchor),
                     label-style.content,
@@ -138,7 +139,7 @@
 
     // Show symbol anchors in debug mode
     get-ctx(ctx => {
-        let debug = if debug == none { get-style(ctx).debug.enabled } else { debug }
+        let debug = if debug == none { ctx.style.zap.debug.enabled } else { debug }
         if (debug) {
             on-layer(1, ctx => {
                 let style = ctx.zap.style.debug

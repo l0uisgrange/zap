@@ -20,10 +20,10 @@
 #let resolve-decoration(ctx, dec, decor-type) = {
     if type(dec) == dictionary and dec.at("content", default: none) == none { panic("Decoration dictionary needs at least the 'content' key") }
 
-    let zap-style = ctx.zap.style
+    let zap-style = ctx.style.zap
     zap-style.decoration.at(decor-type) = merge(zap-style.decoration.at(decor-type), if type(dec) == dictionary { dec } else { (content: dec) })
 
-    let dec = resolve-style(zap-style).decoration.at(decor-type)
+    let dec = ctx.style.zap.decoration.at(decor-type)
     dec.size = cetz.util.measure(ctx, dec.content)
     dec.position = resolve-directions(dec.anchor)
     dec.side = if dec.position.y == "north" { 1 } else { -1 }
@@ -70,7 +70,7 @@
 
 #let voltage(ctx, label, p-rotate) = {
     let style = resolve-decoration(ctx, label, "voltage")
-    style.scale *= get-style(ctx).decoration.scale
+    style.scale *= ctx.style.zap.decoration.scale
 
     let r-distance = cetz.util.resolve-number(ctx, style.distance)
     let a-start = (rel: (style.start.at(0), (r-distance + style.start.at(1)) * style.side), to: "component." + style.position.y + "-west")

@@ -33,7 +33,7 @@
         }
 
         line((to: "base", rel: (0, -style.base-height / 2)), (to: "base", rel: (0, style.base-height / 2)))
-        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: get-style(ctx).wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
+        line((to: "base", rel: (0, -style.base-distance * sgn)), "e", stroke: ctx.style.zap.wire.stroke, mark: center-mark(symbol: if sgn == -1 { "<" } else { ">" }))
         wire((to: "base", rel: (0, style.base-distance * sgn)), "c")
 
         if params.named().at("label", default: none) != none {
