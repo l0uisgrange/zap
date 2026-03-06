@@ -5,7 +5,7 @@
 #import "/src/components/wire.typ": wire
 #import cetz.draw: anchor, circle, content, line, mark, polygon, rect, set-style
 
-#let stub(node, dir: "north", ..params) = {
+#let stub(node, dir: "north", invert: false, ..params) = {
     assert(params.pos().len() == 0, message: "stub must have exactly one node")
 
     let args = params.named()
@@ -33,7 +33,21 @@
 
         interface((0, 0), diff, io: false)
 
-        wire((0, 0), (rel: diff))
+        let r = style.at("invert-radius", default: 0.06)
+        let start-pos = {
+            if dir == "north" { (0, if invert { 2 * r } else { 0 }) }
+            else if dir == "south" { (0, if invert { -2 * r } else { 0 }) }
+            else if dir == "east" { (if invert { 2 * r } else { 0 }, 0) }
+            else if dir == "west" { (if invert { -2 * r } else { 0 }, 0) }
+        }
+
+        wire(start-pos, diff)
+        
+        if invert {
+            let cx = if dir == "east" { r } else if dir == "west" { -r } else { 0 }
+            let cy = if dir == "north" { r } else if dir == "south" { -r } else { 0 }
+            circle((cx, cy), radius: r, fill: white)
+        }
     }
 
 
