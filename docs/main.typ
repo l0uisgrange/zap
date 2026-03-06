@@ -1504,6 +1504,8 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
 
 #schema(code:
     ```typst
+    #import "/src/lib.typ" as zap as zap: component, interface, cetz, set-style
+
     #let custom(name, ..params) = {
         let const = (w:2, h:1)
 
@@ -1526,7 +1528,8 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
     })
     ```,
 )[
-        #let custom(name, ..params) = {
+    #{
+        let custom(name, ..params) = {
             let const = (w:2, h:1)
             let draw(ctx, position, style) = {
                 zap.interface(
@@ -1539,7 +1542,7 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
             zap.symbol("my-custom-component", name, draw: draw, ..params)
         }
 
-        #zap.circuit({
+        zap.circuit({
             custom("c1", (0, 0), (5, 0))
         })
     }

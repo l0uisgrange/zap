@@ -15,10 +15,32 @@
     line((rel: (radius: radius, angle: -45deg), to: pos), (rel: (radius: -radius, angle: -45deg), to: pos), ..params)
 }
 
+#let resolve-auto(style, parent) = {
+    for (k, v) in style {
+        if k not in parent { continue }
+        let pv = parent.at(k)
+        if v == auto {
+            style.insert(k, pv)
+        } else if type(v) == dictionary and type(pv) == dictionary {
+            // Merge missing keys from parent dict into child dict
+            for (pk, ppv) in pv {
+                if pk not in v {
+                    v.insert(pk, ppv)
+                } else if v.at(pk) == auto {
+                    v.insert(pk, ppv)
+                }
+            }
+            style.insert(k, v)
+        }
+    }
+    return style
+}
+
 #let adjust-arrow(type, ..params) = {
     scope(ctx => {
         let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.at(type), params.named())
+        style = resolve-auto(style, arrow-style)
         style.scale *= arrow-style.scale
 
         let origin = (
@@ -72,6 +94,7 @@
     scope(ctx => {
         let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.radiation, params.named())
+        style = resolve-auto(style, arrow-style)
         style.scale *= arrow-style.scale
 
         set-origin(origin)
@@ -95,6 +118,7 @@
     scope(ctx => {
         let arrow-style = ctx.style.zap.arrow
         let style = merge(arrow-style.adjustable, params.named())
+        style = resolve-auto(style, arrow-style)
         style.scale *= arrow-style.scale
 
         anchor("adjust", (to: node, rel: (0, style.length)))

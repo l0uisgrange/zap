@@ -9,7 +9,7 @@
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
-#import cetz.draw: anchor, copy-anchors, get-ctx, group, on-layer, scope, set-origin
+#import cetz.draw: anchor, circle, copy-anchors, for-each-anchor, get-ctx, group, on-layer, scope, set-origin
 
 #let c = angle
 
@@ -38,6 +38,7 @@
     u: none,
     n: none,
     position: 50%,
+    // NOTE: `position` gets shadowed below by coordinate.resolve results
     scale: 1.0,
     angle: 0deg,
     debug: none,
@@ -54,6 +55,8 @@
     assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
+    let p-ratio = position
+
     group(name: name, ctx => {
         let style = cetz.styles.resolve(ctx.style.zap, merge: params.named(), root: uid)
         let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..nodes)
@@ -65,7 +68,7 @@
             anchor("in", position.first())
             anchor("out", position.last())
             p-rotate = cetz.vector.angle2(..position)
-            p-origin = (position.first(), p-position, position.last())
+            p-origin = (position.first(), p-ratio, position.last())
         }
         set-origin(p-origin)
         cetz.draw.rotate(p-rotate)
@@ -82,9 +85,7 @@
                 }
                 cetz.draw.scale(..s)
                 cetz.draw.scale(..p-scale)
-                scope({
-                    draw(ctx, position, style)
-                })
+                draw(ctx, position, style)
                 copy-anchors("bounds")
             })
         })
@@ -142,10 +143,10 @@
         let debug = if debug == none { ctx.style.zap.debug.enabled } else { debug }
         if (debug) {
             on-layer(1, ctx => {
-                let style = ctx.zap.style.debug
+                let style = ctx.style.zap.debug
                 for-each-anchor(name, exclude: ("start", "end", "mid", "symbol", "line", "bounds", "gl", "0", "1"), name => {
                     circle((), radius: style.radius, stroke: style.stroke)
-                    content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
+                    cetz.draw.content((rel: (0, style.shift)), box(inset: style.inset, text(style.font, name, fill: style.fill)), angle: style.angle)
                 })
             })
         }
