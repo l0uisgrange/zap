@@ -9,7 +9,7 @@
 #import "utils.typ": get-label-anchor, opposite-anchor
 #import cetz.styles: merge
 #import cetz.util: merge-dictionary
-#import cetz.draw: set-origin, scope, copy-anchors, get-ctx, group
+#import cetz.draw: set-origin, scope, copy-anchors, get-ctx, group, anchor, on-layer
 
 #let c = angle
 
@@ -55,8 +55,11 @@
 
     group(name: name, ctx => {
         let style = cetz.styles.resolve(default, merge: params.named(), root: "zap."+uid)
-        let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..position)
+        let (ctx, ..position) = cetz.coordinate.resolve(ctx, ..nodes)
         let p-origin = position.first()
+        let p-rotate = angle
+        let p-position = position
+        let p-scale = scale
         if position.len() == 2 {
             anchor("in", position.first())
             anchor("out", position.last())
@@ -130,7 +133,7 @@
         }
 
         // Bringing back the current style
-        cetz.draw.set-style(..keep-style)
+        // TODO cetz.draw.set-style(..keep-style)
     })
 
     // Show symbol anchors in debug mode

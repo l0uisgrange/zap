@@ -1,5 +1,6 @@
 #import "@preview/manifesto:0.1.0": template, info, schema, warning
 #import "/src/lib.typ" as zap
+#import "/src/dependencies.typ": cetz
 
 #set document(title: [Zap – The circuitikz Typst alternative], description: [])
 
@@ -1528,7 +1529,7 @@ Zap will take care of styles, positioning and anchors for you. All you need to d
         #let custom(name, ..params) = {
             let const = (w:2, h:1)
             let draw(ctx, position, style) = {
-                interface(
+                zap.interface(
                     (-const.w / 2, -const.h / 2),
                     (const.w / 2, const.h / 2),
                     io: position.len() < 2

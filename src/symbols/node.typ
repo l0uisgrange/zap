@@ -14,7 +14,7 @@
     assert(type(name) == str, message: "node name must be a string")
 
     on-layer(1, ctx => {
-        let node-style = cetz.styles.resolve(ctx.style, root: "node")
+        let node-style = cetz.styles.resolve(ctx.style.zap, root: "node")
         circle(position, radius: node-style.radius, fill: if fill { node-style.fill } else { node-style.nofill }, name: name, stroke: node-style.stroke, ..params)
     })
 
@@ -22,7 +22,7 @@
     on-layer(0, ctx => {
         if label != none {
             if type(label) == dictionary and label.at("content", default: none) == none { panic("label dictionary needs at least content key") }
-            let label-style = get-style(ctx).label
+            let label-style = ctx.style.zap.label
             label-style = cetz.styles.merge(label-style, if type(label) == dictionary { label } else { (content: label) })
             content(
                 if type(label-style.anchor) == str { name + "." + label-style.anchor } else { label-style.anchor },

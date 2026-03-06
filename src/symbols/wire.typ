@@ -24,7 +24,7 @@
     assert(shape in ("direct", "zigzag", "dodge"), message: "shape must be direct, zigzag or dodge")
 
     group(name: name, ctx => {
-        let style = get-style(ctx).wire
+        let style = ctx.style.zap.wire
         let (ctx, ..points) = cetz.coordinate.resolve(ctx, ..params.pos())
 
         set-style(stroke: style.stroke)
@@ -80,7 +80,7 @@
                 anchor: "center",
                 fill: dec.stroke.paint,
                 stroke: 0pt,
-                scale: dec.scale * get-style(ctx).decoration.scale,
+                scale: dec.scale * ctx.style.zap.decoration.scale,
             )
             content(
                 (name: "line", anchor: dec.position),
