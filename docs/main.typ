@@ -564,7 +564,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -644,7 +644,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -700,7 +700,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -767,7 +767,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -836,7 +836,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -883,7 +883,7 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -1017,7 +1017,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -1053,7 +1053,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -1104,7 +1104,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto, auto),
@@ -1151,7 +1151,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto, auto),
@@ -1258,7 +1258,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
@@ -1330,7 +1330,7 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     })
 ]
 
-==== Options
+=== Options
 
 #table(
     columns: (auto, auto, auto, auto),
