@@ -17,12 +17,16 @@
         anchor("plus", (-style.width / 2, -sgn * style.sign-delta))
 
         if style.variant == "iec" {
-            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.fill, stroke: style.stroke)
+            rect((-style.width / 2, -style.height / 2), (style.width / 2, style.height / 2), fill: style.fill, stroke: style.stroke, name: "shape")
+            anchor("v", "shape.north")
+            anchor("g", "shape.south")
         } else {
             scope({
                 if style.variant == "ieee" { translate((-style.width / 6, 0)) }
-                polygon((0, 0), 3, radius: style.width * 2 / 3, fill: style.fill, stroke: style.stroke)
+                polygon((0, 0), 3, radius: style.width * 2 / 3, fill: style.fill, stroke: style.stroke, name: "shape")
             })
+            anchor("v", "shape.edge-0")
+            anchor("g", "shape.edge-2")
         }
 
         set-style(stroke: style.sign-stroke)

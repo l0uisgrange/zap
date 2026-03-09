@@ -1043,13 +1043,25 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
     import zap: *
 
     opamp("o1", (0, 0))
-    opamp("o2", (3, 0), variant: "ieee")
+    opamp("o2", (5, 0), variant: "ieee")
 })
 ```)[
     #zap.circuit({
         import zap: *
+        import cetz.draw: *
         opamp("o1", (0, 0))
-        opamp("o2", (3, 0), variant: "ieee")
+        set-style(zap: (stub: (length: 0.4)))
+        opamp("o2", (5, 0), variant: "ieee")
+        wstub("o2.minus", label: "minus")
+        wstub("o2.plus", label: "plus")
+        nstub("o2.v", label: "v")
+        sstub("o2.g", label: "g")
+        estub("o2.out", label: "out")
+        wstub("o1.minus", label: "minus")
+        wstub("o1.plus", label: "plus")
+        nstub("o1.v", label: "v")
+        sstub("o1.g", label: "g")
+        estub("o1.out", label: "out")
     })
 ]
 
