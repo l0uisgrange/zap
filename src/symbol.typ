@@ -38,7 +38,6 @@
     u: none,
     n: none,
     position: 50%,
-    // NOTE: `position` gets shadowed below by coordinate.resolve results
     scale: 1.0,
     angle: 0deg,
     debug: none,
@@ -52,7 +51,7 @@
     assert(type(scale) == float or (type(scale) == dictionary), message: "scale must be a dictionary or a float")
     assert(type(angle) == c, message: "rotation must an angle")
     assert(label == none or type(label) in (content, str, dictionary), message: "label must content, dictionary or string")
-    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", auto), message: "variant must be 'iec', 'ieee' or auto")
+    assert("variant" not in params.named() or params.named().variant in ("ieee", "iec", "alt", auto), message: "variant must be 'iec', 'ieee' or auto")
     assert(n in (none, "*-", "*-*", "-*", "o-*", "*-o", "o-", "-o", "o-o"), message: "nodes are none, *-*, o-*, o-o, o-, etc.")
 
     let p-ratio = position
