@@ -634,13 +634,13 @@ As there is a lot of symbols available in Zap, they have been grouped by their o
     import zap: *
 
     inductor("i1", (0, 0), (3, 0))
-    inductor("i2", (4, 0), (7, 0), variant: "ieee")
+    inductor("i2", (4, 0), (7, 0), variant: "alt")
 })
 ```)[
     #zap.circuit({
         import zap: *
         inductor("i1", (0, 0), (3, 0))
-        inductor("i2", (4, 0), (7, 0), variant: "ieee")
+        inductor("i2", (4, 0), (7, 0), variant: "alt")
     })
 ]
 
