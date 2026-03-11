@@ -1,32 +1,49 @@
-name: Deploy static content to Pages
+name: Deploy documentation
 on:
-  workflow_dispatch:
+    workflow_dispatch:
+        inputs:
+            version:
+                description: "Cible du déploiement"
+                required: true
+                default: "latest"
+                type: choice
+                options:
+                    - latest
+                    - next
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    group: "pages"
+    cancel-in-progress: true
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Install Typst
-        run: sudo snap install typst
-      - name: Build using Typst HTML
-        run: typst compile docs/main.typ docs/index.html --format html --features html --root .
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./docs"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Install Typst
+              run: sudo snap install typst
+            - name: Build using Typst HTML
+              run: typst compile docs/main.typ docs/index.html --format html --features html --root .
+            - name: Prepare Deployment Folder
+              run: |
+                  mkdir staging
+                  if [ "${{ github.event.inputs.version }}" = "next" ]; then
+                    mkdir staging/next
+                    cp -r docs/* staging/next/
+                  else
+                    cp -r docs/* staging/
+                  fi
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: "./staging"
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
