@@ -13,6 +13,7 @@ Thumbs.db
 
 # development
 *.html
+!v*.*.html
 /*.typ
 /*.svg
 /*.pdf
