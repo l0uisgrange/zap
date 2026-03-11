@@ -1,15 +1,6 @@
 name: Deploy documentation
 on:
     workflow_dispatch:
-        inputs:
-            version:
-                description: "Cible du déploiement"
-                required: true
-                default: "latest"
-                type: choice
-                options:
-                    - latest
-                    - next
 permissions:
     contents: read
     pages: write
@@ -28,23 +19,17 @@ jobs:
               uses: actions/checkout@v6
             - name: Install Typst
               run: sudo snap install typst
-            - name: Build using Typst HTML
-              run: typst compile docs/main.typ docs/index.html --format html --features html --root .
-            - name: Prepare Deployment Folder
+            - name: Build site
               run: |
-                  mkdir staging
-                  if [ "${{ github.event.inputs.version }}" = "next" ]; then
-                    mkdir staging/next
-                    cp -r docs/* staging/next/
-                  else
-                    cp -r docs/* staging/
-                  fi
+                  mkdir -p docs/next
+                  typst compile docs/main.typ docs/next/index.html --format html --features html --root .
+                  cp docs/v0.5.html docs/index.html
             - name: Setup Pages
               uses: actions/configure-pages@v5
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: "./staging"
+                  path: "./docs"
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4

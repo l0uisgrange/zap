@@ -10,6 +10,8 @@
     bug: "https://github.com/l0uisgrange/zap/issues/new?template=bug_report.yml",
 ))
 
+#warning[This is the new documentation for the v0.6 version of Zap, which entered its release phase. Please consult the #link("/")[latest] release documentation if needed.]
+
 = Introduction <introduction>
 
 == About the project <about>
