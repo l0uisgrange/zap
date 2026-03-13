@@ -414,6 +414,7 @@
         width: 1.1,
         min-height: 1,
         padding: 0.2,
+        invert-style: "triangle",
         invert-width: 0.3,
         invert-height: 0.2,
         spacing: .4,
