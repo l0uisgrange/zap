@@ -1250,6 +1250,18 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
             land("b1", (0, 0), invert: true)
         }),
     ),
+    // invert-style
+    `invert-style`,
+    `"triangle"`,
+    none,
+    html.frame(
+        zap.circuit({
+            import zap: *
+
+            set-style(logic: (invert-style: "circle"))
+            lnor("b1", (0, 0))
+        }),
+    ),
     // inputs
     `inputs`,
     `2`,

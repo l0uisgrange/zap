@@ -7,6 +7,11 @@
 
     // Drawing function
     let draw(ctx, position, style) = {
+        assert(
+            style.invert-style in ("triangle", "circle"),
+            message: "logic invert-style must be 'triangle' or 'circle'",
+        )
+
         let height = calc.max(style.min-height, (inputs - 1) * style.spacing + 2 * style.padding)
         interface((-style.width / 2, -height / 2), (style.width / 2, height / 2), io: false)
 
@@ -18,9 +23,15 @@
         }
 
         if invert {
-            line((style.width / 2, style.invert-height), (rel: (style.invert-width, -style.invert-height)))
-            line((style.width / 2, 0), (rel: (style.invert-width, 0)))
-            anchor("out", ())
+            if style.invert-style == "circle" {
+                let radius = style.invert-width * 0.4
+                circle((style.width / 2 + radius, 0), radius: radius, fill: style.fill, stroke: style.stroke)
+                anchor("out", (style.width / 2 + 2 * radius, 0))
+            } else {
+                line((style.width / 2, style.invert-height), (rel: (style.invert-width, -style.invert-height)))
+                line((style.width / 2, 0), (rel: (style.invert-width, 0)))
+                anchor("out", (style.width / 2 + style.invert-width, 0))
+            }
         } else {
             anchor("out", (style.width / 2, 0))
         }
