@@ -1218,6 +1218,8 @@ The `diode` symbol accepts only one parameter, called `type`, and its appearance
 
 == Logic <logic>
 
+Use `set-style(logic: (invert-style: "circle"))` to render IEC inversion bubbles (European-style) on inverted logic gates.
+
 #circ(
     ```typst
     #import "./zap.typ"
